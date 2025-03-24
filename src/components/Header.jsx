@@ -84,7 +84,7 @@ const Header = () => {
       {/* Menu mobile */}
       <div
         ref={menuRef} // Gán ref vào menu
-        className={`fixed sm:hidden top-15 left-0 w-full sm:w-1/2 bg-white shadow-md transition-transform duration-300 ${
+        className={`fixed md:hidden top-15 left-0 w-full sm:w-1/2 bg-white shadow-md transition-transform duration-300 ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
