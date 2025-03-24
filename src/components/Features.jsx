@@ -16,8 +16,86 @@ const Features = () => {
     threshold: 0.15, // Khi phần tử **đến 40% khung nhìn** thì hiện
   });
   const navigate = useNavigate();
+  const logos = [
+    {
+      id: 1,
+      imgUrl: "/images/universities/bk.png",
+    },
+    {
+      id: 2,
+      imgUrl: "/images/universities/dhkt.png",
+    },
+    {
+      id: 3,
+      imgUrl: "/images/universities/dhqg.png",
+    },
+    {
+      id: 4,
+      imgUrl: "/images/universities/iu.png",
+    },
+    {
+      id: 5,
+      imgUrl: "/images/universities/khoay.png",
+    },
+    {
+      id: 6,
+      imgUrl: "/images/universities/khtn.png",
+    },
+    {
+      id: 7,
+      imgUrl: "/images/universities/uel.png",
+    },
+    {
+      id: 8,
+      imgUrl: "/images/universities/uit.png",
+    },
+    {
+      id: 9,
+      imgUrl: "/images/universities/ussh.png",
+    },
+  ];
+  const logoWidth = 100; // Chiều rộng mỗi logo (px)
+  const gap = 20; // Khoảng cách giữa các logo (px)
+  const totalWidth = (logoWidth + gap) * logos.length; // Tổng chiều rộng 1 lượt logo
+
   return (
-    <section ref={ref} className="text-center pb-12 px-6 bg-white">
+    <section ref={ref} className="text-center pb-12 px-6 bg-white sm:-mt-20">
+      <div className="w-full flex flex-col items-center">
+        <motion.img
+          className="sm:w-70 sm:h-50 w-45 h-30"
+          src="/images/number1.png"
+          alt="Number 1"
+          // Animate: di chuyển trục Y [0, -20, 0], lặp vô hạn
+          animate={{ y: [0, -20, 0] }}
+          transition={{
+            repeat: Infinity,
+            duration: 2,
+            ease: "easeInOut",
+          }}
+        />
+        {/* 🎬 Thanh logo cuộn ngang liên tục */}
+        <div className="sm:w-4/5 w-full overflow-hidden relative flex items-center py-5">
+          <motion.div
+            className="flex gap-5"
+            animate={{ x: [-totalWidth, 0] }} // Dịch từ phải qua trái
+            transition={{
+              repeat: Infinity,
+              duration: 10, // Tốc độ di chuyển
+              ease: "linear",
+            }}
+          >
+            {/* 🔄 Nhân đôi danh sách logo để tạo hiệu ứng liền mạch */}
+            {[...logos, ...logos].map((logo, i) => (
+              <img
+                key={i}
+                className="sm:w-[150px] sm:h-[150px] w-[80px] h-[80px] object-contain"
+                src={logo.imgUrl}
+                alt={`Logo ${logo.id}`}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </div>
       <motion.h2
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
