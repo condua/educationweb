@@ -4,7 +4,8 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
 import student from "../assets/student11.png";
-
+import { useNavigate } from "react-router-dom";
+import CourseDashboard from "../pages/Courses";
 const fadeInLeft = {
   hidden: { x: -100, opacity: 0 },
   visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
@@ -14,6 +15,7 @@ const Features = () => {
     triggerOnce: true,
     threshold: 0.15, // Khi phần tử **đến 40% khung nhìn** thì hiện
   });
+  const navigate = useNavigate();
   return (
     <section ref={ref} className="text-center pb-12 px-6 bg-white">
       <motion.h2
@@ -57,16 +59,16 @@ const Features = () => {
         variants={fadeInLeft}
         className="text-xl font-semibold text-gray-800 mt-10"
       >
-        All-In-One <span className="text-blue-500">MLAP.</span>
+        Chỉ có tại <span className="text-blue-500">MLAP.</span>
       </motion.h3>
       <motion.p
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         variants={fadeInLeft}
-        className="text-gray-600 max-w-xl mx-auto mt-2"
+        className="text-gray-600 max-w-2xl mx-auto mt-2"
       >
-        TOTC is one powerful online software suite that combines all the tools
-        needed to run a successful school or office.
+        MLPA là nền tảng tiên phong trong lĩnh vực giáo dục và công nghệ hàng
+        đầu tại Việt Nam
       </motion.p>
 
       <motion.div
@@ -150,7 +152,12 @@ const Features = () => {
             <img src={student} alt="Students" className="w-full rounded-lg" />
             <div className="absolute inset-0 bg-gray-900/50 flex flex-col justify-center items-center rounded-lg">
               <p className="text-white text-lg font-bold">Dành cho học viên</p>
-              <button className="mt-2 px-4 py-2 bg-blue-400 text-white rounded-full cursor-pointer hover:bg-blue-500 duration-500">
+              <button
+                onClick={() => {
+                  navigate("/courses");
+                }}
+                className="mt-2 px-4 py-2 bg-blue-400 text-white rounded-full cursor-pointer hover:bg-blue-500 duration-500"
+              >
                 Tham gia ngay
               </button>
             </div>
@@ -177,21 +184,24 @@ const Features = () => {
         {/* Right Side: Text Content */}
         <div>
           <h3 className="text-xl font-semibold text-blue-900">
-            A <span className="text-green-500">user interface</span> designed
-            for the classroom
+            Một <span className="text-green-500">giao diện người dùng</span>{" "}
+            được thiết kế dành riêng cho lớp học
           </h3>
           <ul className="mt-4 space-y-3 text-gray-600">
             <li className="flex items-start">
-              <FaCheckCircle className="text-green-500 mt-1 mr-2" /> Teachers
-              don’t get lost in the grid view and have a dedicated Podium space.
+              <FaCheckCircle className="text-green-500 mt-1 mr-2" />
+              Giáo viên không bị rối trong chế độ xem lưới và có không gian
+              riêng trên bục giảng.
             </li>
             <li className="flex items-start">
-              <FaCheckCircle className="text-green-500 mt-1 mr-2" /> TA’s and
-              presenters can be moved to the front of the class.
+              <FaCheckCircle className="text-green-500 mt-1 mr-2" />
+              Trợ giảng và người thuyết trình có thể được đưa lên phía trước lớp
+              học.
             </li>
             <li className="flex items-start">
-              <FaCheckCircle className="text-green-500 mt-1 mr-2" /> Teachers
-              can easily see all students and class data at one time.
+              <FaCheckCircle className="text-green-500 mt-1 mr-2" />
+              Giáo viên có thể dễ dàng quan sát toàn bộ học sinh và dữ liệu lớp
+              học trong cùng một lúc.
             </li>
           </ul>
         </div>
@@ -202,13 +212,13 @@ const Features = () => {
         {/* Left Side: Text Content */}
         <div>
           <h3 className="text-xl font-semibold text-blue-900">
-            <span className="text-green-500">Tools</span> For Teachers And
-            Learners
+            <span className="text-green-500">Công cụ</span> dành cho giáo viên
+            và học viên
           </h3>
           <p className="mt-4 text-gray-600">
-            Class has a dynamic set of teaching tools built to be deployed and
-            used during class. Teachers can hand out assignments in real-time
-            for students to complete and submit.
+            Lớp học được trang bị bộ công cụ giảng dạy linh hoạt, sẵn sàng sử
+            dụng ngay trong giờ học. Giáo viên có thể giao bài tập theo thời
+            gian thực để học viên hoàn thành và nộp ngay lập tức.
           </p>
         </div>
 
