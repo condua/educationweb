@@ -207,7 +207,7 @@ const Features = () => {
           Những trải nghiệm tại <span className="text-teal-500">MLPA</span>
         </h3>
         <p className="text-gray-600 max-w-3xl mx-auto mt-2">
-          TOTC là một nền tảng cho phép giảng viên tạo lớp học trực tuyến, lưu
+          MLPA là một nền tảng cho phép giảng viên tạo lớp học trực tuyến, lưu
           trữ tài liệu, quản lý bài tập, theo dõi thời hạn nộp bài và nhiều tính
           năng khác.
         </p>
