@@ -41,7 +41,7 @@ const CourseDashboard = () => {
   const totalPages = Math.ceil(coursesData.recent.length / coursesPerPage);
 
   return (
-    <div className="p-8 bg-blue-50 min-h-screen">
+    <div className="p-8 bg-blue-50">
       <div className="flex sm:flex-row flex-col justify-between sm:items-center mb-4">
         <h2 className="sm:text-2xl text-lg font-bold">
           Chào bạn trở lại, sẵn sàng học những bài học tiếp theo ?

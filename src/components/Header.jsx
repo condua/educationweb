@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Menu, X } from "lucide-react"; // Import icons từ lucide-react
+import { Menu, X, LogOut } from "lucide-react"; // Import icons từ lucide-react
+import { logout } from "../redux/authSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null); // Ref cho menu mobile
+  const { isAuthen, user } = useSelector((state) => state.auth); // Lấy trạng thái đăng nhập từ Redux
+  const dispatch = useDispatch();
+
   const items = [
     {
       title: "Trang chủ",
@@ -60,19 +65,49 @@ const Header = () => {
         </nav>
 
         {/* Nút Login / Sign Up */}
-        <div className="hidden md:flex space-x-4">
-          <button
-            onClick={() => navigate("/login")}
-            className="text-gray-700 hover:text-teal-600 cursor-pointer"
-          >
-            Login
-          </button>
-          <button
-            className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 cursor-pointer"
-            onClick={() => navigate("/register")}
-          >
-            Sign Up
-          </button>
+        {/* Hiển thị Login/SignUp hoặc Avatar + Tên */}
+        <div className="hidden md:flex space-x-4 items-center">
+          {isAuthen ? (
+            <div className="flex items-center space-x-4">
+              {/* Avatar + Name */}
+              <div className="flex items-center space-x-2">
+                <img
+                  src={
+                    user?.avatar ||
+                    "https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
+                  }
+                  alt="Avatar"
+                  className="w-10 h-10 rounded-full"
+                />
+                <span className="text-gray-700 font-medium">
+                  {user?.fullName}
+                </span>
+              </div>
+              {/* Logout */}
+              <button
+                className="flex items-center space-x-1 text-gray-700 hover:text-red-600"
+                onClick={() => dispatch(logout())}
+              >
+                <LogOut size={20} />
+                <span>Logout</span>
+              </button>
+            </div>
+          ) : (
+            <>
+              <button
+                onClick={() => navigate("/login")}
+                className="text-gray-700 hover:text-teal-600 cursor-pointer"
+              >
+                Login
+              </button>
+              <button
+                className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 cursor-pointer"
+                onClick={() => navigate("/register")}
+              >
+                Sign Up
+              </button>
+            </>
+          )}
         </div>
 
         {/* Nút mở menu mobile */}
@@ -84,7 +119,7 @@ const Header = () => {
       {/* Menu mobile */}
       <div
         ref={menuRef} // Gán ref vào menu
-        className={`fixed md:hidden top-15 left-0 w-full sm:w-1/2 bg-white shadow-md transition-transform duration-300 ${
+        className={`fixed md:hidden top-15 left-0 w-full md:w-1/2 bg-white shadow-md transition-transform duration-300 ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -106,24 +141,53 @@ const Header = () => {
               {item.title}
             </a>
           ))}
-          <button
-            onClick={() => {
-              navigate("/login");
-              setMenuOpen(false);
-            }}
-            className="text-gray-700 hover:text-teal-600 cursor-pointer"
-          >
-            Login
-          </button>
-          <button
-            className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 cursor-pointer"
-            onClick={() => {
-              navigate("/register");
-              setMenuOpen(false);
-            }}
-          >
-            Sign Up
-          </button>
+          {/* Hiển thị Avatar + Tên hoặc Login/SignUp */}
+          {isAuthen ? (
+            <div className="flex flex-col items-center space-y-3">
+              <img
+                src={
+                  user?.avatar ||
+                  "https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
+                }
+                alt="Avatar"
+                className="w-12 h-12 rounded-full"
+              />
+              <span className="text-gray-700 font-medium">
+                {user?.fullName}
+              </span>
+              <button
+                className="flex items-center space-x-1 text-gray-700 hover:text-red-600"
+                onClick={() => {
+                  dispatch(logout());
+                  setMenuOpen(false);
+                }}
+              >
+                <LogOut size={20} />
+                <span>Logout</span>
+              </button>
+            </div>
+          ) : (
+            <>
+              <button
+                onClick={() => {
+                  navigate("/login");
+                  setMenuOpen(false);
+                }}
+                className="text-gray-700 hover:text-teal-600 cursor-pointer"
+              >
+                Login
+              </button>
+              <button
+                className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 cursor-pointer"
+                onClick={() => {
+                  navigate("/register");
+                  setMenuOpen(false);
+                }}
+              >
+                Sign Up
+              </button>
+            </>
+          )}
         </nav>
       </div>
     </header>
