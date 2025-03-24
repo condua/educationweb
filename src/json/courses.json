@@ -1,0 +1,103 @@
+
+{
+    "recent": [
+      {
+        "title": "AWS Certi31312fied Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS Certifi312312ed Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS C3123ertified Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS Cer3123tified Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS Certified 3123Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS Certified So3211lutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS Certified 312312Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS Certif213123ied Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS Certif213213ied Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS 123123Certified Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS3213 Certified Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      },
+      {
+        "title": "AWS 23123Certified Solutions Architect",
+        "instructor": "Lina",
+        "image": "student.png",
+        "price": "80"
+      }
+    ],
+    "categories": [
+      { "name": "Design", "description": "Learn the basics of UI/UX design." },
+      { "name": "Development", "description": "Explore web and mobile development." },
+      { "name": "Business", "description": "Understand business strategies." }
+    ],
+    "recommended": [
+      {
+        "title": "AWS Certified Solutions Architect",
+        "instructor": "Lina",
+        "image": "aws-course-4.jpg",
+        "price": "80"
+      },
+      {
+        "title": "AWS Certified Solutions Architect",
+        "instructor": "Lina",
+        "image": "aws-course-5.jpg",
+        "price": "80"
+      },
+      {
+        "title": "AWS Certified Solutions Architect",
+        "instructor": "Lina",
+        "image": "aws-course-6.jpg",
+        "price": "80"
+      }
+    ]
+  }
+  
