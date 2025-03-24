@@ -79,11 +79,10 @@ const Features = () => {
           <div className="text-blue-500 text-5xl">📄</div>
 
           <h4 className="text-lg font-semibold mt-4">
-            Online Billing, Invoicing, & Contracts
+            Hóa đơn, Thanh toán & Hợp đồng Trực tuyến{" "}
           </h4>
           <p className="text-gray-600 mt-2">
-            Simple and secure control of your organization’s financial
-            transactions.
+            Kiểm soát tài chính doanh nghiệp dễ dàng và an toàn hơn bao giờ hết!
           </p>
         </div>
         <div className="p-6 bg-gray-100 rounded-lg text-center flex flex-col items-center">
@@ -104,17 +103,21 @@ const Features = () => {
             </div>
           </div>
           <h4 className="text-lg font-semibold mt-4">
-            Easy Scheduling & Attendance Tracking
+            Lên lịch & Theo dõi điểm danh dễ dàng{" "}
           </h4>
           <p className="text-gray-600 mt-2">
-            Schedule and reserve classrooms at one or multiple campuses.
+            Sắp xếp và đặt trước phòng học chỉ trong vài cú nhấp chuột, dù ở một
+            hay nhiều cơ sở.
           </p>
         </div>
         <div className="p-6 bg-gray-100 rounded-lg text-center">
           <div className="text-blue-500 text-5xl">👥</div>
-          <h4 className="text-lg font-semibold mt-4">Customer Tracking</h4>
+          <h4 className="text-lg font-semibold mt-4">
+            Quản lý khách hàng thông minh
+          </h4>
           <p className="text-gray-600 mt-2">
-            Automate and track emails to individuals or groups.
+            Tự động hóa và theo dõi email gửi đến từng cá nhân hoặc nhóm một
+            cách hiệu quả.
           </p>
         </div>
       </motion.div>

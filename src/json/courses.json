@@ -2,74 +2,75 @@
 {
     "recent": [
       {
-        "title": "AWS Certi31312fied Solutions Architect",
-        "instructor": "Lina",
+        "title": "Đánh giá năng lực - lý thuyết 2025",
+        "instructor": "Phan Hoàng Phúc",
+        "image": "dgnl.jpg",
+        "instructorImage":"",
+        "price": "80"
+      },
+      {
+        "title": "Luyện đề đánh giá năng lực - 2025",
+        "instructor": "Phan Tấn Lộc",
         "image": "student.png",
         "price": "80"
       },
       {
-        "title": "AWS Certifi312312ed Solutions Architect",
-        "instructor": "Lina",
+        "title": "Tiếng Anh toàn diện",
+        "instructor": "Phan Hoàng Phúc",
         "image": "student.png",
         "price": "80"
       },
       {
-        "title": "AWS C3123ertified Solutions Architect",
-        "instructor": "Lina",
+        "title": "Lập trình web",
+        "instructor": "Phan Hoàng Phúc",
         "image": "student.png",
         "price": "80"
       },
       {
-        "title": "AWS Cer3123tified Solutions Architect",
-        "instructor": "Lina",
+        "title": "Lập trình nâng cao",
+        "instructor": "Phan Hoàng Phúc",
         "image": "student.png",
         "price": "80"
       },
       {
-        "title": "AWS Certified 3123Solutions Architect",
-        "instructor": "Lina",
-        "image": "student.png",
-        "price": "80"
-      },
-      {
-        "title": "AWS Certified So3211lutions Architect",
-        "instructor": "Lina",
+        "title": "Cấu trúc dữ liệu và giải thuật",
+        "instructor": "Phan Hoàng Phúc",
         "image": "student.png",
         "price": "80"
       },
       {
         "title": "AWS Certified 312312Solutions Architect",
-        "instructor": "Lina",
+        "instructor": "Phan Hoàng Phúc",
         "image": "student.png",
         "price": "80"
       },
       {
         "title": "AWS Certif213123ied Solutions Architect",
-        "instructor": "Lina",
+        "instructor": "Phan Hoàng Phúc",
         "image": "student.png",
         "price": "80"
       },
       {
         "title": "AWS Certif213213ied Solutions Architect",
-        "instructor": "Lina",
+        "instructor": "Phan Hoàng Phúc",
         "image": "student.png",
         "price": "80"
       },
       {
         "title": "AWS 123123Certified Solutions Architect",
-        "instructor": "Lina",
+        "instructor": "Phan Hoàng Phúc",
         "image": "student.png",
         "price": "80"
       },
       {
         "title": "AWS3213 Certified Solutions Architect",
-        "instructor": "Lina",
+        "instructor": "Phan Hoàng Phúc",
         "image": "student.png",
         "price": "80"
       },
       {
         "title": "AWS 23123Certified Solutions Architect",
-        "instructor": "Lina",
+        "instructor": "Phan Hoàng Phúc",
         "image": "student.png",
         "price": "80"
       }

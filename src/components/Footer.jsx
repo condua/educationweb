@@ -9,6 +9,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold">MLPA</h3>
             <p className="text-sm text-gray-400">
               Copyright © {new Date().getFullYear()} All rights reserved
+              <br /> Made by Phan Hoang Phuc
             </p>
           </div>
           <div className="flex space-x-6 md:mb-0 mb-4">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import coursesData from "../json/courses.json";
-
+import phuc from "../../public/phuc.jpg";
 const CourseCard = ({ course }) => (
   <div className="bg-white px-4 pt-4 pb-25 rounded-2xl shadow-md relative">
     <img
@@ -11,11 +11,7 @@ const CourseCard = ({ course }) => (
     <h3 className="font-semibold text-lg">{course.title}</h3>
     <div className="absolute bottom-4 w-11/12 right-3">
       <div className="flex items-center mt-2">
-        <img
-          src={course.image}
-          alt="Avatar"
-          className="w-8 h-8 rounded-full mr-2"
-        />
+        <img src={phuc} alt="Avatar" className="w-8 h-8 rounded-full mr-2" />
         <p className="text-sm text-gray-600">{course.instructor}</p>
       </div>
       <div className="mt-2">
