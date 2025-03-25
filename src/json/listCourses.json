@@ -1,0 +1,210 @@
+[
+  {
+    "_id": "1",
+    "title": "Khóa học ReactJS từ cơ bản đến nâng cao",
+    "description": "Học ReactJS từ những khái niệm cơ bản đến ứng dụng thực tế.",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+    "mentor": {
+      "name": "Phan Hoàng Phúc",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s"
+    },
+    "chapters": [
+    {
+        "_id": "65fa4567e1234abcd5678921a",
+        "title": "Chương 1: Giới thiệu ReactJS",
+        "lessons": [
+            {
+            "_id": "65fa5678e1234abcd5678932",
+            "title": "Bài 1: React là gì?",
+            "youtubeUrl": "https://www.youtube.com/embed/N3AkSS5hXMA?si=oDUb6RnLnD3phcWw",
+            "pdfUrl": "https://example.com/react-intro.pdf",
+            "exercisePdfUrl": "https://example.com/react-exercise.pdf",
+            "content": "React là một thư viện JavaScript mạnh mẽ để xây dựng giao diện người dùng theo hướng component.",
+            "time": 8,
+            "locked": false
+            },
+            {
+            "_id": "65fa5678e1234abcd5678933",
+            "title": "Bài 2: Cài đặt môi trường React",
+            "youtubeUrl": "https://www.youtube.com/embed/Ma6DRDIedVE?si=oDUb6RnLnD3phcWw",
+            "pdfUrl": "https://example.com/react-setup.pdf",
+            "exercisePdfUrl": "https://example.com/react-setup-exercise.pdf",
+            "content": "Hướng dẫn cài đặt môi trường React sử dụng Create React App và thiết lập dự án đầu tiên.",
+            "time": 12,
+            "locked": false
+            }
+        ]
+        },
+        {
+        "_id": "65fa4567e1234abcd5678922b",
+        "title": "Chương 2: JSX & Component",
+        "lessons": [
+            {
+            "_id": "65fa5678e1234abcd5678934",
+            "title": "Bài 3: JSX là gì?",
+            "youtubeUrl": "https://www.youtube.com/embed/N3AkSS5hXMA?si=oDUb6RnLnD3phcWw",
+            "pdfUrl": "https://example.com/jsx-intro.pdf",
+            "exercisePdfUrl": "https://example.com/jsx-exercise.pdf",
+            "content": "JSX là cú pháp mở rộng của JavaScript giúp viết UI trong React dễ dàng hơn.",
+            "time": 15,
+            "locked": false
+            },
+            {
+            "_id": "65fa5678e1234abcd5678935",
+            "title": "Bài 4: Hiểu về Virtual DOM",
+            "youtubeUrl": "https://www.youtube.com/embed/VkTCL6Nqm6Y",
+            "pdfUrl": "https://example.com/virtual-dom.pdf",
+            "exercisePdfUrl": "https://example.com/virtual-dom-exercise.pdf",
+            "content": "Virtual DOM giúp React cập nhật giao diện nhanh hơn bằng cách so sánh sự thay đổi trước khi render lại UI.",
+            "time": 14,
+            "locked": false
+            },
+            {
+            "_id": "65fa5678e1234abcd5678936",
+            "title": "Bài 5: Component và Props",
+            "youtubeUrl": "https://www.youtube.com/embed/d3myMa7zq2A",
+            "pdfUrl": "https://example.com/component-props.pdf",
+            "exercisePdfUrl": "https://example.com/component-props-exercise.pdf",
+            "content": "Hiểu cách React sử dụng component và truyền dữ liệu giữa các component bằng Props.",
+            "time": 18,
+            "locked": false
+            }
+        ]
+        }
+    ],
+    "category": "Web Development",
+    "price": "Free",
+    "rating": 4.9,
+    "students": 14580,
+    "createdAt": "2025-03-25T15:50:25.745+00:00",
+    "updatedAt": "2025-03-25T15:50:25.745+00:00"
+  },
+  {
+    "_id": "2",
+    "title": "Lập trình JavaScript chuyên sâu",
+    "description": "Khóa học giúp bạn nắm vững JavaScript từ cơ bản đến nâng cao.",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+    "mentor": {
+      "name": "Nguyễn Văn A",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s"
+    },
+    "category": "Programming",
+    "price": "$50",
+    "rating": 4.8,
+    "students": 12000,
+    "createdAt": "2025-03-20T10:30:00.000+00:00",
+    "updatedAt": "2025-03-20T10:30:00.000+00:00"
+  },
+  {
+    "_id": "3",
+    "title": "Khóa học Node.js toàn diện",
+    "description": "Tìm hiểu về Node.js và cách xây dựng ứng dụng backend mạnh mẽ.",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+    "mentor": {
+      "name": "Trần B",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s"
+    },
+    "category": "Backend Development",
+    "price": "$70",
+    "rating": 4.7,
+    "students": 9800,
+    "createdAt": "2025-03-18T08:15:00.000+00:00",
+    "updatedAt": "2025-03-18T08:15:00.000+00:00"
+  },
+  {
+    "_id": "4",
+    "title": "Khóa học Node.js toàn diện",
+    "description": "Tìm hiểu về Node.js và cách xây dựng ứng dụng backend mạnh mẽ.",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+    "mentor": {
+      "name": "Trần B",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s"
+    },
+    "category": "Backend Development",
+    "price": "$70",
+    "rating": 4.7,
+    "students": 9800,
+    "createdAt": "2025-03-18T08:15:00.000+00:00",
+    "updatedAt": "2025-03-18T08:15:00.000+00:00"
+  },
+  {
+    "_id": "5",
+    "title": "Khóa học Node.js toàn diện",
+    "description": "Tìm hiểu về Node.js và cách xây dựng ứng dụng backend mạnh mẽ.",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+    "mentor": {
+      "name": "Trần B",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s"
+    },
+    "category": "Backend Development",
+    "price": "$70",
+    "rating": 4.7,
+    "students": 9800,
+    "createdAt": "2025-03-18T08:15:00.000+00:00",
+    "updatedAt": "2025-03-18T08:15:00.000+00:00"
+  },
+  {
+    "_id": "6",
+    "title": "Khóa học Node.js toàn diện",
+    "description": "Tìm hiểu về Node.js và cách xây dựng ứng dụng backend mạnh mẽ.",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+    "mentor": {
+      "name": "Trần B",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s"
+    },
+    "category": "Development",
+    "price": "$70",
+    "rating": 4.7,
+    "students": 9800,
+    "createdAt": "2025-03-18T08:15:00.000+00:00",
+    "updatedAt": "2025-03-18T08:15:00.000+00:00"
+  },
+  {
+    "_id": "7",
+    "title": "Khóa học Node.js toàn diện",
+    "description": "Tìm hiểu về Node.js và cách xây dựng ứng dụng backend mạnh mẽ.",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+    "mentor": {
+      "name": "Trần B",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s"
+    },
+    "category": "Development",
+    "price": "$70",
+    "rating": 4.7,
+    "students": 9800,
+    "createdAt": "2025-03-18T08:15:00.000+00:00",
+    "updatedAt": "2025-03-18T08:15:00.000+00:00"
+  },
+  {
+    "_id": "8",
+    "title": "Khóa học Node.js toàn diện",
+    "description": "Tìm hiểu về Node.js và cách xây dựng ứng dụng backend mạnh mẽ.",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+    "mentor": {
+      "name": "Trần B",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s"
+    },
+    "category": "Backend Development",
+    "price": "$70",
+    "rating": 4.7,
+    "students": 9800,
+    "createdAt": "2025-03-18T08:15:00.000+00:00",
+    "updatedAt": "2025-03-18T08:15:00.000+00:00"
+  },
+  {
+    "_id": "9",
+    "title": "Khóa học Node.js toàn diện",
+    "description": "Tìm hiểu về Node.js và cách xây dựng ứng dụng backend mạnh mẽ.",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s",
+    "mentor": {
+      "name": "Trần B",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFYUMxwjoJUgk-Bv9mwUGhi6uhAIKOfWZHw&s"
+    },
+    "category": "Backend Development",
+    "price": "$70",
+    "rating": 4.7,
+    "students": 9800,
+    "createdAt": "2025-03-18T08:15:00.000+00:00",
+    "updatedAt": "2025-03-18T08:15:00.000+00:00"
+  }
+]

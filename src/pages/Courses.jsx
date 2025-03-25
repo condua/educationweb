@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import coursesData from "../json/courses.json";
 import phuc from "../../public/phuc.jpg";
+import CourseList from "./CourseList";
 const CourseCard = ({ course }) => (
   <div className="bg-white px-4 pt-4 pb-25 rounded-2xl shadow-md relative">
     <img
@@ -76,6 +77,7 @@ const CourseDashboard = () => {
           &gt;
         </button>
       </div>
+      <CourseList />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CourseDashboard from "./pages/Courses";
+import CourseDetail from "./pages/CourseDetail";
 
 // Component bảo vệ route (Private Route)
 const PrivateRoute = ({ element }) => {
@@ -36,6 +37,10 @@ function App() {
         <Route
           path="/courses"
           element={<PrivateRoute element={<CourseDashboard />} />}
+        />
+        <Route
+          path="/course/:id"
+          element={<PrivateRoute element={<CourseDetail />} />}
         />
 
         {/* Route mặc định */}

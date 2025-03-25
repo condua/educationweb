@@ -3,8 +3,10 @@ import React from "react";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 // Giả sử bạn có ảnh cô gái cầm sách
 import StudentImg from "../assets/student11.png"; // Thay đường dẫn thực tế
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section
       id="home"
@@ -25,10 +27,20 @@ const Hero = () => {
             học và giải pháp công nghệ phù hợp cho mọi người
           </p>
           <div className="flex items-center space-x-4">
-            <button className="bg-teal-600 text-white px-5 py-3 rounded hover:bg-teal-700 transition cursor-pointer">
+            <button
+              onClick={() => {
+                navigate("/courses");
+              }}
+              className="bg-teal-600 text-white px-5 py-3 rounded hover:bg-teal-700 transition cursor-pointer"
+            >
               Tham gia ngay
             </button>
-            <button className="flex items-center text-teal-600 hover:text-teal-800 font-medium cursor-pointer">
+            <button
+              onClick={() => {
+                navigate("/courses");
+              }}
+              className="flex items-center text-teal-600 hover:text-teal-800 font-medium cursor-pointer"
+            >
               <AiOutlinePlayCircle className="text-2xl mr-2" />
               Xem hướng dẫn
             </button>
@@ -55,7 +67,12 @@ const Hero = () => {
               Đội ngũ xuất sắc
             </p>
             <p className="text-xs text-gray-500 mb-2">Nhiều năm kinh nghiệm</p>
-            <button className="text-xs bg-teal-600 text-white md:px-3 px-2 md:py-2 py-1 rounded">
+            <button
+              onClick={() => {
+                navigate("/courses");
+              }}
+              className="text-xs bg-teal-600 text-white md:px-3 px-2 md:py-2 py-1 rounded"
+            >
               Xem ngay
             </button>
           </div>
@@ -65,7 +82,12 @@ const Hero = () => {
             <p className="text-gray-700 font-medium text-sm mb-1">
               Khóa học hấp dẫn
             </p>
-            <button className="text-xs bg-teal-600 text-white md:px-3 px-2 md:py-2 py-1 rounded text-center">
+            <button
+              onClick={() => {
+                navigate("/courses");
+              }}
+              className="text-xs bg-teal-600 text-white md:px-3 px-2 md:py-2 py-1 rounded text-center"
+            >
               Tham gia ngay
             </button>
           </div>
