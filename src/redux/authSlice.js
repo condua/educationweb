@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // API giả lập
-const API_URL = "https://educationappbackend.onrender.com/api/auth";
+const API_URL = "https://educationappbackend-4inf.onrender.com/api/auth";
 
 // Async Thunks cho login & register
 export const loginUser = createAsyncThunk(

@@ -8,4 +8,7 @@ export default defineConfig({
   server: {
     host: true, // hoặc host: '0.0.0.0'
   },
+  build: {
+    sourcemap: false, // Đảm bảo source map bị vô hiệu hóa
+  },
 });
