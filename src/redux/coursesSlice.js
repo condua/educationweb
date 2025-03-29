@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "http://192.168.2.57:5000/api/course";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/course`;
 
 // 🎯 **Hàm lấy token từ Redux State**
 const getToken = (state) => state.auth.token;
