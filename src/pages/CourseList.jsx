@@ -1,34 +1,48 @@
 import { useState, useEffect } from "react";
-import coursesData from "../json/listCourses.json";
-import CourseCard from "./CourseCard";
-import CategorySection from "./CategorySection";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "../redux/coursesSlice";
+import CourseCard from "./CourseCard";
+import CategorySection from "./CategorySection";
+
+const removeAccents = (str) => {
+  return str
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLowerCase();
+};
+
 const CourseList = () => {
   const dispatch = useDispatch();
   const { courses, loading, error } = useSelector((state) => state.courses);
   const [filteredCourses, setFilteredCourses] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const coursesPerPage = 4; // Số khóa học hiển thị trên mỗi trang
+  const coursesPerPage = 4;
 
   useEffect(() => {
-    dispatch(fetchCourses()); // Gọi action để lấy danh sách khóa học
+    dispatch(fetchCourses());
   }, [dispatch]);
 
   useEffect(() => {
-    if (selectedCategory === "All") {
-      setFilteredCourses(courses);
-    } else {
-      setFilteredCourses(
-        courses.filter((course) =>
-          course.category.toLowerCase().includes(selectedCategory.toLowerCase())
-        )
+    let filtered = courses;
+
+    if (selectedCategory !== "All") {
+      filtered = filtered.filter((course) =>
+        removeAccents(course.category).includes(removeAccents(selectedCategory))
       );
     }
+
+    if (searchTerm) {
+      filtered = filtered.filter((course) =>
+        removeAccents(course.title).includes(removeAccents(searchTerm))
+      );
+    }
+
+    setFilteredCourses(filtered);
     setCurrentPage(1);
-  }, [selectedCategory, courses]);
+  }, [selectedCategory, searchTerm, courses]);
 
   const totalPages = Math.ceil(filteredCourses.length / coursesPerPage);
   const indexOfLastCourse = currentPage * coursesPerPage;
@@ -38,38 +52,27 @@ const CourseList = () => {
     indexOfLastCourse
   );
 
-  const handlePrevPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-  };
-
-  console.log(courses);
-  // console.log(currentCourses);
-
   return (
-    <div className="py-10 bg-blue-50">
-      {/* Category Section */}
+    <div className="py-10 bg-blue-50 flex flex-col justify-center items-center">
+      <h2 className="mb-10 text-2xl font-semibold text-center">
+        Chọn khóa học yêu thích của bạn
+      </h2>
+      <input
+        className="w-4/5 sm:py-4 sm:px-6 py-2 px-3 bg-gray-200 rounded-full outline-0 sm:text-xl"
+        placeholder="Bạn đang tìm kiếm khóa học nào ?"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
       <CategorySection setSelectedCategory={setSelectedCategory} />
-
-      <div className="flex justify-between items-center px-10">
-        <h2 className="text-2xl font-semibold">Recommended for you</h2>
-        <button className="text-blue-500 font-semibold">See all</button>
-      </div>
-
-      <div className="flex justify-center gap-6 mt-6 flex-wrap">
+      <div className="flex justify-center items-center gap-6 mt-6 flex-wrap">
         {currentCourses.length > 0 ? (
           currentCourses.map((course) => (
             <CourseCard key={course._id} course={course} />
           ))
         ) : (
-          <p className="text-gray-500">No courses found in this category.</p>
+          <p className="text-gray-500">Không tìm thấy khóa học phù hợp.</p>
         )}
       </div>
-
-      {/* Pagination Controls */}
       {totalPages > 1 && (
         <div className="flex justify-center items-center mt-6">
           <button
@@ -78,23 +81,23 @@ const CourseList = () => {
                 ? "bg-gray-300 cursor-not-allowed"
                 : "bg-blue-500 text-white"
             }`}
-            onClick={handlePrevPage}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
           >
             Prev
           </button>
-
           <span className="text-lg font-semibold mx-4">
-            Page {currentPage} of {totalPages}
+            Trang {currentPage} / {totalPages}
           </span>
-
           <button
             className={`px-4 py-2 mx-2 rounded-lg ${
               currentPage === totalPages
                 ? "bg-gray-300 cursor-not-allowed"
                 : "bg-blue-500 text-white"
             }`}
-            onClick={handleNextPage}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
             disabled={currentPage === totalPages}
           >
             Next

@@ -103,6 +103,7 @@ const coursesSlice = createSlice({
   initialState: {
     courses: [],
     selectedCourse: null,
+    courseDetails: {}, // Chứa dữ liệu từng khóa học theo ID
     status: "idle",
     error: null,
   },
@@ -121,7 +122,7 @@ const coursesSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(fetchCourseById.fulfilled, (state, action) => {
-        state.selectedCourse = action.payload;
+        state.courseDetails[action.payload._id] = action.payload;
       })
       .addCase(createCourse.fulfilled, (state, action) => {
         state.courses.push(action.payload);

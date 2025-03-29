@@ -7,15 +7,15 @@ const CourseCard = ({ courseId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // Lấy dữ liệu khóa học từ Redux store
-  const { selectedCourse: course, status } = useSelector(
-    (state) => state.courses
-  );
+  // Truy xuất khóa học theo ID
+  const course = useSelector((state) => state.courses.courseDetails[courseId]);
+  const status = useSelector((state) => state.courses.status);
 
   useEffect(() => {
-    if (courseId) {
+    if (!course) {
       dispatch(fetchCourseById(courseId));
     }
-  }, [dispatch, courseId]);
+  }, [dispatch, courseId, course]);
   const handleNavigate = () => {
     if (courseId) {
       navigate(`/course/${courseId}`);
@@ -28,18 +28,25 @@ const CourseCard = ({ courseId }) => {
   if (!course) return <div>Không tìm thấy khóa học</div>;
 
   return (
-    <div className="bg-white px-4 pt-4 pb-18 rounded-2xl shadow-md relative">
+    <div className="bg-white px-4 pt-4 pb-30 rounded-2xl shadow-md relative">
       <img
         src={course.thumbnail}
         alt={course.title}
         className="rounded-lg mb-2 w-full h-40 object-cover"
       />
+      <p className="text-sm text-gray-500 my-1">
+        {course?.category || "N/A"} • {course?.chapters?.length || 0} chương
+      </p>
       <h3 className="font-semibold text-lg">{course.title}</h3>
-      <div className="absolute bottom-4 w-11/12 right-3">
+      <p className="text-gray-500 text-sm line-clamp-2 absolute bottom-19 pr-0.5">
+        {course?.description || ""}
+      </p>
+
+      <div className="absolute bottom-5 w-11/12 right-3">
         <div className="flex items-center justify-between mt-2">
           <div className=" flex items-center">
             <img
-              src={course.thumbnail}
+              src={course.mentor.avatar}
               alt="Avatar"
               className="w-8 h-8 rounded-full mr-2"
             />

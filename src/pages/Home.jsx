@@ -6,12 +6,13 @@ import Features from "../components/Features";
 import Testimonials from "../components/Testimonials";
 import Pricing from "../components/Pricing";
 import CourseDashboard from "./Courses";
+import CourseList from "./CourseList";
 const Home = () => {
   return (
     <>
       <Hero />
       <Features />
-      <CourseDashboard />
+      <CourseList />
       <Testimonials />
       {/* <Pricing /> */}
     </>

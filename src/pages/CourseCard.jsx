@@ -10,6 +10,7 @@ const CourseCard = ({ course }) => {
   const enrolledCourses = useSelector(
     (state) => state.user?.enrolledCourses || []
   );
+  const { isAuthen } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -28,7 +29,9 @@ const CourseCard = ({ course }) => {
   const handleEnroll = async (e) => {
     e.stopPropagation();
     if (isEnrolled || !course?._id) return;
-
+    if (isAuthen === false) {
+      navigate("/login");
+    }
     setLoading(true);
 
     try {
@@ -56,7 +59,7 @@ const CourseCard = ({ course }) => {
 
   return (
     <div
-      className="bg-white rounded-2xl shadow-md p-4 sm:w-80 hover:shadow-lg transition"
+      className="w-11/12 bg-white rounded-2xl shadow-md p-4 sm:w-80 hover:shadow-lg transition"
       // onClick={handleNavigate}
     >
       {course?.thumbnail ? (

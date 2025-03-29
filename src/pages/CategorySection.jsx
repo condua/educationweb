@@ -45,9 +45,6 @@ const categories = [
 const CategorySection = ({ selectedCategory, setSelectedCategory }) => {
   return (
     <div className="py-10">
-      <h2 className="text-2xl font-semibold text-center">
-        Choose your favorite course from top categories
-      </h2>
       <div className="flex justify-center gap-6 mt-6 flex-wrap">
         {categories.map((cat, index) => (
           <button
