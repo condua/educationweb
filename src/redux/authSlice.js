@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // API giả lập
-const API_URL = "https://educationappbackend-4inf.onrender.com/api/auth";
+const API_URL = "http://192.168.2.57:5000/api/auth";
 
 // Async Thunks cho login & register
 export const loginUser = createAsyncThunk(
@@ -40,7 +40,8 @@ const authSlice = createSlice({
     user: null,
     token: null,
     isAuthen: false,
-    status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
+    enrolledCourses: [], // Danh sách khóa học đã đăng ký
+    status: "idle",
     error: null,
   },
   reducers: {
@@ -48,6 +49,7 @@ const authSlice = createSlice({
       state.user = null;
       state.token = null;
       state.isAuthen = false;
+      state.enrolledCourses = [];
       state.status = "idle";
       state.error = null;
     },
@@ -57,36 +59,19 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Xử lý Login
-      .addCase(loginUser.pending, (state) => {
-        state.status = "loading";
-        state.error = null;
-      })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isAuthen = true;
         state.status = "succeeded";
-      })
-      .addCase(loginUser.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.payload;
-      })
-
-      // Xử lý Register
-      .addCase(registerUser.pending, (state) => {
-        state.status = "loading";
-        state.error = null;
+        state.enrolledCourses = action.payload.user.enrolledCourses || [];
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isAuthen = true;
         state.status = "succeeded";
-      })
-      .addCase(registerUser.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.payload;
+        state.enrolledCourses = action.payload.user.enrolledCourses || [];
       });
   },
 });

@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import coursesData from "../json/listCourses.json";
 import CourseCard from "./CourseCard";
 import CategorySection from "./CategorySection";
-
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCourses } from "../redux/coursesSlice";
 const CourseList = () => {
-  const [courses, setCourses] = useState([]);
+  const dispatch = useDispatch();
+  const { courses, loading, error } = useSelector((state) => state.courses);
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -12,11 +14,9 @@ const CourseList = () => {
   const coursesPerPage = 4; // Số khóa học hiển thị trên mỗi trang
 
   useEffect(() => {
-    setCourses(coursesData);
-    setFilteredCourses(coursesData); // Ban đầu hiển thị tất cả khóa học
-  }, []);
+    dispatch(fetchCourses()); // Gọi action để lấy danh sách khóa học
+  }, [dispatch]);
 
-  // Lọc khóa học khi thay đổi category
   useEffect(() => {
     if (selectedCategory === "All") {
       setFilteredCourses(courses);
@@ -30,10 +30,7 @@ const CourseList = () => {
     setCurrentPage(1);
   }, [selectedCategory, courses]);
 
-  // Tính toán số trang
   const totalPages = Math.ceil(filteredCourses.length / coursesPerPage);
-
-  // Lấy danh sách khóa học cho trang hiện tại
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
   const currentCourses = filteredCourses.slice(
@@ -41,7 +38,6 @@ const CourseList = () => {
     indexOfLastCourse
   );
 
-  // Xử lý chuyển trang
   const handlePrevPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
@@ -49,6 +45,9 @@ const CourseList = () => {
   const handleNextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
+
+  console.log(courses);
+  // console.log(currentCourses);
 
   return (
     <div className="py-10 bg-blue-50">

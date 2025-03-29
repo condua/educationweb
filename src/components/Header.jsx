@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu, X, LogOut } from "lucide-react"; // Import icons từ lucide-react
 import { logout } from "../redux/authSlice";
+import { logoutUser } from "../redux/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
@@ -86,7 +87,10 @@ const Header = () => {
               {/* Logout */}
               <button
                 className="flex items-center space-x-1 text-gray-700 hover:text-red-600"
-                onClick={() => dispatch(logout())}
+                onClick={() => {
+                  dispatch(logout());
+                  dispatch(logoutUser());
+                }}
               >
                 <LogOut size={20} />
                 <span>Logout</span>
@@ -159,6 +163,7 @@ const Header = () => {
                 className="flex items-center space-x-1 text-gray-700 hover:text-red-600"
                 onClick={() => {
                   dispatch(logout());
+                  dispatch(logoutUser);
                   setMenuOpen(false);
                 }}
               >

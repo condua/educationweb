@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Menu, X, ChevronRight } from "lucide-react"; // Thêm icon menu, đóng, và mở rộng
-import coursesData from "../json/listCourses.json";
+import { Menu, X, ChevronRight } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCourseById } from "../redux/coursesSlice";
 
 const CourseDetail = () => {
   const { id } = useParams();
-  const course = coursesData.find((c) => c._id === id);
+  const dispatch = useDispatch();
+  const {
+    selectedCourse: course,
+    status,
+    error,
+  } = useSelector((state) => state.courses);
+
   const [openChapters, setOpenChapters] = useState({});
   const [selectedLesson, setSelectedLesson] = useState(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Mở sidebar mặc định trên desktop
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  if (!course) return <div className="p-10">Khóa học không tồn tại</div>;
+  useEffect(() => {
+    if (id) dispatch(fetchCourseById(id));
+  }, [dispatch, id]);
 
   const toggleChapter = (index) => {
     setOpenChapters((prev) => ({ ...prev, [index]: !prev[index] }));
@@ -18,21 +27,27 @@ const CourseDetail = () => {
 
   const handleLessonSelect = (lesson) => {
     setSelectedLesson(lesson);
-    setIsSidebarOpen(false); // Đóng sidebar khi chọn bài trên mobile
+    setIsSidebarOpen(false);
   };
+
+  if (status === "loading")
+    return <div className="p-10">Đang tải khóa học...</div>;
+  if (status === "failed")
+    return <div className="p-10 text-red-500">{error}</div>;
+  if (!course) return <div className="p-10">Không tìm thấy khóa học</div>;
 
   return (
     <div className="flex h-screen">
-      {/* Nút toggle sidebar trên desktop */}
+      {/* Nút mở sidebar trên mobile */}
       <button
-        className="hidden md:block absolute left-2 top-2 bg-gray-200 p-2 rounded-full shadow-md hover:bg-gray-300"
+        className="md:hidden absolute left-2 top-2 bg-gray-200 p-2 rounded-full shadow-md hover:bg-gray-300"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
         {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
       {/* Sidebar */}
-      <div
+      <aside
         className={`fixed inset-y-0 left-0 bg-gray-100 p-4 w-64 transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform md:relative md:translate-x-0 md:w-1/4 z-50 shadow-lg md:shadow-none`}
@@ -43,9 +58,11 @@ const CourseDetail = () => {
         >
           <X size={24} />
         </button>
-        <h2 className="text-xl font-bold mb-4">{course.title}</h2>
-        {course.chapters.map((chapter, chIndex) => (
-          <div key={chIndex} className="mb-2">
+        <h2 className="sm:text-xl text-lg pr-10 font-bold mb-4">
+          {course.title}
+        </h2>
+        {course.chapters?.map((chapter, chIndex) => (
+          <div key={chapter._id} className="mb-2">
             <button
               className="w-full text-left font-semibold flex items-center bg-gray-200 p-2 rounded-md hover:bg-gray-300"
               onClick={() => toggleChapter(chIndex)}
@@ -60,9 +77,9 @@ const CourseDetail = () => {
             </button>
             {openChapters[chIndex] && (
               <div className="ml-4 mt-2">
-                {chapter.lessons.map((lesson, lIndex) => (
+                {chapter?.lessons.map((lesson) => (
                   <button
-                    key={lIndex}
+                    key={lesson._id}
                     className={`block w-full text-left p-2 rounded-md ${
                       selectedLesson?._id === lesson._id
                         ? "bg-blue-200 font-semibold"
@@ -77,11 +94,10 @@ const CourseDetail = () => {
             )}
           </div>
         ))}
-      </div>
+      </aside>
 
       {/* Main Content */}
-      <div className="flex-1 p-6">
-        {/* Nút mở sidebar trên mobile */}
+      <main className="flex-1 p-6">
         <button
           className="md:hidden mb-4 bg-gray-200 p-2 rounded-lg"
           onClick={() => setIsSidebarOpen(true)}
@@ -99,23 +115,27 @@ const CourseDetail = () => {
               frameBorder="0"
               allowFullScreen
             ></iframe>
-            <div className="mt-4 space-y-2">
-              <a
-                href={selectedLesson.pdfUrl}
-                className="text-blue-500 underline flex items-center"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                📄 Tải bài giảng PDF
-              </a>
-              <a
-                href={selectedLesson.exercisePdfUrl}
-                className="text-blue-500 underline flex items-center"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                📝 Tải bài tập PDF
-              </a>
+            <div className="w-full flex flex-col gap-5 mt-4 space-y-2">
+              {selectedLesson.pdfLecture && (
+                <a
+                  href={selectedLesson.pdfLecture}
+                  className="text-blue-500 flex items-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  📄 Tải bài giảng {`(file PDF)`}
+                </a>
+              )}
+              {selectedLesson.pdfExercise && (
+                <a
+                  href={selectedLesson.pdfExercise}
+                  className="text-blue-500 flex items-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  📝 Tải bài tập {`(file PDF)`}
+                </a>
+              )}
             </div>
           </>
         ) : (
@@ -123,7 +143,7 @@ const CourseDetail = () => {
             Chọn một bài giảng từ danh sách bên trái.
           </p>
         )}
-      </div>
+      </main>
     </div>
   );
 };

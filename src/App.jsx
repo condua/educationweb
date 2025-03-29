@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { fetchUser } from "./redux/userSlice"; // Import action fetchUser
 import Login from "./components/Login";
 import Home from "./pages/Home";
 import Register from "./components/Register";
@@ -8,24 +10,38 @@ import Footer from "./components/Footer";
 import CourseDashboard from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
 
-// Component bảo vệ route (Private Route)
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   return isAuthen ? element : <Navigate to="/login" />;
 };
 
-// Component chặn người dùng đã đăng nhập vào Login/Register
 const AuthRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   return isAuthen ? <Navigate to="/" /> : element;
 };
 
 function App() {
+  const dispatch = useDispatch();
+  const { user, status } = useSelector((state) => state.user);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadUser = async () => {
+      await dispatch(fetchUser("me")); // Fetch thông tin user
+      setIsLoading(false);
+    };
+
+    loadUser();
+  }, [dispatch]);
+
+  if (isLoading || status === "loading") {
+    return <div>Đang tải...</div>; // Hiển thị loading trong lúc fetch user
+  }
+
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        {/* Routes không yêu cầu đăng nhập */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<AuthRoute element={<Login />} />} />
         <Route
@@ -33,7 +49,6 @@ function App() {
           element={<AuthRoute element={<Register />} />}
         />
 
-        {/* Routes yêu cầu đăng nhập */}
         <Route
           path="/courses"
           element={<PrivateRoute element={<CourseDashboard />} />}
@@ -43,7 +58,6 @@ function App() {
           element={<PrivateRoute element={<CourseDetail />} />}
         />
 
-        {/* Route mặc định */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />

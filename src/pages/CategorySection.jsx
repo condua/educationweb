@@ -5,6 +5,7 @@ import {
   FaCamera,
   FaBusinessTime,
   FaTheaterMasks,
+  FaLanguage,
 } from "react-icons/fa";
 
 const categories = [
@@ -13,6 +14,11 @@ const categories = [
     title: "Development",
     icon: <FaLaptopCode />,
     bgColor: "bg-blue-100 text-blue-600",
+  },
+  {
+    title: "Language",
+    icon: <FaLanguage />,
+    bgColor: "bg-purple-100 text-purple-600",
   },
   {
     title: "Design",

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from "../redux/authSlice";
 import { ImSpinner2 } from "react-icons/im"; // Import icon xoay tròn
-
+import { fetchUser } from "../redux/userSlice";
 import student from "../assets/student11.png";
 const Login = () => {
   const navigate = useNavigate();
@@ -23,7 +23,8 @@ const Login = () => {
     dispatch(loginUser({ email, password }))
       .unwrap()
       .then(() => {
-        navigate("/home"); // Chuyển hướng sau khi đăng nhập thành công
+        dispatch(fetchUser("me")); // Fetch lại thông tin user ngay lập tức
+        navigate("/"); // Chuyển hướng sau khi đăng nhập
       })
       .catch(() => {
         alert("Login failed. Please check your credentials.");
