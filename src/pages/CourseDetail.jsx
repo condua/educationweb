@@ -7,11 +7,7 @@ import { fetchCourseById } from "../redux/coursesSlice";
 const CourseDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const {
-    selectedCourse: course,
-    status,
-    error,
-  } = useSelector((state) => state.courses);
+  const course = useSelector((state) => state.courses.courseDetails[id]);
 
   const [openChapters, setOpenChapters] = useState({});
   const [selectedLesson, setSelectedLesson] = useState(null);
@@ -109,7 +105,7 @@ const CourseDetail = () => {
           <>
             <h1 className="text-2xl font-bold">{selectedLesson.title}</h1>
             <iframe
-              className="w-full h-64 md:h-96 mt-4 rounded-lg shadow-md"
+              className="w-full h-64 md:h-110 mt-4 rounded-lg shadow-md"
               src={selectedLesson.youtubeUrl}
               title={selectedLesson.title}
               frameBorder="0"
