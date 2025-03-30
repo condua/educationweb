@@ -109,10 +109,10 @@ const CourseCard = ({ course }) => {
         {/* Nút Đăng ký */}
         <button
           onClick={handleEnroll}
-          className={`mt-3 cursor-pointer w-full py-2 rounded-lg text-white flex items-center justify-center ${
+          className={`mt-3 w-full py-2 rounded-lg text-white flex items-center justify-center ${
             isEnrolled || success
               ? "bg-gray-400 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-600"
+              : "bg-blue-500 hover:bg-blue-600 cursor-pointer"
           }`}
           disabled={isEnrolled || success || loading}
         >

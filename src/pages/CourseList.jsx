@@ -90,7 +90,7 @@ const CourseList = () => {
             className={`px-4 py-2 mx-2 rounded-lg ${
               currentPage === 1
                 ? "bg-gray-300 cursor-not-allowed"
-                : "bg-blue-500 text-white"
+                : "bg-blue-500 text-white cursor-pointer"
             }`}
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
@@ -104,7 +104,7 @@ const CourseList = () => {
             className={`px-4 py-2 mx-2 rounded-lg ${
               currentPage === totalPages
                 ? "bg-gray-300 cursor-not-allowed"
-                : "bg-blue-500 text-white"
+                : "bg-blue-500 text-white cursor-pointer"
             }`}
             onClick={() =>
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))

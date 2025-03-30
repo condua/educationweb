@@ -71,7 +71,7 @@ const Hero = () => {
               onClick={() => {
                 navigate("/courses");
               }}
-              className="text-xs bg-teal-600 text-white md:px-3 px-2 md:py-2 py-1 rounded"
+              className="text-xs bg-teal-600 text-white md:px-3 px-2 md:py-2 py-1 rounded cursor-pointer"
             >
               Xem ngay
             </button>
@@ -86,7 +86,7 @@ const Hero = () => {
               onClick={() => {
                 navigate("/courses");
               }}
-              className="text-xs bg-teal-600 text-white md:px-3 px-2 md:py-2 py-1 rounded text-center"
+              className="text-xs bg-teal-600 text-white md:px-3 px-2 md:py-2 py-1 rounded text-center cursor-pointer"
             >
               Tham gia ngay
             </button>
