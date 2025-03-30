@@ -1,15 +1,12 @@
-import { FaFileInvoiceDollar, FaCalendarCheck, FaUsers } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
-import edubackground from "../../public/edubackground.jpg";
-import technology from "../../public/technology.jpg";
-import whiteboard from "../../public/whiteboard.jpg";
-import solution from "../../public/solution.jpg";
+import edubackground from "/edubackground.jpg";
+import technology from "/technology.jpg";
+import whiteboard from "/whiteboard.jpg";
+import solution from "/solution.jpg";
 
-import student from "../assets/student11.png";
 import { useNavigate } from "react-router-dom";
-import CourseDashboard from "../pages/Courses";
 const fadeInLeft = {
   hidden: { x: -100, opacity: 0 },
   visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },

@@ -5,14 +5,14 @@ const Testimonials = () => {
     {
       name: "Nguyễn Văn A",
       content:
-        "Dịch vụ tuyệt vời, tôi đã tiết kiệm rất nhiều thời gian và chi phí. Giáo viên hỗ trợ tận tình.",
-      role: "Học viên đánh giá năng lực",
+        "Khóa học tuyệt vời, tôi đã tiết kiệm rất nhiều thời gian và chi phí. Giáo viên hỗ trợ tận tình.",
+      role: "Học viên luyện thi đánh giá năng lực",
     },
     {
       name: "Nguyễn Thị B",
       content:
         "Giao diện thân thiện, tính năng phong phú. Rất đáng để đăng ký.",
-      role: "Học viên đánh giá năng lực",
+      role: "Học viên luyện đánh giá năng lực",
     },
   ];
 

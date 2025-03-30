@@ -1,9 +1,19 @@
-import { useEffect, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourseById } from "../redux/coursesSlice";
-
+import ReactPlayer from "react-player";
+import {
+  FaPlay,
+  FaPause,
+  FaFastForward,
+  FaBackward,
+  FaExpand,
+  FaCompress,
+  FaVolumeUp,
+  FaVolumeMute,
+} from "react-icons/fa";
 const CourseDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -12,6 +22,142 @@ const CourseDetail = () => {
   const [openChapters, setOpenChapters] = useState({});
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const playerRef = useRef(null);
+  const videoContainerRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
+  const [speed, setSpeed] = useState(1.0);
+  const [showControls, setShowControls] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [volume, setVolume] = useState(1.0);
+  const [muted, setMuted] = useState(false);
+  const [played, setPlayed] = useState(0);
+  const [userSelectedSpeed, setUserSelectedSpeed] = useState(1.0); // Lưu tốc độ do người dùng chọn
+  const [playedSeconds, setPlayedSeconds] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  let timeoutRef = useRef(null);
+  // Kiểm tra xem thiết bị có hỗ trợ orientation không
+  const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+  // Toggle Play/Pause
+  const togglePlayPause = () => {
+    setPlaying(!playing);
+  };
+
+  // Tua nhanh hoặc tua lùi
+  const seekTo = (seconds) => {
+    if (playerRef.current) {
+      playerRef.current.seekTo(playerRef.current.getCurrentTime() + seconds);
+    }
+  };
+
+  // Khi thay đổi tốc độ từ dropdown, cập nhật tốc độ do người dùng chọn
+  const handleSpeedChange = (e) => {
+    const newSpeed = parseFloat(e.target.value);
+    setSpeed(newSpeed);
+    setUserSelectedSpeed(newSpeed); // Cập nhật giá trị lưu trữ
+  };
+  // Lắng nghe sự kiện bàn phím
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowRight") {
+        seekTo(5); // Tua nhanh 5 giây
+      } else if (e.key === "ArrowLeft") {
+        seekTo(-5); // Tua lùi 5 giây
+      } else if (e.key === " " || e.key === "Enter") {
+        e.preventDefault(); // Ngăn trang web cuộn khi nhấn Space
+        togglePlayPause(); // Play/Pause
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [togglePlayPause]);
+  // Cập nhật thanh timeline
+  const handleProgress = (state) => {
+    setPlayed(state.played);
+    setPlayedSeconds(state.playedSeconds);
+  };
+
+  const handleDuration = (duration) => {
+    setDuration(duration);
+  };
+
+  const formatTime = (seconds) => {
+    const min = Math.floor(seconds / 60);
+    const sec = Math.floor(seconds % 60);
+    return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+  };
+  // Xử lý khi thay đổi thanh seek bar
+  const handleSeekChange = (e) => {
+    const newPlayed = parseFloat(e.target.value);
+    setPlayed(newPlayed);
+    playerRef.current.seekTo(newPlayed);
+  };
+
+  // Ẩn control sau 1.5s nếu không thao tác
+  const resetHideControlsTimer = () => {
+    setShowControls(true);
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setShowControls(false);
+    }, 1500);
+  };
+
+  useEffect(() => {
+    resetHideControlsTimer();
+  }, []);
+
+  const updateViewport = (scale) => {
+    let metaViewport = document.querySelector("meta[name=viewport]");
+    if (metaViewport) {
+      metaViewport.setAttribute(
+        "content",
+        `width=device-width, initial-scale=${scale}, maximum-scale=1, user-scalable=no`
+      );
+    }
+  };
+  // Xử lý Fullscreen + Xoay ngang trên mobile
+  const toggleFullscreen = async () => {
+    if (!document.fullscreenElement) {
+      await videoContainerRef.current.requestFullscreen();
+      setIsFullscreen(true);
+
+      if (isMobile && screen.orientation) {
+        await screen.orientation.lock("landscape");
+      }
+
+      updateViewport(1); // Khi vào fullscreen, giữ initial-scale=1
+    } else {
+      await document.exitFullscreen();
+      setIsFullscreen(false);
+
+      if (isMobile && screen.orientation) {
+        await screen.orientation.unlock();
+      }
+
+      updateViewport(1); // Khi thoát fullscreen, reset lại initial-scale=1
+    }
+  };
+  // Khi nhấn vào màn hình trên mobile, đổi tốc độ thành 2x và lưu tốc độ cũ
+  const handleTouchStart = () => {
+    if (isMobile) {
+      setUserSelectedSpeed(speed); // Lưu tốc độ trước đó
+      setSpeed(2.0);
+    }
+  };
+
+  // Khi thả tay ra, khôi phục tốc độ đã chọn trước đó
+  const handleTouchEnd = () => {
+    if (isMobile) {
+      setSpeed(userSelectedSpeed);
+    }
+  };
+
+  // Xử lý nhấn đúp chuột để fullscreen
+  // const handleDoubleClick = () => {
+  //   toggleFullscreen();
+  // };
 
   useEffect(() => {
     if (id) dispatch(fetchCourseById(id));
@@ -104,13 +250,163 @@ const CourseDetail = () => {
         {selectedLesson ? (
           <>
             <h1 className="text-2xl font-bold">{selectedLesson.title}</h1>
-            <iframe
+            {/* <iframe
               className="w-full h-64 md:h-110 mt-4 rounded-lg shadow-md"
               src={selectedLesson.youtubeUrl}
               title={selectedLesson.title}
               frameBorder="0"
               allowFullScreen
-            ></iframe>
+            ></iframe> */}
+
+            <div
+              ref={videoContainerRef}
+              className="relative w-full md:w-4xl mx-auto bg-none rounded-lg overflow-hidden"
+              onMouseMove={resetHideControlsTimer} // Reset khi di chuột
+              // onDoubleClick={handleDoubleClick} // Nhấn đúp để fullscreen
+              onContextMenu={(e) => e.preventDefault()} // Chặn chuột phải
+              onTouchStart={handleTouchStart} // Khi chạm vào màn hình
+              onTouchEnd={handleTouchEnd} // Khi thả tay ra
+            >
+              {/* Video Player */}
+              <ReactPlayer
+                ref={playerRef}
+                url="https://res.cloudinary.com/dy9yts4fa/video/upload/v1743347311/courses/Nhu_c%E1%BA%A7u_th%E1%BB%8B_tr%C6%B0%E1%BB%9Dng_c%C3%A0_ph%C3%AA_zdezau.mp4"
+                playing={playing}
+                controls={false} // Ẩn control mặc định
+                width="100%"
+                height="100%"
+                playbackRate={speed}
+                volume={muted ? 0 : volume}
+                onProgress={handleProgress}
+                onDuration={handleDuration} // Lấy tổng thời lượng video
+              />
+
+              {/* Overlay Controls */}
+              <div
+                className={`absolute inset-0 flex flex-col justify-end transition-opacity duration-300 ${
+                  showControls ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {/* Vùng chạm để tua */}
+                <div className="absolute inset-0 flex">
+                  {/* Bên trái - Tua lại */}
+                  <div
+                    className="w-1/2 h-full"
+                    onDoubleClick={() => seekTo(-10)} // Tua lại 10 giây khi double tap
+                    onClick={togglePlayPause}
+                  ></div>
+
+                  {/* Bên phải - Tua nhanh */}
+                  <div
+                    className="w-1/2 h-full"
+                    onDoubleClick={() => seekTo(10)} // Tua nhanh 10 giây khi double tap
+                    onClick={togglePlayPause}
+                  ></div>
+                </div>
+                {/* Điều khiển video */}
+                {/*Hiện thời gian*/}
+
+                <div className="absolute bottom-0 w-full bg-black/30 bg-opacity-50 p-2 pt-12 flex justify-between items-center">
+                  {/* Tua lại */}
+                  <div className="text-white text-sm absolute bottom-16 md:left-5 left-2">
+                    {formatTime(playedSeconds)} / {formatTime(duration)}
+                  </div>
+                  {/* Thanh tiến trình */}
+                  <div className="absolute top-7.5 w-full h-1 bg-gray-400 rounded-full mt-2">
+                    {/* Phần đã xem (màu đỏ) */}
+                    <div
+                      className="absolute top-0 left-0 h-1 bg-red-500 rounded-full"
+                      style={{ width: `${played * 100}%` }}
+                    ></div>
+
+                    {/* Input range ẩn để điều chỉnh */}
+                    <input
+                      type="range"
+                      min={0}
+                      max={1}
+                      step="0.01"
+                      value={played}
+                      onChange={handleSeekChange}
+                      className="absolute top-0 left-0 w-full h-1 opacity-0 cursor-pointer"
+                    />
+
+                    {/* Nút tròn (thumb) màu đỏ */}
+                    <div
+                      className="absolute w-4 h-4 bg-red-500 rounded-full -top-1.5 transform -translate-x-1/2"
+                      style={{ left: `${played * 100}%` }}
+                    ></div>
+                  </div>
+                  <button
+                    onClick={() => seekTo(-5)}
+                    className="text-white p-2 rounded-full hover:bg-gray-700"
+                  >
+                    <FaBackward size={20} />
+                  </button>
+
+                  {/* Play / Pause */}
+                  <button
+                    onClick={togglePlayPause}
+                    className="text-white p-2 rounded-full bg-blue-500 hover:bg-blue-700 text-center"
+                  >
+                    {playing ? <FaPause size={12} /> : <FaPlay size={12} />}
+                  </button>
+
+                  {/* Tua tới */}
+                  <button
+                    onClick={() => seekTo(5)}
+                    className="text-white p-2 rounded-full hover:bg-gray-700"
+                  >
+                    <FaFastForward size={20} />
+                  </button>
+
+                  {/* Chỉnh âm lượng */}
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => setMuted(!muted)}
+                      className="text-white md:p-1 p-0 rounded-full hover:bg-gray-700"
+                    >
+                      {muted ? (
+                        <FaVolumeMute size={20} />
+                      ) : (
+                        <FaVolumeUp size={20} />
+                      )}
+                    </button>
+                    <input
+                      type="range"
+                      min={0}
+                      max={1}
+                      step="0.05"
+                      value={volume}
+                      onChange={(e) => setVolume(parseFloat(e.target.value))}
+                      className="w-16 h-1 bg-gray-300 appearance-none cursor-pointer"
+                    />
+                  </div>
+                  {/* Tốc độ phát */}
+                  <select
+                    value={speed}
+                    onChange={handleSpeedChange}
+                    className="text-white bg-black/50 md:p-1 p-0 rounded border border-white"
+                  >
+                    <option value="0.5">0.5x</option>
+                    <option value="1">1x</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2">2x</option>
+                  </select>
+                  {/* Fullscreen */}
+                  <button
+                    onClick={toggleFullscreen}
+                    className="text-white p-2 rounded-full hover:bg-gray-700"
+                  >
+                    {isFullscreen ? (
+                      <FaCompress size={20} />
+                    ) : (
+                      <FaExpand size={20} />
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <div className="w-full flex flex-col gap-5 mt-4 space-y-2">
               {selectedLesson.pdfLecture && (
                 <a
