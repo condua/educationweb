@@ -35,6 +35,7 @@ const CourseDetail = () => {
   const [userSelectedSpeed, setUserSelectedSpeed] = useState(1.0); // Lưu tốc độ do người dùng chọn
   const [playedSeconds, setPlayedSeconds] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [touchTimer, setTouchTimer] = useState(null);
 
   let timeoutRef = useRef(null);
   // Kiểm tra xem thiết bị có hỗ trợ orientation không
@@ -139,25 +140,49 @@ const CourseDetail = () => {
       updateViewport(1); // Khi thoát fullscreen, reset lại initial-scale=1
     }
   };
-  // Khi nhấn vào màn hình trên mobile, đổi tốc độ thành 2x và lưu tốc độ cũ
   const handleTouchStart = () => {
     if (isMobile) {
-      setUserSelectedSpeed(speed); // Lưu tốc độ trước đó
-      setSpeed(2.0);
+      const timer = setTimeout(() => {
+        setUserSelectedSpeed(speed); // Lưu tốc độ trước đó
+        setSpeed(2.0);
+      }, 250); // Chờ 0.5s trước khi đổi tốc độ
+
+      setTouchTimer(timer);
     }
   };
 
-  // Khi thả tay ra, khôi phục tốc độ đã chọn trước đó
   const handleTouchEnd = () => {
     if (isMobile) {
-      setSpeed(userSelectedSpeed);
+      clearTimeout(touchTimer); // Hủy nếu chưa đủ 0.5s
+      if (userSelectedSpeed !== null) {
+        setSpeed(userSelectedSpeed); // Khôi phục tốc độ cũ
+      }
     }
   };
 
   // Xử lý nhấn đúp chuột để fullscreen
-  // const handleDoubleClick = () => {
-  //   toggleFullscreen();
-  // };
+  const handleDoubleClick = () => {
+    toggleFullscreen();
+  };
+  const sidebarRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    if (isSidebarOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isSidebarOpen]);
 
   useEffect(() => {
     if (id) dispatch(fetchCourseById(id));
@@ -179,7 +204,7 @@ const CourseDetail = () => {
   if (!course) return <div className="p-10">Không tìm thấy khóa học</div>;
 
   return (
-    <div className="flex h-screen">
+    <div className="flex md:h-screen h-120 ">
       {/* Nút mở sidebar trên mobile */}
       <button
         className="md:hidden absolute left-2 top-2 bg-gray-200 p-2 rounded-full shadow-md hover:bg-gray-300"
@@ -190,6 +215,7 @@ const CourseDetail = () => {
 
       {/* Sidebar */}
       <aside
+        ref={sidebarRef}
         className={`fixed inset-y-0 left-0 bg-gray-100 p-4 w-64 transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform md:relative md:translate-x-0 md:w-1/4 z-50 shadow-lg md:shadow-none`}
@@ -260,9 +286,9 @@ const CourseDetail = () => {
 
             <div
               ref={videoContainerRef}
-              className="relative w-full md:w-4xl mx-auto h-9/12 bg-none rounded-lg overflow-hidden"
+              className="relative w-full md:w-4xl mx-auto md:h-9/12 h-1/2 bg-none rounded-lg overflow-hidden"
               onMouseMove={resetHideControlsTimer} // Reset khi di chuột
-              // onDoubleClick={handleDoubleClick} // Nhấn đúp để fullscreen
+              // onDoubleClick={isMobile ? undefined : handleDoubleClick} // Nhấn đúp để fullscreen
               onContextMenu={(e) => e.preventDefault()} // Chặn chuột phải
               onTouchStart={handleTouchStart} // Khi chạm vào màn hình
               onTouchEnd={handleTouchEnd} // Khi thả tay ra
@@ -292,14 +318,18 @@ const CourseDetail = () => {
                   {/* Bên trái - Tua lại */}
                   <div
                     className="w-1/2 h-full"
-                    onDoubleClick={() => seekTo(-10)} // Tua lại 10 giây khi double tap
+                    onDoubleClick={() =>
+                      isMobile ? seekTo(-10) : toggleFullscreen()
+                    } // Tua lại 10 giây khi double tap
                     onClick={togglePlayPause}
                   ></div>
 
                   {/* Bên phải - Tua nhanh */}
                   <div
                     className="w-1/2 h-full"
-                    onDoubleClick={() => seekTo(10)} // Tua nhanh 10 giây khi double tap
+                    onDoubleClick={() =>
+                      isMobile ? seekTo(10) : toggleFullscreen()
+                    } // Tua nhanh 10 giây khi double tap
                     onClick={togglePlayPause}
                   ></div>
                 </div>
@@ -365,7 +395,7 @@ const CourseDetail = () => {
                       onClick={() => setMuted(!muted)}
                       className="text-white md:p-1 p-0 rounded-full hover:bg-gray-700"
                     >
-                      {muted ? (
+                      {muted || volume === 0 ? (
                         <FaVolumeMute size={20} />
                       ) : (
                         <FaVolumeUp size={20} />
@@ -378,7 +408,12 @@ const CourseDetail = () => {
                       step="0.05"
                       value={volume}
                       onChange={(e) => setVolume(parseFloat(e.target.value))}
-                      className="w-16 h-1 bg-gray-300 appearance-none cursor-pointer"
+                      className="w-16 h-1 appearance-none cursor-pointer"
+                      style={{
+                        background: `linear-gradient(to right, #4a90e2 0%, #4a90e2 ${
+                          volume * 100
+                        }%, #d1d5db ${volume * 100}%, #d1d5db 100%)`,
+                      }}
                     />
                   </div>
                   {/* Tốc độ phát */}
