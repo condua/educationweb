@@ -299,13 +299,12 @@ const Features = () => {
         {/* Left Side: Text Content */}
         <div>
           <h3 className="text-xl font-semibold text-blue-900">
-            <span className="text-green-500">Công cụ</span> dành cho giáo viên
-            và học viên
+            <span className="text-green-500">Cung cấp</span> giải pháp công nghệ
+            cho mọi người
           </h3>
           <p className="mt-4 text-gray-600">
-            Lớp học được trang bị bộ công cụ giảng dạy linh hoạt, sẵn sàng sử
-            dụng ngay trong giờ học. Giáo viên có thể giao bài tập theo thời
-            gian thực để học viên hoàn thành và nộp ngay lập tức.
+            Hỗ trợ khách hàng hoàn thiện và xây dựng những giải pháp kinh doanh
+            trực tuyển một cách thuận tiện và dễ dàng
           </p>
         </div>
 
