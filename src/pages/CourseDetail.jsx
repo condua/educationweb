@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,9 +40,9 @@ const CourseDetail = () => {
   // Kiểm tra xem thiết bị có hỗ trợ orientation không
   const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
   // Toggle Play/Pause
-  const togglePlayPause = () => {
-    setPlaying(!playing);
-  };
+  const togglePlayPause = useCallback(() => {
+    setPlaying((prev) => !prev);
+  }, []);
 
   // Tua nhanh hoặc tua lùi
   const seekTo = (seconds) => {
@@ -172,10 +172,10 @@ const CourseDetail = () => {
     setIsSidebarOpen(false);
   };
 
-  if (status === "loading")
-    return <div className="p-10">Đang tải khóa học...</div>;
-  if (status === "failed")
-    return <div className="p-10 text-red-500">{error}</div>;
+  // if (status === "loading")
+  //   return <div className="p-10">Đang tải khóa học...</div>;
+  // if (status === "failed")
+  //   return <div className="p-10 text-red-500">{error}</div>;
   if (!course) return <div className="p-10">Không tìm thấy khóa học</div>;
 
   return (
@@ -260,7 +260,7 @@ const CourseDetail = () => {
 
             <div
               ref={videoContainerRef}
-              className="relative w-full md:w-4xl mx-auto bg-none rounded-lg overflow-hidden"
+              className="relative w-full md:w-4xl mx-auto h-9/12 bg-none rounded-lg overflow-hidden"
               onMouseMove={resetHideControlsTimer} // Reset khi di chuột
               // onDoubleClick={handleDoubleClick} // Nhấn đúp để fullscreen
               onContextMenu={(e) => e.preventDefault()} // Chặn chuột phải
@@ -270,7 +270,7 @@ const CourseDetail = () => {
               {/* Video Player */}
               <ReactPlayer
                 ref={playerRef}
-                url="https://res.cloudinary.com/dy9yts4fa/video/upload/v1743347311/courses/Nhu_c%E1%BA%A7u_th%E1%BB%8B_tr%C6%B0%E1%BB%9Dng_c%C3%A0_ph%C3%AA_zdezau.mp4"
+                url={selectedLesson.lectureUrl}
                 playing={playing}
                 controls={false} // Ẩn control mặc định
                 width="100%"
@@ -327,12 +327,12 @@ const CourseDetail = () => {
                       step="0.01"
                       value={played}
                       onChange={handleSeekChange}
-                      className="absolute top-0 left-0 w-full h-1 opacity-0 cursor-pointer"
+                      className="absolute top-0 left-0 w-full h-1 opacity-0 cursor-pointer z-10"
                     />
 
                     {/* Nút tròn (thumb) màu đỏ */}
                     <div
-                      className="absolute w-4 h-4 bg-red-500 rounded-full -top-1.5 transform -translate-x-1/2"
+                      className="absolute w-4 h-4 bg-red-500 rounded-full -top-1.5 transform -translate-x-1/2 cursor-pointer"
                       style={{ left: `${played * 100}%` }}
                     ></div>
                   </div>
