@@ -2,6 +2,10 @@ import { FaFileInvoiceDollar, FaCalendarCheck, FaUsers } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import edubackground from "../../public/edubackground.jpg";
+import technology from "../../public/technology.jpg";
+import whiteboard from "../../public/whiteboard.jpg";
+import solution from "../../public/solution.jpg";
 
 import student from "../assets/student11.png";
 import { useNavigate } from "react-router-dom";
@@ -211,10 +215,10 @@ const Features = () => {
           trữ tài liệu, quản lý bài tập, theo dõi thời hạn nộp bài và nhiều tính
           năng khác.
         </p>
-        <div className="grid md:grid-cols-2 gap-6 mt-8">
-          <div className="relative group">
+        <div className="grid md:grid-cols-2 gap-6 mt-8 ">
+          <div className="relative rounded-lg group hover:-translate-y-2 duration-400 hover:shadow-2xl hover:shadow-black">
             <img
-              src={student}
+              src={technology}
               alt="Instructor"
               className="w-full rounded-lg z-20"
             />
@@ -227,8 +231,12 @@ const Features = () => {
               </button>
             </div>
           </div>
-          <div className="relative group">
-            <img src={student} alt="Students" className="w-full rounded-lg" />
+          <div className="relative rounded-lg group hover:-translate-y-2 duration-400 hover:shadow-2xl hover:shadow-black">
+            <img
+              src={edubackground}
+              alt="Students"
+              className="w-full rounded-lg"
+            />
             <div className="absolute inset-0 bg-gray-900/50 flex flex-col justify-center items-center rounded-lg">
               <p className="text-white text-lg font-bold">Dành cho học viên</p>
               <button
@@ -243,7 +251,9 @@ const Features = () => {
           </div>
         </div>
       </div>
-      <h2 className="text-3xl font-bold text-green-600 py-12">Our Features</h2>
+      <h2 className="text-3xl font-bold text-green-600 py-12">
+        Tính năng nổi bật
+      </h2>
       {/* <p className="text-gray-600 mt-2">
         This very extraordinary feature can make learning activities more
         efficient
@@ -252,9 +262,9 @@ const Features = () => {
       {/* Feature Section */}
       <div className="grid sm:grid-cols-2 gap-10 items-center">
         {/* Left Side: Image */}
-        <div className="relative">
+        <div className="relative w-full">
           <img
-            src={student}
+            src={whiteboard}
             alt="Classroom UI"
             className="rounded-lg shadow-lg"
           />
@@ -262,25 +272,23 @@ const Features = () => {
 
         {/* Right Side: Text Content */}
         <div>
-          <h3 className="text-xl font-semibold text-blue-900">
+          <h3 className="text-xl font-semibold text-blue-900 md:pr-10 pr-0">
             Một <span className="text-green-500">giao diện người dùng</span>{" "}
-            được thiết kế dành riêng cho lớp học
+            được thiết kế thân thiện với học sinh/sinh viên
           </h3>
-          <ul className="mt-4 space-y-3 text-gray-600">
+          <ul className="mt-4 space-y-3 text-gray-600 text-left">
             <li className="flex items-start">
               <FaCheckCircle className="text-green-500 mt-1 mr-2" />
-              Giáo viên không bị rối trong chế độ xem lưới và có không gian
-              riêng trên bục giảng.
+              Giảng viên có trình độ, tốt nghiệp từ các trường đại học danh
+              tiếng
             </li>
             <li className="flex items-start">
               <FaCheckCircle className="text-green-500 mt-1 mr-2" />
-              Trợ giảng và người thuyết trình có thể được đưa lên phía trước lớp
-              học.
+              Giao diện dễ nhìn, việc học tập theo từng chương rất thuận lợi
             </li>
             <li className="flex items-start">
               <FaCheckCircle className="text-green-500 mt-1 mr-2" />
-              Giáo viên có thể dễ dàng quan sát toàn bộ học sinh và dữ liệu lớp
-              học trong cùng một lúc.
+              Được cung cấp các tài liệu và bài tập điện tử theo từng bài học
             </li>
           </ul>
         </div>
@@ -302,9 +310,9 @@ const Features = () => {
         </div>
 
         {/* Right Side: Image */}
-        <div className="relative">
+        <div className="relative w-full">
           <img
-            src={student}
+            src={solution}
             alt="Teacher and Student"
             className="rounded-lg shadow-lg"
           />

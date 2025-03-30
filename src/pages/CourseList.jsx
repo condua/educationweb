@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "../redux/coursesSlice";
 import CourseCard from "./CourseCard";
 import CategorySection from "./CategorySection";
+import { Search } from "lucide-react";
 
 const removeAccents = (str) => {
   return str
@@ -57,12 +58,22 @@ const CourseList = () => {
       <h2 className="mb-10 text-2xl font-semibold text-center">
         Chọn khóa học yêu thích của bạn
       </h2>
-      <input
-        className="w-4/5 sm:py-4 sm:px-6 py-2 px-3 bg-gray-200 rounded-full outline-0 sm:text-xl"
-        placeholder="Bạn đang tìm kiếm khóa học nào ?"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      <div className="w-full flex justify-center items-center relative">
+        <div className="relative w-11/12">
+          {/* Input field */}
+          <input
+            className="w-full sm:py-4 sm:px-6 py-2 px-3 bg-gray-200 rounded-full outline-0 text-lg sm:text-xl pr-14"
+            placeholder="Bạn đang tìm kiếm khóa học nào?"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          {/* Icon search với nền trắng */}
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white sm:w-12 w-8 sm:h-12 h-8 rounded-full flex justify-center items-center shadow">
+            <Search className="text-gray-500 sm:w-6 w-4 sm:h-6 h-4" />
+          </div>
+        </div>
+      </div>
+
       <CategorySection setSelectedCategory={setSelectedCategory} />
       <div className="flex justify-center items-center gap-6 mt-6 flex-wrap">
         {currentCourses.length > 0 ? (
