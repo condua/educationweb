@@ -3,13 +3,13 @@ import React from "react";
 const Testimonials = () => {
   const testimonialsData = [
     {
-      name: "Nguyễn Văn A",
+      name: "Nguyễn Trần Minh Khải",
       content:
         "Khóa học tuyệt vời, tôi đã tiết kiệm rất nhiều thời gian và chi phí. Giáo viên hỗ trợ tận tình.",
       role: "Học viên luyện thi đánh giá năng lực",
     },
     {
-      name: "Nguyễn Thị B",
+      name: "Đinh Thành Công Minh",
       content:
         "Giao diện thân thiện, tính năng phong phú. Rất đáng để đăng ký.",
       role: "Học viên luyện đánh giá năng lực",

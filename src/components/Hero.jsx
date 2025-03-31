@@ -52,7 +52,7 @@ const Hero = () => {
           <img
             src={StudentImg}
             alt="Student"
-            className="max-w-sm md:max-w-full"
+            className="max-w-84 md:max-w-full"
           />
 
           {/* Floating Card #1 (Ví dụ: 250k Assisted Student) */}
