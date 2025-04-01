@@ -1,4 +1,5 @@
 import React from "react";
+import { FaFacebook, FaYoutube, FaLinkedin, FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -13,14 +14,29 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex space-x-6 md:mb-0 mb-4">
-            <a href="#" className="hover:text-teal-500">
-              Facebook
+            <a
+              href="https://web.facebook.com/profile.php?id=61574532009854"
+              className="flex items-center gap-2 hover:text-blue-500"
+            >
+              <FaFacebook size={20} /> Facebook
             </a>
-            <a href="#" className="hover:text-teal-500">
-              Youtube
+            <a
+              href="https://www.youtube.com/@tonyphan34"
+              className="flex items-center gap-2 hover:text-red-500"
+            >
+              <FaYoutube size={20} /> Youtube
             </a>
-            <a href="#" className="hover:text-teal-500">
-              LinkedIn
+            <a
+              href="https://www.linkedin.com/company/50290243"
+              className="flex items-center gap-2 hover:text-blue-400"
+            >
+              <FaLinkedin size={20} /> LinkedIn
+            </a>
+            <a
+              href="https://www.tiktok.com/@mlpaedutech"
+              className="flex items-center gap-2 hover:text-gray-300"
+            >
+              <FaTiktok size={20} /> TikTok
             </a>
           </div>
         </div>
