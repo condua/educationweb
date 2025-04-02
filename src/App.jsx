@@ -9,7 +9,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CourseDashboard from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
-
+import Portfolio from "./pages/services/Project";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   return isAuthen ? element : <Navigate to="/login" />;
@@ -48,7 +48,7 @@ function App() {
           path="/register"
           element={<AuthRoute element={<Register />} />}
         />
-
+        <Route path="/services" element={<Portfolio />} />
         <Route
           path="/courses"
           element={<PrivateRoute element={<CourseDashboard />} />}

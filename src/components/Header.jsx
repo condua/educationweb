@@ -23,7 +23,7 @@ const Header = () => {
     },
     {
       title: "Tư vấn",
-      path: "/consult",
+      path: "/services",
     },
     {
       title: "Blog",
