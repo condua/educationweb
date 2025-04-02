@@ -93,13 +93,13 @@ const CourseDashboard = () => {
   return (
     <div className="p-8 bg-blue-50">
       {enrolledCourses.length === 0 ? (
-        <p className="text-center font-bold text-2xl">
+        <p className="text-center font-bold text-xl md:text-2xl">
           Bạn chưa có khóa học nào.
         </p>
       ) : (
         <>
           <div className="flex sm:flex-row flex-col justify-between sm:items-center mb-4">
-            <h2 className="sm:text-2xl text-lg font-bold">
+            <h2 className="md:text-2xl text-lg font-bold">
               Chào bạn trở lại, sẵn sàng học những bài học tiếp theo ?
             </h2>
             <a href="#" className="text-blue-500 font-medium">

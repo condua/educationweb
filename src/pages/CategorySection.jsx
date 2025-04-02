@@ -44,12 +44,12 @@ const categories = [
 
 const CategorySection = ({ selectedCategory, setSelectedCategory }) => {
   return (
-    <div className="py-10">
+    <div className="py-3">
       <div className="flex justify-center gap-6 mt-6 flex-wrap">
         {categories.map((cat, index) => (
           <button
             key={index}
-            className={`cursor-pointer px-6 py-3 rounded-lg flex items-center gap-2 font-semibold shadow-md 
+            className={`cursor-pointer px-6 text-sm md:text-xl py-3 rounded-lg flex items-center gap-2 font-semibold shadow-md 
               transition duration-300 ${cat.bgColor} 
               ${
                 selectedCategory === cat.title

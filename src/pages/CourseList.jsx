@@ -54,8 +54,8 @@ const CourseList = () => {
   );
 
   return (
-    <div className="py-10 bg-blue-50 flex flex-col justify-center items-center">
-      <h2 className="mb-10 text-2xl font-semibold text-center">
+    <div className="py-5 bg-blue-50 flex flex-col justify-center items-center">
+      <h2 className="mb-5 md:text-2xl text-lg font-semibold text-center">
         Chọn khóa học yêu thích của bạn
       </h2>
       <div className="w-full flex justify-center items-center relative">
