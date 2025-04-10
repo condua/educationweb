@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import CourseDashboard from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
 import Portfolio from "./pages/services/Project";
+import Chatbot from "./components/Chatbox";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   return isAuthen ? element : <Navigate to="/login" />;
@@ -60,6 +61,7 @@ function App() {
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <Chatbot />
       <Footer />
     </BrowserRouter>
   );
