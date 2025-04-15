@@ -1,1 +1,5 @@
 @import "tailwindcss";
+.ql-editor img {
+  margin-left: auto;
+  margin-right: auto;
+}

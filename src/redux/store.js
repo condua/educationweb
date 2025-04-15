@@ -1,48 +1,57 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // Lưu trữ trong localStorage
+import storage from "redux-persist/lib/storage";
+
 import authReducer from "./authSlice";
 import coursesReducer from "./coursesSlice";
-import userReducer from "./userSlice"; // Import userSlice
+import userReducer from "./userSlice";
+import blogReducer from "./blogSlice";
 
-// Cấu hình Redux Persist cho auth
+// Cấu hình Redux Persist
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["user", "token", "isAuthen"], // Chỉ lưu những state này
+  whitelist: ["user", "token", "isAuthen"],
 };
 
-// Cấu hình Redux Persist cho courses
 const coursesPersistConfig = {
   key: "courses",
   storage,
-  whitelist: ["courses"], // Chỉ lưu danh sách khóa học
+  whitelist: ["courses"],
 };
 
-// Cấu hình Redux Persist cho user
 const userPersistConfig = {
   key: "user",
   storage,
-  whitelist: ["user", "enrolledCourses"], // Lưu thông tin người dùng & khóa học đã đăng ký
+  whitelist: ["user", "enrolledCourses"],
 };
 
+const blogPersistConfig = {
+  key: "blog",
+  storage,
+  whitelist: ["blogs"], // Tùy tên state trong blogSlice
+};
+
+// Tạo persisted reducers
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 const persistedCoursesReducer = persistReducer(
   coursesPersistConfig,
   coursesReducer
 );
 const persistedUserReducer = persistReducer(userPersistConfig, userReducer);
+const persistedBlogReducer = persistReducer(blogPersistConfig, blogReducer); // ✅ persist blog
 
 // Tạo Redux Store
 const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     courses: persistedCoursesReducer,
-    user: persistedUserReducer, // Thêm user vào store
+    user: persistedUserReducer,
+    blog: persistedBlogReducer, // ✅ thêm blog vào store
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // Bỏ kiểm tra serialize của Redux Persist
+      serializableCheck: false,
     }),
 });
 
