@@ -68,7 +68,7 @@ export default function BlogDetail() {
   return (
     <>
       <Helmet>
-        <title>{blog.title} - Your Website Name</title>
+        <title>{blog.title}</title>
         <meta name="description" content={blog.summary || "Default summary"} />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={blog.title} />
