@@ -3,6 +3,21 @@ import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import { useDispatch } from "react-redux";
 import { createBlog } from "./../../redux/blogSlice";
+import DOMPurify from "dompurify";
+import Quill from "quill";
+import Table from "quill/modules/table";
+import TableUI from "quill-table-ui";
+import "quill/dist/quill.snow.css";
+import "quill-table-ui/dist/index.css";
+
+// Register table module
+Quill.register(
+  {
+    "modules/table": Table,
+    "modules/tableUI": TableUI,
+  },
+  true
+);
 
 const CreateBlog = () => {
   const dispatch = useDispatch();
@@ -12,17 +27,21 @@ const CreateBlog = () => {
   const [imageFile, setImageFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [errors, setErrors] = useState({});
-  const [uploading, setUploading] = useState(false); // New state for uploading status
+  const [uploading, setUploading] = useState(false);
+  const [htmlPaste, setHtmlPaste] = useState("");
 
   const modules = {
     toolbar: [
-      [{ header: [1, 2, false] }],
-      ["bold", "italic", "underline"],
-      [{ list: "ordered" }, { list: "bullet" }],
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike"],
       [{ align: [] }],
-      ["link", "image"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image", "video"],
       ["clean"],
+      ["table"], // Add table creation button
     ],
+    table: true,
+    tableUI: true,
   };
 
   const formats = [
@@ -34,6 +53,7 @@ const CreateBlog = () => {
     "bullet",
     "link",
     "image",
+    "video",
     "align",
   ];
 
@@ -45,10 +65,26 @@ const CreateBlog = () => {
         setEditorHtml(quill.root.innerHTML);
       });
 
-      const editor = quill.root;
-      editor.classList.add("text-justify");
+      quill.root.classList.add("text-justify");
+
+      if (htmlPaste) {
+        const sanitized = DOMPurify.sanitize(htmlPaste, {
+          ADD_TAGS: ["iframe"],
+          ADD_ATTR: [
+            "allow",
+            "allowfullscreen",
+            "frameborder",
+            "scrolling",
+            "src",
+            "height",
+            "width",
+          ],
+        });
+        quill.root.innerHTML = sanitized;
+        setEditorHtml(sanitized);
+      }
     }
-  }, [quill]);
+  }, [quill, htmlPaste]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -62,6 +98,7 @@ const CreateBlog = () => {
     if (!author.trim()) newErrors.author = "Author is required.";
     if (!editorHtml || editorHtml === "<p><br></p>")
       newErrors.content = "Content is required.";
+    if (!imageFile) newErrors.image = "Image is required."; // Validate image
     return newErrors;
   };
 
@@ -75,7 +112,7 @@ const CreateBlog = () => {
     let imageUrl = null;
 
     if (imageFile) {
-      setUploading(true); // Set uploading to true
+      setUploading(true);
       const formData = new FormData();
       formData.append("image", imageFile);
 
@@ -87,7 +124,7 @@ const CreateBlog = () => {
 
         const data = await res.json();
         if (data.imageUrl) {
-          imageUrl = data.imageUrl; // <- Đường dẫn cloudinary
+          imageUrl = data.imageUrl;
         } else {
           throw new Error("Image upload failed.");
         }
@@ -98,18 +135,31 @@ const CreateBlog = () => {
           image: "Image upload failed.",
         }));
       } finally {
-        setUploading(false); // Set uploading to false
+        setUploading(false);
       }
     }
 
+    const sanitizedContent = DOMPurify.sanitize(editorHtml, {
+      ADD_TAGS: ["iframe", "table", "thead", "tbody", "tr", "td", "th"],
+      ADD_ATTR: [
+        "allow",
+        "allowfullscreen",
+        "frameborder",
+        "scrolling",
+        "src",
+        "height",
+        "width",
+      ],
+    });
+
     const blogData = {
       title,
-      content: editorHtml,
+      content: sanitizedContent,
       author,
       imageTitle: imageUrl,
     };
-    console.log("Blog data before dispatch:", blogData); // Add this line to inspect the data
 
+    console.log("Blog data before dispatch:", blogData);
     dispatch(createBlog(blogData));
 
     // Reset form
@@ -118,6 +168,7 @@ const CreateBlog = () => {
     setEditorHtml("");
     setImageFile(null);
     setPreviewUrl(null);
+    setHtmlPaste("");
     if (quill) quill.setContents([]);
   };
 
@@ -158,6 +209,14 @@ const CreateBlog = () => {
       )}
       {errors.image && <p className="text-red-500 text-sm">{errors.image}</p>}
 
+      {/* Textarea to paste HTML */}
+      <textarea
+        placeholder="Paste HTML content here..."
+        value={htmlPaste}
+        onChange={(e) => setHtmlPaste(e.target.value)}
+        className="w-full h-32 p-2 border rounded-md"
+      />
+
       <div
         ref={quillRef}
         className="h-72 bg-white rounded-md shadow overflow-auto"
@@ -169,7 +228,7 @@ const CreateBlog = () => {
       <button
         onClick={handleSaveBlog}
         className="mt-10 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-        disabled={uploading} // Disable button while uploading
+        disabled={uploading}
       >
         {uploading ? "Uploading..." : "Save Blog"}
       </button>

@@ -1,55 +1,41 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBlogById } from "../../redux/blogSlice"; // Assuming you have a fetchBlogById action
-import DOMPurify from "dompurify"; // For sanitizing the HTML content
-import { Helmet } from "react-helmet"; // For handling metadata
+import { fetchBlogById } from "../../redux/blogSlice";
+import DOMPurify from "dompurify";
+import { Helmet } from "react-helmet";
 
 export default function BlogDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { blog, loading, error } = useSelector((state) => state.blog);
 
-  // Fetch the specific blog by ID from the Redux store
-  const { blog, loading, error } = useSelector((state) => state.blog); // Assuming blogSlice is named 'blog'
-
-  // Hàm tính thời gian đọc
   const getReadingTime = (content) => {
-    const words = content.split(/\s+/).length; // Đếm số từ
-    const wordsPerMinute = 200; // Số từ đọc trung bình mỗi phút
-    const minutes = Math.ceil(words / wordsPerMinute); // Thời gian đọc làm tròn lên phút
+    const words = content.split(/\s+/).length;
+    const wordsPerMinute = 200;
+    const minutes = Math.ceil(words / wordsPerMinute);
     return minutes;
   };
 
-  // Lấy thời gian đọc từ nội dung bài blog
   const readingTime = blog && blog.content ? getReadingTime(blog.content) : 0;
 
   useEffect(() => {
-    dispatch(fetchBlogById(id)); // Dispatch the action to fetch blog by ID
+    dispatch(fetchBlogById(id));
   }, [dispatch, id]);
 
-  if (loading) {
-    return <p>Loading blog...</p>;
-  }
+  if (loading) return <p>Loading blog...</p>;
+  if (error) return <p>Error loading blog: {error}</p>;
+  if (!blog) return <div className="p-10">Blog not found.</div>;
 
-  if (error) {
-    return <p>Error loading blog: {error}</p>;
-  }
-
-  if (!blog) {
-    return <div className="p-10">Blog not found.</div>;
-  }
-
-  // Định dạng ngày tháng
   const formattedDate = new Intl.DateTimeFormat("vi-VN", {
-    weekday: "long", // "Thứ ba"
-    day: "numeric", // "15"
-    month: "numeric", // "4"
-    year: "numeric", // "2025"
-    hour: "2-digit", // "21"
-    minute: "2-digit", // "57"
+    weekday: "long",
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   }).format(new Date(blog.createdAt));
 
-  // Structured data (Schema.org) for SEO
   const structuredData = {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
@@ -63,6 +49,213 @@ export default function BlogDetail() {
     dateModified: blog.updatedAt || blog.createdAt,
     description: blog.summary || "Default description",
     articleBody: blog.content,
+  };
+
+  const formattedContent = DOMPurify.sanitize(blog.content, {
+    ADD_TAGS: [
+      "iframe",
+      "table",
+      "th",
+      "tr",
+      "td",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "ul", // Add ul tag
+      "ol", // Add ol tag
+      "li", // Add li tag
+      "p", // Add p tag for paragraphs
+      "a", // Add a tag for links
+      "div", // Add div tag
+      "span", // Add span tag
+      "strong", // Add strong tag for bold text
+      "em", // Add em tag for italic text
+      "b", // Add b tag for bold text
+      "i", // Add i tag for italic text
+      "hr", // Add hr tag for horizontal rules
+      "img", // Add img tag for images
+      "br", // Add br tag for line breaks
+    ],
+    ADD_ATTR: [
+      "allow",
+      "allowfullscreen",
+      "frameborder",
+      "scrolling",
+      "src",
+      "height",
+      "width",
+      "class",
+      "href", // Add href attribute for links
+      "alt", // Add alt attribute for images
+    ],
+  })
+    .replace(
+      /<table>/g,
+      '<table class="min-w-full table-auto border-collapse text-left text-gray-700 my-6" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<th>/g,
+      '<th class="px-4 py-2 bg-gray-100 font-bold text-sm border-b text-left" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<td>/g,
+      '<td class="px-4 py-2 border-b" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<tr>/g,
+      '<tr class="hover:bg-gray-50" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<h1>/g,
+      '<h1 class="text-3xl font-bold my-4" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<h2>/g,
+      '<h2 class="text-2xl font-bold my-4" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<h3>/g,
+      '<h3 class="text-xl font-bold my-3" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<h4>/g,
+      '<h4 class="text-lg font-bold my-3" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<h5>/g,
+      '<h5 class="text-md font-bold my-2" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<h6>/g,
+      '<h6 class="text-sm font-bold my-2" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<ul>/g,
+      '<ul class="list-inside list-disc pl-6 my-4" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<ol>/g,
+      '<ol class="list-inside list-decimal pl-6 my-4" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<li>/g,
+      '<li class="mb-2" style="font-family: \'Times New Roman\', serif;">'
+    )
+    .replace(
+      /<p>/g,
+      '<p class="my-4" style="font-family: \'Times New Roman\', serif;">' // Add styling for paragraphs
+    )
+    .replace(
+      /<a>/g,
+      '<a class="text-blue-500 hover:underline" style="font-family: \'Times New Roman\', serif;">' // Add styling for links
+    )
+    .replace(
+      /<div>/g,
+      "<div style=\"font-family: 'Times New Roman', serif;\">" // Default div styling
+    )
+    .replace(
+      /<span>/g,
+      "<span style=\"font-family: 'Times New Roman', serif;\">" // Default span styling
+    )
+    .replace(
+      /<strong>/g,
+      '<strong class="font-bold" style="font-family: \'Times New Roman\', serif;">' // Bold text styling
+    )
+    .replace(
+      /<em>/g,
+      '<em class="italic" style="font-family: \'Times New Roman\', serif;">' // Italic text styling
+    )
+    .replace(
+      /<b>/g,
+      '<b class="font-bold" style="font-family: \'Times New Roman\', serif;">' // Bold text styling
+    )
+    .replace(
+      /<i>/g,
+      '<i class="italic" style="font-family: \'Times New Roman\', serif;">' // Italic text styling
+    )
+    .replace(
+      /<hr>/g,
+      '<hr class="my-4 border-gray-300" style="font-family: \'Times New Roman\', serif;">' // Horizontal rule styling
+    )
+    .replace(
+      /<img>/g,
+      '<img class="my-4" style="font-family: \'Times New Roman\', serif;">' // Image styling
+    )
+    .replace(
+      /<br>/g,
+      "<br />" // Line break
+    );
+
+  const handlePrint = () => {
+    const printContent = document.getElementById("printable-blog").innerHTML;
+    const printWindow = window.open("", "", "width=800,height=600");
+
+    const style = `
+        <style>
+          body {
+            font-family: "Times New Roman", serif;
+            margin: 20mm;
+            position: relative;
+            color: #000;
+            line-height: 1.8; /* Increased line height for better spacing */
+          }
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+          h1, h2, h3, h4, h5, h6 {
+            margin-top: 1.5rem;
+            line-height: 1.4; /* Adjust line height for headers */
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px; /* Add space after tables */
+          }
+          th, td {
+            border: 1px solid #ccc;
+            padding: 12px; /* Increased padding for better spacing */
+            text-align: left;
+          }
+          p {
+            margin-bottom: 10px; /* Add margin after paragraphs */
+          }
+          @page {
+            margin: 20mm;
+          }
+        </style>
+      `;
+
+    printWindow.document.write(`
+        <html>
+          <head>
+            <title>${blog.title}</title>
+            ${style}
+          </head>
+          <body>
+            <div>
+              ${printContent}
+            </div>
+          </body>
+        </html>
+      `);
+    printWindow.document.close();
+    printWindow.focus();
+
+    // Detect when the printing has finished or been cancelled
+    printWindow.onafterprint = () => {
+      printWindow.close();
+    };
+
+    // In case the user cancels the print dialog
+    printWindow.onbeforeunload = () => {
+      printWindow.close();
+    };
+
+    printWindow.print();
   };
 
   return (
@@ -93,24 +286,40 @@ export default function BlogDetail() {
         >
           ← Quay lại
         </Link>
+
         <img
           src={blog.imageTitle}
           alt={`Image for ${blog.title}`}
           className="w-full h-64 object-cover rounded-xl mb-6"
         />
-        <h1 className="text-4xl font-bold mb-2">{blog.title}</h1>
-        <p className="text-gray-500 bold text-sm my-3">
-          {formattedDate} - {readingTime} phút đọc 👁
-        </p>
 
-        {/* Sanitizing and rendering Quill HTML content */}
+        <h1
+          className="text-4xl font-bold mb-2"
+          style={{ fontFamily: "Times New Roman, serif" }}
+        >
+          {blog.title}
+        </h1>
+        <div className="flex justify-between items-center mb-4">
+          <p className="text-gray-500 bold text-sm">
+            {formattedDate} - {readingTime} phút đọc 👁
+          </p>
+          {/* Nút in bài viết */}
+          <button
+            onClick={handlePrint}
+            className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-sm font-medium"
+          >
+            🖨 In bài viết
+          </button>
+        </div>
+
+        {/* Nội dung blog */}
         <div
+          id="printable-blog"
           className="text-lg leading-relaxed text-gray-800"
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(blog.content), // Sanitize HTML before rendering
-          }}
+          dangerouslySetInnerHTML={{ __html: formattedContent }}
         />
-        <p className="text-right bold text-xl">{blog.author}</p>
+
+        <p className="text-right bold text-xl mt-6">{blog.author}</p>
       </div>
     </>
   );
