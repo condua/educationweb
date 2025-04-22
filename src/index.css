@@ -6,3 +6,10 @@
 body {
   font-family: "Times New Roman", serif;
 }
+/* File: styles.css hoặc global.css */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.react-datepicker__input-container {
+  width: 100%;
+}

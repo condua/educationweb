@@ -14,6 +14,7 @@ import Chatbot from "./components/Chatbox";
 import BlogList from "./pages/blog/BlogList";
 import BlogDetail from "./pages/blog/BlogDetail";
 import CreateBlog from "./pages/blog/CreateBlog";
+import ProfilePage from "./components/Profile";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   return isAuthen ? element : <Navigate to="/login" />;
@@ -56,6 +57,10 @@ function App() {
           element={<AuthRoute element={<Register />} />}
         />
         <Route path="/services" element={<Portfolio />} />
+        <Route
+          path="/profile"
+          element={<PrivateRoute element={<ProfilePage />} />}
+        />
         <Route
           path="/courses"
           element={<PrivateRoute element={<CourseDashboard />} />}
