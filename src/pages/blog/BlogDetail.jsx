@@ -4,11 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogById } from "../../redux/blogSlice";
 import DOMPurify from "dompurify";
 import { Helmet } from "react-helmet";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
-import html2pdf from "html2pdf.js";
 import "jspdf-autotable"; // hỗ trợ vẽ bảng
-import { VnFont } from "./VnTimeBase64.js"; // File chứa mã hóa base64 của font VnTime
 
 export default function BlogDetail() {
   const { id } = useParams();
