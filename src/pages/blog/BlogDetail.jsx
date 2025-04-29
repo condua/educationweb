@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogById } from "../../redux/blogSlice";
 import DOMPurify from "dompurify";
 import { Helmet } from "react-helmet";
+import { MathJaxContext, MathJax } from "better-react-mathjax";
 
 export default function BlogDetail() {
   const { id } = useParams();
@@ -22,6 +23,12 @@ export default function BlogDetail() {
   useEffect(() => {
     dispatch(fetchBlogById(id));
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (window.MathJax) {
+      window.MathJax.typesetPromise();
+    }
+  }, [blog]);
 
   if (loading) return <p>Loading blog...</p>;
   if (error) return <p>Error loading blog: {error}</p>;
@@ -306,7 +313,7 @@ export default function BlogDetail() {
           {/* Nút in bài viết */}
           <button
             onClick={handlePrint}
-            className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-sm font-medium"
+            className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-sm font-medium md:block hidden"
           >
             🖨 In bài viết
           </button>

@@ -9,6 +9,8 @@ import Table from "quill/modules/table";
 import TableUI from "quill-table-ui";
 import "quill/dist/quill.snow.css";
 import "quill-table-ui/dist/index.css";
+import KaTeX from "katex";
+import "katex/dist/katex.min.css";
 
 // Register table module
 Quill.register(
@@ -39,9 +41,11 @@ const CreateBlog = () => {
       ["link", "image", "video"],
       ["clean"],
       ["table"], // Add table creation button
+      [{ math: "math" }], // Thêm tùy chọn cho toán học
     ],
     table: true,
     tableUI: true,
+    math: true, // Đăng ký module math
   };
 
   const formats = [
@@ -63,6 +67,12 @@ const CreateBlog = () => {
     if (quill) {
       quill.on("text-change", () => {
         setEditorHtml(quill.root.innerHTML);
+
+        // Automatically render math expressions after text-change
+        const mathElements = quill.root.querySelectorAll("span.katex");
+        mathElements.forEach((element) => {
+          KaTeX.render(element.innerText, element);
+        });
       });
 
       quill.root.classList.add("text-justify");
@@ -80,9 +90,26 @@ const CreateBlog = () => {
             "width",
           ],
         });
-        quill.root.innerHTML = sanitized;
-        setEditorHtml(sanitized);
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(sanitized, "text/html");
+        const mathElements = doc.querySelectorAll("span.katex");
+
+        mathElements.forEach((element) => {
+          KaTeX.render(element.innerText, element);
+        });
+
+        quill.root.innerHTML = doc.body.innerHTML;
+        setEditorHtml(doc.body.innerHTML);
       }
+
+      // Ensure math content is rendered on paste
+      quill.clipboard.addMatcher(Node.ELEMENT_NODE, (node) => {
+        if (node.nodeName === "SPAN" && node.classList.contains("katex")) {
+          KaTeX.render(node.innerText, node);
+        }
+        return node;
+      });
     }
   }, [quill, htmlPaste]);
 

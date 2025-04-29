@@ -19,6 +19,7 @@
     "framer-motion": "^12.5.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",
+    "katex": "^0.16.22",
     "lucide-react": "^0.483.0",
     "marked": "^15.0.8",
     "plyr": "^3.7.8",
