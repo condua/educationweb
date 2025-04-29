@@ -4,6 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogById } from "../../redux/blogSlice";
 import DOMPurify from "dompurify";
 import { Helmet } from "react-helmet";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import html2pdf from "html2pdf.js";
+import "jspdf-autotable"; // hỗ trợ vẽ bảng
+import { VnFont } from "./VnTimeBase64.js"; // File chứa mã hóa base64 của font VnTime
 
 export default function BlogDetail() {
   const { id } = useParams();
@@ -197,49 +202,49 @@ export default function BlogDetail() {
 
   const handlePrint = () => {
     const printContent = document.getElementById("printable-blog").innerHTML;
-    const printWindow = window.open("", "", "width=800,height=600");
+    const iframe = document.createElement("iframe");
+    iframe.style.position = "absolute";
+    iframe.style.width = "0";
+    iframe.style.height = "0";
+    iframe.style.border = "none";
+    document.body.appendChild(iframe);
 
-    const style = `
-        <style>
-          body {
-            font-family: "Times New Roman", serif;
-            margin: 20mm;
-            position: relative;
-            color: #000;
-            line-height: 1.8; /* Increased line height for better spacing */
-          }
-          img {
-            max-width: 100%;
-            height: auto;
-          }
-          h1, h2, h3, h4, h5, h6 {
-            margin-top: 1.5rem;
-            line-height: 1.4; /* Adjust line height for headers */
-          }
-          table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px; /* Add space after tables */
-          }
-          th, td {
-            border: 1px solid #ccc;
-            padding: 12px; /* Increased padding for better spacing */
-            text-align: left;
-          }
-          p {
-            margin-bottom: 10px; /* Add margin after paragraphs */
-          }
-          @page {
-            margin: 20mm;
-          }
-        </style>
-      `;
-
-    printWindow.document.write(`
+    const iframeDoc = iframe.contentWindow.document;
+    iframeDoc.open();
+    iframeDoc.write(`
         <html>
           <head>
-            <title>${blog.title}</title>
-            ${style}
+            <title>Printable Page</title>
+            <style>
+              body {
+                font-family: "Times New Roman", serif;
+                margin: 20mm;
+                position: relative;
+                color: #000;
+                line-height: 1.8;
+              }
+              img {
+                max-width: 100%;
+                height: auto;
+              }
+              h1, h2, h3, h4, h5, h6 {
+                margin-top: 1.5rem;
+                line-height: 1.4;
+              }
+              table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+              }
+              th, td {
+                border: 1px solid #ccc;
+                padding: 12px;
+                text-align: left;
+              }
+              p {
+                margin-bottom: 10px;
+              }
+            </style>
           </head>
           <body>
             <div>
@@ -248,21 +253,12 @@ export default function BlogDetail() {
           </body>
         </html>
       `);
-    printWindow.document.close();
-    printWindow.focus();
-
-    // Detect when the printing has finished or been cancelled
-    printWindow.onafterprint = () => {
-      printWindow.close();
-    };
-
-    // In case the user cancels the print dialog
-    printWindow.onbeforeunload = () => {
-      printWindow.close();
-    };
-
-    printWindow.print();
+    iframeDoc.close();
+    iframe.contentWindow.focus();
+    iframe.contentWindow.print();
   };
+
+  // const handleDownloadPDF = async () => {};
 
   return (
     <>
@@ -276,10 +272,7 @@ export default function BlogDetail() {
           content={blog.summary || "Default summary"}
         />
         <meta property="og:image" content={blog.imageTitle} />
-        <meta
-          property="og:url"
-          content={`https://www.yoursite.com/blog/${id}`}
-        />
+        <meta property="og:url" content={`https:/mlpa.site/blog/${id}`} />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
@@ -305,22 +298,23 @@ export default function BlogDetail() {
         >
           {blog.title}
         </h1>
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex sm:flex-row flex-col sm:justify-between sm:items-center mb-4">
           <p className="text-gray-500 bold text-sm">
             {formattedDate} - {readingTime} phút đọc 👁
           </p>
           {/* Nút in bài viết */}
           <button
             onClick={handlePrint}
-            className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-sm font-medium md:block hidden"
+            className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-sm font-medium "
           >
-            🖨 In bài viết
+            🖨 Tải bài viết
           </button>
         </div>
 
         {/* Nội dung blog */}
         <div
           id="printable-blog"
+          style={{ fontFamily: "'Times New Roman', serif" }}
           className="text-lg leading-relaxed text-gray-800"
           dangerouslySetInnerHTML={{ __html: formattedContent }}
         />

@@ -19,6 +19,25 @@
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script>
+      window.MathJax = {
+        svg: {
+          fontCache: 'none'
+        },
+        options: {
+          renderActions: {
+            addFont: [200, (doc) => {
+              for (const node of doc.math) {
+                node.styles = { ...node.styles, fontFamily: "'Times New Roman', serif" };
+              }
+            }, '', false]
+          }
+        }
+      };
+    </script>
+    
+
   </head>
   <body>
     <div id="root"></div>
