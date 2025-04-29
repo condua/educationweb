@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogById } from "../../redux/blogSlice";
 import DOMPurify from "dompurify";
 import { Helmet } from "react-helmet";
-import { MathJaxContext, MathJax } from "better-react-mathjax";
 
 export default function BlogDetail() {
   const { id } = useParams();
