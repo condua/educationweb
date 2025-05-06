@@ -4,13 +4,51 @@ import { Menu, X, LogOut } from "lucide-react"; // Import icons từ lucide-reac
 import { logout } from "../redux/authSlice";
 import { logoutUser } from "../redux/userSlice";
 import { useSelector, useDispatch } from "react-redux";
-
+import { fetchUser } from "../redux/userSlice";
 const Header = () => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null); // Ref cho menu mobile
-  const { isAuthen, user } = useSelector((state) => state.auth); // Lấy trạng thái đăng nhập từ Redux
-  const dispatch = useDispatch();
+  const { isAuthen } = useSelector((state) => state.auth); // Lấy trạng thái đăng nhập từ Redux
+  const { user } = useSelector((state) => state.user);
+
+  const token = useSelector((state) => state.auth.token); // Lấy token từ state
+  const [profile, setProfile] = useState({
+    avatar: "",
+    fullName: "",
+    email: "",
+    birthDate: "",
+    phone: "",
+    gender: "",
+    address: "",
+  });
+  const goToProfile = () => {
+    // Chuyển hướng đến trang Profile
+    navigate("/profile");
+  };
+  // 1. Chỉ gọi fetchUser nếu token có sự thay đổi và người dùng chưa được lấy
+  useEffect(() => {
+    if (token && !user) {
+      dispatch(fetchUser(token)); // Truyền token vào fetchUser
+    }
+  }, [dispatch, token, user]);
+
+  // 2. Khi user thay đổi, cập nhật profile
+  useEffect(() => {
+    if (user) {
+      setProfile({
+        avatar: user.avatar || "https://i.pravatar.cc/150",
+        fullName: user.fullName || "",
+        email: user.email || "",
+        birthDate: user.birthDate || "",
+        phone: user.phone || "",
+        gender: user.gender || "",
+        address: user.address || "",
+      });
+    }
+  }, [user]);
 
   const items = [
     {
@@ -71,17 +109,20 @@ const Header = () => {
           {isAuthen ? (
             <div className="flex items-center space-x-4">
               {/* Avatar + Name */}
-              <div className="flex items-center space-x-2">
+              <div
+                className="flex items-center space-x-2 cursor-pointer"
+                onClick={goToProfile}
+              >
                 <img
                   src={
-                    user?.avatar ||
+                    profile?.avatar ||
                     "https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
                   }
                   alt="Avatar"
-                  className="w-10 h-10 rounded-full"
+                  className="w-10 h-10 rounded-full object-cover"
                 />
                 <span className="text-gray-700 font-medium">
-                  {user?.fullName}
+                  {profile?.fullName}
                 </span>
               </div>
               {/* Logout */}
@@ -150,14 +191,14 @@ const Header = () => {
             <div className="flex flex-col items-center space-y-3">
               <img
                 src={
-                  user?.avatar ||
+                  profile?.avatar ||
                   "https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
                 }
                 alt="Avatar"
-                className="w-12 h-12 rounded-full"
+                className="w-12 h-12 rounded-full  object-cover"
               />
               <span className="text-gray-700 font-medium">
-                {user?.fullName}
+                {profile?.fullName}
               </span>
               <button
                 className="flex items-center space-x-1 text-gray-700 hover:text-red-600"

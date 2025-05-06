@@ -208,48 +208,60 @@ export default function BlogDetail() {
     const iframeDoc = iframe.contentWindow.document;
     iframeDoc.open();
     iframeDoc.write(`
-        <html>
-          <head>
-            <title>Printable Page</title>
-            <style>
-              body {
-                font-family: "Times New Roman", serif;
-                margin: 20mm;
-                position: relative;
-                color: #000;
-                line-height: 1.8;
-              }
-              img {
-                max-width: 100%;
-                height: auto;
-              }
-              h1, h2, h3, h4, h5, h6 {
-                margin-top: 1.5rem;
-                line-height: 1.4;
-              }
-              table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-bottom: 20px;
-              }
-              th, td {
-                border: 1px solid #ccc;
-                padding: 12px;
-                text-align: left;
-              }
-              p {
-                margin-bottom: 10px;
-              }
-            </style>
-          </head>
-          <body>
-            <div>
-              ${printContent}
-            </div>
-          </body>
-        </html>
-      `);
+          <html>
+            <head>
+              <title>Printable Page</title>
+              <style>
+                body {
+                  font-family: "Times New Roman", serif;
+                  margin: 20mm;
+                  position: relative;
+                  color: #000;
+                  line-height: 1.8;
+                }
+                img {
+                  max-width: 100%;
+                  height: auto;
+                }
+                h1, h2, h3, h4, h5, h6 {
+                  margin-top: 1.5rem;
+                  line-height: 1.4;
+                }
+                table {
+                  width: 100%;
+                  border-collapse: collapse;
+                  margin-bottom: 20px;
+                }
+                th, td {
+                  border: 1px solid #ccc;
+                  padding: 12px;
+                  text-align: left;
+                }
+                p {
+                  margin-bottom: 10px;
+                }
+              </style>
+              <script type="text/javascript" async
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+              </script>
+            </head>
+            <body>
+              <div>
+                ${printContent}
+              </div>
+            </body>
+          </html>
+        `);
     iframeDoc.close();
+
+    // Gọi lại MathJax để render công thức toán học
+    iframe.contentWindow.onload = () => {
+      iframe.contentWindow.MathJax.Hub.Queue([
+        "Typeset",
+        iframe.contentWindow.MathJax.Hub,
+      ]);
+    };
+
     iframe.contentWindow.focus();
     iframe.contentWindow.print();
   };

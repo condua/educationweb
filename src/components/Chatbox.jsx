@@ -26,7 +26,10 @@ export default function Chatbot() {
         '<a href="tel:$1" class="text-sky-400 underline">$1</a>'
       ); // số điện thoại
   };
-
+  const today = new Date();
+  const vietnamTime = today.toLocaleString("vi-VN", {
+    timeZone: "Asia/Ho_Chi_Minh",
+  });
   const handleSend = async () => {
     const userText = inputValue.trim();
     if (!userText) return;
@@ -79,7 +82,12 @@ export default function Chatbot() {
               - Fanpage của MLPA: https://www.facebook.com/profile.php?id=61574532009854
               - Fanpage Facebook cá nhân: https://www.facebook.com/phuc.phanhoang.1694
               
-              Khi người dùng hỏi những gì liên quan tới MLPA, hãy ưu tiên trả lời dựa trên những thông tin trên.`,
+              Khi người dùng hỏi những gì liên quan tới MLPA, hãy ưu tiên trả lời dựa trên những thông tin trên.
+        
+              Đối với các câu hỏi khác không thuộc phạm vi MLPA, hãy tự động tìm kiếm và tổng hợp thông tin mới nhất từ search engine để trả lời chính xác và cập nhật cho người dùng.              
+              
+              Hôm nay là ${vietnamTime}
+              `,
             },
             { role: "user", content: userText },
           ],
