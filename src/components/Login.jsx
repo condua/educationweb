@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from "../redux/authSlice";
 import { ImSpinner2 } from "react-icons/im"; // Import icon xoay tròn
 import { fetchUser } from "../redux/userSlice";
+import { GoogleLogin } from "@react-oauth/google";
+import { googleLogin } from "../redux/authSlice";
+
 import student from "../assets/student11.png";
 const Login = () => {
   const navigate = useNavigate();
@@ -31,6 +34,19 @@ const Login = () => {
       });
   };
 
+  // Google login handler sử dụng Redux
+  const handleGoogleLogin = (googleToken) => {
+    dispatch(googleLogin(googleToken)) // Gọi Redux action googleLogin
+      .unwrap()
+      .then(() => {
+        dispatch(fetchUser("me")); // Fetch lại thông tin user ngay lập tức
+        navigate("/"); // Chuyển hướng sau khi đăng nhập thành công
+      })
+      .catch((error) => {
+        alert("Google login failed. Please try again.");
+        console.error(error);
+      });
+  };
   return (
     <div className="flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-lg rounded-2xl flex h-screen w-full overflow-hidden">
@@ -118,6 +134,17 @@ const Login = () => {
             {loading ? <ImSpinner2 className="animate-spin mr-2" /> : null}
             {loading ? "Đang đăng nhập..." : "Đăng nhập"}
           </button>
+          <div className="mt-6 flex justify-center">
+            <GoogleLogin
+              onSuccess={(credentialResponse) => {
+                // Gọi Redux action googleLogin khi đăng nhập thành công
+                handleGoogleLogin(credentialResponse.credential);
+              }}
+              onError={() => {
+                alert("Google Login thất bại");
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
