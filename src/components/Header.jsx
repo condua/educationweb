@@ -27,6 +27,7 @@ const Header = () => {
   const goToProfile = () => {
     // Chuyển hướng đến trang Profile
     navigate("/profile");
+    setMenuOpen(false);
   };
   // 1. Chỉ gọi fetchUser nếu token có sự thay đổi và người dùng chưa được lấy
   useEffect(() => {
@@ -195,9 +196,13 @@ const Header = () => {
                   "https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
                 }
                 alt="Avatar"
-                className="w-12 h-12 rounded-full  object-cover"
+                className="w-12 h-12 rounded-full  object-cover cursor-pointer"
+                onClick={goToProfile}
               />
-              <span className="text-gray-700 font-medium">
+              <span
+                className="text-gray-700 font-medium cursor-pointer"
+                onClick={goToProfile}
+              >
                 {profile?.fullName}
               </span>
               <button
