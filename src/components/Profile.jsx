@@ -16,7 +16,7 @@ const ProfilePage = () => {
     avatar: "",
     fullName: "",
     email: "",
-    birthDate: "",
+    birthDate: new Date(),
     phone: "",
     gender: "",
     address: "",
@@ -37,7 +37,7 @@ const ProfilePage = () => {
         avatar: user.avatar || "https://i.pravatar.cc/150",
         fullName: user.fullName || "",
         email: user.email || "",
-        birthDate: user.birthDate || "",
+        birthDate: user.birthDate ? new Date(user.birthDate) : new Date(), // Convert string to Date
         phone: user.phone || "",
         gender: user.gender || "",
         address: user.address || "",
@@ -61,9 +61,9 @@ const ProfilePage = () => {
     }
   };
 
+  // Không cần parse/format ngày nữa — trực tiếp set Date object
   const handleDateChange = (date) => {
-    const formatted = formatDate(date);
-    setProfile((prev) => ({ ...prev, birthDate: formatted }));
+    setProfile((prev) => ({ ...prev, birthDate: date }));
   };
 
   const handleChange = (e) => {
@@ -181,9 +181,9 @@ const ProfilePage = () => {
           />
 
           <div className="mb-4 w-full">
-            <label className="block font-semibold mb-1">Date of birth</label>
+            <label className="block font-semibold mb-1">Date of birth:</label>
             <DatePicker
-              selected={profile.birthDate ? parseDate(profile.birthDate) : null}
+              selected={profile.birthDate}
               onChange={handleDateChange}
               dateFormat="dd/MM/yyyy"
               placeholderText="dd/mm/yyyy"
