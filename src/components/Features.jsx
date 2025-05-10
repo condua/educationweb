@@ -73,6 +73,8 @@ const Features = () => {
             duration: 2,
             ease: "easeInOut",
           }}
+          draggable={false}
+          onDragStart={(e) => e.preventDefault()}
         />
         {/* 🎬 Thanh logo cuộn ngang liên tục */}
         <div className="sm:w-4/5 w-full overflow-hidden relative flex items-center py-5">
@@ -92,6 +94,8 @@ const Features = () => {
                 className="sm:w-[150px] sm:h-[150px] w-[80px] h-[80px] object-contain"
                 src={logo.imgUrl}
                 alt={`Logo ${logo.id}`}
+                draggable={false}
+                onDragStart={(e) => e.preventDefault()}
               />
             ))}
           </motion.div>
