@@ -37,7 +37,7 @@ const ProfilePage = () => {
         avatar: user.avatar || "https://i.pravatar.cc/150",
         fullName: user.fullName || "",
         email: user.email || "",
-        birthDate: user.birthDate ? new Date(user.birthDate) : new Date(), // Convert string to Date
+        birthDate: user.birthDate, // Convert string to Date
         phone: user.phone || "",
         gender: user.gender || "",
         address: user.address || "",
@@ -130,7 +130,7 @@ const ProfilePage = () => {
   //     </div>
   //   );
   // }
-
+  // console.log(user);
   if (status === "failed") {
     return (
       <div className="min-h-screen flex items-center justify-center text-red-500">
@@ -168,20 +168,22 @@ const ProfilePage = () => {
 
         <div className="mt-6 space-y-4">
           <InputField
-            label="Full Name"
+            label="Họ và tên"
             name="fullName"
             value={profile.fullName}
             onChange={handleChange}
           />
           <InputField
-            label="Email (Read-Only)"
+            label="Email"
             name="email"
             value={profile.email}
             readOnly
           />
 
           <div className="mb-4 w-full">
-            <label className="block font-semibold mb-1">Date of birth:</label>
+            <label className="block font-semibold mb-1 text-gray-700">
+              Ngày sinh
+            </label>
             <DatePicker
               selected={profile.birthDate}
               onChange={handleDateChange}
@@ -195,20 +197,20 @@ const ProfilePage = () => {
           </div>
 
           <InputField
-            label="Phone Number"
+            label="Số điện thoại"
             name="phone"
             value={profile.phone}
             onChange={handleChange}
           />
           <SelectField
-            label="Gender"
+            label="Giới tính"
             name="gender"
             value={profile.gender}
             onChange={handleChange}
-            options={["Male", "Female", "Other"]}
+            options={["Nam", "Nữ", "Khác"]}
           />
           <TextareaField
-            label="Address"
+            label="Địa chỉ"
             name="address"
             value={profile.address}
             onChange={handleChange}
@@ -219,7 +221,7 @@ const ProfilePage = () => {
           type="submit"
           className="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
         >
-          Save Changes
+          Lưu thay đổi
         </button>
       </form>
     </div>
@@ -235,7 +237,7 @@ const InputField = ({
   type = "text",
 }) => (
   <div>
-    <label className="block text-sm font-semibold text-gray-600">{label}</label>
+    <label className="block text-sm font-semibold text-gray-700">{label}</label>
     <input
       type={type}
       name={name}

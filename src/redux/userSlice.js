@@ -100,14 +100,7 @@ const userSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
-        state.user = {
-          _id: action.payload._id,
-          fullName: action.payload.fullName,
-          email: action.payload.email,
-          avatar: action.payload.avatar,
-          role: action.payload.role,
-          createdAt: action.payload.createdAt,
-        };
+        state.user = action.payload; // Gán toàn bộ dữ liệu user
         state.enrolledCourses = action.payload.enrolledCourses || [];
         state.status = "succeeded";
       })
