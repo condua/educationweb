@@ -106,7 +106,7 @@ const CourseDashboard = () => {
               Khóa học của bạn
             </a>
           </div>
-          <div className="grid sm:grid-cols-4 grid-cols-1 gap-4 overflow-x-auto justify-center">
+          <div className="grid md:grid-cols-4 grid-cols-1 gap-4 overflow-x-auto justify-center">
             {currentCourses.map((courseId) => (
               <CourseCard key={courseId} courseId={courseId} />
             ))}
