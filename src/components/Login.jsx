@@ -7,11 +7,15 @@ import { ImSpinner2 } from "react-icons/im"; // Import icon xoay tròn
 import { fetchUser } from "../redux/userSlice";
 import { GoogleLogin } from "@react-oauth/google";
 import { googleLogin } from "../redux/authSlice";
+import { useLocation } from "react-router-dom";
 
 import student from "../assets/student11.png";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/"; // Lấy đường dẫn từ state nếu có, nếu không thì về trang chủ
+
   const { loading, error } = useSelector((state) => state.auth); // Lấy trạng thái từ Redux
 
   const [showPassword, setShowPassword] = useState(false);
@@ -27,7 +31,8 @@ const Login = () => {
       .unwrap()
       .then(() => {
         dispatch(fetchUser("me")); // Fetch lại thông tin user ngay lập tức
-        navigate("/"); // Chuyển hướng sau khi đăng nhập
+        // navigate("/"); // Chuyển hướng sau khi đăng nhập
+        navigate(from, { replace: true });
       })
       .catch(() => {
         alert("Login failed. Please check your credentials.");
@@ -40,7 +45,7 @@ const Login = () => {
       .unwrap()
       .then(() => {
         dispatch(fetchUser("me")); // Fetch lại thông tin user ngay lập tức
-        navigate("/"); // Chuyển hướng sau khi đăng nhập thành công
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         alert("Google login failed. Please try again.");

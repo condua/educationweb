@@ -45,21 +45,21 @@ const ProfilePage = () => {
     }
   }, [user]);
 
-  const parseDate = (dateStr) => {
-    try {
-      return parse(dateStr, "dd/MM/yyyy", new Date());
-    } catch {
-      return new Date();
-    }
-  };
+  // const parseDate = (dateStr) => {
+  //   try {
+  //     return parse(dateStr, "dd/MM/yyyy", new Date());
+  //   } catch {
+  //     return new Date();
+  //   }
+  // };
 
-  const formatDate = (dateObj) => {
-    try {
-      return format(dateObj, "dd/MM/yyyy");
-    } catch {
-      return "";
-    }
-  };
+  // const formatDate = (dateObj) => {
+  //   try {
+  //     return format(dateObj, "dd/MM/yyyy");
+  //   } catch {
+  //     return "";
+  //   }
+  // };
 
   // Không cần parse/format ngày nữa — trực tiếp set Date object
   const handleDateChange = (date) => {

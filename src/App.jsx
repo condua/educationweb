@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchUser } from "./redux/userSlice"; // Import action fetchUser
@@ -17,7 +23,13 @@ import CreateBlog from "./pages/blog/CreateBlog";
 import ProfilePage from "./components/Profile";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
-  return isAuthen ? element : <Navigate to="/login" />;
+  const location = useLocation();
+
+  return isAuthen ? (
+    element
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
+  );
 };
 
 const AuthRoute = ({ element }) => {
