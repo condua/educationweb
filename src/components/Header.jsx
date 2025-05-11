@@ -61,7 +61,7 @@ const Header = () => {
       path: "/courses",
     },
     {
-      title: "Tư vấn",
+      title: "Dự án",
       path: "/services",
     },
     {

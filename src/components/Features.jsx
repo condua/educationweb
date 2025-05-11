@@ -263,7 +263,7 @@ const Features = () => {
       {/* Feature Section */}
       <div className="grid sm:grid-cols-2 gap-10 items-center">
         {/* Left Side: Image */}
-        <div className="relative w-full">
+        <div className="relative w-full hover:shadow-2xl hover:-translate-y-2 duration-300">
           <img
             src={whiteboard}
             alt="Classroom UI"
@@ -310,7 +310,7 @@ const Features = () => {
         </div>
 
         {/* Right Side: Image */}
-        <div className="relative w-full">
+        <div className="relative w-full hover:shadow-2xl hover:-translate-y-2 duration-300">
           <img
             src={solution}
             alt="Teacher and Student"

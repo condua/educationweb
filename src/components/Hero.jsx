@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 // Ví dụ import icon (nếu cần)
 import { AiOutlinePlayCircle } from "react-icons/ai";
 // Giả sử bạn có ảnh cô gái cầm sách
 import StudentImg from "../assets/student11.png"; // Thay đường dẫn thực tế
 import { useNavigate } from "react-router-dom";
-
+import { motion } from "framer-motion"; // Thêm thư viện framer-motion để tạo hiệu ứng
 const Hero = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Hàm mở và đóng modal
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+  const wave1 =
+    "M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,122.7C1120,117,1280,139,1360,149.3L1440,160L1440,320L0,320Z";
+  const wave2 =
+    "M0,96L80,106.7C160,117,320,139,480,128C640,117,800,75,960,85.3C1120,96,1280,160,1360,181.3L1440,203L1440,320L0,320Z";
+  const wave3 =
+    "M0,80L80,100C160,120,320,160,480,150C640,140,800,100,960,90C1120,80,1280,130,1360,140L1440,150L1440,320L0,320Z";
+  const wave4 =
+    "M0,90L80,110C160,130,320,170,480,160C640,150,800,110,960,100C1120,90,1280,120,1360,130L1440,140L1440,320L0,320Z";
+  // Hàm đóng modal khi click ra ngoài video
+  const handleClickOutside = (e) => {
+    // Kiểm tra nếu click ngoài vùng modal
+    if (e.target.id === "modal-overlay") {
+      setIsModalOpen(false);
+    }
+  };
   return (
     <section
       id="home"
@@ -36,14 +56,39 @@ const Hero = () => {
               Tham gia ngay
             </button>
             <button
-              onClick={() => {
-                navigate("/courses");
-              }}
+              onClick={toggleModal}
               className="flex items-center text-teal-600 hover:text-teal-800 font-medium cursor-pointer"
             >
               <AiOutlinePlayCircle className="text-2xl mr-2" />
               Xem hướng dẫn
             </button>
+            {/* Modal hiển thị video */}
+            {isModalOpen && (
+              <div
+                id="modal-overlay"
+                className="fixed inset-0 bg-black/50 flex justify-center items-center z-100"
+                onClick={handleClickOutside}
+              >
+                <button
+                  onClick={toggleModal}
+                  className="absolute top-10 right-10 text-white text-5xl cursor-pointer"
+                >
+                  ×
+                </button>
+                <div className="bg-white p-4 rounded-lg w-3/4 h-3/4">
+                  <div className="relative w-full h-full">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Thay link video YouTube ở đây
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -52,7 +97,7 @@ const Hero = () => {
           <img
             src={StudentImg}
             alt="Student"
-            className="max-w-84 md:max-w-full"
+            className="max-w-84 md:max-w-full hover:scale-110 transition-transform duration-500 ease-in-out rounded-lg shadow-lg shadow-teal-200/30"
           />
 
           {/* Floating Card #1 (Ví dụ: 250k Assisted Student) */}
@@ -96,7 +141,7 @@ const Hero = () => {
 
       {/* Nếu muốn thêm hình nền dạng “wave” phía dưới, bạn có thể dùng SVG hoặc background-image */}
       {/* Ví dụ SVG wave (minh hoạ) */}
-      <svg
+      {/* <svg
         className="absolute bottom-0 left-0 w-full"
         viewBox="0 0 1440 320"
         fill="none"
@@ -106,7 +151,24 @@ const Hero = () => {
           fill="#fff"
           d="M0,64L80,85.3C160,107,320,149,480,154.7C640,160,800,128,960,122.7C1120,117,1280,139,1360,149.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
         ></path>
-      </svg>
+      </svg> */}
+      <motion.svg
+        className="absolute -bottom-1 left-0 w-full"
+        viewBox="0 0 1440 320"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <motion.path
+          fill="#fff"
+          initial={{ d: wave1 }}
+          animate={{ d: [wave1, wave2, wave3, wave4, wave1] }}
+          transition={{
+            duration: 8,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
+        />
+      </motion.svg>
     </section>
   );
 };
