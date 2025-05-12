@@ -75,10 +75,10 @@ const Hero = () => {
                 >
                   ×
                 </button>
-                <div className="bg-white p-4 rounded-lg w-3/4 h-3/4">
+                <div className="rounded-lg sm:w-3/4 w-5/6 sm:h-3/4 box-shadow-lg bg-white sm:p-4 p-2">
                   <div className="relative w-full h-full">
                     <iframe
-                      className="w-full h-full"
+                      className="w-full h-full rounded-lg"
                       src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Thay link video YouTube ở đây
                       title="YouTube video player"
                       frameBorder="0"
