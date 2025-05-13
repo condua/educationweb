@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogById } from "../../redux/blogSlice";
 import DOMPurify from "dompurify";
 import "jspdf-autotable"; // hỗ trợ vẽ bảng
+import usePageSeo from "../../utils/usePageSeo";
 export default function BlogDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -27,7 +28,12 @@ export default function BlogDetail() {
       window.MathJax.typesetPromise();
     }
   }, [blog]);
-
+  // usePageSeo({
+  //   title: blog.title,
+  //   description: blog.title,
+  //   image: blog.imageTitle,
+  //   type: "article",
+  // });
   if (loading) return <p>Loading blog...</p>;
   if (error) return <p>Error loading blog: {error}</p>;
   if (!blog) return <div className="p-10">Blog not found.</div>;
@@ -275,7 +281,7 @@ export default function BlogDetail() {
         <meta name="keywords" content={blog.title} />
         <meta name="description" content={blog.title} />
         <meta name="robots" content="index, follow" />
-        <meta name="image" content={blog.imageTitle} />
+        <meta property="og:image" content={blog.imageTitle} />
       </article>
       <div className="max-w-3xl mx-auto px-4 py-10">
         <Link
