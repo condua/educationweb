@@ -289,7 +289,6 @@ export default function BlogDetail() {
       <article>
         <title>{blog.title}</title>
         <meta name="author" content="Phan Hoàng Phúc" />
-        <link rel="author" href="https://twitter.com/joshcstory/" />
         <meta property="og:title" content={blog.title} />
         <meta property="og:description" content={blog.title} />
         <meta property="og:image" content={blog.imageTitle} />
@@ -338,7 +337,7 @@ export default function BlogDetail() {
         <p className="text-right bold text-xl mt-6">{blog.author}</p>
         <div className="flex justify-end mt-4">
           <a
-            href={`https://www.facebook.com/sharer/sharer.php?u=https://mlpa.site/blog/${id}`}
+            href={`https://www.facebook.com/sharer/sharer.php?u=https://https://educationappbackend-4inf.onrender.com/api/blogs/blog/${id}`}
             target="_blank"
             rel="noopener noreferrer"
             title="Chia sẻ lên Facebook"
