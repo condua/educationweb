@@ -277,7 +277,7 @@ export default function BlogDetail() {
         <meta property="og:title" content={blog.title} />
         <meta
           property="og:description"
-          content={blog.summary || "Default summary"}
+          content={blog.title || "MLPA - Học trực tuyến dễ dàng hơn"}
         />
         <meta property="og:image" content={blog.imageTitle} />
         <meta property="og:url" content={`https:/mlpa.site/blog/${id}`} />
@@ -328,6 +328,22 @@ export default function BlogDetail() {
         />
 
         <p className="text-right bold text-xl mt-6">{blog.author}</p>
+        <a
+          href={`https://www.facebook.com/sharer/sharer.php?u=https://mlpa.site/blog/${id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Chia sẻ lên Facebook"
+          className="text-blue-600 hover:text-blue-800"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 320 512"
+            fill="currentColor"
+            className="w-4 h-4 inline-block"
+          >
+            <path d="M279.1 288l14.2-92.7h-88.9V133.6c0-25.4 12.4-50.1 52.2-50.1H293V6.3S259.5 0 225.4 0c-73.1 0-121 44.4-121 124.7V195H22.9V288H104v224h100.2V288z" />
+          </svg>
+        </a>
       </div>
     </>
   );
