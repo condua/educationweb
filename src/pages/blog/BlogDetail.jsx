@@ -3,9 +3,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogById } from "../../redux/blogSlice";
 import DOMPurify from "dompurify";
-import { Helmet } from "react-helmet";
 import "jspdf-autotable"; // hỗ trợ vẽ bảng
-
+import MetaTags from "./../../utils/MetaTags";
 export default function BlogDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -270,21 +269,12 @@ export default function BlogDetail() {
 
   return (
     <>
-      <Helmet>
-        <title>{blog.title}</title>
-        <meta name="description" content={blog.summary || "Default summary"} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={blog.title} />
-        <meta
-          property="og:description"
-          content={blog.title || "MLPA - Học trực tuyến dễ dàng hơn"}
-        />
-        <meta property="og:image" content={blog.imageTitle} />
-        <meta property="og:url" content={`https:/mlpa.site/blog/${id}`} />
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
+      <MetaTags
+        title={blog.title}
+        description={blog.title || "MLPA - Học trực tuyến dễ dàng hơn"}
+        image={blog.imageTitle}
+        name="MLPA"
+      />
 
       <div className="max-w-3xl mx-auto px-4 py-10">
         <Link
@@ -328,22 +318,25 @@ export default function BlogDetail() {
         />
 
         <p className="text-right bold text-xl mt-6">{blog.author}</p>
-        <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=https://mlpa.site/blog/${id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Chia sẻ lên Facebook"
-          className="text-blue-600 hover:text-blue-800"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 320 512"
-            fill="currentColor"
-            className="w-4 h-4 inline-block"
+        <div className="flex justify-end mt-4">
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=https://mlpa.site/blog/${id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Chia sẻ lên Facebook"
+            className="text-blue-600 hover:text-blue-800 flex items-center"
           >
-            <path d="M279.1 288l14.2-92.7h-88.9V133.6c0-25.4 12.4-50.1 52.2-50.1H293V6.3S259.5 0 225.4 0c-73.1 0-121 44.4-121 124.7V195H22.9V288H104v224h100.2V288z" />
-          </svg>
-        </a>
+            <span className="text-black">Chia sẻ:</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 320 512"
+              fill="currentColor"
+              className="w-4 h-4 inline-block"
+            >
+              <path d="M279.1 288l14.2-92.7h-88.9V133.6c0-25.4 12.4-50.1 52.2-50.1H293V6.3S259.5 0 225.4 0c-73.1 0-121 44.4-121 124.7V195H22.9V288H104v224h100.2V288z" />
+            </svg>
+          </a>
+        </div>
       </div>
     </>
   );
