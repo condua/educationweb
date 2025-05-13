@@ -29,6 +29,7 @@
     "quill": "^2.0.3",
     "quill-table-ui": "^1.0.7",
     "react": "^19.0.0",
+    "react-countup": "^6.5.3",
     "react-datepicker": "^8.3.0",
     "react-dom": "^19.0.0",
     "react-helmet": "^6.1.0",

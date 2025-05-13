@@ -5,8 +5,10 @@ import edubackground from "/edubackground.jpg";
 import technology from "/technology.jpg";
 import whiteboard from "/whiteboard.jpg";
 import solution from "/solution.jpg";
+import CountUp from "react-countup";
 
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 const fadeInLeft = {
   hidden: { x: -100, opacity: 0 },
   visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
@@ -17,6 +19,8 @@ const Features = () => {
     threshold: 0.15, // Khi phần tử **đến 40% khung nhìn** thì hiện
   });
   const navigate = useNavigate();
+  const [startCounting, setStartCounting] = useState(false);
+
   const logos = [
     {
       id: 1,
@@ -55,6 +59,14 @@ const Features = () => {
       imgUrl: "/images/universities/ussh.png",
     },
   ];
+  const data = [
+    { value: 1000, suffix: "+", label: "Học sinh" },
+    { value: 100, suffix: "%", label: "Hoàn thành xuất sắc" },
+    { value: 100, suffix: "%", label: "Giải đáp thắc mắc" },
+    { value: 3, suffix: "+", label: "Chuyên gia" },
+    { value: 5, suffix: "+", label: "Năm kinh nghiệm" },
+  ];
+
   const logoWidth = 100; // Chiều rộng mỗi logo (px)
   const gap = 20; // Khoảng cách giữa các logo (px)
   const totalWidth = (logoWidth + gap) * logos.length; // Tổng chiều rộng 1 lượt logo
@@ -118,18 +130,17 @@ const Features = () => {
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         variants={fadeInLeft}
+        onAnimationComplete={() => setStartCounting(true)} // 🔥 kích hoạt đếm sau khi animation hoàn tất
         className="flex justify-around flex-wrap gap-6 mt-8"
       >
-        {[
-          { value: "100+", label: "Học sinh" },
-          { value: "100%", label: "Hoàn thành xuất sắc" },
-          { value: "100%", label: "Giải đáp thắc mắc" },
-          { value: "3+", label: "Chuyên gia" },
-          { value: "4+", label: "Năm kinh nghiệm" },
-        ].map((item, index) => (
+        {data.map((item, index) => (
           <motion.div key={index} variants={fadeInLeft} className="text-center">
             <p className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-teal-400 text-transparent bg-clip-text">
-              {item.value}
+              {startCounting ? (
+                <CountUp end={item.value} duration={3} suffix={item.suffix} />
+              ) : (
+                "0" + item.suffix // Hiện 0 trước khi đếm
+              )}
             </p>
             <p className="text-gray-600">{item.label}</p>
           </motion.div>
