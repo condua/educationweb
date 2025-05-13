@@ -278,9 +278,8 @@ export default function BlogDetail() {
         <title>{blog.title}</title>
         <meta name="author" content="Phan Hoàng Phúc" />
         <link rel="author" href="https://twitter.com/joshcstory/" />
-        <meta name="keywords" content={blog.title} />
-        <meta name="description" content={blog.title} />
-        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.title} />
         <meta property="og:image" content={blog.imageTitle} />
       </article>
       <div className="max-w-3xl mx-auto px-4 py-10">
