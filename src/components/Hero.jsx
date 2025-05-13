@@ -160,10 +160,11 @@ const Hero = () => {
       >
         <motion.path
           fill="#fff"
+          // Tạo hiệu ứng sóng
           initial={{ d: wave1 }}
           animate={{ d: [wave1, wave2, wave3, wave4, wave1] }}
           transition={{
-            duration: 8,
+            duration: 4,
             ease: "easeInOut",
             repeat: Infinity,
           }}
