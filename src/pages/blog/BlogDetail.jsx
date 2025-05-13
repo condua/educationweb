@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogById } from "../../redux/blogSlice";
 import DOMPurify from "dompurify";
 import "jspdf-autotable"; // hỗ trợ vẽ bảng
-import MetaTags from "./../../utils/MetaTags";
 export default function BlogDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -269,13 +268,15 @@ export default function BlogDetail() {
 
   return (
     <>
-      <MetaTags
-        title={blog.title}
-        description={blog.title || "MLPA - Học trực tuyến dễ dàng hơn"}
-        image={blog.imageTitle}
-        name="MLPA"
-      />
-
+      <article>
+        <title>{blog.title}</title>
+        <meta name="author" content="Phan Hoàng Phúc" />
+        <link rel="author" href="https://twitter.com/joshcstory/" />
+        <meta name="keywords" content={blog.title} />
+        <meta name="description" content={blog.title} />
+        <meta name="robots" content="index, follow" />
+        <meta name="image" content={blog.imageTitle} />
+      </article>
       <div className="max-w-3xl mx-auto px-4 py-10">
         <Link
           to="/blog"

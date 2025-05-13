@@ -21,7 +21,6 @@ import BlogList from "./pages/blog/BlogList";
 import BlogDetail from "./pages/blog/BlogDetail";
 import CreateBlog from "./pages/blog/CreateBlog";
 import ProfilePage from "./components/Profile";
-import { HelmetProvider } from "react-helmet-async";
 
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
@@ -63,37 +62,35 @@ function App() {
 
   return (
     <BrowserRouter>
-      <HelmetProvider>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<BlogList />} />
-          <Route path="/blog/:id" element={<BlogDetail />} />
-          <Route path="/createblog" element={<CreateBlog />} />
-          <Route path="/login" element={<AuthRoute element={<Login />} />} />
-          <Route
-            path="/register"
-            element={<AuthRoute element={<Register />} />}
-          />
-          <Route path="/services" element={<Portfolio />} />
-          <Route
-            path="/profile"
-            element={<PrivateRoute element={<ProfilePage />} />}
-          />
-          <Route
-            path="/courses"
-            element={<PrivateRoute element={<CourseDashboard />} />}
-          />
-          <Route
-            path="/course/:id"
-            element={<PrivateRoute element={<CourseDetail />} />}
-          />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<BlogList />} />
+        <Route path="/blog/:id" element={<BlogDetail />} />
+        <Route path="/createblog" element={<CreateBlog />} />
+        <Route path="/login" element={<AuthRoute element={<Login />} />} />
+        <Route
+          path="/register"
+          element={<AuthRoute element={<Register />} />}
+        />
+        <Route path="/services" element={<Portfolio />} />
+        <Route
+          path="/profile"
+          element={<PrivateRoute element={<ProfilePage />} />}
+        />
+        <Route
+          path="/courses"
+          element={<PrivateRoute element={<CourseDashboard />} />}
+        />
+        <Route
+          path="/course/:id"
+          element={<PrivateRoute element={<CourseDetail />} />}
+        />
 
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <Chatbot />
-        <Footer />
-      </HelmetProvider>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+      <Chatbot />
+      <Footer />
     </BrowserRouter>
   );
 }
