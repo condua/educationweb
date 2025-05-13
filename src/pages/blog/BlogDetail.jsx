@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogById } from "../../redux/blogSlice";
 import DOMPurify from "dompurify";
 import "jspdf-autotable"; // hỗ trợ vẽ bảng
-import usePageSeo from "../../utils/usePageSeo";
+// import usePageSeo from "./../../utils/usePageSeo";
 export default function BlogDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -28,12 +28,24 @@ export default function BlogDetail() {
       window.MathJax.typesetPromise();
     }
   }, [blog]);
-  // usePageSeo({
-  //   title: blog.title,
-  //   description: blog.title,
-  //   image: blog.imageTitle,
-  //   type: "article",
-  // });
+  // usePageSeo(blog);
+  useEffect(() => {
+    // Dynamically updating Open Graph meta tags
+    if (blog) {
+      document.title = blog.title;
+
+      // Setting Open Graph meta tags
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const ogDescription = document.querySelector(
+        'meta[property="og:description"]'
+      );
+      const ogImage = document.querySelector('meta[property="og:image"]');
+      if (ogTitle) ogTitle.setAttribute("content", blog.title);
+      if (ogDescription) ogDescription.setAttribute("content", blog.title);
+      if (ogImage) ogImage.setAttribute("content", blog.imageTitle);
+    }
+  }, [blog]);
+
   if (loading) return <p>Loading blog...</p>;
   if (error) return <p>Error loading blog: {error}</p>;
   if (!blog) return <div className="p-10">Blog not found.</div>;
