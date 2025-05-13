@@ -41,7 +41,7 @@ export default function BlogDetail() {
       );
       const ogImage = document.querySelector('meta[property="og:image"]');
       if (ogTitle) ogTitle.setAttribute("content", blog.title);
-      if (ogDescription) ogDescription.setAttribute("content", blog.title);
+      if (ogDescription) ogDescription.setAttribute("content", blog.conten);
       if (ogImage) ogImage.setAttribute("content", blog.imageTitle);
     }
   }, [blog]);
