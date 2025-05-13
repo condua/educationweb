@@ -300,7 +300,6 @@ export default function BlogDetail() {
         >
           ← Quay lại
         </Link>
-
         <img
           src={blog.imageTitle}
           alt={`Image for ${blog.title}`}
