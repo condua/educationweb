@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { FaPaperPlane, FaRobot, FaTimes } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,12 +10,14 @@ export default function Chatbot() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const chatContentRef = useRef(null);
+  const { courses } = useSelector((state) => state.courses);
+
   const formatBotMessage = (text) => {
     return text
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bôi đậm
       .replace(/\n/g, "<br/>") // xuống dòng
       .replace(
-        /(https?:\/\/[^\s<]+)/g,
+        /(https?:\/\/[^\s<)]+)/g,
         '<a href="$1" class="text-sky-400 underline" target="_blank" rel="noopener noreferrer">$1</a>'
       ) // link
       .replace(
@@ -86,6 +89,10 @@ export default function Chatbot() {
         
               Đối với các câu hỏi khác không thuộc phạm vi MLPA, hãy tự động tìm kiếm và tổng hợp thông tin mới nhất từ search engine để trả lời chính xác và cập nhật cho người dùng.              
               
+              Thông tin các khóa học của MLPA: ${courses.map((item) => {
+                return `Tên khóa học: ${item.title}, Mô tả: ${item.description}, Giá: ${item.price}, Phân loại khóa học: ${item.category}, Giảng viên: ${item?.mentor?.name}, Link đăng ký: https://mlpa.site/course/${item._id}`;
+              })}
+
               Hôm nay là ${vietnamTime}
               `,
             },
