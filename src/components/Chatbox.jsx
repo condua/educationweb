@@ -6,7 +6,10 @@ export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Xin chào! Hãy nhập câu hỏi bên dưới." },
+    {
+      sender: "bot",
+      text: "Chào bạn. Bạn đang quan tâm đến điều gì ? Mình có thể giúp bạn tìm hiểu thêm.",
+    },
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const chatContentRef = useRef(null);
@@ -158,7 +161,7 @@ export default function Chatbot() {
                   key={idx}
                   className="text-white"
                   dangerouslySetInnerHTML={{
-                    __html: `<strong>Bot:</strong> ${formatBotMessage(
+                    __html: `<strong>MLPA Bot:</strong> ${formatBotMessage(
                       msg.text
                     )}`,
                   }}
