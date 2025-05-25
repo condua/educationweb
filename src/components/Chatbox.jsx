@@ -2,13 +2,32 @@ import { useState, useRef } from "react";
 import { FaPaperPlane, FaRobot, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
+function getGreetingByVietnamTime() {
+  const now = new Date();
+  // Giờ Việt Nam = UTC+7
+  const vietnamTime = new Date(
+    now.toLocaleString("en-US", { timeZone: "Asia/Ho_Chi_Minh" })
+  );
+  const hour = vietnamTime.getHours();
+
+  if (hour >= 5 && hour < 12) {
+    return "Chào buổi sáng, tình yêu.";
+  } else if (hour >= 12 && hour < 18) {
+    return "Chào buổi chiều, tình yêu.";
+  } else {
+    return "Chào buổi tối, tình yêu.";
+  }
+}
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([
     {
       sender: "bot",
-      text: "Chào bạn. Bạn đang quan tâm đến điều gì ? Mình có thể giúp bạn tìm hiểu thêm.",
+      text:
+        getGreetingByVietnamTime() +
+        " Bạn đang quan tâm đến điều gì? Mình có thể giúp bạn tìm hiểu thêm.",
     },
   ]);
   const [isLoading, setIsLoading] = useState(false);

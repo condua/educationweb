@@ -286,7 +286,7 @@ const CourseDetail = () => {
 
             <div
               ref={videoContainerRef}
-              className="relative w-full md:w-4xl mx-auto md:h-9/12 h-1/2 bg-none rounded-lg overflow-hidden"
+              className="relative w-full md:w-4xl mx-auto md:h-9/12 h-1/2 bg-none rounded-lg overflow-hidden cursor-pointer"
               onMouseMove={resetHideControlsTimer} // Reset khi di chuột
               // onDoubleClick={isMobile ? undefined : handleDoubleClick} // Nhấn đúp để fullscreen
               onContextMenu={(e) => e.preventDefault()} // Chặn chuột phải
