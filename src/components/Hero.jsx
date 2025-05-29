@@ -5,6 +5,7 @@ import { AiOutlinePlayCircle } from "react-icons/ai";
 import StudentImg from "../assets/student11.png"; // Thay đường dẫn thực tế
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"; // Thêm thư viện framer-motion để tạo hiệu ứng
+import "../css/button.css";
 const Hero = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,14 +48,22 @@ const Hero = () => {
             học và giải pháp công nghệ phù hợp cho mọi người
           </p>
           <div className="flex items-center space-x-4">
-            <button
-              onClick={() => {
-                navigate("/courses");
-              }}
-              className="bg-teal-600 text-white px-5 py-3 rounded hover:bg-teal-700 transition cursor-pointer"
-            >
-              Tham gia ngay
-            </button>
+            <div className="relative group inline-block cursor-pointer">
+              <motion.button
+                onClick={() => navigate("/courses")}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                // transition={{ delay: 0.6, duration: 0.8 }}
+                className="cursor-pointer relative overflow-hidden group inline-block bg-gradient-to-r from-teal-500 via-teal-600 to-teal-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 font-semibold"
+              >
+                <span className="relative z-10">Tham gia ngay</span>
+
+                {/* Shine effect */}
+                <span className="shine-effect absolute top-0 left-[-75%] w-[50%] h-full bg-white opacity-20 transform -skew-x-20 group-hover:animate-shine-loop pointer-events-none"></span>
+              </motion.button>
+            </div>
             <button
               onClick={toggleModal}
               className="flex items-center text-teal-600 hover:text-teal-800 font-medium cursor-pointer"
@@ -102,7 +111,7 @@ const Hero = () => {
 
           {/* Floating Card #1 (Ví dụ: 250k Assisted Student) */}
           <div className="absolute top-8 left-0 md:left-[-60px] bg-white/80 shadow-md rounded-xl p-4 md:w-40 text-center">
-            <p className="text-gray-600 text-sm">100+</p>
+            <p className="text-gray-600 text-sm">1000+</p>
             <p className="text-gray-800 font-semibold text-sm">Học viên</p>
           </div>
 

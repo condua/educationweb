@@ -1,0 +1,12 @@
+@keyframes shine-loop {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+.group .shine-effect {
+  animation: shine-loop 1.2s linear infinite;
+}

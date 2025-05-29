@@ -21,6 +21,7 @@ import BlogList from "./pages/blog/BlogList";
 import BlogDetail from "./pages/blog/BlogDetail";
 import CreateBlog from "./pages/blog/CreateBlog";
 import ProfilePage from "./components/Profile";
+import CoursePreview from "./pages/CoursePreview";
 
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
@@ -86,7 +87,10 @@ function App() {
           path="/course/:id"
           element={<PrivateRoute element={<CourseDetail />} />}
         />
-
+        <Route
+          path="/course/preview/:id"
+          element={<PrivateRoute element={<CoursePreview />} />}
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Chatbot />
