@@ -59,7 +59,10 @@ const CourseCard = ({ course }) => {
 
   return (
     <div
-      className="w-11/12 bg-white rounded-2xl shadow-md p-4 sm:w-80 hover:shadow-lg transition"
+      className="flex flex-col justify-between w-11/12 bg-white 
+      rounded-2xl shadow-md p-4 sm:w-80 hover:shadow-lg transition relative cursor-pointer
+      hover:scale-105 transform duration-300 ease-in-out
+      "
       // onClick={handleNavigate}
     >
       {course?.thumbnail ? (
@@ -81,7 +84,7 @@ const CourseCard = ({ course }) => {
         <h3 className="font-semibold text-lg mt-2">
           {course?.title || "Khóa học không có tiêu đề"}
         </h3>
-        <p className="text-gray-500 text-sm line-clamp-2">
+        <p className="text-gray-500 text-sm line-clamp-2 mb-5">
           {course?.description || "Không có mô tả."}
         </p>
 
@@ -100,12 +103,10 @@ const CourseCard = ({ course }) => {
             {course?.price || "Miễn phí"}
           </span>
         </div>
-
         <div className="flex items-center justify-between mt-2 text-gray-600 text-sm">
           <span>⭐ {course?.rating || "N/A"}</span>
           <span>👨‍🎓 {course?.students?.toLocaleString() || "0"}</span>
         </div>
-
         {/* Nút Đăng ký */}
         <button
           onClick={handleEnroll}
