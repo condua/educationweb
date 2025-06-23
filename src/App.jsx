@@ -22,7 +22,9 @@ import BlogDetail from "./pages/blog/BlogDetail";
 import CreateBlog from "./pages/blog/CreateBlog";
 import ProfilePage from "./components/Profile";
 import CoursePreview from "./pages/CoursePreview";
-
+import ExamDo from "./pages/exams/ExamDo";
+import ExamResultPage from "./pages/exams/ExamResultPage";
+import ExamList from "./pages/exams/ExamList";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   const location = useLocation();
@@ -91,6 +93,9 @@ function App() {
           path="/course/preview/:id"
           element={<PrivateRoute element={<CoursePreview />} />}
         />
+        <Route path="/exams" element={<ExamList />} />
+        <Route path="/exams/do/:examId" element={<ExamDo />} />
+        <Route path="/exams/result/:examId" element={<ExamResultPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Chatbot />

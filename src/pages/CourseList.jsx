@@ -75,7 +75,7 @@ const CourseList = () => {
       </div>
 
       <CategorySection setSelectedCategory={setSelectedCategory} />
-      <div className="flex gap-6 mt-6 flex-wrap">
+      <div className="flex gap-6 mt-6 flex-wrap justify-center items-center w-11/12">
         {currentCourses.length > 0 ? (
           currentCourses.map((course) => (
             <CourseCard key={course._id} course={course} />
