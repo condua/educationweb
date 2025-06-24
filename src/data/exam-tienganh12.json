@@ -12,12 +12,12 @@
         "title": "DIGITAL WELL-BEING IN A CONNECTED WORLD",
         "passage": "As technology becomes an essential part of modern life, it’s important to prioritize digital well-being—the practice of using digital tools in a way that supports mental, emotional, and physical health. This concept encourages individuals to (1)_______ balance between screen time and real-world interactions.\n\nPeople are now more aware of how excessive device use can negatively (2)_______ sleep, productivity, and relationships. By setting boundaries, such as turning off notifications or taking regular breaks, users can (3)_______ healthier digital habits.\n\nAnother key strategy is to (4)_______ mindful usage by choosing quality over quantity. Instead of endlessly scrolling through social media, individuals are encouraged to engage with content that (5)_______ learning, creativity, or meaningful connection.\n\nUltimately, digital well-being is about being intentional with technology. As more people (6)_______ this approach, a healthier digital future becomes more attainable.",
         "group_questions": [
-          { "id": "ta12_cloze_q1", "question": "Question 1:", "options": ["A. maintain", "B. demand", "C. threaten", "D. shift"], "correctAnswerIndex": 0 },
-          { "id": "ta12_cloze_q2", "question": "Question 2:", "options": ["A. benefit", "B. improve", "C. affect", "D. achieve"], "correctAnswerIndex": 2 },
-          { "id": "ta12_cloze_q3", "question": "Question 3:", "options": ["A. adapt", "B. build", "C. damage", "D. promote"], "correctAnswerIndex": 3 },
-          { "id": "ta12_cloze_q4", "question": "Question 4:", "options": ["A. discourage", "B. restrict", "C. encourage", "D. predict"], "correctAnswerIndex": 2 },
-          { "id": "ta12_cloze_q5", "question": "Question 5:", "options": ["A. harms", "B. fosters", "C. limits", "D. exchanges"], "correctAnswerIndex": 1 },
-          { "id": "ta12_cloze_q6", "question": "Question 6:", "options": ["A. interrupt", "B. adopt", "C. avoid", "D. reconsider"], "correctAnswerIndex": 1 }
+          { "id": "ta12_cloze_q1", "question": "Question 1:", "options": ["A. maintain", "B. demand", "C. threaten", "D. shift"], "correctAnswerIndex": 0, "explanation": "Cụm từ 'maintain balance' (duy trì sự cân bằng) là một collocation (cụm từ thường đi với nhau) phổ biến. Các lựa chọn khác không phù hợp về nghĩa." },
+          { "id": "ta12_cloze_q2", "question": "Question 2:", "options": ["A. benefit", "B. improve", "C. affect", "D. achieve"], "correctAnswerIndex": 2, "explanation": "Từ cần điền phải có nghĩa là 'ảnh hưởng đến'. 'Affect' (ảnh hưởng) là lựa chọn đúng. 'Negatively affect' có nghĩa là ảnh hưởng một cách tiêu cực." },
+          { "id": "ta12_cloze_q3", "question": "Question 3:", "options": ["A. adapt", "B. build", "C. damage", "D. promote"], "correctAnswerIndex": 3, "explanation": "Từ 'promote' (thúc đẩy, phát triển) phù hợp với ngữ cảnh 'promote healthier digital habits' (thúc đẩy các thói quen kỹ thuật số lành mạnh hơn)." },
+          { "id": "ta12_cloze_q4", "question": "Question 4:", "options": ["A. discourage", "B. restrict", "C. encourage", "D. predict"], "correctAnswerIndex": 2, "explanation": "'Encourage mindful usage' (khuyến khích việc sử dụng có chánh niệm) là phù hợp nhất với ý của câu là lựa chọn chất lượng thay vì số lượng." },
+          { "id": "ta12_cloze_q5", "question": "Question 5:", "options": ["A. harms", "B. fosters", "C. limits", "D. exchanges"], "correctAnswerIndex": 1, "explanation": "'Fosters' (nuôi dưỡng, bồi đắp) phù hợp với ngữ cảnh tích cực của việc học hỏi, sáng tạo và kết nối có ý nghĩa." },
+          { "id": "ta12_cloze_q6", "question": "Question 6:", "options": ["A. interrupt", "B. adopt", "C. avoid", "D. reconsider"], "correctAnswerIndex": 1, "explanation": "'Adopt this approach' (áp dụng phương pháp này) là cách diễn đạt đúng để chỉ việc mọi người bắt đầu làm theo một cách tiếp cận mới." }
         ]
       },
       {
@@ -27,12 +27,12 @@
         "title": "HEALTHY EATING FOR A BETTER LIFE",
         "passage": "Developing healthy eating habits is one of the most effective ways to improve overall well-being. A balanced diet not only boosts energy levels but also helps (7)_______ the risk of chronic illnesses such as heart disease, diabetes, and obesity.\n\nThe first step is to (8)_______ processed foods that are high in sugar, salt, and unhealthy fats. Instead, focus on whole foods—like fruits, vegetables, grains, and lean proteins—which provide essential nutrients and support long-term health.\n\nPortion control is another important factor. Eating mindfully and avoiding (9)_______ can prevent weight gain and digestive issues. Drinking enough water and limiting sugary beverages also (10)_______ a positive impact on metabolism and hydration.\n\nMeal planning can be useful in making healthier choices. When you (11)_______ your meals in advance, you're less likely to rely on fast food or unhealthy snacks. Over time, consistent healthy choices can (12)_______ into lasting lifestyle changes.",
         "group_questions": [
-          { "id": "ta12_cloze_q7", "question": "Question 7:", "options": ["A. increase", "B. reduce", "C. stimulate", "D. introduce"], "correctAnswerIndex": 1 },
-          { "id": "ta12_cloze_q8", "question": "Question 8:", "options": ["A. resist", "B. produce", "C. avoid", "D. demand"], "correctAnswerIndex": 2 },
-          { "id": "ta12_cloze_q9", "question": "Question 9:", "options": ["A. overthinking", "B. overeating", "C. overspending", "D. overreacting"], "correctAnswerIndex": 1 },
-          { "id": "ta12_cloze_q10", "question": "Question 10:", "options": ["A. have", "B. take", "C. make", "D. bring"], "correctAnswerIndex": 0 },
-          { "id": "ta12_cloze_q11", "question": "Question 11:", "options": ["A. forget", "B. skip", "C. prepare", "D. ignore"], "correctAnswerIndex": 2 },
-          { "id": "ta12_cloze_q12", "question": "Question 12:", "options": ["A. turn", "B. develop", "C. transform", "D. grow"], "correctAnswerIndex": 1 }
+          { "id": "ta12_cloze_q7", "question": "Question 7:", "options": ["A. increase", "B. reduce", "C. stimulate", "D. introduce"], "correctAnswerIndex": 1, "explanation": "Chế độ ăn cân bằng giúp 'reduce the risk' (giảm nguy cơ) mắc bệnh mãn tính. Đây là lựa chọn hợp lý nhất về mặt y học và ngữ cảnh." },
+          { "id": "ta12_cloze_q8", "question": "Question 8:", "options": ["A. resist", "B. produce", "C. avoid", "D. demand"], "correctAnswerIndex": 2, "explanation": "'Avoid processed foods' (tránh thực phẩm chế biến sẵn) là lời khuyên sức khỏe phổ biến và phù hợp với ý nghĩa của đoạn văn." },
+          { "id": "ta12_cloze_q9", "question": "Question 9:", "options": ["A. overthinking", "B. overeating", "C. overspending", "D. overreacting"], "correctAnswerIndex": 1, "explanation": "Trong ngữ cảnh về kiểm soát khẩu phần ăn, 'overeating' (ăn quá nhiều) là từ chính xác để chỉ nguyên nhân gây tăng cân." },
+          { "id": "ta12_cloze_q10", "question": "Question 10:", "options": ["A. have", "B. take", "C. make", "D. bring"], "correctAnswerIndex": 0, "explanation": "Cụm từ 'have a positive impact on' (có tác động tích cực đến) là cách diễn đạt đúng và phổ biến trong tiếng Anh." },
+          { "id": "ta12_cloze_q11", "question": "Question 11:", "options": ["A. forget", "B. skip", "C. prepare", "D. ignore"], "correctAnswerIndex": 2, "explanation": "Ngữ cảnh nói về 'meal planning' (lên kế hoạch bữa ăn), do đó 'prepare your meals in advance' (chuẩn bị bữa ăn trước) là hợp lý nhất." },
+          { "id": "ta12_cloze_q12", "question": "Question 12:", "options": ["A. turn", "B. develop", "C. transform", "D. grow"], "correctAnswerIndex": 1, "explanation": "'Develop into' (phát triển thành) phù hợp để diễn tả quá trình các lựa chọn nhỏ, nhất quán dần trở thành thay đổi lớn trong lối sống." }
         ]
       },
       {
@@ -40,68 +40,42 @@
         "id": "rearrangement_13_17",
         "instructions": "Mark the letter A, B, C or D on your answer sheet to indicate the best arrangement of utterances or sentences to make a meaningful exchange or text in each of the following questions from 13 to 17.",
         "group_questions": [
-    {
-      "id": "ta12_rearrange_q13",
-      "question": [
-        "a. Emma: I enjoy reading before bed. It helps me relax.",
-        "b. Emma: Mostly fiction. I love getting lost in stories.",
-        "c. Jack: That’s a nice routine. What kind of books do you read?"
-      ],
-      "options": ["A. a-b-c", "B. b-c-a", "C. a-c-b", "D. b-a-c"],
-      "correctAnswerIndex": 2
-    },
-    {
-      "id": "ta12_rearrange_q14",
-      "question": [
-        "a. Mike: I’ve been trying to reduce my screen time lately.",
-        "b. Sarah: That’s smart. Too much screen time affects sleep.",
-        "c. Mike: Yeah, I’ve started reading physical books instead.",
-        "d. Sarah: Maybe I should do the same. My sleep has been terrible."
-      ],
-      "options": ["A. a-b-c-d", "B. b-a-d-c", "C. a-c-b-d", "D. a-b-d-c"],
-      "correctAnswerIndex": 0
-    },
-    {
-      "id": "ta12_rearrange_q15",
-      "question": [
-        "Hi Daniel,",
-        "a. Have you looked into internship opportunities for the summer?",
-        "b. It’s great that you’re planning to gain real-world experience.",
-        "c. I know a few companies offering roles in marketing and tech.",
-        "d. Let me know if you’d like me to share the details.",
-        "e. Best of luck with your search!",
-        "",
-        "Best,",
-        "Michael"
-      ],
-      "options": ["A. b-a-c-d-e", "B. a-b-c-d-e", "C. b-c-a-d-e", "D. a-c-b-d-e"],
-      "correctAnswerIndex": 0
-    },
-    {
-      "id": "ta12_rearrange_q16",
-      "question": [
-        "a. Traveling helps people explore new cultures and perspectives.",
-        "b. It also enhances personal growth and adaptability.",
-        "c. Trying local food and meeting locals are enriching experiences.",
-        "d. Planning ahead can save both time and money.",
-        "e. A travel journal is a great way to preserve memories."
-      ],
-      "options": ["A. a-b-c-e-d", "B. a-b-d-c-e", "C. a-c-b-d-e", "D. a-b-c-d-e"],
-      "correctAnswerIndex": 3
-    },
-    {
-      "id": "ta12_rearrange_q17",
-      "question": [
-        "a. Regular sleep patterns improve mental and physical health.",
-        "b. Many people sacrifice sleep for work or entertainment.",
-        "c. This often leads to fatigue, stress, and poor performance.",
-        "d. Developing a nighttime routine can help.",
-        "e. Prioritizing rest is key to overall well-being."
-      ],
-      "options": ["A. a-b-c-d-e", "B. b-c-a-d-e", "C. a-d-b-c-e", "D. b-a-d-c-e"],
-      "correctAnswerIndex": 1
-    }
-  ]
+          {
+            "id": "ta12_rearrange_q13",
+            "question": ["a. Emma: I enjoy reading before bed. It helps me relax.", "b. Emma: Mostly fiction. I love getting lost in stories.", "c. Jack: That’s a nice routine. What kind of books do you read?"],
+            "options": ["A. a-b-c", "B. b-c-a", "C. a-c-b", "D. b-a-c"],
+            "correctAnswerIndex": 2,
+            "explanation": "Trình tự logic của cuộc hội thoại là: (a) Emma chia sẻ thói quen của mình -> (c) Jack hỏi thêm chi tiết về thói quen đó -> (b) Emma trả lời câu hỏi của Jack. Do đó, thứ tự đúng là a-c-b."
+          },
+          {
+            "id": "ta12_rearrange_q14",
+            "question": ["a. Mike: I’ve been trying to reduce my screen time lately.", "b. Sarah: That’s smart. Too much screen time affects sleep.", "c. Mike: Yeah, I’ve started reading physical books instead.", "d. Sarah: Maybe I should do the same. My sleep has been terrible."],
+            "options": ["A. a-b-c-d", "B. b-a-d-c", "C. a-c-b-d", "D. a-b-d-c"],
+            "correctAnswerIndex": 0,
+            "explanation": "Dòng chảy tự nhiên của cuộc trò chuyện là: (a) Mike nêu vấn đề -> (b) Sarah đồng tình và nêu hậu quả -> (c) Mike đưa ra giải pháp của mình -> (d) Sarah cân nhắc làm theo giải pháp đó. Do đó, thứ tự đúng là a-b-c-d."
+          },
+          {
+            "id": "ta12_rearrange_q15",
+            "question": ["Hi Daniel,", "a. Have you looked into internship opportunities for the summer?", "b. It’s great that you’re planning to gain real-world experience.", "c. I know a few companies offering roles in marketing and tech.", "d. Let me know if you’d like me to share the details.", "e. Best of luck with your search!", "", "Best,", "Michael"],
+            "options": ["A. b-a-c-d-e", "B. a-b-c-d-e", "C. b-c-a-d-e", "D. a-c-b-d-e"],
+            "correctAnswerIndex": 0,
+            "explanation": "Thứ tự logic của email: (b) Lời khen ngợi mở đầu -> (a) Câu hỏi chính -> (c) Đưa ra thông tin hỗ trợ -> (d) Đề nghị giúp đỡ -> (e) Lời chúc kết thúc. Do đó, thứ tự đúng là b-a-c-d-e."
+          },
+          {
+            "id": "ta12_rearrange_q16",
+            "question": ["a. Traveling helps people explore new cultures and perspectives.", "b. It also enhances personal growth and adaptability.", "c. Trying local food and meeting locals are enriching experiences.", "d. Planning ahead can save both time and money.", "e. A travel journal is a great way to preserve memories."],
+            "options": ["A. a-b-c-e-d", "B. a-b-d-c-e", "C. a-c-b-d-e", "D. a-b-c-d-e"],
+            "correctAnswerIndex": 3,
+            "explanation": "Đoạn văn có cấu trúc diễn dịch: (a) Nêu ý chính về lợi ích của du lịch -> (b) Bổ sung ý (also) -> (c) Đưa ra ví dụ cụ thể -> (d) Thêm một lợi ích khác -> (e) Nêu một hoạt động liên quan. Thứ tự a-b-c-d-e tạo ra một đoạn văn mạch lạc nhất."
+          },
+          {
+            "id": "ta12_rearrange_q17",
+            "question": ["a. Regular sleep patterns improve mental and physical health.", "b. Many people sacrifice sleep for work or entertainment.", "c. This often leads to fatigue, stress, and poor performance.", "d. Developing a nighttime routine can help.", "e. Prioritizing rest is key to overall well-being."],
+            "options": ["A. a-b-c-d-e", "B. b-c-a-d-e", "C. a-d-b-c-e", "D. b-a-d-c-e"],
+            "correctAnswerIndex": 1,
+            "explanation": "Cấu trúc vấn đề - giải pháp: (b) Nêu thực trạng -> (c) Hậu quả của thực trạng đó -> (a) Nêu một sự thật đối lập/lý tưởng -> (d) Đưa ra giải pháp -> (e) Kết luận, nhấn mạnh tầm quan trọng. Thứ tự b-c-a-d-e là hợp lý nhất."
+          }
+        ]
       },
       {
         "type": "passage_group",
@@ -109,11 +83,11 @@
         "instructions": "Read the following passage about Jane Goodall and mark the letter A, B, C or D on your answer sheet to indicate the option that best fits each of the numbered blanks from 18 to 22.",
         "passage": "Jane Goodall, a renowned primatologist and conservationist, (18) __________ groundbreaking research on chimpanzee behavior in the wild. Beginning her work in Tanzania in the 1960s, she challenged long-held beliefs by showing that chimpanzees use tools and display human-like emotions.\n\nHer unconventional approach, including giving names to the animals she studied, (19) __________ skepticism at first, but it ultimately changed the field of primatology forever. Over the decades, she (20) __________ tirelessly to promote wildlife conservation and animal welfare worldwide.\n\nToday, Goodall is recognized not only for her scientific contributions but also for her passionate advocacy. Her Roots & Shoots program, (21) __________ in over 100 countries, empowers young people to take action for animals, people, and the environment.\n\n(22) __________ her lifelong dedication, Goodall has become a symbol of hope and compassion in the face of environmental challenges.",
         "group_questions": [
-          { "id": "ta12_cloze_q18", "question": "Question 18:", "options": ["A. conducted", "B. has conducted", "C. had been conducting", "D. conducting"], "correctAnswerIndex": 0 },
-          { "id": "ta12_cloze_q19", "question": "Question 19:", "options": ["A. met with", "B. was meeting", "C. was met", "D. met"], "correctAnswerIndex": 0 },
-          { "id": "ta12_cloze_q20", "question": "Question 20:", "options": ["A. worked", "B. had worked", "C. works", "D. has worked"], "correctAnswerIndex": 3 },
-          { "id": "ta12_cloze_q21", "question": "Question 21:", "options": ["A. which operates now", "B. that is now operating", "C. operating now", "D. which now operates"], "correctAnswerIndex": 2 },
-          { "id": "ta12_cloze_q22", "question": "Question 22:", "options": ["A. Thanks to", "B. In contrast to", "C. Despite", "D. Due to"], "correctAnswerIndex": 0 }
+          { "id": "ta12_cloze_q18", "question": "Question 18:", "options": ["A. conducted", "B. has conducted", "C. had been conducting", "D. conducting"], "correctAnswerIndex": 0, "explanation": "Hành động nghiên cứu xảy ra và hoàn tất trong quá khứ (bắt đầu từ những năm 1960). Thì Quá khứ đơn (conducted) là phù hợp nhất." },
+          { "id": "ta12_cloze_q19", "question": "Question 19:", "options": ["A. met with", "B. was meeting", "C. was met", "D. met"], "correctAnswerIndex": 0, "explanation": "Cụm động từ 'meet with skepticism' có nghĩa là 'vấp phải sự hoài nghi'. Đây là cách diễn đạt tự nhiên và phù hợp với ngữ cảnh." },
+          { "id": "ta12_cloze_q20", "question": "Question 20:", "options": ["A. worked", "B. had worked", "C. works", "D. has worked"], "correctAnswerIndex": 3, "explanation": "Hành động làm việc không mệt mỏi kéo dài từ quá khứ ('Over the decades') cho đến hiện tại. Thì Hiện tại hoàn thành (has worked) diễn tả chính xác điều này." },
+          { "id": "ta12_cloze_q21", "question": "Question 21:", "options": ["A. which operates now", "B. that is now operating", "C. operating now", "D. which now operates"], "correctAnswerIndex": 2, "explanation": "Đây là dạng rút gọn mệnh đề quan hệ chủ động. 'Her Roots & Shoots program, which operates now...' có thể được rút gọn thành 'Her Roots & Shoots program, operating now...'." },
+          { "id": "ta12_cloze_q22", "question": "Question 22:", "options": ["A. Thanks to", "B. In contrast to", "C. Despite", "D. Due to"], "correctAnswerIndex": 0, "explanation": "'Thanks to' (Nhờ vào) thể hiện nguyên nhân tích cực. Việc bà cống hiến cả đời đã giúp bà trở thành biểu tượng của hy vọng. Các lựa chọn khác không phù hợp về nghĩa." }
         ]
       },
       {
@@ -122,14 +96,14 @@
         "instructions": "Read the following passage about Environmental Awareness and mark the letter A, B, C or D on your answer sheet to indicate the best answer to each of the following questions from 23 to 30.",
         "passage": "Environmental awareness refers to the understanding and knowledge that people have about the environment and the issues that threaten it. In recent decades, the increasing impact of climate change, deforestation, pollution, and loss of biodiversity has made environmental education more important than ever. Raising awareness is a crucial step in encouraging people to adopt more sustainable behaviors and to demand policies that protect the planet.\n\nOne significant aspect of environmental awareness is recognizing how human activities contribute to environmental degradation. From the overuse of fossil fuels to improper waste disposal, our actions directly affect the Earth’s ecosystems. For example, single-use plastics continue to pollute oceans and harm marine life, despite global efforts to reduce plastic consumption. Therefore, educating people about the consequences of their choices is a powerful tool for change.\n\nEnvironmental campaigns and social media also play a vital role in spreading awareness. By sharing facts, stories, and practical tips, these platforms help people understand the urgency of the problem and how they can make a difference. More importantly, they inspire collective action. When communities come together—whether to plant trees, clean rivers, or push for renewable energy—they create lasting impact.\n\nSchools and universities are increasingly incorporating environmental education into their curricula. Through interactive lessons and hands-on activities, students learn not just the science behind climate change, but also how to take action. In many places, young people are leading climate movements, proving that awareness can lead to real change when it is backed by education and activism.\n\nUltimately, promoting environmental awareness helps people make informed decisions that benefit both themselves and the planet. Whether it's reducing energy use, choosing eco-friendly products, or supporting green policies, individual efforts—when multiplied across millions—can contribute to a more sustainable future.",
         "group_questions": [
-          { "id": "ta12_read_q23", "question": "The word “crucial” in paragraph 1 is CLOSEST in meaning to:", "options": ["A. risky", "B. unnecessary", "C. essential", "D. minor"], "correctAnswerIndex": 2 },
-          { "id": "ta12_read_q24", "question": "What is the main cause of environmental degradation according to paragraph 2?", "options": ["A. Natural disasters and global warming", "B. Lack of technology and education", "C. Human activities such as pollution and waste", "D. Overpopulation in urban areas"], "correctAnswerIndex": 2 },
-          { "id": "ta12_read_q25", "question": "According to the passage, what is the benefit of social media in environmental awareness?", "options": ["A. It replaces traditional education.", "B. It shares knowledge and motivates people to act.", "C. It stops pollution from spreading.", "D. It forces companies to change their products."], "correctAnswerIndex": 1 },
-          { "id": "ta12_read_q26", "question": "The word “they” in paragraph 3 refers to:", "options": ["A. facts and tips", "B. environmental problems", "C. communities", "D. campaigns"], "correctAnswerIndex": 2 },
-          { "id": "ta12_read_q27", "question": "Which of the following is TRUE according to paragraph 4?", "options": ["A. Students are only taught about the dangers of climate change.", "B. Environmental education is now a requirement in all schools.", "C. Education encourages both knowledge and practical action.", "D. Older people are more active than youth in environmental issues."], "correctAnswerIndex": 2 },
-          { "id": "ta12_read_q28", "question": "What can be inferred from the passage?", "options": ["A. Individual actions can contribute to global sustainability.", "B. People cannot change the environment without government help.", "C. Awareness alone is enough to solve environmental problems.", "D. Environmental problems only exist in developing countries."], "correctAnswerIndex": 0 },
-          { "id": "ta12_read_q29", "question": "Which paragraph mentions the role of schools in promoting environmental awareness?", "options": ["A. Paragraph 1", "B. Paragraph 3", "C. Paragraph 5", "D. Paragraph 4"], "correctAnswerIndex": 3 },
-          { "id": "ta12_read_q30", "question": "What is the main idea of the passage?", "options": ["A. Environmental awareness is spreading thanks to social media.", "B. Raising environmental awareness helps people take action for a greener future.", "C. Education is the only way to stop climate change.", "D. Governments need to lead environmental campaigns to save the Earth."], "correctAnswerIndex": 1 }
+          { "id": "ta12_read_q23", "question": "The word “crucial” in paragraph 1 is CLOSEST in meaning to:", "options": ["A. risky", "B. unnecessary", "C. essential", "D. minor"], "correctAnswerIndex": 2, "explanation": "Trong ngữ cảnh 'Raising awareness is a crucial step', từ 'crucial' có nghĩa là cực kỳ quan trọng, thiết yếu. 'Essential' là từ đồng nghĩa gần nhất." },
+          { "id": "ta12_read_q24", "question": "What is the main cause of environmental degradation according to paragraph 2?", "options": ["A. Natural disasters and global warming", "B. Lack of technology and education", "C. Human activities such as pollution and waste", "D. Overpopulation in urban areas"], "correctAnswerIndex": 2, "explanation": "Đoạn 2 nêu rõ: 'recognizing how human activities contribute to environmental degradation. From the overuse of fossil fuels to improper waste disposal...'" },
+          { "id": "ta12_read_q25", "question": "According to the passage, what is the benefit of social media in environmental awareness?", "options": ["A. It replaces traditional education.", "B. It shares knowledge and motivates people to act.", "C. It stops pollution from spreading.", "D. It forces companies to change their products."], "correctAnswerIndex": 1, "explanation": "Đoạn 3 chỉ ra: 'By sharing facts, stories, and practical tips, these platforms help people understand the urgency of the problem and how they can make a difference.'" },
+          { "id": "ta12_read_q26", "question": "The word “they” in paragraph 3 refers to:", "options": ["A. facts and tips", "B. environmental problems", "C. communities", "D. campaigns"], "correctAnswerIndex": 2, "explanation": "Câu trước đó nói về 'When communities come together...'. Do đó, 'they' ở câu sau ('they create lasting impact') chính là 'communities'." },
+          { "id": "ta12_read_q27", "question": "Which of the following is TRUE according to paragraph 4?", "options": ["A. Students are only taught about the dangers of climate change.", "B. Environmental education is now a requirement in all schools.", "C. Education encourages both knowledge and practical action.", "D. Older people are more active than youth in environmental issues."], "correctAnswerIndex": 2, "explanation": "Đoạn 4 nói rằng học sinh 'learn not just the science... but also how to take action', có nghĩa là giáo dục khuyến khích cả kiến thức và hành động thực tế." },
+          { "id": "ta12_read_q28", "question": "What can be inferred from the passage?", "options": ["A. Individual actions can contribute to global sustainability.", "B. People cannot change the environment without government help.", "C. Awareness alone is enough to solve environmental problems.", "D. Environmental problems only exist in developing countries."], "correctAnswerIndex": 0, "explanation": "Đoạn cuối kết luận: 'individual efforts—when multiplied across millions—can contribute to a more sustainable future', cho thấy hành động cá nhân có thể đóng góp vào sự bền vững toàn cầu." },
+          { "id": "ta12_read_q29", "question": "Which paragraph mentions the role of schools in promoting environmental awareness?", "options": ["A. Paragraph 1", "B. Paragraph 3", "C. Paragraph 5", "D. Paragraph 4"], "correctAnswerIndex": 3, "explanation": "Đoạn 4 bắt đầu bằng câu: 'Schools and universities are increasingly incorporating environmental education into their curricula.'" },
+          { "id": "ta12_read_q30", "question": "What is the main idea of the passage?", "options": ["A. Environmental awareness is spreading thanks to social media.", "B. Raising environmental awareness helps people take action for a greener future.", "C. Education is the only way to stop climate change.", "D. Governments need to lead environmental campaigns to save the Earth."], "correctAnswerIndex": 1, "explanation": "Toàn bộ bài văn tập trung vào tầm quan trọng của việc nâng cao nhận thức về môi trường như một bước quan trọng để khuyến khích hành động bền vững, từ cá nhân đến cộng đồng." }
         ]
       },
       {
@@ -138,16 +112,16 @@
         "instructions": "Read the following passage about Artificial Intelligence and mark the letter A, B, C or D on your answer sheet to indicate the best answer to each of the following questions from 31 to 40.",
         "passage": "Artificial Intelligence (AI) is rapidly transforming industries and reshaping the way we live and work. From smart assistants and facial recognition to medical diagnostics and self-driving cars, AI technologies are becoming deeply integrated into modern society. While many celebrate its potential to improve efficiency and accuracy, others worry about ethical issues, data privacy, and job displacement.\n\nAI’s impact is not felt equally across all sectors. In manufacturing, for example, automation powered by AI has led to the replacement of many routine jobs, while in healthcare, it supports professionals by analyzing complex data and assisting in diagnoses. [I] In education, AI tools are being used to personalize learning experiences, making lessons more engaging and tailored to individual students. [II] However, these benefits are not universal—regions with limited access to technology risk being left behind. [III] Addressing these inequalities is essential to ensure that AI promotes progress rather than deepening existing divides. [IV]\n\nGovernments and companies are now discussing ways to regulate AI and manage its growth responsibly. Debates center around how to ensure transparency in AI decisions and how to prevent biases from being embedded in algorithms. At the same time, experts emphasize the need to include diverse voices in AI development—so that the technology reflects a broader range of values and experiences.\n\nPublic awareness is also growing. People are beginning to question how AI affects their daily lives—from the content they see online to the way their data is collected and used. Youth activists, researchers, and civil rights organizations are calling for more ethical guidelines in AI deployment and more accountability from tech giants.\n\nDespite uncertainties, AI holds great promise. If developed and governed responsibly, it can revolutionize fields from agriculture to environmental monitoring. But realizing this promise depends on global cooperation, inclusive development, and a shared commitment to human-centered technology.",
         "group_questions": [
-          { "id": "ta12_read_q31", "question": "The word “transforming” in paragraph 1 is CLOSEST in meaning to:", "options": ["A. observing", "B. changing", "C. following", "D. removing"], "correctAnswerIndex": 1 },
-          { "id": "ta12_read_q32", "question": "The word “it” in paragraph 2 refers to:", "options": ["A. automation", "B. healthcare", "C. AI", "D. manufacturing"], "correctAnswerIndex": 2 },
-          { "id": "ta12_read_q33", "question": "Where in paragraph 2 does the following sentence best fit?\n“This has led to concerns about unequal benefits and digital gaps.”", "options": ["A. [I]", "B. [II]", "C. [III]", "D. [IV]"], "correctAnswerIndex": 2 },
-          { "id": "ta12_read_q34", "question": "What is the main idea of paragraph 2?", "options": ["A. AI is mostly harmful to developing countries.", "B. The benefits and impacts of AI differ by industry and region.", "C. AI in education will replace teachers.", "D. All sectors benefit equally from AI."], "correctAnswerIndex": 1 },
-          { "id": "ta12_read_q35", "question": "The phrase “manage its growth responsibly” in paragraph 3 is best replaced by:", "options": ["A. support faster development", "B. ignore public opinions", "C. prevent any further use", "D. control how it expands safely"], "correctAnswerIndex": 3 },
-          { "id": "ta12_read_q36", "question": "Which of the following is NOT mentioned as a concern about AI?", "options": ["A. Job loss due to automation", "B. Bias in decision-making", "C. Lack of interest in AI careers", "D. Data privacy issues"], "correctAnswerIndex": 2 },
-          { "id": "ta12_read_q37", "question": "Why do experts call for diverse voices in AI development?", "options": ["A. To promote international trade", "B. To ensure AI reflects a variety of human values", "C. To speed up AI production", "D. To reduce the cost of building AI systems"], "correctAnswerIndex": 1 },
-          { "id": "ta12_read_q38", "question": "What does the underlined sentence in paragraph 5 suggest?\n(“But realizing this promise depends on global cooperation, inclusive development, and a shared commitment to human-centered technology.”)", "options": ["A. AI will benefit only wealthy nations.", "B. AI can succeed without regulations.", "C. Collaboration is key to using AI for good.", "D. AI should not be developed anymore."], "correctAnswerIndex": 2 },
-          { "id": "ta12_read_q39", "question": "What can be inferred from the passage?", "options": ["A. AI should be banned until it is fully understood.", "B. AI will eventually replace all human workers.", "C. Without regulation, AI may worsen social inequalities.", "D. Everyone already benefits equally from AI."], "correctAnswerIndex": 2 },
-          { "id": "ta12_read_q40", "question": "Which of the following best summarizes the entire passage?", "options": ["A. AI offers great potential but requires ethical and inclusive development.", "B. Artificial Intelligence is dangerous and must be stopped.", "C. AI has replaced all jobs in most sectors.", "D. Only governments can benefit from artificial intelligence."], "correctAnswerIndex": 0 }
+          { "id": "ta12_read_q31", "question": "The word “transforming” in paragraph 1 is CLOSEST in meaning to:", "options": ["A. observing", "B. changing", "C. following", "D. removing"], "correctAnswerIndex": 1, "explanation": "'Transforming' có nghĩa là biến đổi, thay đổi một cách sâu sắc. 'Changing' là từ đồng nghĩa gần nhất." },
+          { "id": "ta12_read_q32", "question": "The word “it” in paragraph 2 refers to:", "options": ["A. automation", "B. healthcare", "C. AI", "D. manufacturing"], "correctAnswerIndex": 2, "explanation": "Câu trước đó nói về 'automation powered by AI' và 'in healthcare, it supports...'. 'It' ở đây thay thế cho 'AI' để tránh lặp từ." },
+          { "id": "ta12_read_q33", "question": "Where in paragraph 2 does the following sentence best fit?\n“This has led to concerns about unequal benefits and digital gaps.”", "options": ["A. [I]", "B. [II]", "C. [III]", "D. [IV]"], "correctAnswerIndex": 2, "explanation": "Câu trước [III] nói về 'benefits are not universal' và 'risk being left behind'. Câu cần chèn ('This has led to concerns about unequal benefits...') là một hệ quả trực tiếp của ý này." },
+          { "id": "ta12_read_q34", "question": "What is the main idea of paragraph 2?", "options": ["A. AI is mostly harmful to developing countries.", "B. The benefits and impacts of AI differ by industry and region.", "C. AI in education will replace teachers.", "D. All sectors benefit equally from AI."], "correctAnswerIndex": 1, "explanation": "Đoạn 2 đưa ra các ví dụ về tác động khác nhau của AI trong các lĩnh vực (sản xuất, y tế, giáo dục) và khu vực, cho thấy lợi ích và tác động không đồng đều." },
+          { "id": "ta12_read_q35", "question": "The phrase “manage its growth responsibly” in paragraph 3 is best replaced by:", "options": ["A. support faster development", "B. ignore public opinions", "C. prevent any further use", "D. control how it expands safely"], "correctAnswerIndex": 3, "explanation": "'Manage responsibly' có nghĩa là quản lý một cách có trách nhiệm. 'Control how it expands safely' (kiểm soát cách nó mở rộng một cách an toàn) thể hiện rõ nhất ý nghĩa này." },
+          { "id": "ta12_read_q36", "question": "Which of the following is NOT mentioned as a concern about AI?", "options": ["A. Job loss due to automation", "B. Bias in decision-making", "C. Lack of interest in AI careers", "D. Data privacy issues"], "correctAnswerIndex": 2, "explanation": "Bài đọc có đề cập đến 'job displacement' (mất việc), 'biases... in algorithms' (thiên vị), và 'data privacy' (quyền riêng tư dữ liệu). 'Lack of interest in AI careers' (thiếu hứng thú với ngành AI) không được đề cập." },
+          { "id": "ta12_read_q37", "question": "Why do experts call for diverse voices in AI development?", "options": ["A. To promote international trade", "B. To ensure AI reflects a variety of human values", "C. To speed up AI production", "D. To reduce the cost of building AI systems"], "correctAnswerIndex": 1, "explanation": "Đoạn 3 nêu rõ lý do: 'so that the technology reflects a broader range of values and experiences' (để công nghệ phản ánh một phạm vi rộng hơn các giá trị và kinh nghiệm)." },
+          { "id": "ta12_read_q38", "question": "What does the underlined sentence in paragraph 5 suggest?\n(“But realizing this promise depends on global cooperation, inclusive development, and a shared commitment to human-centered technology.”)", "options": ["A. AI will benefit only wealthy nations.", "B. AI can succeed without regulations.", "C. Collaboration is key to using AI for good.", "D. AI should not be developed anymore."], "correctAnswerIndex": 2, "explanation": "Câu này nhấn mạnh rằng để hiện thực hóa lời hứa của AI, cần có sự hợp tác toàn cầu và phát triển bao trùm, cho thấy sự hợp tác là chìa khóa để sử dụng AI cho mục đích tốt." },
+          { "id": "ta12_read_q39", "question": "What can be inferred from the passage?", "options": ["A. AI should be banned until it is fully understood.", "B. AI will eventually replace all human workers.", "C. Without regulation, AI may worsen social inequalities.", "D. Everyone already benefits equally from AI."], "correctAnswerIndex": 2, "explanation": "Bài đọc đề cập đến những lo ngại về 'deepening existing divides' và nhu cầu 'regulate AI', từ đó có thể suy ra rằng nếu không có quy định, AI có thể làm trầm trọng thêm sự bất bình đẳng xã hội." },
+          { "id": "ta12_read_q40", "question": "Which of the following best summarizes the entire passage?", "options": ["A. AI offers great potential but requires ethical and inclusive development.", "B. Artificial Intelligence is dangerous and must be stopped.", "C. AI has replaced all jobs in most sectors.", "D. Only governments can benefit from artificial intelligence."], "correctAnswerIndex": 0, "explanation": "Bài văn trình bày hai mặt của AI: tiềm năng to lớn ('great promise') và những thách thức về đạo đức, bất bình đẳng, đòi hỏi sự phát triển có trách nhiệm và bao trùm. Lựa chọn A tóm tắt đầy đủ nhất ý này." }
         ]
       }
     ]
