@@ -56,7 +56,6 @@ const ResultDetailItem = ({ question, index, userAnswerIndex }) => {
           </span>
         </p>
       )}
-
       {/* Hiển thị giải thích nếu có */}
       {question.explanation && (
         <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
