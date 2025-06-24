@@ -2,14 +2,13 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 
-// Import tất cả dữ liệu đề thi
+// Import dữ liệu
 import examToan6 from "../../data/exam-toan6.json";
 import examTiengAnh10 from "../../data/exam-tienganh10.json";
 import examDanhGiaNangLuc from "../../data/exam-danhgianangluc.json";
 import examToan12 from "../../data/exam-toan12.json";
 import examTiengAnh12 from "../../data/exam-tienganh12.json";
 
-// Gộp tất cả dữ liệu đề thi
 const allExamData = [
   ...examToan6,
   ...examTiengAnh10,
@@ -18,7 +17,15 @@ const allExamData = [
   ...examTiengAnh12,
 ];
 
-// Component ExamList đã được nâng cấp
+const removeAccents = (str) => {
+  if (!str) return "";
+  return str
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d");
+};
+
 const ExamList = () => {
   const navigate = useNavigate();
 
@@ -28,24 +35,20 @@ const ExamList = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tất cả");
+  // State cho gợi ý tìm kiếm
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
-  // --- CẢI TIẾN: TỰ ĐỘNG TẠO DANH MỤC TỪ DỮ LIỆU ---
   const dynamicCategories = useMemo(() => {
-    // Lấy tất cả các giá trị 'grade' duy nhất từ dữ liệu
     const grades = [...new Set(allExams.map((exam) => exam.grade))];
-
-    // Sắp xếp các lớp theo số thứ tự và các danh mục khác theo chữ cái
     grades.sort((a, b) => {
-      const numA = parseInt(a.match(/\d+/)); // Trích xuất số từ chuỗi, ví dụ "Lớp 12" -> 12
+      const numA = parseInt(a.match(/\d+/));
       const numB = parseInt(b.match(/\d+/));
-
-      if (numA && numB) return numA - numB; // Sắp xếp các lớp có số
-      if (numA) return -1; // Ưu tiên các lớp có số lên trước
-      if (numB) return 1; // Các mục không có số ra sau
-      return a.localeCompare(b); // Sắp xếp các mục còn lại theo alphabet
+      if (numA && numB) return numA - numB;
+      if (numA) return -1;
+      if (numB) return 1;
+      return a.localeCompare(b);
     });
-
-    // Thêm "Tất cả" vào đầu danh sách
     return ["Tất cả", ...grades];
   }, [allExams]);
 
@@ -55,25 +58,39 @@ const ExamList = () => {
     setLoading(false);
   }, []);
 
+  // Effect tạo gợi ý khi gõ tìm kiếm
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setSuggestions([]);
+      setShowSuggestions(false);
+      return;
+    }
+    const normalizedSearchTerm = removeAccents(searchTerm);
+    const matchingExams = allExams
+      .filter((exam) =>
+        removeAccents(exam.title).includes(normalizedSearchTerm)
+      )
+      .slice(0, 5); // Giới hạn 5 gợi ý
+
+    setSuggestions(matchingExams);
+    setShowSuggestions(matchingExams.length > 0);
+  }, [searchTerm, allExams]);
+
+  // Effect lọc kết quả chính để hiển thị
   useEffect(() => {
     let results = allExams;
-
-    // 1. Lọc theo danh mục (dựa vào tên danh mục được chọn)
     if (selectedCategory !== "Tất cả") {
       results = results.filter((exam) => exam.grade === selectedCategory);
     }
-
-    // 2. Lọc theo từ khóa tìm kiếm (dựa vào tên đề thi)
     if (searchTerm) {
+      const normalizedSearchTerm = removeAccents(searchTerm);
       results = results.filter((exam) =>
-        exam.title.toLowerCase().includes(searchTerm.toLowerCase())
+        removeAccents(exam.title).includes(normalizedSearchTerm)
       );
     }
-
     setFilteredExams(results);
   }, [searchTerm, selectedCategory, allExams]);
 
-  // --- HÀM HỖ TRỢ ---
   const calculateTotalQuestions = (exam) => {
     return exam.questions.reduce((total, currentItem) => {
       if (
@@ -98,7 +115,6 @@ const ExamList = () => {
     );
   }
 
-  // --- RENDER ---
   return (
     <div className="min-h-screen bg-gray-100 p-4 md:p-8 flex flex-col items-center">
       <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 text-center">
@@ -112,20 +128,44 @@ const ExamList = () => {
             placeholder="Tìm kiếm theo tên đề thi..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onFocus={() => setShowSuggestions(suggestions.length > 0)}
+            onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
             className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            autoComplete="off"
           />
           <Search
             className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
             size={20}
           />
+
+          {showSuggestions && (
+            <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-xl z-20">
+              <ul className="divide-y divide-gray-100">
+                {suggestions.map((exam) => (
+                  <li
+                    key={exam.id}
+                    className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-gray-800 text-sm"
+                    onMouseDown={() => {
+                      setSearchTerm(exam.title);
+                      setShowSuggestions(false);
+                    }}
+                  >
+                    {exam.title}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
-        {/* Render các nút danh mục được tạo tự động */}
         <div className="flex flex-wrap justify-center gap-2">
           {dynamicCategories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => {
+                setSelectedCategory(category);
+                setShowSuggestions(false); // Ẩn gợi ý khi chọn category
+              }}
               className={`px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-200 ${
                 selectedCategory === category
                   ? "bg-blue-600 text-white shadow-md"
@@ -143,7 +183,7 @@ const ExamList = () => {
           filteredExams.map((exam) => (
             <div
               key={exam.id}
-              className="bg-white rounded-lg shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 p-6 flex flex-col"
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 p-6 flex flex-col"
             >
               <h3 className="text-xl font-semibold text-indigo-700 mb-2 flex-grow">
                 {exam.title}
