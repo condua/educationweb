@@ -5,6 +5,7 @@ import { logout } from "../redux/authSlice";
 import { logoutUser } from "../redux/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUser } from "../redux/userSlice";
+import logo from "../assets/logo.png"; // Giả sử bạn có một logo
 const Header = () => {
   const dispatch = useDispatch();
 
@@ -90,15 +91,13 @@ const Header = () => {
 
   return (
     <header className="w-full bg-white shadow sticky z-50 top-0 left-0">
-      <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-0">
+      <div className="container mx-auto flex items-center justify-between py-2 px-4 md:px-0">
         {/* Logo */}
-        <div
+        <img
+          src={logo}
+          className="sm:w-20 sm:h-20 w-15 h-15 cursor-pointer sm:ml-0 ml-5"
           onClick={() => navigate("/home")}
-          className="text-xl font-bold text-teal-600 cursor-pointer"
-        >
-          MLPA
-        </div>
-
+        />
         {/* Menu chính */}
         <nav className="hidden md:flex space-x-8 text-gray-600">
           {items.map((item, index) => (

@@ -143,7 +143,7 @@ const ExamList = () => {
           filteredExams.map((exam) => (
             <div
               key={exam.id}
-              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-6 flex flex-col"
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 p-6 flex flex-col"
             >
               <h3 className="text-xl font-semibold text-indigo-700 mb-2 flex-grow">
                 {exam.title}

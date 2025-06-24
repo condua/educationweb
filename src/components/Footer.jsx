@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col-reverse md:flex-row justify-between items-center">
           <div className="sm:w-1/2 -mb-5 md:mb-0 flex flex-col items-center">
-            <img className="w-24 h-18 my-2 md:block hidden" src={logo} />
+            <img className="w-24 my-2 md:block hidden" src={logo} />
             <p className="text-sm text-gray-400 text-center sm:text-left">
               Copyright © {new Date().getFullYear()} All rights reserved
               <br /> Made by Phan Hoàng Phúc
@@ -23,7 +23,7 @@ const Footer = () => {
           </div>
           <div className="w-full border-1 border-solid md:hidden my-2" />
           <div className="flex flex-row justify-around gap-x-2 w-full items-center">
-            <img className="w-20 h-15 my-2 md:hidden" src={logo} />
+            <img className="w-20 my-2 md:hidden" src={logo} />
             <div className="flex flex-col text-xs md:text-lg gap-y-1.5">
               <p>Liên hệ</p>
               <p className="flex gap-1 items-center">
