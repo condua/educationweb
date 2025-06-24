@@ -125,5 +125,130 @@
         ]
       }
     ]
+  },
+  {
+    "id": "tienganh-lop12-de02",
+    "subject": "Tiếng Anh",
+    "grade": "Lớp 12",
+    "title": "Đề thi thử tiếng Anh Lớp 12 - MLPA - Đề số 2",
+    "questions": [
+      {
+        "type": "passage_group",
+        "id": "passage_group_de02_1",
+        "instructions": "Read the following advertisement about a new fitness app and mark the letter A, B, C or D on your answer sheet to indicate the option that best fits each of the numbered blanks from 1 to 6.",
+        "title": "GET FIT YOUR OWN WAY WITH FITZONE",
+        "passage": "“Are you ready to (1)_______ your fitness journey? Whether you prefer jogging in the park or lifting weights at the gym, we have something for everyone.” If you want a personalized experience (2)_______ your lifestyle, we’ve got you covered! FitZone is a (3)________ app that lets you track your progress, connect with friends, and find workout plans that match your goals. All you need to do is select your preferences, and you’ll (4)______ tailored routines in no time. Whether you want to (5)______ muscle or lose weight, FitZone makes it easy. If you’re (6)______ for motivation or simply a little push, we’re here to help you stay on track!",
+        "group_questions": [
+          { "id": "ta12_de02_q1", "question": "Question 1:", "options": ["A. lift", "B. start", "C. break", "D. follow"], "correctAnswerIndex": 1, "explanation": "Cụm từ 'start your journey' (bắt đầu hành trình của bạn) là cách diễn đạt phổ biến và phù hợp nhất trong ngữ cảnh này." },
+          { "id": "ta12_de02_q2", "question": "Question 2:", "options": ["A. into", "B. from", "C. to", "D. with"], "correctAnswerIndex": 2, "explanation": "Trong cấu trúc 'a personalized experience ... your lifestyle', giới từ 'to' được dùng để chỉ sự phù hợp, 'đo ni đóng giày' cho lối sống của bạn." },
+          { "id": "ta12_de02_q3", "question": "Question 3:", "options": ["A. new fitness", "B. fitness new", "C. newly fitness", "D. fitness newly"], "correctAnswerIndex": 0, "explanation": "Theo quy tắc trật tự tính từ, tính từ chỉ tuổi tác/tình trạng (new) đứng trước danh từ bổ nghĩa (fitness). 'a new fitness app' là đúng." },
+          { "id": "ta12_de02_q4", "question": "Question 4:", "options": ["A. find", "B. seek", "C. look", "D. search"], "correctAnswerIndex": 0, "explanation": "'Find' (tìm thấy) phù hợp với ý nghĩa bạn sẽ nhận được/khám phá ra các bài tập được thiết kế riêng ngay lập tức." },
+          { "id": "ta12_de02_q5", "question": "Question 5:", "options": ["A. lose", "B. gain", "C. cut", "D. destroy"], "correctAnswerIndex": 1, "explanation": "Cụm từ 'gain muscle' có nghĩa là tăng cơ, đối lập với 'lose weight' (giảm cân)." },
+          { "id": "ta12_de02_q6", "question": "Question 6:", "options": ["A. looking", "B. seeing", "C. making", "D. needing"], "correctAnswerIndex": 0, "explanation": "Cụm động từ 'looking for' có nghĩa là tìm kiếm. 'If you're looking for motivation' là cách diễn đạt đúng." }
+        ]
+      },
+      {
+        "type": "passage_group",
+        "id": "passage_group_de02_2",
+        "instructions": "Read the following flyer and mark the letter A, B, C or D on your answer sheet to indicate the option that best fits each of the numbered blanks from 7 to 12.",
+        "title": "Healthy Eating: Small Choices, Big Impact!",
+        "passage": "Healthy food choices can make a huge difference in your health and well-being. Here are (7)______ helpful tips to start your journey toward a better lifestyle!\n\nFacts to Remember: Eating lots of processed food can (8)______ health issues in the future. Instead, (9)______ fresh ingredients when cooking and avoid products with added preservatives. Try to (10)______ soda with water or juice, and (11)______ foods rich in fiber and nutrients. Finally, (12)______ meal plans in advance to avoid impulsive choices.",
+        "group_questions": [
+          { "id": "ta12_de02_q7", "question": "Question 7:", "options": ["A. much", "B. many", "C. a little", "D. few"], "correctAnswerIndex": 1, "explanation": "'Tips' là danh từ đếm được số nhiều, do đó 'many' là lựa chọn phù hợp. 'Few' mang nghĩa tiêu cực (quá ít)." },
+          { "id": "ta12_de02_q8", "question": "Question 8:", "options": ["A. develop", "B. resolve", "C. reduce", "D. avoid"], "correctAnswerIndex": 0, "explanation": "'Develop health issues' có nghĩa là phát sinh các vấn đề sức khỏe. Các lựa chọn khác mang nghĩa giải quyết, giảm bớt hoặc tránh." },
+          { "id": "ta12_de02_q9", "question": "Question 9:", "options": ["A. select", "B. ignore", "C. destroy", "D. omit"], "correctAnswerIndex": 0, "explanation": "'Select' (lựa chọn) phù hợp với lời khuyên nên dùng các nguyên liệu tươi sống khi nấu ăn." },
+          { "id": "ta12_de02_q10", "question": "Question 10:", "options": ["A. reuse", "B. replace", "C. reuse again", "D. reflect"], "correctAnswerIndex": 1, "explanation": "'Replace A with B' có nghĩa là thay thế A bằng B. 'Replace soda with water' là lời khuyên hợp lý." },
+          { "id": "ta12_de02_q11", "question": "Question 11:", "options": ["A. enjoy", "B. avoid", "C. search", "D. match"], "correctAnswerIndex": 0, "explanation": "'Enjoy foods...' (thưởng thức các loại thực phẩm...) phù hợp với ngữ cảnh tích cực của việc ăn uống lành mạnh." },
+          { "id": "ta12_de02_q12", "question": "Question 12:", "options": ["A. match", "B. destroy", "C. prepare", "D. reflect"], "correctAnswerIndex": 2, "explanation": "'Prepare meal plans' có nghĩa là chuẩn bị kế hoạch bữa ăn, một thói quen được khuyến khích để ăn uống lành mạnh." }
+        ]
+      },
+      {
+        "type": "rearrangement_group",
+        "id": "rearrangement_de02_13_17",
+        "instructions": "Mark the letter A, B, C or D on your answer sheet to indicate the best arrangement of utterances or sentences to make a meaningful exchange or text in each of the following questions from 13 to 17.",
+        "group_questions": [
+          {
+            "id": "ta12_de02_q13",
+            "question": ["a. David: That sounds great. What time should we meet?", "b. Peter: David, are you free this afternoon for a walk in the park?", "c. Peter: Let’s meet at 3 p.m. near the lake entrance."],
+            "options": ["A. a-c-b", "B. b-c-a", "C. b-a-c", "D. c-b-a"], "correctAnswerIndex": 2,
+            "explanation": "Trình tự logic: (b) Peter đưa ra lời mời -> (a) David đồng ý và hỏi thời gian -> (c) Peter đề xuất thời gian và địa điểm. Do đó, thứ tự đúng là b-a-c."
+          },
+          {
+            "id": "ta12_de02_q14",
+            "question": ["a. Ana: Did you have a nice weekend in the mountains?", "b. Ben: Absolutely! The view was wonderful and the air was so fresh.", "c. Ana: That’s great. Did you go for a hike there?", "d. Ben: Yes, I did. I walked all the way up the highest trail."],
+            "options": ["A. a-c-b-d", "B. a-d-c-b", "C. a-b-c-d", "D. a-c-d-b"], "correctAnswerIndex": 2,
+            "explanation": "Dòng chảy hội thoại: (a) Ana hỏi thăm về chuyến đi -> (b) Ben trả lời tích cực -> (c) Ana hỏi thêm một câu hỏi cụ thể -> (d) Ben trả lời câu hỏi cụ thể đó. Thứ tự đúng là a-b-c-d."
+          },
+          {
+            "id": "ta12_de02_q15",
+            "question": ["Hi Rachel,", "a. I'll prepare some food and drinks. See you there!", "b. I'm having a birthday party this Saturday at my place.", "c. Let me know if you can come. It will be a lot of fun.", "d. The party starts at 6 p.m.", "e. Hope you can make it.", "Alex"],
+            "options": ["A. b-c-d-e-a", "B. b-d-c-a-e", "C. a-c-d-b-e", "D. b-d-c-e-a"], "correctAnswerIndex": 1,
+            "explanation": "Cấu trúc của một email mời: (b) Thông báo sự kiện chính -> (d) Cung cấp thời gian -> (c) Yêu cầu xác nhận tham dự -> (a) Cung cấp thêm chi tiết -> (e) Lời chúc kết thư. Thứ tự b-d-c-a-e là hợp lý nhất."
+          },
+          {
+            "id": "ta12_de02_q16",
+            "question": ["a. Staying fit is not hard if you follow a few simple habits.", "b. Also, eat more fruits and whole grains.", "c. First, try jogging or walking at least 30 minutes a day.", "d. Finally, drink plenty of water and avoid sugary drinks.", "e. Small choices can make a huge difference in health."],
+            "options": ["A. a-c-b-d-e", "B. a-d-c-b-e", "C. a-b-c-d-e", "D. a-c-d-b-e"], "correctAnswerIndex": 0,
+            "explanation": "Cấu trúc liệt kê: (a) Câu chủ đề -> (c) 'First', bước đầu tiên -> (b) 'Also', bước bổ sung -> (d) 'Finally', bước cuối cùng -> (e) Câu kết luận. Thứ tự a-c-b-d-e là đúng nhất."
+          },
+          {
+            "id": "ta12_de02_q17",
+            "question": ["a. Technology has transformed communication in the 21st century.", "b. smartphones, tablets, and the internet connect people instantly.", "c. We can stay in touch with friends and family across the world.", "d. However, we should use technology responsibly.", "e. That way, it can become a powerful tool for everyone."],
+            "options": ["A. a-c-b-d-e", "B. a-d-c-b-e", "C. a-b-c-d-e", "D. a-c-d-b-e"], "correctAnswerIndex": 2,
+            "explanation": "Cấu trúc diễn dịch: (a) Câu chủ đề -> (b) Đưa ra ví dụ cụ thể -> (c) Hệ quả của các ví dụ đó -> (d) 'However', đưa ra một ý tương phản/khuyến cáo -> (e) Kết luận về hệ quả nếu làm theo khuyến cáo. Thứ tự a-b-c-d-e là mạch lạc nhất."
+          }
+        ]
+      },
+      {
+        "type": "passage_group",
+        "id": "passage_group_de02_3_stevejobs",
+        "instructions": "Read the following passage about Steve Jobs and Innovation and mark the letter A, B, C or D on your answer sheet to indicate the option that best fits each of the numbered blanks from 18 to 22.",
+        "title": "Steve Jobs and Innovation",
+        "passage": "Steve Jobs, a remarkable entrepreneur, (18) __________. Born in 1955 in San Francisco, USA, Jobs co-founded Apple in 1976 with Steve Wozniak and Ronald Wayne. His ability to combine technology and artistry led Apple to become a world leader in innovation and design. During his years at Apple, Jobs (19) __________, creating products like the Macintosh, iPod, iPhone, and iPad. His forward-thinking and drive for perfection made him a legend in the technology industry. In 2011, after battling health issues, (20) __________. Jobs’ legacy is a perfect blend of creativity, perseverance, and a unique view of the future. (21) __________. His innovations continue to affect the way we communicate, work, and live. Jobs was not only a successful entrepreneur but also a symbol of creativity and innovation. (22) __________. His story inspires countless people to pursue their passions and make a difference in the world.",
+        "group_questions": [
+          { "id": "ta12_de02_q18", "question": "Question 18: Complete the sentence: 'Steve Jobs, a remarkable entrepreneur, __________.'", "options": ["A. made him a symbol of creativity", "B. has become a symbol of creativity", "C. having become a symbol of creativity", "D. to become a symbol of creativity"], "correctAnswerIndex": 1, "explanation": "Câu cần một vị ngữ hoàn chỉnh. 'has become a symbol of creativity' là một vị ngữ ở thì hiện tại hoàn thành, phù hợp để nói về một di sản còn ảnh hưởng đến hiện tại." },
+          { "id": "ta12_de02_q19", "question": "Question 19: Complete the sentence: '...Jobs __________, creating products...'", "options": ["A. a remarkable combination of design and functionality", "B. remarkable combination of design and functionality", "C. having remarkable combination of design and functionality", "D. to remarkable combination of design and functionality"], "correctAnswerIndex": 0, "explanation": "Câu này trong đề gốc có thể bị lỗi. Giả sử ý của câu là 'Jobs introduced a remarkable combination...', thì lựa chọn A là một cụm danh từ có thể làm bổ ngữ. Đây là câu hỏi có cấu trúc không rõ ràng." },
+          { "id": "ta12_de02_q20", "question": "Question 20: Complete the sentence: 'In 2011, after battling health issues, __________.'", "options": ["A. choosing to step down from his role at Apple", "B. which made him step down from his role at Apple", "C. he decided to step down from his role at Apple", "D. his decision was to step down from his role at Apple"], "correctAnswerIndex": 2, "explanation": "Sau một cụm giới từ chỉ thời gian, câu cần một mệnh đề chính hoàn chỉnh (chủ ngữ + vị ngữ). 'he decided to step down...' là một mệnh đề hoàn chỉnh và hợp lý về mặt ngữ nghĩa." },
+          { "id": "ta12_de02_q21", "question": "Question 21: Complete the sentence: 'Jobs’ legacy is a perfect blend... (21) __________.'", "options": ["A. His ability to innovate comes from pure passion", "B. Pure passion makes him innovate", "C. His pure passion innovates", "D. Purely his passion comes from innovation"], "correctAnswerIndex": 0, "explanation": "Câu A tạo ra một sự nối tiếp ý nghĩa mạch lạc, giải thích nguồn gốc khả năng sáng tạo của Jobs đến từ đam mê." },
+          { "id": "ta12_de02_q22", "question": "Question 22: Complete the sentence: 'Jobs was not only a successful entrepreneur... (22) __________.'", "options": ["A. His achievements are recognized through numerous accolades", "B. His numerous accolades are recognized through achievements", "C. Awards were recognized by him", "D. His recognition to accolades is numerous"], "correctAnswerIndex": 0, "explanation": "Câu A là câu hoàn chỉnh và hợp lý nhất về mặt ngữ nghĩa, nói rằng thành tựu của ông được công nhận qua nhiều giải thưởng." }
+        ]
+      },
+      {
+        "type": "passage_group",
+        "id": "passage_group_de02_4_japaneseculture",
+        "instructions": "Read the following passage about Japanese Culture and mark the letter A, B, C or D on your answer sheet to indicate the best answer to each of the following questions from 23 to 30.",
+        "title": "Japanese Culture",
+        "passage": "Japanese culture is a rich blend of traditions and modern innovations. Influenced by both internal customs and external exchanges, Japanese culture evolves while honoring its roots.\n\nAt the center of Japanese society lies a deep respect for harmony, discipline, and community. Traditional ceremonies, martial arts, and the tea ceremony reflect these values, emphasizing unity and simplicity in daily life.\n\nFurthermore, Japanese cuisine is recognized globally for its artistry, balance of ingredients, and health benefits. Foods like sushi, tempura, and miso soup showcase a rich agricultural heritage and careful preparation techniques. Traditional clothing, such as the kimono, adds to the country's unique character and historical depth.\n\nToday, in a rapidly changing world, Japanese culture maintains its traditions while embracing the future. The Japanese people celebrate their past, innovate in the present, and pass their traditions on to future generations. It is this ability to blend the old and the new that makes Japanese culture rich, adaptable, and distinctly its own.",
+        "group_questions": [
+          { "id": "ta12_de02_q23", "question": "The word 'internal' in paragraph 1 is OPPOSITE in meaning to", "options": ["A. native", "B. external", "C. pure", "D. traditional"], "correctAnswerIndex": 1, "explanation": "'Internal' có nghĩa là bên trong, nội bộ. Từ trái nghĩa là 'external' (bên ngoài)." },
+          { "id": "ta12_de02_q24", "question": "Who plays a key role in Japanese society’s unity, according to the passage?", "options": ["A. The community", "B. Young people", "C. Entrepreneurs", "D. Foreign tourists"], "correctAnswerIndex": 0, "explanation": "Đoạn 2 nêu rõ: 'At the center of Japanese society lies a deep respect for harmony, discipline, and community... emphasizing unity'." },
+          { "id": "ta12_de02_q25", "question": "The word 'rich' in paragraph 3 could be best replaced by", "options": ["A. poor", "B. weak", "C. abundant", "D. small"], "correctAnswerIndex": 2, "explanation": "Trong ngữ cảnh 'a rich agricultural heritage', từ 'rich' có nghĩa là phong phú, dồi dào. 'Abundant' là từ thay thế phù hợp nhất." },
+          { "id": "ta12_de02_q26", "question": "How can the underlined sentence be best paraphrased? 'Traditional clothing, such as the kimono, adds to the country's unique character and historical depth.'", "options": ["A. Kimono shows a simple style of Japanese culture.", "B. Kimono highlights the rich character and deep history of Japan.", "C. Traditional clothing weakens Japanese culture.", "D. Kimono reflects a new form of attire in Japan."], "correctAnswerIndex": 1, "explanation": "Câu gốc có nghĩa là kimono làm tăng thêm tính cách độc đáo và chiều sâu lịch sử. Câu B diễn đạt lại ý này một cách chính xác nhất." },
+          { "id": "ta12_de02_q27", "question": "The word 'their' in paragraph 4 refers to __________.", "options": ["A. Japanese people", "B. traditions", "C. ceremonies", "D. cuisines"], "correctAnswerIndex": 0, "explanation": "Câu 'The Japanese people celebrate their past...'. 'Their' ở đây rõ ràng là chỉ 'The Japanese people'." },
+          { "id": "ta12_de02_q28", "question": "Which of the following is TRUE according to the passage?", "options": ["A. Japanese culture has remained completely the same over time.", "B. The community plays a key role in Japanese unity.", "C. Japanese food is influenced by other cuisines.", "D. Kimono is a modern piece of clothing in Japan."], "correctAnswerIndex": 1, "explanation": "Đoạn 2 đã khẳng định vai trò của cộng đồng trong sự đoàn kết của xã hội Nhật Bản. Các lựa chọn khác đều sai theo thông tin trong bài." },
+          { "id": "ta12_de02_q29", "question": "In which paragraph does the writer mention a present concession relationship?", "options": ["A. Paragraph 1", "B. Paragraph 2", "C. Paragraph 3", "D. Paragraph 4"], "correctAnswerIndex": 3, "explanation": "Đoạn 4 có câu 'Japanese culture maintains its traditions while embracing the future'. 'While' ở đây thể hiện mối quan hệ nhượng bộ (trong khi)." },
+          { "id": "ta12_de02_q30", "question": "In which paragraph does the writer state that Japanese culture evolves by blending traditions and innovations?", "options": ["A. Paragraph 1", "B. Paragraph 2", "C. Paragraph 3", "D. Paragraph 4"], "correctAnswerIndex": 0, "explanation": "Ngay đoạn 1, câu cuối đã nêu rõ 'Japanese culture evolves while honoring its roots' và nó là 'a rich blend of traditions and modern innovations'." }
+        ]
+      },
+      {
+        "type": "passage_group",
+        "id": "passage_group_de02_5_socialmedia",
+        "instructions": "Read the following passage about Social Media and mark the letter A, B, C or D on your answer sheet to indicate the best answer to each of the following questions from 31 to 40.",
+        "title": "Social Media",
+        "passage": "Social media has become a huge part of our daily lives. It connects us with friends and family, lets us share photos and stories, and helps us stay informed about what’s going on in the world. However, many people are now wondering if spending too much time on social media is harmful.\n\nThe rise of smartphones and apps has made social media more accessible and more addictive. Instead of checking in once or twice a day, many people find themselves scrolling their feeds repeatedly, sometimes without even realizing it.\n\nThe content we see on social media is often carefully curated to show us a perfect lifestyle, which can affect how we view ourselves and our own happiness. [I] It can lead to comparisons with friends or celebrities and foster a feeling of inadequacy. [II] Furthermore, misinformation and sensational content can spread quickly, causing confusion and polarization. [III] In addition, social media companies use sophisticated algorithms to keep us engaged, adding to the problem. [IV]\n\nStudies have shown that heavy social media use can affect mental health, causing stress, depression, and poor sleep. According to psychology experts, this happens because we constantly compare ourselves to unrealistic standards and become trapped in a cycle of negativity. Nonetheless, social media is not entirely harmful; it can be a powerful tool for education, creativity, and staying connected — if we use it wisely and in moderation.",
+        "group_questions": [
+          { "id": "ta12_de02_q31", "question": "The word 'accessible' in paragraph 2 is OPPOSITE in meaning to __________.", "options": ["A. convenient", "B. distant", "C. nearby", "D. simple"], "correctAnswerIndex": 1, "explanation": "'Accessible' có nghĩa là dễ tiếp cận, dễ dàng có được. Từ trái nghĩa phù hợp nhất là 'distant' (xa xôi, khó tiếp cận)." },
+          { "id": "ta12_de02_q32", "question": "Where in paragraph 3 does the following sentence best fit? 'There is a phenomenon called ‘social comparison’.'", "options": ["A. I", "B. II", "C. III", "D. IV"], "correctAnswerIndex": 0, "explanation": "Câu cần chèn giới thiệu về hiện tượng 'social comparison'. Câu ngay sau vị trí [I] giải thích về hiện tượng đó ('It can lead to comparisons...'). Do đó, vị trí [I] là hợp lý nhất." },
+          { "id": "ta12_de02_q33", "question": "Which of the following best summarizes paragraph 3?", "options": ["A. Social media lets us connect with friends and family easily.", "B. The rise of smartphones has made social media more popular.", "C. Viewing curated content can affect our happiness and view of ourselves.", "D. Misinformation is a growing problem on social media platforms."], "correctAnswerIndex": 2, "explanation": "Đoạn 3 tập trung phân tích việc nội dung được chọn lọc cẩn thận trên mạng xã hội có thể ảnh hưởng đến cách chúng ta nhìn nhận bản thân và hạnh phúc như thế nào." },
+          { "id": "ta12_de02_q34", "question": "The word 'it' in paragraph 4 refers to __________.", "options": ["A. social media", "B. lifestyle", "C. algorithm", "D. negativity"], "correctAnswerIndex": 0, "explanation": "Câu đó là 'it can be a powerful tool...'. Dựa vào ngữ cảnh của cả đoạn, 'it' ở đây đang nói về 'social media'." },
+          { "id": "ta12_de02_q35", "question": "The phrase 'foster a feeling of' in paragraph 3 could be best replaced by __________.", "options": ["A. diminish", "B. create", "C. destroy", "D. resolve"], "correctAnswerIndex": 1, "explanation": "'Foster' có nghĩa là nuôi dưỡng, tạo ra. 'Create' là từ thay thế gần nghĩa nhất." },
+          { "id": "ta12_de02_q36", "question": "Which of the following is NOT mentioned as an effect of heavy social media use, according to the passage?", "options": ["A. stress", "B. poor sleep", "C. confusion", "D. physical health problems"], "correctAnswerIndex": 3, "explanation": "Đoạn văn có đề cập đến 'stress', 'poor sleep' (ảnh hưởng sức khỏe tinh thần), và 'confusion' (do thông tin sai lệch), nhưng không đề cập trực tiếp đến 'physical health problems' (vấn đề sức khỏe thể chất)." },
+          { "id": "ta12_de02_q37", "question": "Which of the following is TRUE according to the passage?", "options": ["A. Everyone finds social media harmful in all cases.", "B. Few people check their smartphones more than once a day.", "C. Misinformation can spread quickly through social media.", "D. It’s impossible to use social media in a healthy way."], "correctAnswerIndex": 2, "explanation": "Đoạn 3 có câu: 'misinformation and sensational content can spread quickly'." },
+          { "id": "ta12_de02_q38", "question": "Which of the following best paraphrases the underlined sentence in paragraph 4?", "options": ["A. We should avoid social media altogether.", "B. Social media has only harmful effects.", "C. It is a helpful tool when we use it carefully.", "D. There is no way to control its effects."], "correctAnswerIndex": 2, "explanation": "Câu gốc nói rằng MXH không hoàn toàn có hại và có thể là công cụ mạnh mẽ nếu được dùng một cách khôn ngoan và điều độ. Câu C diễn đạt lại chính xác ý này." },
+          { "id": "ta12_de02_q39", "question": "Which of the following can be inferred from the passage?", "options": ["A. The algorithm plays a small role in keeping people engaged.", "B. Heavy social media use can affect both emotions and health.", "C. Everyone reacts the same way to social media.", "D. Moderate use guarantees happiness."], "correctAnswerIndex": 1, "explanation": "Bài đọc nói rằng việc sử dụng MXH nhiều có thể gây ra 'stress, depression' (cảm xúc) và 'poor sleep' (sức khỏe). Từ đó có thể suy ra nó ảnh hưởng đến cả hai." },
+          { "id": "ta12_de02_q40", "question": "Which of the following best summarizes the passage?", "options": ["A. Social media is completely harmful and should be avoided.", "B. The main problem is smartphones, not social media.", "C. Social media has both benefits and drawbacks; we should use it in moderation.", "D. There are no negative effects of social media if we use it wisely."], "correctAnswerIndex": 2, "explanation": "Toàn bộ bài văn phân tích hai mặt của MXH: mặt kết nối, thông tin (lợi ích) và mặt gây nghiện, ảnh hưởng sức khỏe tinh thần (tác hại), và kết luận rằng nên sử dụng nó một cách điều độ." }
+        ]
+      }
+    ]
   }
 ]
