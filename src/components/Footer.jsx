@@ -18,7 +18,10 @@ const Footer = () => {
             <img className="w-24 my-2 md:block hidden" src={logo} />
             <p className="text-sm text-gray-400 text-center sm:text-left">
               Copyright © {new Date().getFullYear()} All rights reserved
-              <br /> Made by Phan Hoàng Phúc
+              <br />
+              <p className="bold text-white">
+                Bản quyền thuộc về Phan Hoàng Phúc
+              </p>
             </p>
           </div>
           <div className="w-full border-1 border-solid md:hidden my-2" />
