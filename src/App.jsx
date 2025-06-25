@@ -25,6 +25,10 @@ import CoursePreview from "./pages/CoursePreview";
 import ExamDo from "./pages/exams/ExamDo";
 import ExamResultPage from "./pages/exams/ExamResultPage";
 import ExamList from "./pages/exams/ExamList";
+import CourseCalendar from "./pages/calendar/CourseCalendar";
+import TestOverview from "./pages/calendar/TestOverview";
+import TestTaking from "./pages/calendar/TestTaking.js";
+import TestResults from "./pages/calendar/TestResults";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   const location = useLocation();
@@ -93,9 +97,17 @@ function App() {
           path="/course/preview/:id"
           element={<PrivateRoute element={<CoursePreview />} />}
         />
+        <Route path="/test/:testId" element={<TestOverview />} />
+        <Route path="/test/:testId/take" element={<TestTaking />} />
+        <Route
+          path="/test/:testId/results/:attemptId"
+          element={<TestResults />}
+        />
         <Route path="/exams" element={<ExamList />} />
         <Route path="/exams/do/:examId" element={<ExamDo />} />
         <Route path="/exams/result/:examId" element={<ExamResultPage />} />
+        <Route path="/calendar" element={<CourseCalendar />} />
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Chatbot />
