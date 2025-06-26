@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourseById } from "../redux/coursesSlice";
@@ -202,6 +202,7 @@ const CourseDetail = () => {
   // if (status === "failed")
   //   return <div className="p-10 text-red-500">{error}</div>;
   if (!course) return <div className="p-10">Không tìm thấy khóa học</div>;
+  console.log("Dữ liệu khóa học trong component:", course);
 
   return (
     <div className="flex md:h-screen h-120 ">
@@ -262,6 +263,29 @@ const CourseDetail = () => {
             )}
           </div>
         ))}
+        {/* Bước 2: Hiển thị danh sách bài kiểm tra */}
+        <div className="mt-6">
+          <h3 className="sm:text-l text-lg font-bold mb-2">Bài kiểm tra</h3>
+          {course.tests?.length > 0 ? (
+            <div>
+              {course.tests.map((test) => (
+                <Link
+                  key={test._id}
+                  // Giả sử bạn có route вида `/course/:courseId/test/:testId`
+                  to={`/course/${id}/test/${test._id}`}
+                  className="block w-full text-left p-2 rounded-md hover:bg-gray-300"
+                  onClick={() => setIsSidebarOpen(false)} // Ẩn sidebar khi click trên mobile
+                >
+                  📝 {test.title}
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500 text-sm ml-2">
+              Chưa có bài kiểm tra nào.
+            </p>
+          )}
+        </div>
       </aside>
 
       {/* Main Content */}
