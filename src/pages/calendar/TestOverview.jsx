@@ -1,113 +1,215 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
-// Component này import từ file allTests.js
-import { ALL_TESTS } from "../../json/allTests";
 import { format } from "date-fns";
 import { vi } from "date-fns/locale";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTestForTaking, clearCurrentTest } from "../../redux/testSlice";
+import { fetchUserAttempts } from "../../redux/testAttemptSlice";
+
+// 1. Import các icon cần thiết từ Heroicons
+import {
+  ClockIcon,
+  QuestionMarkCircleIcon,
+  StarIcon,
+  ArrowRightIcon,
+  DocumentTextIcon,
+  CalendarDaysIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/solid";
+
+// ----- Các component phụ để hiển thị trạng thái (giữ nguyên) -----
+const LoadingSpinner = () => (
+  <div className="flex items-center justify-center min-h-screen bg-slate-50">
+    <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-indigo-600"></div>
+  </div>
+);
+
+const ErrorDisplay = ({ message }) => (
+  <div className="flex items-center justify-center min-h-screen bg-slate-50">
+    <div className="text-center p-8 bg-white rounded-lg shadow-xl">
+      <h1 className="text-3xl font-bold text-red-700">Đã xảy ra lỗi</h1>
+      <p className="text-gray-500 mt-2">
+        {message || "Không thể tải dữ liệu. Vui lòng thử lại."}
+      </p>
+      <Link
+        to="/"
+        className="mt-6 inline-block px-6 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700"
+      >
+        Quay về trang chủ
+      </Link>
+    </div>
+  </div>
+);
+
+// 2. Component con cho các thẻ thông số -> Giúp code gọn gàng hơn
+const StatCard = ({ icon, label, value, colorClass }) => (
+  <div
+    className={`bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${colorClass}`}
+  >
+    <div className="flex-shrink-0">{icon}</div>
+    <div>
+      <p className="text-sm font-medium text-gray-500">{label}</p>
+      <p className="text-2xl font-bold text-gray-900">{value}</p>
+    </div>
+  </div>
+);
 
 const TestOverview = () => {
   const { testId } = useParams();
+  const dispatch = useDispatch();
 
-  // Dùng `testId` từ URL để TÌM bài test trong mảng ALL_TESTS
-  // Chúng ta dùng `==` thay vì `===` để không bị lỗi so sánh number và string
-  const test = ALL_TESTS.find((t) => t.id == testId);
+  const {
+    currentTest: test,
+    status: testStatus,
+    error: testError,
+  } = useSelector((state) => state.tests);
+  const { userAttempts, status: attemptStatus } = useSelector(
+    (state) => state.testAttempts
+  );
 
-  // Xử lý trường hợp không tìm thấy bài test
-  if (!test) {
+  useEffect(() => {
+    if (testId) {
+      dispatch(fetchTestForTaking(testId));
+      dispatch(fetchUserAttempts());
+    }
+    return () => {
+      dispatch(clearCurrentTest());
+    };
+  }, [dispatch, testId]);
+
+  const testHistory = useMemo(
+    () => userAttempts.filter((attempt) => attempt.test === testId),
+    [userAttempts, testId]
+  );
+
+  const questionCount = useMemo(
+    () =>
+      test
+        ? test.questionGroups.reduce(
+            (acc, group) => acc + group.group_questions.length,
+            0
+          )
+        : 0,
+    [test]
+  );
+
+  const highestScore = useMemo(
+    () =>
+      testHistory.length > 0 ? Math.max(...testHistory.map((a) => a.score)) : 0,
+    [testHistory]
+  );
+
+  if (testStatus === "loading" || attemptStatus === "loading") {
+    return <LoadingSpinner />;
+  }
+
+  if (testStatus === "failed" || !test) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-700">Lỗi 404</h1>
-          <p className="text-gray-500 mt-2">
-            Không tìm thấy bài kiểm tra bạn yêu cầu.
-          </p>
-          <Link
-            to="/"
-            className="mt-6 inline-block px-6 py-2 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700"
-          >
-            Quay về trang chủ
-          </Link>
-        </div>
-      </div>
+      <ErrorDisplay
+        message={
+          testError?.message || "Không tìm thấy bài kiểm tra bạn yêu cầu."
+        }
+      />
     );
   }
 
-  // Nếu tìm thấy, JSX bên dưới sẽ hiển thị đúng dữ liệu chi tiết
+  // 3. Render giao diện mới, hiện đại hơn
   return (
-    <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
-      <div className="bg-white rounded-xl shadow-lg p-6">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
-          {test.title}
-        </h1>
-        <p className="mt-2 text-gray-600">{test.description}</p>
-
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-          <div className="bg-blue-50 p-4 rounded-lg">
-            <p className="text-sm font-medium text-blue-600">Thời gian</p>
-            <p className="text-xl font-bold text-blue-900">
-              {test.durationInMinutes} phút
-            </p>
+    <div className="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div className="p-8">
+            <div className="flex items-center space-x-3 mb-6">
+              <DocumentTextIcon className="h-8 w-8 text-indigo-500" />
+              <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+                {test.title}
+              </h1>
+            </div>
+            <p className="mt-2 text-lg text-gray-600">{test.description}</p>
           </div>
-          <div className="bg-green-50 p-4 rounded-lg">
-            <p className="text-sm font-medium text-green-600">Số câu hỏi</p>
-            <p className="text-xl font-bold text-green-900">
-              {test.questionCount}
-            </p>
-          </div>
-          <div className="bg-yellow-50 p-4 rounded-lg">
-            <p className="text-sm font-medium text-yellow-600">Điểm cao nhất</p>
-            <p className="text-xl font-bold text-yellow-900">
-              {test.highestScore.toFixed(1)}
-            </p>
-          </div>
-        </div>
 
-        <div className="mt-8 text-center">
-          <Link
-            to={`/test/${test.id}/take`}
-            className="w-full sm:w-auto inline-block bg-blue-600 text-white font-bold text-lg px-12 py-3 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
-          >
-            Bắt đầu làm bài
-          </Link>
-        </div>
+          <div className="p-8 bg-slate-50/70 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <StatCard
+              icon={<ClockIcon className="h-10 w-10 text-sky-500" />}
+              label="Thời gian làm bài"
+              value={`${test.durationInMinutes} phút`}
+            />
+            <StatCard
+              icon={
+                <QuestionMarkCircleIcon className="h-10 w-10 text-teal-500" />
+              }
+              label="Tổng số câu hỏi"
+              value={questionCount}
+            />
+            <StatCard
+              icon={<StarIcon className="h-10 w-10 text-amber-500" />}
+              label="Điểm cao nhất"
+              value={`${highestScore.toFixed(1)}`}
+            />
+          </div>
 
-        <div className="mt-10">
-          <h2 className="text-xl font-bold text-gray-800">Lịch sử làm bài</h2>
-          <div className="mt-4 flow-root">
-            <ul className="-my-4 divide-y divide-gray-200">
-              {test.history.length > 0 ? (
-                test.history.map((attempt) => (
-                  <li
-                    key={attempt.attemptId}
-                    className="flex items-center justify-between py-4"
-                  >
-                    <div>
-                      <p className="font-medium text-gray-800">
-                        Lần làm bài ngày{" "}
-                        {format(new Date(attempt.date), "dd/MM/yyyy HH:mm", {
-                          locale: vi,
-                        })}
-                      </p>
+          <div className="p-8 text-center">
+            <Link
+              to={`/test/${test._id}/take`}
+              className="inline-flex items-center justify-center gap-x-3 w-full sm:w-auto bg-indigo-600 text-white font-bold text-lg px-14 py-4 rounded-xl shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300"
+            >
+              Bắt đầu làm bài
+              <ArrowRightIcon className="h-6 w-6" />
+            </Link>
+          </div>
+
+          <div className="p-8 border-t border-gray-200">
+            <div className="flex items-center space-x-3 mb-6">
+              <ClockIcon className="h-7 w-7 text-gray-500" />
+              <h2 className="text-2xl font-bold text-gray-800">
+                Lịch sử làm bài của bạn
+              </h2>
+            </div>
+            <div className="space-y-4">
+              {testHistory.length > 0 ? (
+                testHistory
+                  .sort(
+                    (a, b) => new Date(b.completedAt) - new Date(a.completedAt)
+                  )
+                  .map((attempt) => (
+                    <div
+                      key={attempt._id}
+                      className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 transition-shadow hover:shadow-md"
+                    >
+                      <div className="flex items-center gap-3 text-gray-700">
+                        <CalendarDaysIcon className="h-5 w-5 text-gray-400" />
+                        <span className="font-medium">
+                          {format(
+                            new Date(attempt.completedAt),
+                            "HH:mm 'ngày' dd/MM/yyyy",
+                            { locale: vi }
+                          )}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-2 text-lg">
+                          <CheckCircleIcon className="h-6 w-6 text-green-500" />
+                          <p className="font-bold text-gray-900">
+                            {attempt.score.toFixed(1)} điểm
+                          </p>
+                        </div>
+                        <Link
+                          to={`/test/${test._id}/results/${attempt._id}`}
+                          className="px-4 py-2 text-sm font-semibold text-indigo-600 bg-indigo-100 rounded-md hover:bg-indigo-200 transition-colors"
+                        >
+                          Xem chi tiết
+                        </Link>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <p className="font-semibold text-gray-900">
-                        {attempt.score.toFixed(1)} điểm
-                      </p>
-                      <Link
-                        to={`/test/${test.id}/results/${attempt.attemptId}`}
-                        className="text-sm text-blue-600 hover:underline"
-                      >
-                        Xem chi tiết
-                      </Link>
-                    </div>
-                  </li>
-                ))
+                  ))
               ) : (
-                <p className="text-gray-500">
-                  Bạn chưa làm bài kiểm tra này lần nào.
-                </p>
+                <div className="text-center py-8 px-4 bg-gray-50 rounded-lg">
+                  <p className="text-gray-500">
+                    Bạn chưa làm bài kiểm tra này lần nào.
+                  </p>
+                </div>
               )}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
