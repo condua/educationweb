@@ -4,20 +4,24 @@ import { format } from "date-fns";
 import { vi } from "date-fns/locale";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTestForTaking, clearCurrentTest } from "../../redux/testSlice";
-import { fetchUserAttempts } from "../../redux/testAttemptSlice";
+import {
+  fetchMyAttemptsForTest,
+  clearAttemptsForTest,
+} from "../../redux/testAttemptSlice";
 
-// 1. Import các icon cần thiết từ Heroicons
 import {
   ClockIcon,
   QuestionMarkCircleIcon,
   StarIcon,
   ArrowRightIcon,
+  ArrowLeftIcon, // <--- THÊM ICON MỚI
   DocumentTextIcon,
   CalendarDaysIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/solid";
 
-// ----- Các component phụ để hiển thị trạng thái (giữ nguyên) -----
+// --- CÁC COMPONENT PHỤ ---
+
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center min-h-screen bg-slate-50">
     <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-indigo-600"></div>
@@ -41,11 +45,8 @@ const ErrorDisplay = ({ message }) => (
   </div>
 );
 
-// 2. Component con cho các thẻ thông số -> Giúp code gọn gàng hơn
-const StatCard = ({ icon, label, value, colorClass }) => (
-  <div
-    className={`bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${colorClass}`}
-  >
+const StatCard = ({ icon, label, value }) => (
+  <div className="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
     <div className="flex-shrink-0">{icon}</div>
     <div>
       <p className="text-sm font-medium text-gray-500">{label}</p>
@@ -54,55 +55,63 @@ const StatCard = ({ icon, label, value, colorClass }) => (
   </div>
 );
 
+// --- COMPONENT CHÍNH ---
+
 const TestOverview = () => {
   const { testId } = useParams();
   const dispatch = useDispatch();
 
+  // Lấy dữ liệu từ Redux store
   const {
     currentTest: test,
     status: testStatus,
     error: testError,
   } = useSelector((state) => state.tests);
-  const { userAttempts, status: attemptStatus } = useSelector(
+
+  const { attemptsForSingleTest, status: attemptStatus } = useSelector(
     (state) => state.testAttempts
   );
 
+  // Fetch dữ liệu khi component được mount hoặc testId thay đổi
   useEffect(() => {
     if (testId) {
       dispatch(fetchTestForTaking(testId));
-      dispatch(fetchUserAttempts());
+      dispatch(fetchMyAttemptsForTest(testId));
     }
+    // Dọn dẹp state khi component bị hủy
     return () => {
       dispatch(clearCurrentTest());
+      dispatch(clearAttemptsForTest());
     };
   }, [dispatch, testId]);
 
-  const testHistory = useMemo(
-    () => userAttempts.filter((attempt) => attempt.test === testId),
-    [userAttempts, testId]
-  );
-
+  // Tính toán số câu hỏi
   const questionCount = useMemo(
     () =>
       test
         ? test.questionGroups.reduce(
-            (acc, group) => acc + group.group_questions.length,
+            (acc, group) => acc + (group.group_questions?.length || 0),
             0
           )
         : 0,
     [test]
   );
 
-  const highestScore = useMemo(
-    () =>
-      testHistory.length > 0 ? Math.max(...testHistory.map((a) => a.score)) : 0,
-    [testHistory]
-  );
+  // Tính điểm cao nhất từ lịch sử làm bài
+  const highestScore = useMemo(() => {
+    const history = attemptsForSingleTest || [];
+    if (history.length === 0) {
+      return 0;
+    }
+    return Math.max(...history.map((a) => a.score));
+  }, [attemptsForSingleTest]);
 
+  // Xử lý trạng thái loading
   if (testStatus === "loading" || attemptStatus === "loading") {
     return <LoadingSpinner />;
   }
 
+  // Xử lý trạng thái lỗi
   if (testStatus === "failed" || !test) {
     return (
       <ErrorDisplay
@@ -113,12 +122,23 @@ const TestOverview = () => {
     );
   }
 
-  // 3. Render giao diện mới, hiện đại hơn
   return (
     <div className="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          {/* Phần Header */}
           <div className="p-8">
+            {test?.course && (
+              <div className="mb-6">
+                <Link
+                  to={`/course/${test.course}`}
+                  className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 font-semibold transition-colors"
+                >
+                  <ArrowLeftIcon className="h-4 w-4" />
+                  Quay về khóa học
+                </Link>
+              </div>
+            )}
             <div className="flex items-center space-x-3 mb-6">
               <DocumentTextIcon className="h-8 w-8 text-indigo-500" />
               <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
@@ -128,6 +148,7 @@ const TestOverview = () => {
             <p className="mt-2 text-lg text-gray-600">{test.description}</p>
           </div>
 
+          {/* Phần các thẻ thông số */}
           <div className="p-8 bg-slate-50/70 grid grid-cols-1 md:grid-cols-3 gap-6">
             <StatCard
               icon={<ClockIcon className="h-10 w-10 text-sky-500" />}
@@ -148,9 +169,11 @@ const TestOverview = () => {
             />
           </div>
 
+          {/* Nút bắt đầu */}
           <div className="p-8 text-center">
             <Link
               to={`/test/${test._id}/take`}
+              state={{ startedAt: new Date().toISOString() }}
               className="inline-flex items-center justify-center gap-x-3 w-full sm:w-auto bg-indigo-600 text-white font-bold text-lg px-14 py-4 rounded-xl shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300"
             >
               Bắt đầu làm bài
@@ -158,6 +181,7 @@ const TestOverview = () => {
             </Link>
           </div>
 
+          {/* Phần Lịch sử làm bài */}
           <div className="p-8 border-t border-gray-200">
             <div className="flex items-center space-x-3 mb-6">
               <ClockIcon className="h-7 w-7 text-gray-500" />
@@ -166,8 +190,9 @@ const TestOverview = () => {
               </h2>
             </div>
             <div className="space-y-4">
-              {testHistory.length > 0 ? (
-                testHistory
+              {attemptsForSingleTest && attemptsForSingleTest.length > 0 ? (
+                // Tạo một bản sao của mảng trước khi sort để không thay đổi state gốc
+                [...attemptsForSingleTest]
                   .sort(
                     (a, b) => new Date(b.completedAt) - new Date(a.completedAt)
                   )

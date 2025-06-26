@@ -106,6 +106,27 @@ export const deleteTest = createAsyncThunk(
   }
 );
 
+// 🎯 Lấy chi tiết bài test với đầy đủ đáp án (dùng cho trang kết quả)
+export const fetchTestWithAnswers = createAsyncThunk(
+  "tests/fetchWithAnswers",
+  // Giả sử backend có một endpoint đặc biệt cho việc này, ví dụ: /api/tests/:testId/full
+  async (testId, { getState, rejectWithValue }) => {
+    try {
+      const token = getToken(getState());
+      // LƯU Ý: Endpoint này có thể khác tùy vào thiết kế backend của bạn
+      const response = await axios.get(
+        `${API_URL}/${testId}/full`,
+        getAuthHeaders(token)
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data || "Lỗi khi tải chi tiết bài test"
+      );
+    }
+  }
+);
+
 const testSlice = createSlice({
   name: "tests",
   initialState: {
@@ -181,6 +202,18 @@ const testSlice = createSlice({
             (test) => test._id !== testId
           );
         }
+      })
+      .addCase(fetchTestWithAnswers.pending, (state) => {
+        state.status = "loading";
+        state.currentTest = null;
+      })
+      .addCase(fetchTestWithAnswers.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.currentTest = action.payload; // Lưu vào cùng một state currentTest
+      })
+      .addCase(fetchTestWithAnswers.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
       });
   },
 });

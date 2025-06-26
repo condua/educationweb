@@ -1,10 +1,80 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useRef,
+  useCallback,
+} from "react";
+import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // BƯỚC 1: IMPORT CÁC ACTION TỪ REDUX
 import { fetchTestForTaking, clearCurrentTest } from "../../redux/testSlice";
 import { submitTestAttempt } from "../../redux/testAttemptSlice";
+
+// --- COMPONENT MỚI: MODAL CẢNH BÁO ---
+const IncompleteWarningModal = ({ onClose, unansweredCount }) => {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 animate-fade-in"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md m-4 transform text-center transition-all duration-300 animate-scale-up">
+        <div className="p-8">
+          {/* Icon cảnh báo */}
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100 text-yellow-500">
+            <svg
+              className="h-8 w-8"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126z"
+              />
+            </svg>
+          </div>
+
+          {/* Nội dung thông báo */}
+          <h3
+            className="mt-5 text-2xl font-bold leading-6 text-gray-800"
+            id="modal-title"
+          >
+            Chưa hoàn thành bài thi
+          </h3>
+          <div className="mt-3">
+            <p className="text-base text-gray-600">
+              Bạn còn{" "}
+              <span className="font-bold text-red-500">
+                {unansweredCount} câu hỏi
+              </span>{" "}
+              chưa được trả lời.
+              <br />
+              Vui lòng hoàn thành tất cả trước khi nộp bài.
+            </p>
+          </div>
+        </div>
+
+        {/* Nút đóng */}
+        <div className="bg-gray-50 px-8 py-4 rounded-b-2xl">
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-full inline-flex justify-center rounded-xl border border-transparent bg-blue-600 px-4 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            Đã hiểu
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // --- CÁC COMPONENT PHỤ (KHÔNG ĐỔI) ---
 const FlagIcon = ({ flagged }) => (
@@ -138,9 +208,12 @@ const TestTaking = () => {
   const { testId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  const { startedAt } = location.state || {};
+
   const questionRefs = useRef({});
 
-  // BƯỚC 2: LẤY DỮ LIỆU TỪ REDUX STORE
   const {
     currentTest: test,
     status: testStatus,
@@ -150,13 +223,22 @@ const TestTaking = () => {
     (state) => state.testAttempts
   );
 
-  // BƯỚC 3: KHỞI TẠO STATE CỦA COMPONENT
   const [answers, setAnswers] = useState({});
   const [flaggedQuestions, setFlaggedQuestions] = useState({});
-  const [timeLeft, setTimeLeft] = useState(null); // Khởi tạo là null
+  const [timeLeft, setTimeLeft] = useState(null);
   const [currentVisibleIndex, setCurrentVisibleIndex] = useState(0);
+  // THAY ĐỔI: Thêm state để quản lý modal cảnh báo
+  const [showIncompleteWarning, setShowIncompleteWarning] = useState(false);
 
-  // BƯỚC 4: FETCH DỮ LIỆU BÀI TEST TỪ API
+  useEffect(() => {
+    if (!startedAt) {
+      alert(
+        "Vui lòng bắt đầu bài kiểm tra từ trang tổng quan để tính thời gian chính xác."
+      );
+      navigate(`/test/${testId}`);
+    }
+  }, [startedAt, testId, navigate]);
+
   useEffect(() => {
     if (testId) {
       dispatch(fetchTestForTaking(testId));
@@ -166,22 +248,11 @@ const TestTaking = () => {
     };
   }, [dispatch, testId]);
 
-  // BƯỚC 5: KHỞI TẠO ĐỒNG HỒ SAU KHI ĐÃ CÓ DỮ LIỆU
   useEffect(() => {
     if (test && timeLeft === null) {
       setTimeLeft(test.durationInMinutes * 60);
     }
   }, [test, timeLeft]);
-
-  // BƯỚC 6: LOGIC ĐẾM NGƯỢC VÀ TỰ NỘP BÀI
-  useEffect(() => {
-    if (timeLeft === 0) {
-      handleSubmit();
-    }
-    if (timeLeft === null || timeLeft < 0) return; // Không chạy timer nếu chưa có thời gian hoặc đã hết giờ
-    const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
-    return () => clearInterval(timer);
-  }, [timeLeft]);
 
   // Chuẩn hóa danh sách câu hỏi (giữ nguyên)
   const flatQuestions = useMemo(() => {
@@ -200,7 +271,40 @@ const TestTaking = () => {
     );
   }, [test]);
 
-  // Intersection Observer để theo dõi câu hỏi hiện tại (giữ nguyên)
+  // THAY ĐỔI: Cập nhật hàm nộp bài
+  const handleSubmit = useCallback(() => {
+    // THAY ĐỔI: Kiểm tra trước khi nộp bài
+    if (Object.keys(answers).length < flatQuestions.length) {
+      setShowIncompleteWarning(true); // Hiển thị modal cảnh báo
+      return; // Dừng hàm tại đây
+    }
+
+    if (attemptStatus === "submitting" || !startedAt) return;
+
+    const formattedAnswers = Object.keys(answers).map((questionId) => ({
+      questionId,
+      selectedAnswer: answers[questionId],
+    }));
+
+    dispatch(
+      submitTestAttempt({
+        testId,
+        userAnswers: formattedAnswers,
+        startedAt: startedAt,
+      })
+    );
+  }, [dispatch, testId, answers, attemptStatus, startedAt, flatQuestions]); // THAY ĐỔI: Thêm flatQuestions vào dependencies
+
+  // Logic đếm ngược và tự nộp bài (sử dụng handleSubmit đã được cập nhật)
+  useEffect(() => {
+    if (timeLeft === 0) {
+      handleSubmit();
+    }
+    if (timeLeft === null || timeLeft < 0) return;
+    const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
+    return () => clearInterval(timer);
+  }, [timeLeft, handleSubmit]); // Thêm handleSubmit vào dependencies
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -220,26 +324,12 @@ const TestTaking = () => {
     return () => observer.disconnect();
   }, [flatQuestions]);
 
-  // BƯỚC 7: CẬP NHẬT HÀM NỘP BÀI ĐỂ DISPATCH ACTION
-  const handleSubmit = () => {
-    if (attemptStatus === "submitting") return; // Ngăn chặn nộp nhiều lần
-
-    const formattedAnswers = Object.keys(answers).map((questionId) => ({
-      questionId,
-      selectedAnswer: answers[questionId],
-    }));
-
-    dispatch(submitTestAttempt({ testId, userAnswers: formattedAnswers }));
-  };
-
-  // BƯỚC 8: TỰ ĐỘNG CHUYỂN TRANG SAU KHI NỘP BÀI THÀNH CÔNG
   useEffect(() => {
-    if (attemptStatus === "succeeded" && currentAttemptResult) {
+    if (attemptStatus === "succeeded" && currentAttemptResult?._id) {
       navigate(`/test/${testId}/results/${currentAttemptResult._id}`);
     }
   }, [attemptStatus, currentAttemptResult, navigate, testId]);
 
-  // Các hàm xử lý local (giữ nguyên)
   const handleSelectOption = (questionId, optionIndex) =>
     setAnswers({ ...answers, [questionId]: optionIndex });
   const handleToggleFlag = (questionId) =>
@@ -254,7 +344,6 @@ const TestTaking = () => {
     if (ref) ref.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
-  // BƯỚC 9: XỬ LÝ TRẠNG THÁI LOADING VÀ ERROR
   if (testStatus === "loading") return <LoadingSpinner />;
   if (testStatus === "failed")
     return (
@@ -266,124 +355,136 @@ const TestTaking = () => {
     return (
       <ErrorDisplay message="Bài kiểm tra này không có câu hỏi hoặc không tồn tại." />
     );
-  if (timeLeft === null) return <LoadingSpinner />; // Hiển thị loading trong khi chờ set thời gian
+  if (timeLeft === null) return <LoadingSpinner />;
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
-  // --- PHẦN JSX RENDER (giữ nguyên cấu trúc, chỉ thay đổi data source) ---
   return (
-    <div className="bg-gray-50 min-h-screen">
-      {/* Header cố định */}
-      <div className="sticky top-0 z-20 bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-3">
-            <h1 className="text-xl font-bold text-gray-800">{test.title}</h1>
-            <div className="text-red-500 font-bold text-lg bg-red-50 px-4 py-2 rounded-lg">
-              <span>Thời gian còn lại: </span>
-              <span>
-                {String(minutes).padStart(2, "0")}:
-                {String(seconds).padStart(2, "0")}
-              </span>
+    // THAY ĐỔI: Thêm modal vào cuối JSX
+    <>
+      <div className="bg-gray-50 min-h-screen">
+        {/* Header cố định */}
+        <div className="sticky top-0 z-20 bg-white shadow-md">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center py-3">
+              <h1 className="text-xl font-bold text-gray-800">{test.title}</h1>
+              <div className="text-red-500 font-bold text-lg bg-red-50 px-4 py-2 rounded-lg">
+                <span>Thời gian còn lại: </span>
+                <span>
+                  {String(minutes).padStart(2, "0")}:
+                  {String(seconds).padStart(2, "0")}
+                </span>
+              </div>
             </div>
           </div>
         </div>
+
+        <div className="max-w-7xl mx-auto p-4 lg:p-8 flex flex-col lg:flex-row gap-8 items-start">
+          {/* Cột trái: Nội dung câu hỏi */}
+          <div className="w-full lg:flex-grow space-y-8">
+            {test.questionGroups.map((group, groupIndex) => (
+              <div
+                key={group.id || groupIndex}
+                className="bg-white rounded-xl shadow-lg"
+              >
+                <div className="p-6 border-b">
+                  <h2 className="text-xl font-bold text-gray-800">
+                    {group.title}
+                  </h2>
+                  <p className="text-sm text-gray-500 mt-1 italic">
+                    {group.instructions}
+                  </p>
+                  {group.passage && (
+                    <div
+                      className="prose prose-sm max-w-none mt-4 text-gray-700"
+                      dangerouslySetInnerHTML={{
+                        __html: group.passage.replace(/\n/g, "<br />"),
+                      }}
+                    />
+                  )}
+                </div>
+                <div className="divide-y">
+                  {group.group_questions.map((question) => {
+                    const questionIndex = flatQuestions.findIndex(
+                      (q) => q.id === question.id
+                    );
+                    return (
+                      <div
+                        key={question.id}
+                        ref={(el) => (questionRefs.current[question.id] = el)}
+                        data-question-id={question.id}
+                        className="p-6"
+                      >
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="text-lg font-semibold text-gray-800">
+                            <span className="text-blue-600">
+                              Câu {questionIndex + 1}:{" "}
+                            </span>
+                            {Array.isArray(question.question) ? (
+                              question.question.map((line, i) => (
+                                <p key={i}>{line}</p>
+                              ))
+                            ) : (
+                              <p>{question.question}</p>
+                            )}
+                          </div>
+                          <button
+                            onClick={() => handleToggleFlag(question.id)}
+                            title="Đánh dấu câu hỏi"
+                          >
+                            <FlagIcon
+                              flagged={!!flaggedQuestions[question.id]}
+                            />
+                          </button>
+                        </div>
+                        <div className="space-y-3">
+                          {question.options.map((option, index) => (
+                            <div
+                              key={index}
+                              onClick={() =>
+                                handleSelectOption(question.id, index)
+                              }
+                              className={`p-4 border-2 rounded-lg cursor-pointer transition-all flex items-center ${
+                                answers[question.id] === index
+                                  ? "border-blue-500 bg-blue-50"
+                                  : "border-gray-200 hover:border-blue-400"
+                              }`}
+                            >
+                              <span className="font-medium text-gray-700">
+                                {option}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Cột phải: Hộp điều hướng */}
+          <QuestionNavigation
+            questions={flatQuestions}
+            answers={answers}
+            flaggedQuestions={flaggedQuestions}
+            currentVisibleIndex={currentVisibleIndex}
+            onNavigate={handleNavigateToQuestion}
+            onSubmit={handleSubmit}
+            isSubmitting={attemptStatus === "submitting"}
+          />
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto p-4 lg:p-8 flex flex-col lg:flex-row gap-8 items-start">
-        {/* Cột trái: Nội dung câu hỏi */}
-        <div className="w-full lg:flex-grow space-y-8">
-          {test.questionGroups.map((group, groupIndex) => (
-            <div
-              key={group.id || groupIndex}
-              className="bg-white rounded-xl shadow-lg"
-            >
-              <div className="p-6 border-b">
-                <h2 className="text-xl font-bold text-gray-800">
-                  {group.title}
-                </h2>
-                <p className="text-sm text-gray-500 mt-1 italic">
-                  {group.instructions}
-                </p>
-                {group.passage && (
-                  <div
-                    className="prose prose-sm max-w-none mt-4 text-gray-700"
-                    dangerouslySetInnerHTML={{
-                      __html: group.passage.replace(/\n/g, "<br />"),
-                    }}
-                  />
-                )}
-              </div>
-              <div className="divide-y">
-                {group.group_questions.map((question) => {
-                  const questionIndex = flatQuestions.findIndex(
-                    (q) => q.id === question.id
-                  );
-                  return (
-                    <div
-                      key={question.id}
-                      ref={(el) => (questionRefs.current[question.id] = el)}
-                      data-question-id={question.id}
-                      className="p-6"
-                    >
-                      <div className="flex justify-between items-start mb-4">
-                        <div className="text-lg font-semibold text-gray-800">
-                          <span className="text-blue-600">
-                            Câu {questionIndex + 1}:{" "}
-                          </span>
-                          {Array.isArray(question.question) ? (
-                            question.question.map((line, i) => (
-                              <p key={i}>{line}</p>
-                            ))
-                          ) : (
-                            <p>{question.question}</p>
-                          )}
-                        </div>
-                        <button
-                          onClick={() => handleToggleFlag(question.id)}
-                          title="Đánh dấu câu hỏi"
-                        >
-                          <FlagIcon flagged={!!flaggedQuestions[question.id]} />
-                        </button>
-                      </div>
-                      <div className="space-y-3">
-                        {question.options.map((option, index) => (
-                          <div
-                            key={index}
-                            onClick={() =>
-                              handleSelectOption(question.id, index)
-                            }
-                            className={`p-4 border-2 rounded-lg cursor-pointer transition-all flex items-center ${
-                              answers[question.id] === index
-                                ? "border-blue-500 bg-blue-50"
-                                : "border-gray-200 hover:border-blue-400"
-                            }`}
-                          >
-                            <span className="font-medium text-gray-700">
-                              {option}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-        {/* Cột phải: Hộp điều hướng */}
-        <QuestionNavigation
-          questions={flatQuestions}
-          answers={answers}
-          flaggedQuestions={flaggedQuestions}
-          currentVisibleIndex={currentVisibleIndex}
-          onNavigate={handleNavigateToQuestion}
-          onSubmit={handleSubmit}
-          isSubmitting={attemptStatus === "submitting"}
+      {/* THAY ĐỔI: Render Modal nếu state là true */}
+      {showIncompleteWarning && (
+        <IncompleteWarningModal
+          onClose={() => setShowIncompleteWarning(false)}
+          unansweredCount={flatQuestions.length - Object.keys(answers).length}
         />
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
