@@ -202,7 +202,7 @@ const CourseDetail = () => {
   // if (status === "failed")
   //   return <div className="p-10 text-red-500">{error}</div>;
   if (!course) return <div className="p-10">Không tìm thấy khóa học</div>;
-  console.log("Dữ liệu khóa học trong component:", course);
+  // console.log("Dữ liệu khóa học trong component:", course);
 
   return (
     <div className="flex md:h-screen h-120 ">
