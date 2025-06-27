@@ -75,7 +75,7 @@ const CourseList = () => {
       </div>
 
       <CategorySection setSelectedCategory={setSelectedCategory} />
-      <div className="flex gap-6 mt-6 flex-wrap justify-center items-center w-11/12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6 w-11/12">
         {currentCourses.length > 0 ? (
           currentCourses.map((course) => (
             <CourseCard key={course._id} course={course} />
@@ -95,7 +95,7 @@ const CourseList = () => {
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
           >
-            Prev
+            Trước
           </button>
           <span className="text-lg font-semibold mx-4">
             Trang {currentPage} / {totalPages}
@@ -111,7 +111,7 @@ const CourseList = () => {
             }
             disabled={currentPage === totalPages}
           >
-            Next
+            Sau
           </button>
         </div>
       )}

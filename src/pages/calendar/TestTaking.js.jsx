@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 // BƯỚC 1: IMPORT CÁC ACTION TỪ REDUX
 import { fetchTestForTaking, clearCurrentTest } from "../../redux/testSlice";
 import { submitTestAttempt } from "../../redux/testAttemptSlice";
+import { ClockIcon } from "@heroicons/react/24/outline"; // <-- Thêm import icon này
 
 // --- COMPONENT MỚI: MODAL CẢNH BÁO ---
 const IncompleteWarningModal = ({ onClose, unansweredCount }) => {
@@ -121,7 +122,7 @@ const QuestionNavigation = ({
   // Component này gần như giữ nguyên, chỉ thêm prop 'isSubmitting'
   return (
     <div className="w-full lg:w-[320px] xl:w-[350px] flex-shrink-0">
-      <div className="bg-white rounded-xl shadow-lg flex flex-col w-full lg:fixed lg:top-28 lg:w-[320px] xl:w-[350px] lg:max-h-[calc(100vh-8rem)]">
+      <div className="bg-white rounded-xl shadow-lg flex flex-col w-full lg:fixed lg:top-49 lg:w-[320px] xl:w-[350px] lg:max-h-[calc(100vh-8rem)]">
         <div className="p-4 border-b border-gray-200 flex-shrink-0">
           <h3 className="text-lg font-bold text-center">Danh sách câu hỏi</h3>
         </div>
@@ -365,12 +366,24 @@ const TestTaking = () => {
     <>
       <div className="bg-gray-50 min-h-screen">
         {/* Header cố định */}
-        <div className="sticky top-0 z-20 bg-white shadow-md">
+
+        <div className="sticky md:top-24 top-19 z-20  bg-white shadow-md">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-3">
-              <h1 className="text-xl font-bold text-gray-800">{test.title}</h1>
-              <div className="text-red-500 font-bold text-lg bg-red-50 px-4 py-2 rounded-lg">
-                <span>Thời gian còn lại: </span>
+            {/* Sử dụng gap để tạo khoảng cách và căn giữa các item */}
+            <div className="flex justify-between items-center py-3 gap-4">
+              {/* 1. Tinh chỉnh Tiêu đề: nhỏ hơn và tự động cắt ngắn trên mobile */}
+              <h1 className="text-base sm:text-xl font-bold text-gray-800 truncate">
+                {test.title}
+              </h1>
+
+              {/* 2. Tối ưu Đồng hồ: dùng icon trên mobile, chữ trên desktop */}
+              <div className="flex-shrink-0 flex items-center text-red-500 font-bold text-sm sm:text-lg bg-red-50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg">
+                {/* Icon chỉ hiển thị trên mobile */}
+                <ClockIcon className="h-5 w-5 mr-1.5" />
+
+                {/* Chữ "Thời gian còn lại" chỉ hiển thị trên desktop */}
+                <span className="hidden sm:inline">Thời gian còn lại: </span>
+
                 <span>
                   {String(minutes).padStart(2, "0")}:
                   {String(seconds).padStart(2, "0")}

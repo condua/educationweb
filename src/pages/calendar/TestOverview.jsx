@@ -14,13 +14,13 @@ import {
   QuestionMarkCircleIcon,
   StarIcon,
   ArrowRightIcon,
-  ArrowLeftIcon, // <--- THÊM ICON MỚI
+  ArrowLeftIcon,
   DocumentTextIcon,
   CalendarDaysIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/solid";
 
-// --- CÁC COMPONENT PHỤ ---
+// --- CÁC COMPONENT PHỤ (Không thay đổi) ---
 
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center min-h-screen bg-slate-50">
@@ -55,13 +55,12 @@ const StatCard = ({ icon, label, value }) => (
   </div>
 );
 
-// --- COMPONENT CHÍNH ---
+// --- COMPONENT CHÍNH (Đã được tối ưu) ---
 
 const TestOverview = () => {
   const { testId } = useParams();
   const dispatch = useDispatch();
 
-  // Lấy dữ liệu từ Redux store
   const {
     currentTest: test,
     status: testStatus,
@@ -72,20 +71,17 @@ const TestOverview = () => {
     (state) => state.testAttempts
   );
 
-  // Fetch dữ liệu khi component được mount hoặc testId thay đổi
   useEffect(() => {
     if (testId) {
       dispatch(fetchTestForTaking(testId));
       dispatch(fetchMyAttemptsForTest(testId));
     }
-    // Dọn dẹp state khi component bị hủy
     return () => {
       dispatch(clearCurrentTest());
       dispatch(clearAttemptsForTest());
     };
   }, [dispatch, testId]);
 
-  // Tính toán số câu hỏi
   const questionCount = useMemo(
     () =>
       test
@@ -97,7 +93,6 @@ const TestOverview = () => {
     [test]
   );
 
-  // Tính điểm cao nhất từ lịch sử làm bài
   const highestScore = useMemo(() => {
     const history = attemptsForSingleTest || [];
     if (history.length === 0) {
@@ -106,12 +101,10 @@ const TestOverview = () => {
     return Math.max(...history.map((a) => a.score));
   }, [attemptsForSingleTest]);
 
-  // Xử lý trạng thái loading
   if (testStatus === "loading" || attemptStatus === "loading") {
     return <LoadingSpinner />;
   }
 
-  // Xử lý trạng thái lỗi
   if (testStatus === "failed" || !test) {
     return (
       <ErrorDisplay
@@ -126,8 +119,8 @@ const TestOverview = () => {
     <div className="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          {/* Phần Header */}
-          <div className="p-8">
+          {/* Phần Header: Giảm padding trên mobile */}
+          <div className="p-6 md:p-8">
             {test?.course && (
               <div className="mb-6">
                 <Link
@@ -141,15 +134,18 @@ const TestOverview = () => {
             )}
             <div className="flex items-center space-x-3 mb-6">
               <DocumentTextIcon className="h-8 w-8 text-indigo-500" />
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+              {/* Tối ưu kích thước font chữ cho mobile */}
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 tracking-tight">
                 {test.title}
               </h1>
             </div>
-            <p className="mt-2 text-lg text-gray-600">{test.description}</p>
+            <p className="mt-2 text-base sm:text-lg text-gray-600">
+              {test.description}
+            </p>
           </div>
 
-          {/* Phần các thẻ thông số */}
-          <div className="p-8 bg-slate-50/70 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Phần các thẻ thông số: Giảm padding và gap trên mobile */}
+          <div className="p-6 md:p-8 bg-slate-50/70 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <StatCard
               icon={<ClockIcon className="h-10 w-10 text-sky-500" />}
               label="Thời gian làm bài"
@@ -169,29 +165,28 @@ const TestOverview = () => {
             />
           </div>
 
-          {/* Nút bắt đầu */}
-          <div className="p-8 text-center">
+          {/* Nút bắt đầu: Giảm padding trên mobile */}
+          <div className="p-6 md:p-8 text-center">
             <Link
               to={`/test/${test._id}/take`}
               state={{ startedAt: new Date().toISOString() }}
-              className="inline-flex items-center justify-center gap-x-3 w-full sm:w-auto bg-indigo-600 text-white font-bold text-lg px-14 py-4 rounded-xl shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300"
+              className="inline-flex items-center justify-center gap-x-3 w-full sm:w-auto bg-indigo-600 text-white font-bold text-base sm:text-lg px-8 py-3 sm:px-14 sm:py-4 rounded-xl shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300"
             >
               Bắt đầu làm bài
               <ArrowRightIcon className="h-6 w-6" />
             </Link>
           </div>
 
-          {/* Phần Lịch sử làm bài */}
-          <div className="p-8 border-t border-gray-200">
+          {/* Phần Lịch sử làm bài: Giảm padding và tối ưu layout item */}
+          <div className="p-6 md:p-8 border-t border-gray-200">
             <div className="flex items-center space-x-3 mb-6">
               <ClockIcon className="h-7 w-7 text-gray-500" />
-              <h2 className="text-2xl font-bold text-gray-800">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
                 Lịch sử làm bài của bạn
               </h2>
             </div>
             <div className="space-y-4">
               {attemptsForSingleTest && attemptsForSingleTest.length > 0 ? (
-                // Tạo một bản sao của mảng trước khi sort để không thay đổi state gốc
                 [...attemptsForSingleTest]
                   .sort(
                     (a, b) => new Date(b.completedAt) - new Date(a.completedAt)
@@ -199,11 +194,12 @@ const TestOverview = () => {
                   .map((attempt) => (
                     <div
                       key={attempt._id}
-                      className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 transition-shadow hover:shadow-md"
+                      // Tối ưu layout: căn trái trên mobile, căn giữa trên desktop
+                      className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-shadow hover:shadow-md"
                     >
                       <div className="flex items-center gap-3 text-gray-700">
-                        <CalendarDaysIcon className="h-5 w-5 text-gray-400" />
-                        <span className="font-medium">
+                        <CalendarDaysIcon className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                        <span className="font-medium text-sm sm:text-base">
                           {format(
                             new Date(attempt.completedAt),
                             "HH:mm 'ngày' dd/MM/yyyy",
@@ -211,7 +207,8 @@ const TestOverview = () => {
                           )}
                         </span>
                       </div>
-                      <div className="flex items-center gap-6">
+                      {/* Tối ưu layout cho phần điểm và nút */}
+                      <div className="w-full sm:w-auto flex flex-row items-center justify-between sm:justify-end gap-4 mt-2 sm:mt-0">
                         <div className="flex items-center gap-2 text-lg">
                           <CheckCircleIcon className="h-6 w-6 text-green-500" />
                           <p className="font-bold text-gray-900">
@@ -220,7 +217,7 @@ const TestOverview = () => {
                         </div>
                         <Link
                           to={`/test/${test._id}/results/${attempt._id}`}
-                          className="px-4 py-2 text-sm font-semibold text-indigo-600 bg-indigo-100 rounded-md hover:bg-indigo-200 transition-colors"
+                          className="px-4 py-2 text-sm font-semibold text-indigo-600 bg-indigo-100 rounded-md hover:bg-indigo-200 transition-colors whitespace-nowrap"
                         >
                           Xem chi tiết
                         </Link>
