@@ -88,25 +88,25 @@ const TestOverview = () => {
   }, [dispatch, testId]);
 
   // ✅ BƯỚC 4: THÊM useEffect ĐỂ KIỂM TRA QUYỀN TRUY CẬP
-  useEffect(() => {
-    // Chỉ kiểm tra khi đã có đủ thông tin user và test
-    if (user && test && test.course) {
-      // Bỏ qua kiểm tra nếu là admin
-      if (user.role === "admin") {
-        return;
-      }
+  // useEffect(() => {
+  //   // Chỉ kiểm tra khi đã có đủ thông tin user và test
+  //   if (user) {
+  //     // Bỏ qua kiểm tra nếu là admin
+  //     if (user.role === "admin") {
+  //       return;
+  //     }
 
-      // Kiểm tra xem test.course có trong danh sách enrolledCourses của user không
-      // Giả sử enrolledCourses là một mảng các ID của khóa học
-      const isEnrolled = user.enrolledCourses?.includes(test.course);
+  //     // Kiểm tra xem test.course có trong danh sách enrolledCourses của user không
+  //     // Giả sử enrolledCourses là một mảng các ID của khóa học
+  //     const isEnrolled = user.enrolledCourses?.includes(courseId);
 
-      if (!isEnrolled) {
-        // Nếu không, chuyển hướng về trang danh sách khóa học
-        alert("Bạn chưa tham gia khóa học này. Đang chuyển hướng...");
-        navigate("/courses");
-      }
-    }
-  }, [user, test, navigate]);
+  //     if (!isEnrolled) {
+  //       // Nếu không, chuyển hướng về trang danh sách khóa học
+  //       alert("Bạn chưa tham gia khóa học này. Đang chuyển hướng...");
+  //       navigate("/courses");
+  //     }
+  //   }
+  // }, [user, test, courseId, navigate]);
   const questionCount = useMemo(
     () =>
       test

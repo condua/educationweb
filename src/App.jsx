@@ -50,7 +50,27 @@ const AuthRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   return isAuthen ? <Navigate to="/" /> : element;
 };
+// =================================================================
+// 1. THÊM COMPONENT AdminRoute TẠI ĐÂY
+// =================================================================
+const AdminRoute = ({ element }) => {
+  const isAuthen = useSelector((state) => state.auth.isAuthen);
+  const { user } = useSelector((state) => state.user); // Lấy thông tin user từ Redux state
+  const location = useLocation();
 
+  // Nếu chưa đăng nhập, chuyển hướng đến trang login
+  if (!isAuthen) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  // Nếu đã đăng nhập nhưng không phải admin, chuyển hướng về trang chủ
+  if (user?.role !== "admin") {
+    return <Navigate to="/" replace />;
+  }
+
+  // Nếu là admin, cho phép truy cập
+  return element;
+};
 function App() {
   const dispatch = useDispatch();
   const { user, status } = useSelector((state) => state.user);
@@ -116,7 +136,7 @@ function App() {
           element={<PrivateRoute element={<TestResults />} />}
         />
 
-        <Route
+        {/* <Route
           path="/test/:testId"
           element={<PrivateRoute element={<TestOverview />} />}
         />
@@ -127,24 +147,35 @@ function App() {
         <Route
           path="/test/:testId/results/:attemptId"
           element={<PrivateRoute element={<TestResults />} />}
-        />
+        /> */}
         <Route path="/exams" element={<ExamList />} />
         <Route path="/exams/do/:examId" element={<ExamDo />} />
         <Route path="/exams/result/:examId" element={<ExamResultPage />} />
         <Route path="/calendar" element={<CourseCalendar />} />
 
-        <Route path="/admin" element={<Dashboard />} />
-        <Route path="/admin/student" element={<StudentManagement />} />
-        <Route path="/admin/course" element={<CourseManagement />} />
-        <Route path="/admin/course/:courseId" element={<CourseEditPage />} />
-
+        {/* ================================================================= */}
+        {/* 2. SỬ DỤNG AdminRoute ĐỂ BẢO VỆ CÁC ROUTE CỦA ADMIN            */}
+        {/* ================================================================= */}
+        <Route path="/admin" element={<AdminRoute element={<Dashboard />} />} />
+        <Route
+          path="/admin/student"
+          element={<AdminRoute element={<StudentManagement />} />}
+        />
+        <Route
+          path="/admin/course"
+          element={<AdminRoute element={<CourseManagement />} />}
+        />
+        <Route
+          path="/admin/course/:courseId"
+          element={<AdminRoute element={<CourseEditPage />} />}
+        />
         <Route
           path="/admin/course/:courseId/test/:testId/attempts"
-          element={<TestAttemptsPage />}
+          element={<AdminRoute element={<TestAttemptsPage />} />}
         />
         <Route
           path="/admin/course/:courseId/test/:testId/attempt/:attemptId"
-          element={<TestAttemptResults />}
+          element={<AdminRoute element={<TestAttemptResults />} />}
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

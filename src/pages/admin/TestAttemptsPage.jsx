@@ -105,12 +105,12 @@ const TestAttemptsPage = () => {
                   <td className="p-4">
                     {new Date(attempt.startedAt).toLocaleString("vi-VN")}
                   </td>
-                  <td className="p-4 text-center">
+                  <td className="p-4">
                     {/* Link đến trang chi tiết kết quả của attempt này */}
                     <Link
                       // ✅ SỬA LẠI ĐƯỜNG DẪN NÀY
                       to={`/admin/course/${courseId}/test/${testId}/attempt/${attempt._id}`}
-                      className="text-gray-600 hover:text-blue-600"
+                      className="text-gray-600 hover:text-blue-600 flex items-center justify-center"
                       title="Xem chi tiết bài làm"
                     >
                       <FaEye size={18} />

@@ -89,7 +89,7 @@ const QuestionResult = ({ question, userAnswer, questionNumber }) => {
 
 // ----- Component chính -----
 const TestAttemptResults = () => {
-  const { testId, attemptId } = useParams();
+  const { testId, attemptId, courseId } = useParams();
   const dispatch = useDispatch();
 
   // Lấy dữ liệu từ Redux store
@@ -200,14 +200,14 @@ const TestAttemptResults = () => {
           </div>
 
           {/* Nút hành động */}
-          {/* <div className="p-6 bg-gray-50 rounded-b-xl border-t flex justify-center space-x-4">
+          <div className="p-6 bg-gray-50 rounded-b-xl border-t flex justify-center space-x-4">
             <Link
               to={`/admin/course/${courseId}/test/${testId}/attempts`}
               className="px-6 py-2 font-semibold text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300"
             >
               Quay lại danh sách
             </Link>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
