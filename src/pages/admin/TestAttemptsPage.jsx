@@ -108,7 +108,8 @@ const TestAttemptsPage = () => {
                   <td className="p-4 text-center">
                     {/* Link đến trang chi tiết kết quả của attempt này */}
                     <Link
-                      // to={`/attempt/${attempt._id}`}
+                      // ✅ SỬA LẠI ĐƯỜNG DẪN NÀY
+                      to={`/admin/course/${courseId}/test/${testId}/attempt/${attempt._id}`}
                       className="text-gray-600 hover:text-blue-600"
                       title="Xem chi tiết bài làm"
                     >

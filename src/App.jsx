@@ -34,6 +34,7 @@ import StudentManagement from "./pages/admin/StudentManagement.jsx";
 import CourseManagement from "./pages/admin/CourseManagement.jsx";
 import CourseEditPage from "./pages/admin/CourseEditPage.jsx";
 import TestAttemptsPage from "./pages/admin/TestAttemptsPage.jsx";
+import TestAttemptResults from "./pages/admin/TestAttemptResults.jsx";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   const location = useLocation();
@@ -123,9 +124,14 @@ function App() {
         <Route path="/admin/student" element={<StudentManagement />} />
         <Route path="/admin/course" element={<CourseManagement />} />
         <Route path="/admin/course/:courseId" element={<CourseEditPage />} />
+
         <Route
           path="/admin/course/:courseId/test/:testId/attempts"
           element={<TestAttemptsPage />}
+        />
+        <Route
+          path="/admin/course/:courseId/test/:testId/attempt/:attemptId"
+          element={<TestAttemptResults />}
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
