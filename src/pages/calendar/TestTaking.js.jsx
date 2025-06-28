@@ -236,9 +236,9 @@ const TestTaking = () => {
       alert(
         "Vui lòng bắt đầu bài kiểm tra từ trang tổng quan để tính thời gian chính xác."
       );
-      navigate(`/test/${testId}`);
+      navigate(`/course/${courseId}/test/${testId}`);
     }
-  }, [startedAt, testId, navigate]);
+  }, [startedAt, courseId, testId, navigate]);
 
   useEffect(() => {
     if (testId) {
@@ -331,7 +331,7 @@ const TestTaking = () => {
         `/course/${courseId}/test/${testId}/results/${currentAttemptResult._id}`
       );
     }
-  }, [attemptStatus, currentAttemptResult, navigate, testId]);
+  }, [attemptStatus, currentAttemptResult, courseId, navigate, testId]);
 
   const handleSelectOption = (questionId, optionIndex) =>
     setAnswers({ ...answers, [questionId]: optionIndex });

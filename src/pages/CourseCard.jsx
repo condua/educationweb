@@ -59,7 +59,7 @@ const CourseCard = ({ course }) => {
 
   return (
     <div
-      className="flex flex-col justify-between w-11/12 bg-white 
+      className="flex flex-col justify-between w-full bg-white 
       rounded-2xl shadow-md p-4 sm:w-80 hover:shadow-lg transition relative cursor-pointer
       hover:scale-105 transform duration-300 ease-in-out
       "
