@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { vi } from "date-fns/locale";
 import { useDispatch, useSelector } from "react-redux";
@@ -60,6 +60,7 @@ const StatCard = ({ icon, label, value }) => (
 const TestOverview = () => {
   const { testId } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     currentTest: test,
@@ -67,9 +68,13 @@ const TestOverview = () => {
     error: testError,
   } = useSelector((state) => state.tests);
 
+  // ✅ BƯỚC 3: LẤY THÔNG TIN USER TỪ AUTH SLICE
+  const { user } = useSelector((state) => state.auth);
   const { attemptsForSingleTest, status: attemptStatus } = useSelector(
     (state) => state.testAttempts
   );
+
+  const courseId = useParams().courseId; // Lấy courseId từ test hoặc params
 
   useEffect(() => {
     if (testId) {
@@ -82,6 +87,26 @@ const TestOverview = () => {
     };
   }, [dispatch, testId]);
 
+  // ✅ BƯỚC 4: THÊM useEffect ĐỂ KIỂM TRA QUYỀN TRUY CẬP
+  useEffect(() => {
+    // Chỉ kiểm tra khi đã có đủ thông tin user và test
+    if (user && test && test.course) {
+      // Bỏ qua kiểm tra nếu là admin
+      if (user.role === "admin") {
+        return;
+      }
+
+      // Kiểm tra xem test.course có trong danh sách enrolledCourses của user không
+      // Giả sử enrolledCourses là một mảng các ID của khóa học
+      const isEnrolled = user.enrolledCourses?.includes(test.course);
+
+      if (!isEnrolled) {
+        // Nếu không, chuyển hướng về trang danh sách khóa học
+        alert("Bạn chưa tham gia khóa học này. Đang chuyển hướng...");
+        navigate("/courses");
+      }
+    }
+  }, [user, test, navigate]);
   const questionCount = useMemo(
     () =>
       test
@@ -168,7 +193,7 @@ const TestOverview = () => {
           {/* Nút bắt đầu: Giảm padding trên mobile */}
           <div className="p-6 md:p-8 text-center">
             <Link
-              to={`/test/${test._id}/take`}
+              to={`/course/${courseId}/test/${test._id}/take`}
               state={{ startedAt: new Date().toISOString() }}
               className="inline-flex items-center justify-center gap-x-3 w-full sm:w-auto bg-indigo-600 text-white font-bold text-base sm:text-lg px-8 py-3 sm:px-14 sm:py-4 rounded-xl shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300"
             >

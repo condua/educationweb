@@ -210,7 +210,6 @@ const TestTaking = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-
   const { startedAt } = location.state || {};
 
   const questionRefs = useRef({});
@@ -231,6 +230,7 @@ const TestTaking = () => {
   // THAY ĐỔI: Thêm state để quản lý modal cảnh báo
   const [showIncompleteWarning, setShowIncompleteWarning] = useState(false);
 
+  const courseId = useParams().courseId; // Lấy courseId từ params
   useEffect(() => {
     if (!startedAt) {
       alert(
@@ -327,7 +327,9 @@ const TestTaking = () => {
 
   useEffect(() => {
     if (attemptStatus === "succeeded" && currentAttemptResult?._id) {
-      navigate(`/test/${testId}/results/${currentAttemptResult._id}`);
+      navigate(
+        `/course/${courseId}/test/${testId}/results/${currentAttemptResult._id}`
+      );
     }
   }, [attemptStatus, currentAttemptResult, navigate, testId]);
 
