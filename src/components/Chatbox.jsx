@@ -72,11 +72,11 @@ export default function Chatbot() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "deepseek/deepseek-chat",
+          model: "deepseek/deepseek-chat-v3-0324:free",
           messages: [
             // { role: "system", content: "Bạn là một trợ lý ảo thân thiện." },
             {
-              role: "system",
+              role: "user",
               content: `Bạn là một trợ lý ảo của công ty Giáo dục và Công nghệ MLPA. Dưới đây là một số thông tin bạn cần nhớ để trả lời người dùng:
               - MLPA được thành lập vào tháng 3 năm 2025 bởi Phan Hoàng Phúc, cựu sinh viên trường Đại học Bách Khoa Thành phố Hồ Chí Minh
               - MLPA là nền tảng giáo dục kết hợp công nghệ AI, cung cấp khóa học kỹ năng, đánh giá năng lực vào các trường đại học hàng đầu Việt Nam như Đại học Bách Khoa Thành phố Hồ Chí Minh, 
@@ -118,7 +118,7 @@ export default function Chatbot() {
               Hôm nay là ${vietnamTime}
               `,
             },
-            { role: "user", content: userText },
+            // { role: "user", content: userText },
           ],
         }),
       });
