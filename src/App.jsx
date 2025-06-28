@@ -29,6 +29,11 @@ import CourseCalendar from "./pages/calendar/CourseCalendar";
 import TestOverview from "./pages/calendar/TestOverview";
 import TestTaking from "./pages/calendar/TestTaking.js";
 import TestResults from "./pages/calendar/TestResults";
+import Dashboard from "./pages/admin/Dashboard";
+import StudentManagement from "./pages/admin/StudentManagement.jsx";
+import CourseManagement from "./pages/admin/CourseManagement.jsx";
+import CourseEditPage from "./pages/admin/CourseEditPage.jsx";
+import TestAttemptsPage from "./pages/admin/TestAttemptsPage.jsx";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   const location = useLocation();
@@ -114,6 +119,14 @@ function App() {
         <Route path="/exams/result/:examId" element={<ExamResultPage />} />
         <Route path="/calendar" element={<CourseCalendar />} />
 
+        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin/student" element={<StudentManagement />} />
+        <Route path="/admin/course" element={<CourseManagement />} />
+        <Route path="/admin/course/:courseId" element={<CourseEditPage />} />
+        <Route
+          path="/admin/course/:courseId/test/:testId/attempts"
+          element={<TestAttemptsPage />}
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Chatbot />

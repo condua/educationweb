@@ -6,9 +6,11 @@ import authReducer from "./authSlice";
 import coursesReducer from "./coursesSlice";
 import userReducer from "./userSlice";
 import blogReducer from "./blogSlice";
-// ✅ 1. Import các reducer mới
 import testReducer from "./testSlice";
 import testAttemptReducer from "./testAttemptSlice";
+// ✅ 1. Import các reducer mới
+import chapterReducer from "./chapterSlice"; // 👈 thêm dòng này
+import lessonReducer from "./lessonSlice"; // 👈 thêm dòng này
 
 // Cấu hình Redux Persist
 const authPersistConfig = {
@@ -20,7 +22,8 @@ const authPersistConfig = {
 const coursesPersistConfig = {
   key: "courses",
   storage,
-  whitelist: ["courses"],
+  // Lưu danh sách khóa học và chi tiết khóa học đã fetch
+  whitelist: ["courses", "courseDetails"],
 };
 
 const userPersistConfig = {
@@ -35,7 +38,6 @@ const blogPersistConfig = {
   whitelist: ["blogs"],
 };
 
-// ✅ 2. Thêm cấu hình persist cho test và testAttempt
 const testPersistConfig = {
   key: "tests",
   storage,
@@ -56,7 +58,6 @@ const persistedCoursesReducer = persistReducer(
 );
 const persistedUserReducer = persistReducer(userPersistConfig, userReducer);
 const persistedBlogReducer = persistReducer(blogPersistConfig, blogReducer);
-// ✅ 3. Tạo persisted reducers cho slice mới
 const persistedTestReducer = persistReducer(testPersistConfig, testReducer);
 const persistedTestAttemptReducer = persistReducer(
   testAttemptPersistConfig,
@@ -70,13 +71,15 @@ const store = configureStore({
     courses: persistedCoursesReducer,
     user: persistedUserReducer,
     blog: persistedBlogReducer,
-    // ✅ 4. Thêm các reducer đã persist vào store
     tests: persistedTestReducer,
     testAttempts: persistedTestAttemptReducer,
+    // ✅ 2. Thêm các reducer mới (không cần persist) vào store
+    chapters: chapterReducer, // 👈 thêm dòng này
+    lessons: lessonReducer, // 👈 thêm dòng này
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: false, // Tắt kiểm tra serializable cho redux-persist
     }),
 });
 

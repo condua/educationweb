@@ -1,0 +1,68 @@
+// src/data/studentMockData.js
+
+export const students = [
+  {
+    _id: "user001",
+    avatar: "https://placehold.co/40x40/3498db/ffffff?text=A",
+    fullName: "Nguyễn Văn An",
+    email: "an.nguyen@example.com",
+    phone: "0901234567",
+    enrolledCourses: 5,
+    createdAt: "2025-01-15T10:30:00Z",
+  },
+  {
+    _id: "user002",
+    avatar: "https://placehold.co/40x40/e74c3c/ffffff?text=B",
+    fullName: "Trần Thị Bình",
+    email: "binh.tran@example.com",
+    phone: "0912345678",
+    enrolledCourses: 2,
+    createdAt: "2025-02-20T14:00:00Z",
+  },
+  {
+    _id: "user003",
+    avatar: "https://placehold.co/40x40/2ecc71/ffffff?text=C",
+    fullName: "Lê Văn Cường",
+    email: "cuong.le@example.com",
+    phone: "0987654321",
+    enrolledCourses: 8,
+    createdAt: "2025-03-10T09:00:00Z",
+  },
+  {
+    _id: "user004",
+    avatar: "https://placehold.co/40x40/f1c40f/333333?text=D",
+    fullName: "Phạm Thị Dung",
+    email: "dung.pham@example.com",
+    phone: "0934567890",
+    enrolledCourses: 1,
+    createdAt: "2025-04-05T11:20:00Z",
+  },
+  {
+    _id: "user005",
+    avatar: "https://placehold.co/40x40/9b59b6/ffffff?text=G",
+    fullName: "Hoàng Văn Giang",
+    email: "giang.hoang@example.com",
+    phone: "0945678901",
+    enrolledCourses: 12,
+    createdAt: "2025-05-01T16:45:00Z",
+  },
+  // Thêm 10-15 học viên nữa để có dữ liệu cho phân trang
+  {
+    _id: "user006",
+    avatar: "https://placehold.co/40x40/1abc9c/ffffff?text=H",
+    fullName: "Vũ Thị Hương",
+    email: "huong.vu@example.com",
+    phone: "0905123456",
+    enrolledCourses: 3,
+    createdAt: "2025-05-15T08:10:00Z",
+  },
+  {
+    _id: "user007",
+    avatar: "https://placehold.co/40x40/e67e22/ffffff?text=K",
+    fullName: "Đặng Văn Khánh",
+    email: "khanh.dang@example.com",
+    phone: "0988765432",
+    enrolledCourses: 6,
+    createdAt: "2025-06-02T18:00:00Z",
+  },
+];

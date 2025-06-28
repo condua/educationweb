@@ -114,12 +114,34 @@ export const fetchLeaderboardForTest = createAsyncThunk(
   }
 );
 
+/**
+ * 🎯 ACTION MỚI: Lấy danh sách bài làm của một bài test trong khóa học (cho admin).
+ */
+export const fetchAttemptsForTestInCourse = createAsyncThunk(
+  "testAttempts/fetchForCourseTest",
+  async ({ courseId, testId }, { getState, rejectWithValue }) => {
+    try {
+      const token = getToken(getState());
+      const response = await axios.get(
+        `${API_URL}/course/${courseId}/test/${testId}`,
+        getAuthHeaders(token)
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data || "Lỗi khi tải danh sách bài làm"
+      );
+    }
+  }
+);
+
 const testAttemptSlice = createSlice({
   name: "testAttempts",
   initialState: {
     userAttempts: [], // Lịch sử TẤT CẢ các lần làm bài của người dùng
     attemptsForSingleTest: [], // Lịch sử làm bài cho một bài test đang xem
     leaderboard: [], // Bảng xếp hạng cho một bài test
+    courseTestAttempts: [], // Danh sách bài làm của 1 test trong khoá học (admin view)
     currentAttemptResult: null, // Kết quả của lần làm bài đang xem chi tiết
     status: "idle", // 'idle' | 'submitting' | 'loading' | 'succeeded' | 'failed'
     error: null,
@@ -135,10 +157,12 @@ const testAttemptSlice = createSlice({
     clearLeaderboard: (state) => {
       state.leaderboard = [];
     },
+    clearCourseTestAttempts: (state) => {
+      state.courseTestAttempts = [];
+    },
   },
   extraReducers: (builder) => {
-    builder
-      // Submit Test
+    builder // Submit Test
       .addCase(submitTestAttempt.pending, (state) => {
         state.status = "submitting";
       })
@@ -151,9 +175,8 @@ const testAttemptSlice = createSlice({
       .addCase(submitTestAttempt.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
-      })
+      }) // Fetch Result by ID
 
-      // Fetch Result by ID
       .addCase(fetchAttemptResult.pending, (state) => {
         state.status = "loading";
       })
@@ -164,9 +187,8 @@ const testAttemptSlice = createSlice({
       .addCase(fetchAttemptResult.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
-      })
+      }) // Fetch User History (tất cả)
 
-      // Fetch User History (tất cả)
       .addCase(fetchUserAttempts.pending, (state) => {
         state.status = "loading";
       })
@@ -177,9 +199,8 @@ const testAttemptSlice = createSlice({
       .addCase(fetchUserAttempts.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
-      })
+      }) // Fetch Attempts for a single Test
 
-      // Fetch Attempts for a single Test
       .addCase(fetchMyAttemptsForTest.pending, (state) => {
         state.status = "loading";
       })
@@ -190,9 +211,8 @@ const testAttemptSlice = createSlice({
       .addCase(fetchMyAttemptsForTest.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
-      })
+      }) // Fetch Leaderboard for a test
 
-      // Fetch Leaderboard for a test
       .addCase(fetchLeaderboardForTest.pending, (state) => {
         state.status = "loading";
       })
@@ -203,10 +223,27 @@ const testAttemptSlice = createSlice({
       .addCase(fetchLeaderboardForTest.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
+      })
+
+      // Fetch Attempts for a test in a course (admin view)
+      .addCase(fetchAttemptsForTestInCourse.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchAttemptsForTestInCourse.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.courseTestAttempts = action.payload;
+      })
+      .addCase(fetchAttemptsForTestInCourse.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
       });
   },
 });
 
-export const { clearCurrentAttempt, clearAttemptsForTest, clearLeaderboard } =
-  testAttemptSlice.actions;
+export const {
+  clearCurrentAttempt,
+  clearAttemptsForTest,
+  clearLeaderboard,
+  clearCourseTestAttempts, // Export action mới
+} = testAttemptSlice.actions;
 export default testAttemptSlice.reducer;
