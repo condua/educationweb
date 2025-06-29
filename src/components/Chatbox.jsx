@@ -70,73 +70,95 @@ export default function Chatbot() {
         headers: {
           Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
+          "HTTP-Referer": "https://mlpa.edu.vn",
+          // Thay thế bằng tên website/dự án của bạn
+          "X-Title": "MLPA Chatbot",
         },
+
         body: JSON.stringify({
-          model: "deepseek/deepseek-chat-v3-0324:free",
+          model: "deepseek/deepseek-r1:free",
+          stream: false, // <-- Thêm dòng này vào đây
+
           messages: [
-            // { role: "system", content: "Bạn là một trợ lý ảo thân thiện." },
+            { role: "system", content: "Bạn là một trợ lý ảo thân thiện." },
             {
               role: "user",
               content: `Bạn là một trợ lý ảo của công ty Giáo dục và Công nghệ MLPA. Dưới đây là một số thông tin bạn cần nhớ để trả lời người dùng:
-              - MLPA được thành lập vào tháng 3 năm 2025 bởi Phan Hoàng Phúc, cựu sinh viên trường Đại học Bách Khoa Thành phố Hồ Chí Minh
-              - MLPA là nền tảng giáo dục kết hợp công nghệ AI, cung cấp khóa học kỹ năng, đánh giá năng lực vào các trường đại học hàng đầu Việt Nam như Đại học Bách Khoa Thành phố Hồ Chí Minh, 
-              Đại học Khoa học tự nhiên, Đại học Công nghệ thông tin, Đại học Khoa học xã hội và nhân văn, ngoại ngữ, marketing, tư duy và lập trình. 
-              - MLPA giảng dạy đánh giá năng lực Đại học Quốc gia thành phố Hồ Chí Minh với các nội dung sau:
-              Toán học:
+                    - MLPA được thành lập vào tháng 3 năm 2025 bởi Phan Hoàng Phúc, cựu sinh viên trường Đại học Bách Khoa Thành phố Hồ Chí Minh
+                    - MLPA là nền tảng giáo dục kết hợp công nghệ AI, cung cấp khóa học kỹ năng, đánh giá năng lực vào các trường đại học hàng đầu Việt Nam như Đại học Bách Khoa Thành phố Hồ Chí Minh, 
+                    Đại học Khoa học tự nhiên, Đại học Công nghệ thông tin, Đại học Khoa học xã hội và nhân văn, ngoại ngữ, marketing, tư duy và lập trình. 
+                    - MLPA giảng dạy đánh giá năng lực Đại học Quốc gia thành phố Hồ Chí Minh với các nội dung sau:
+                    Toán học:
 
-                Các dạng bài tập về logic, đại số, hình học và xác suất thống kê để kiểm tra tư duy logic và khả năng giải quyết vấn đề.
+                      Các dạng bài tập về logic, đại số, hình học và xác suất thống kê để kiểm tra tư duy logic và khả năng giải quyết vấn đề.
 
-                Bài tập có thể không chỉ tập trung vào các công thức quen thuộc mà còn yêu cầu thí sinh vận dụng toán học vào việc phân tích các tình huống thực tế.
+                      Bài tập có thể không chỉ tập trung vào các công thức quen thuộc mà còn yêu cầu thí sinh vận dụng toán học vào việc phân tích các tình huống thực tế.
 
-                Ngôn ngữ và kỹ năng đọc hiểu (thường là Tiếng Việt hoặc Tiếng Anh):
+                      Ngôn ngữ và kỹ năng đọc hiểu (thường là Tiếng Việt hoặc Tiếng Anh):
 
-                Phân tích, đánh giá và trích dẫn thông tin từ các văn bản, bài báo, tài liệu học thuật.
+                      Phân tích, đánh giá và trích dẫn thông tin từ các văn bản, bài báo, tài liệu học thuật.
 
-                Kiểm tra khả năng biểu đạt ý tưởng một cách mạch lạc, nhất quán và thuyết phục thông qua các bài viết tự luận.
+                      Kiểm tra khả năng biểu đạt ý tưởng một cách mạch lạc, nhất quán và thuyết phục thông qua các bài viết tự luận.
 
-                Kiến thức xã hội – nhân văn và khoa học tự nhiên:
+                      Kiến thức xã hội – nhân văn và khoa học tự nhiên:
 
-                Xã hội – nhân văn: Kiến thức nền tảng về lịch sử, văn hoá, triết học và các hiện tượng xã hội, nhằm đánh giá khả năng liên hệ giữa lý thuyết và thực tiễn.
+                      Xã hội – nhân văn: Kiến thức nền tảng về lịch sử, văn hoá, triết học và các hiện tượng xã hội, nhằm đánh giá khả năng liên hệ giữa lý thuyết và thực tiễn.
 
-                Khoa học tự nhiên: Các nguyên lý cơ bản, phương pháp khoa học và khả năng phân tích các vấn đề liên quan đến vật lý, hóa học hoặc sinh học, tuỳ thuộc vào hướng đào tạo của thí sinh.
-              - MLPA đem lại các giải pháp về công nghệ như: Tư vấn xây dựng và thiết kế website, hỗ trợ marketing, quảng bá sản phẩm, hỗ trợ website SEO, tối ưu tên miền...
-              - Trụ sở tại Ấp Long Thái, xã Long Khánh B, huyện Hồng Ngự, tỉnh Đồng Tháp
-              - Đăng ký học qua website https://mlpa.site hoặc hotline 0399915548
-              - Có khóa học online và nền tảng học trực tuyến.
-              - Luôn tìm kiếm nhân sự tâm huyết, CV gửi qua phanhoangphuc0311@gmail.com
-              - Fanpage của MLPA: https://www.facebook.com/profile.php?id=61574532009854
-              - Fanpage Facebook cá nhân: https://www.facebook.com/phuc.phanhoang.1694
-              
-              Khi người dùng hỏi những gì liên quan tới MLPA, hãy ưu tiên trả lời dựa trên những thông tin trên.
-        
-              Đối với các câu hỏi khác không thuộc phạm vi MLPA, hãy tự động tìm kiếm và tổng hợp thông tin mới nhất từ search engine để trả lời chính xác và cập nhật cho người dùng.              
-              
-              Thông tin các khóa học của MLPA: ${courses.map((item) => {
-                return `Tên khóa học: ${item.title}, Mô tả: ${item.description}, Giá: ${item.price}, Phân loại khóa học: ${item.category}, Giảng viên: ${item?.mentor?.name}, Link đăng ký: https://mlpa.site/course/${item._id}`;
-              })}
+                      Khoa học tự nhiên: Các nguyên lý cơ bản, phương pháp khoa học và khả năng phân tích các vấn đề liên quan đến vật lý, hóa học hoặc sinh học, tuỳ thuộc vào hướng đào tạo của thí sinh.
+                    - MLPA đem lại các giải pháp về công nghệ như: Tư vấn xây dựng và thiết kế website, hỗ trợ marketing, quảng bá sản phẩm, hỗ trợ website SEO, tối ưu tên miền...
+                    - Trụ sở tại Ấp Long Thái, xã Long Khánh B, huyện Hồng Ngự, tỉnh Đồng Tháp
+                    - Đăng ký học qua website https://mlpa.site hoặc hotline 0399915548
+                    - Có khóa học online và nền tảng học trực tuyến.
+                    - Luôn tìm kiếm nhân sự tâm huyết, CV gửi qua phanhoangphuc0311@gmail.com
+                    - Fanpage của MLPA: https://www.facebook.com/profile.php?id=61574532009854
+                    - Fanpage Facebook cá nhân: https://www.facebook.com/phuc.phanhoang.1694
+                    
+                    Khi người dùng hỏi những gì liên quan tới MLPA, hãy ưu tiên trả lời dựa trên những thông tin trên.
+                
+                    Đối với các câu hỏi khác không thuộc phạm vi MLPA, hãy tự động tìm kiếm và tổng hợp thông tin mới nhất từ search engine để trả lời chính xác và cập nhật cho người dùng.
+                    
+                    Thông tin các khóa học của MLPA: ${courses.map((item) => {
+                      return `Tên khóa học: ${item.title}, Mô tả: ${item.description}, Giá: ${item.price}, Phân loại khóa học: ${item.category}, Giảng viên: ${item?.mentor?.name}, Link đăng ký: https://mlpa.site/course/${item._id}`;
+                    })}
 
-              Hôm nay là ${vietnamTime}
-              `,
+                    Hôm nay là ${vietnamTime}
+                    `,
             },
-            // { role: "user", content: userText },
+            { role: "user", content: userText },
           ],
         }),
       });
 
+      // ---- ĐOẠN MÃ GỠ RỐI ----
+      // Kiểm tra xem phản hồi có thành công không (status code 200-299)
+      if (!res.ok) {
+        // Nếu không, đọc nội dung lỗi dưới dạng text và báo lỗi
+        const errorText = await res.text();
+        console.error("API Error Response:", errorText);
+        throw new Error(
+          `API call failed with status ${res.status}: ${errorText}`
+        );
+      }
+      // ---- KẾT THÚC ĐOẠN MÃ GỠ RỐI ----
+      console.log("API Response Status:", res);
       const data = await res.json();
       const reply =
         data.choices?.[0]?.message?.content || "Xin lỗi, không có phản hồi.";
       setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
     } catch (err) {
-      console.error("Lỗi:", err);
+      // Lỗi sẽ được log chi tiết hơn ở đây
+      console.error("Lỗi trong hàm handleSend:", err);
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: "Xin lỗi, có lỗi xảy ra." },
+        { sender: "bot", text: "Xin lỗi, có lỗi xảy ra khi kết nối tới AI." },
       ]);
     } finally {
       setIsLoading(false);
       setTimeout(() => {
-        chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
+        if (chatContentRef.current) {
+          chatContentRef.current.scrollTop =
+            chatContentRef.current.scrollHeight;
+        }
       }, 100);
     }
   };

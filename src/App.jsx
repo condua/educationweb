@@ -136,18 +136,6 @@ function App() {
           element={<PrivateRoute element={<TestResults />} />}
         />
 
-        {/* <Route
-          path="/test/:testId"
-          element={<PrivateRoute element={<TestOverview />} />}
-        />
-        <Route
-          path="/test/:testId/take"
-          element={<PrivateRoute element={<TestTaking />} />}
-        />
-        <Route
-          path="/test/:testId/results/:attemptId"
-          element={<PrivateRoute element={<TestResults />} />}
-        /> */}
         <Route path="/exams" element={<ExamList />} />
         <Route path="/exams/do/:examId" element={<ExamDo />} />
         <Route path="/exams/result/:examId" element={<ExamResultPage />} />
