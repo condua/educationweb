@@ -35,6 +35,10 @@ import CourseManagement from "./pages/admin/CourseManagement.jsx";
 import CourseEditPage from "./pages/admin/CourseEditPage.jsx";
 import TestAttemptsPage from "./pages/admin/TestAttemptsPage.jsx";
 import TestAttemptResults from "./pages/admin/TestAttemptResults.jsx";
+// Trong file src/index.js hoặc src/App.js
+import "katex/dist/katex.min.css";
+import React from "react";
+import ReactDOM from "react-dom/client";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   const location = useLocation();

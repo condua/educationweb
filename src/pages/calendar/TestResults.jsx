@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+// --- THÊM MỚI ---
+import { InlineMath, BlockMath } from "react-katex";
 // BƯỚC 1: IMPORT ACTIONS TỪ REDUX
 import {
   fetchAttemptResult,
@@ -9,6 +10,44 @@ import {
 } from "../../redux/testAttemptSlice";
 import { fetchTestWithAnswers, clearCurrentTest } from "../../redux/testSlice";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
+
+// --- THÊM MỚI: COMPONENT MATH RENDERER ---
+const MathRenderer = ({ text }) => {
+  if (typeof text !== "string" || !text) {
+    return null;
+  }
+
+  const mathRegex = /\$\$(.*?)\$\$|\$(.*?)\$/g;
+
+  // Tách văn bản thành các đoạn văn dựa trên hàng trống
+  const paragraphs = text.split(/\n\s*\n/);
+
+  return (
+    <>
+      {paragraphs.map((paragraph, pIndex) => (
+        // THAY ĐỔI: Đặt cứng className là "mb-2"
+        <p key={pIndex} className="mb-3">
+          {
+            // Logic bên trong không thay đổi
+            paragraph.split(mathRegex).map((part, index) => {
+              if (!part) return null;
+              if (index % 4 === 1) return <BlockMath key={index} math={part} />;
+              if (index % 4 === 2)
+                return <InlineMath key={index} math={part} />;
+
+              return part.split("\n").map((line, i, arr) => (
+                <React.Fragment key={i}>
+                  {line}
+                  {i < arr.length - 1 && <br />}
+                </React.Fragment>
+              ));
+            })
+          }
+        </p>
+      ))}
+    </>
+  );
+};
 
 // ----- Các component phụ -----
 const LoadingSpinner = () => (
@@ -35,11 +74,16 @@ const QuestionResult = ({ question, userAnswer, questionNumber }) => {
   return (
     <div className="py-6">
       <div className="flex justify-between items-start">
-        <p className="font-semibold text-gray-800 mb-3">{`Câu ${questionNumber}: ${question.question}`}</p>
+        {/* THAY ĐỔI: Sử dụng MathRenderer cho câu hỏi */}
+        <div className="font-semibold text-gray-800 mb-3 flex-grow">
+          <span className="mr-2">{`Câu ${questionNumber}:`}</span>
+          <MathRenderer text={question.question} />
+        </div>
+
         {isCorrect ? (
-          <CheckCircleIcon className="h-6 w-6 text-green-500 flex-shrink-0" />
+          <CheckCircleIcon className="h-6 w-6 text-green-500 flex-shrink-0 ml-4" />
         ) : (
-          <XCircleIcon className="h-6 w-6 text-red-500 flex-shrink-0" />
+          <XCircleIcon className="h-6 w-6 text-red-500 flex-shrink-0 ml-4" />
         )}
       </div>
 
@@ -57,7 +101,10 @@ const QuestionResult = ({ question, userAnswer, questionNumber }) => {
                   : "text-red-600 font-bold"
               }
             >
-              {question.options[userAnswer.selectedAnswer]}
+              {/* THAY ĐỔI: Sử dụng MathRenderer cho đáp án của người dùng */}
+              <MathRenderer
+                text={question.options[userAnswer.selectedAnswer]}
+              />{" "}
             </span>
           </p>
         ) : (
@@ -70,14 +117,17 @@ const QuestionResult = ({ question, userAnswer, questionNumber }) => {
           <p>
             <b>Đáp án đúng:</b>{" "}
             <span className="text-green-600 font-bold">
-              {question.options[question.correctAnswer]}
+              {/* THAY ĐỔI: Sử dụng MathRenderer cho đáp án đúng */}
+              <MathRenderer text={question.options[question.correctAnswer]} />
             </span>
           </p>
         )}
 
         {question.explanation && (
           <p className="text-gray-600 pt-2 italic">
-            <b>Giải thích:</b> {question.explanation}
+            <b>Giải thích:</b>{" "}
+            {/* THAY ĐỔI: Sử dụng MathRenderer cho phần giải thích */}
+            <MathRenderer text={question.explanation} />
           </p>
         )}
       </div>
@@ -149,7 +199,11 @@ const TestResults = () => {
             <h1 className="text-3xl font-bold text-gray-800">
               Kết quả bài làm
             </h1>
-            <p className="mt-1 text-base text-gray-500">{test.title}</p>
+            <p className="mt-1 text-base text-gray-500">
+              {" "}
+              {/* THAY ĐỔI: Sử dụng MathRenderer cho tiêu đề bài test */}
+              <MathRenderer text={test.title} />
+            </p>
 
             <div className="mt-6">
               <p className="text-6xl font-bold text-blue-600">
@@ -170,15 +224,14 @@ const TestResults = () => {
             {test.questionGroups?.map((group) => (
               <div key={group.id} className="mb-8 p-4 bg-slate-50 rounded-lg">
                 <h3 className="text-lg font-bold text-gray-800 border-b pb-2 mb-4">
-                  {group.title}
+                  {/* THAY ĐỔI: Sử dụng MathRenderer cho tiêu đề nhóm */}
+                  <MathRenderer text={group.title} />
                 </h3>
                 {group.passage && (
-                  <div
-                    className="prose prose-sm max-w-none mb-6 p-3 rounded-md"
-                    dangerouslySetInnerHTML={{
-                      __html: group.passage.replace(/\n/g, "<br />"),
-                    }}
-                  />
+                  // THAY ĐỔI: Thay thế dangerouslySetInnerHTML bằng MathRenderer
+                  <div className="prose prose-sm max-w-none mb-6 p-3 rounded-md">
+                    <MathRenderer text={group.passage} />
+                  </div>
                 )}
                 <div className="divide-y divide-gray-200">
                   {group.group_questions.map((q) => {

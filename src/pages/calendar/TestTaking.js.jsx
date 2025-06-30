@@ -7,12 +7,52 @@ import React, {
 } from "react";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { InlineMath, BlockMath } from "react-katex"; // <-- THÊM DÒNG NÀY
 
 // BƯỚC 1: IMPORT CÁC ACTION TỪ REDUX
 import { fetchTestForTaking, clearCurrentTest } from "../../redux/testSlice";
 import { submitTestAttempt } from "../../redux/testAttemptSlice";
 import { ClockIcon } from "@heroicons/react/24/outline"; // <-- Thêm import icon này
 
+// --- COMPONENT MỚI: MATH RENDERER (ĐỂ HIỂN THỊ CÔNG THỨC TOÁN) ---
+// Component này sẽ nhận một chuỗi văn bản, tìm các biểu thức toán học
+// được bao bởi $...$ (inline) hoặc $$...$$ (block) và render chúng.
+const MathRenderer = ({ text }) => {
+  if (typeof text !== "string" || !text) {
+    return null;
+  }
+
+  const mathRegex = /\$\$(.*?)\$\$|\$(.*?)\$/g;
+
+  // Tách văn bản thành các đoạn văn dựa trên hàng trống
+  const paragraphs = text.split(/\n\s*\n/);
+
+  return (
+    <>
+      {paragraphs.map((paragraph, pIndex) => (
+        // THAY ĐỔI: Đặt cứng className là "mb-2"
+        <p key={pIndex} className="mb-2">
+          {
+            // Logic bên trong không thay đổi
+            paragraph.split(mathRegex).map((part, index) => {
+              if (!part) return null;
+              if (index % 4 === 1) return <BlockMath key={index} math={part} />;
+              if (index % 4 === 2)
+                return <InlineMath key={index} math={part} />;
+
+              return part.split("\n").map((line, i, arr) => (
+                <React.Fragment key={i}>
+                  {line}
+                  {i < arr.length - 1 && <br />}
+                </React.Fragment>
+              ));
+            })
+          }
+        </p>
+      ))}
+    </>
+  );
+};
 // --- COMPONENT MỚI: MODAL CẢNH BÁO ---
 const IncompleteWarningModal = ({ onClose, unansweredCount }) => {
   return (
@@ -411,12 +451,13 @@ const TestTaking = () => {
                     {group.instructions}
                   </p>
                   {group.passage && (
-                    <div
-                      className="prose prose-sm max-w-none mt-4 text-gray-700"
-                      dangerouslySetInnerHTML={{
-                        __html: group.passage.replace(/\n/g, "<br />"),
-                      }}
-                    />
+                    // THAY ĐỔI: Sử dụng MathRenderer thay cho dangerouslySetInnerHTML
+                    // để đảm bảo an toàn và nhất quán.
+                    <div className="prose prose-sm max-w-none mt-4 text-gray-700">
+                      <MathRenderer
+                        text={group.passage.replace(/\n/g, "\n\n")}
+                      />
+                    </div>
                   )}
                 </div>
                 <div className="divide-y">
@@ -436,13 +477,7 @@ const TestTaking = () => {
                             <span className="text-blue-600">
                               Câu {questionIndex + 1}:{" "}
                             </span>
-                            {Array.isArray(question.question) ? (
-                              question.question.map((line, i) => (
-                                <p key={i}>{line}</p>
-                              ))
-                            ) : (
-                              <p>{question.question}</p>
-                            )}
+                            <MathRenderer text={question.question} />
                           </div>
                           <button
                             onClick={() => handleToggleFlag(question.id)}
@@ -467,7 +502,7 @@ const TestTaking = () => {
                               }`}
                             >
                               <span className="font-medium text-gray-700">
-                                {option}
+                                <MathRenderer text={option} />
                               </span>
                             </div>
                           ))}
