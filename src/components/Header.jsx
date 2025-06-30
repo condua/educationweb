@@ -147,13 +147,13 @@ const Header = () => {
                 onClick={() => navigate("/login")}
                 className="text-gray-700 hover:text-teal-600 cursor-pointer"
               >
-                Login
+                Đăng nhập
               </button>
               <button
                 className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 cursor-pointer"
                 onClick={() => navigate("/register")}
               >
-                Sign Up
+                Đăng ký
               </button>
             </>
           )}
@@ -229,7 +229,7 @@ const Header = () => {
                 }}
                 className="text-gray-700 hover:text-teal-600 cursor-pointer"
               >
-                Login
+                Đăng nhập
               </button>
               <button
                 className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 cursor-pointer"
@@ -238,7 +238,7 @@ const Header = () => {
                   setMenuOpen(false);
                 }}
               >
-                Sign Up
+                Đăng ký
               </button>
             </>
           )}
