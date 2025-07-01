@@ -92,8 +92,21 @@ const TestAttemptsPage = () => {
               sortedAndFilteredAttempts.map((attempt) => (
                 <tr key={attempt._id} className="border-t">
                   <td className="p-4">
-                    <p className="font-semibold">{attempt.fullName}</p>
-                    <p className="text-sm text-gray-500">{attempt.email}</p>
+                    <div className="flex items-center">
+                      <img
+                        className="w-10 h-10 rounded-full object-cover mr-4"
+                        // Giả sử đối tượng `attempt` có thuộc tính `avatarUrl`
+                        // Thay thế URL placeholder bằng ảnh mặc định của bạn
+                        src={
+                          attempt.avatar || "https://via.placeholder.com/150"
+                        }
+                        alt={`Avatar của ${attempt.fullName}`}
+                      />
+                      <div>
+                        <p className="font-semibold">{attempt.fullName}</p>
+                        <p className="text-sm text-gray-500">{attempt.email}</p>
+                      </div>
+                    </div>
                   </td>
                   <td
                     className={`p-4 text-center font-bold text-xl ${
