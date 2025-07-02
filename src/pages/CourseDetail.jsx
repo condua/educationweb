@@ -217,9 +217,10 @@ const CourseDetail = () => {
       {/* Sidebar */}
       <aside
         ref={sidebarRef}
-        className={`fixed inset-y-0 left-0 bg-gray-100 p-4 w-64 transform ${
+        // Thay đổi class ở đây
+        className={`fixed inset-y-0 left-0 bg-gray-100 p-3 md:p-4 w-full md:w-1/4 transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform md:relative md:translate-x-0 md:w-1/4 z-50 shadow-lg md:shadow-none`}
+        } transition-transform md:relative md:translate-x-0 z-50 shadow-lg md:shadow-none overflow-y-auto`}
       >
         <button
           className="md:hidden absolute top-4 right-4"
@@ -264,7 +265,7 @@ const CourseDetail = () => {
           </div>
         ))}
         {/* Bước 2: Hiển thị danh sách bài kiểm tra */}
-        <div className="mt-6">
+        <div className="mt-3">
           <h3 className="sm:text-l text-lg font-bold mb-2">Bài kiểm tra</h3>
           {course.tests?.length > 0 ? (
             <div>
@@ -273,7 +274,7 @@ const CourseDetail = () => {
                   key={test._id}
                   // Giả sử bạn có route вида `/course/:courseId/test/:testId`
                   to={`/course/${course._id}/test/${test._id}`}
-                  className="block w-full text-left p-2 rounded-md hover:bg-gray-300"
+                  className="block w-full text-left p-1 text-xs rounded-md hover:bg-gray-300"
                   onClick={() => setIsSidebarOpen(false)} // Ẩn sidebar khi click trên mobile
                 >
                   📝 {test.title}
