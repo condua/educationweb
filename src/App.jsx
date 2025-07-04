@@ -40,6 +40,7 @@ import "katex/dist/katex.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import CourseNewPage from "./pages/admin/CourseNewPage.jsx";
+
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   const location = useLocation();

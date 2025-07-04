@@ -44,6 +44,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.4.0",
     "react-to-pdf": "^2.0.0",
+    "react-toastify": "^11.0.5",
     "react-youtube": "^10.1.0",
     "recharts": "^3.0.2",
     "redux-persist": "^6.0.0",
