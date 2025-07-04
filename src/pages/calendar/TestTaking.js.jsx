@@ -17,6 +17,7 @@ import { ClockIcon } from "@heroicons/react/24/outline"; // <-- Thêm import ico
 // --- COMPONENT MỚI: MATH RENDERER (ĐỂ HIỂN THỊ CÔNG THỨC TOÁN) ---
 // Component này sẽ nhận một chuỗi văn bản, tìm các biểu thức toán học
 // được bao bởi $...$ (inline) hoặc $$...$$ (block) và render chúng.
+// --- THÊM MỚI: COMPONENT MATH RENDERER ---
 const MathRenderer = ({ text }) => {
   if (typeof text !== "string" || !text) {
     return null;
@@ -31,7 +32,7 @@ const MathRenderer = ({ text }) => {
     <>
       {paragraphs.map((paragraph, pIndex) => (
         // THAY ĐỔI: Đặt cứng className là "mb-2"
-        <p key={pIndex} className="mb-2">
+        <p key={pIndex} className="mb-3">
           {
             // Logic bên trong không thay đổi
             paragraph.split(mathRegex).map((part, index) => {
