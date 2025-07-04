@@ -5,10 +5,6 @@ import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 
-// Dòng mới: Nhập thư viện Latex và CSS của KaTeX
-import Latex from "react-latex-next";
-import "katex/dist/katex.min.css";
-
 // Import các actions cần thiết từ Redux slices
 import {
   fetchAttemptResult,
@@ -41,11 +37,7 @@ const QuestionResult = ({ question, userAnswer, questionNumber }) => {
   return (
     <div className="py-6">
       <div className="flex justify-between items-start">
-        {/* Thay đổi: Bọc `question.question` trong component Latex */}
-        <p className="font-semibold text-gray-800 mb-3">
-          {`Câu ${questionNumber}: `}
-          <Latex>{question.question}</Latex>
-        </p>
+        <p className="font-semibold text-gray-800 mb-3">{`Câu ${questionNumber}: ${question.question}`}</p>
         {isCorrect ? (
           <CheckCircleIcon className="h-6 w-6 text-green-500 flex-shrink-0" />
         ) : (
@@ -67,8 +59,7 @@ const QuestionResult = ({ question, userAnswer, questionNumber }) => {
                   : "text-red-600 font-bold"
               }
             >
-              {/* Thay đổi: Bọc đáp án trong component Latex */}
-              <Latex>{question.options[userAnswer.selectedAnswer]}</Latex>
+              {question.options[userAnswer.selectedAnswer]}
             </span>
           </p>
         ) : (
@@ -81,15 +72,14 @@ const QuestionResult = ({ question, userAnswer, questionNumber }) => {
           <p>
             <b>Đáp án đúng:</b>{" "}
             <span className="text-green-600 font-bold">
-              {/* Thay đổi: Bọc đáp án đúng trong component Latex */}
-              <Latex>{question.options[question.correctAnswer]}</Latex>
+              {question.options[question.correctAnswer]}
             </span>
           </p>
         )}
 
         {question.explanation && (
           <p className="text-gray-600 pt-2 italic">
-            <b>Giải thích:</b> <Latex>{question.explanation}</Latex>
+            <b>Giải thích:</b> {question.explanation}
           </p>
         )}
       </div>
@@ -97,11 +87,12 @@ const QuestionResult = ({ question, userAnswer, questionNumber }) => {
   );
 };
 
-// ----- Component chính (không thay đổi) -----
+// ----- Component chính -----
 const TestAttemptResults = () => {
   const { testId, attemptId, courseId } = useParams();
   const dispatch = useDispatch();
 
+  // Lấy dữ liệu từ Redux store
   const { currentTest: test, status: testStatus } = useSelector(
     (state) => state.tests
   );
@@ -109,6 +100,7 @@ const TestAttemptResults = () => {
     (state) => state.testAttempts
   );
 
+  // Gọi API để lấy dữ liệu
   useEffect(() => {
     if (attemptId) {
       dispatch(fetchAttemptResult(attemptId));
@@ -117,12 +109,14 @@ const TestAttemptResults = () => {
       dispatch(fetchTestWithAnswers(testId));
     }
 
+    // Dọn dẹp state khi component unmount
     return () => {
       dispatch(clearCurrentAttempt());
       dispatch(clearCurrentTest());
     };
   }, [dispatch, testId, attemptId]);
 
+  // Chuẩn bị dữ liệu để render
   const flatQuestions = useMemo(() => {
     if (!test?.questionGroups) return [];
     return test.questionGroups.flatMap((group) => group.group_questions);
@@ -133,6 +127,7 @@ const TestAttemptResults = () => {
     return new Map(attempt.userAnswers.map((a) => [a.questionId, a]));
   }, [attempt]);
 
+  // Xử lý trạng thái loading và error
   if (
     testStatus === "loading" ||
     attemptStatus === "loading" ||
@@ -150,6 +145,7 @@ const TestAttemptResults = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
         <div className="bg-white rounded-xl shadow-lg">
+          {/* Phần tổng kết điểm */}
           <div className="text-center p-8 border-b-2 border-dashed">
             <h1 className="text-3xl font-bold text-gray-800">
               Kết quả bài làm
@@ -166,6 +162,8 @@ const TestAttemptResults = () => {
               </p>
             </div>
           </div>
+
+          {/* Phần đáp án chi tiết */}
           <div className="p-6 sm:p-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">
               Đáp án chi tiết
@@ -200,6 +198,8 @@ const TestAttemptResults = () => {
               </div>
             ))}
           </div>
+
+          {/* Nút hành động */}
           <div className="p-6 bg-gray-50 rounded-b-xl border-t flex justify-center space-x-4">
             <Link
               to={`/admin/course/${courseId}/test/${testId}/attempts`}
