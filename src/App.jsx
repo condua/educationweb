@@ -39,6 +39,7 @@ import TestAttemptResults from "./pages/admin/TestAttemptResults.jsx";
 import "katex/dist/katex.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import CourseNewPage from "./pages/admin/CourseNewPage.jsx";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   const location = useLocation();
@@ -156,6 +157,10 @@ function App() {
         <Route
           path="/admin/course"
           element={<AdminRoute element={<CourseManagement />} />}
+        />
+        <Route
+          path="/admin/course/new"
+          element={<AdminRoute element={<CourseNewPage />} />}
         />
         <Route
           path="/admin/course/:courseId"
