@@ -1,81 +1,73 @@
-// src/pages/admin/CourseNewPage.js
-
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaSave, FaSpinner } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createCourse } from "../../redux/coursesSlice";
 
 const CourseNewPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.user);
 
-  // State cho dữ liệu form
   const [courseData, setCourseData] = useState({
     title: "",
     category: "",
+    price: "Free",
+    rating: 0,
+    students: 0,
     description: "",
     thumbnail: "",
   });
 
-  // ✅ State để quản lý lỗi validation
   const [errors, setErrors] = useState({});
-
-  // ✅ State để theo dõi form đã được chỉnh sửa hay chưa
   const [isDirty, setIsDirty] = useState(false);
-
-  // State cho trạng thái loading khi submit
   const [isLoading, setIsLoading] = useState(false);
 
-  // ✅ Cảnh báo người dùng khi rời trang mà chưa lưu
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       if (isDirty) {
         e.preventDefault();
-        // Dòng này cần thiết cho một số trình duyệt
         e.returnValue = "";
       }
     };
-
     window.addEventListener("beforeunload", handleBeforeUnload);
-
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, [isDirty]);
 
-  // Xử lý khi người dùng thay đổi giá trị input
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
     setCourseData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: type === "number" ? parseFloat(value) || 0 : value,
     }));
-    // Đánh dấu form đã bị thay đổi
     setIsDirty(true);
-    // Xóa lỗi của trường đang nhập
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: null }));
     }
   };
 
-  // ✅ Hàm kiểm tra dữ liệu form
   const validateForm = () => {
     const newErrors = {};
-    if (!courseData.title.trim()) {
+    if (!courseData.title.trim())
       newErrors.title = "Tên khóa học không được để trống.";
-    }
-    if (!courseData.category.trim()) {
+    if (!courseData.category.trim())
       newErrors.category = "Danh mục không được để trống.";
-    }
     return newErrors;
   };
 
-  // Xử lý khi submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Chạy validation
+    if (!user || !user.fullName) {
+      alert(
+        "Lỗi: Thông tin người dùng (mentor) không có fullName hoặc bạn chưa đăng nhập."
+      );
+      console.error("Dữ liệu USER bị lỗi:", user);
+      return;
+    }
+
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
@@ -83,12 +75,19 @@ const CourseNewPage = () => {
     }
 
     setIsLoading(true);
+
+    const payload = {
+      ...courseData,
+      mentor: {
+        name: user.fullName,
+        avatar: user.avatar,
+      },
+    };
+    // console.log("Kiểm tra payload SẮP GỬI ĐI:", payload);
+
     try {
-      const newCourse = await dispatch(createCourse(courseData)).unwrap();
-
-      // Tắt cảnh báo khi đã submit thành công
+      const newCourse = await dispatch(createCourse(payload)).unwrap();
       setIsDirty(false);
-
       alert("Tạo khóa học thành công!");
       navigate(`/admin/course/${newCourse._id}`);
     } catch (error) {
@@ -110,7 +109,6 @@ const CourseNewPage = () => {
             Quay lại Quản lý Khóa học
           </Link>
         </div>
-
         <header className="mb-6">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
             Tạo Khóa Học Mới
@@ -120,10 +118,8 @@ const CourseNewPage = () => {
             tạo.
           </p>
         </header>
-
         <form onSubmit={handleSubmit} noValidate>
           <div className="bg-white p-6 rounded-lg shadow-md space-y-6">
-            {/* Tên khóa học */}
             <div>
               <label
                 htmlFor="title"
@@ -148,7 +144,6 @@ const CourseNewPage = () => {
               )}
             </div>
 
-            {/* Danh mục */}
             <div>
               <label
                 htmlFor="category"
@@ -173,7 +168,65 @@ const CourseNewPage = () => {
               )}
             </div>
 
-            {/* Mô tả khóa học */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <label
+                  htmlFor="price"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Giá khóa học
+                </label>
+                <input
+                  type="text"
+                  name="price"
+                  id="price"
+                  value={courseData.price}
+                  onChange={handleChange}
+                  placeholder="Mặc định: Free"
+                  className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                {errors.price && (
+                  <p className="mt-1 text-sm text-red-600">{errors.price}</p>
+                )}
+              </div>
+              <div>
+                <label
+                  htmlFor="rating"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Đánh giá (0-5)
+                </label>
+                <input
+                  type="number"
+                  name="rating"
+                  id="rating"
+                  value={courseData.rating}
+                  onChange={handleChange}
+                  min="0"
+                  max="5"
+                  step="0.1"
+                  className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="students"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Số học viên
+                </label>
+                <input
+                  type="number"
+                  name="students"
+                  id="students"
+                  value={courseData.students}
+                  onChange={handleChange}
+                  min="0"
+                  className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </div>
+
             <div>
               <label
                 htmlFor="description"
@@ -191,7 +244,6 @@ const CourseNewPage = () => {
               ></textarea>
             </div>
 
-            {/* URL Ảnh bìa và Xem trước */}
             <div>
               <label
                 htmlFor="thumbnail"
@@ -229,8 +281,6 @@ const CourseNewPage = () => {
                 </div>
               </div>
             </div>
-
-            {/* Nút Submit */}
             <div className="pt-4 flex justify-end border-t border-gray-200">
               <button
                 type="submit"
@@ -239,13 +289,14 @@ const CourseNewPage = () => {
               >
                 {isLoading ? (
                   <>
-                    <FaSpinner className="animate-spin mr-2" />
-                    <span>Đang lưu...</span>
+                    {" "}
+                    <FaSpinner className="animate-spin mr-2" />{" "}
+                    <span>Đang lưu...</span>{" "}
                   </>
                 ) : (
                   <>
-                    <FaSave className="mr-2" />
-                    <span>Tạo và Tiếp tục</span>
+                    {" "}
+                    <FaSave className="mr-2" /> <span>Tạo và Tiếp tục</span>{" "}
                   </>
                 )}
               </button>
