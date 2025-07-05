@@ -60,7 +60,7 @@ const CourseCard = ({ course }) => {
   return (
     <div
       className="flex flex-col justify-between w-full bg-white 
-      rounded-2xl shadow-md p-4 sm:w-80 hover:shadow-lg transition relative cursor-pointer
+      rounded-2xl shadow-md  p-4 sm:w-80 hover:shadow-lg transition relative cursor-pointer
       hover:scale-105 transform duration-300 ease-in-out
       "
       // onClick={handleNavigate}
@@ -69,7 +69,7 @@ const CourseCard = ({ course }) => {
         <img
           src={course.thumbnail}
           alt={course.title || "Khóa học"}
-          className="rounded-lg w-full h-40 object-cover"
+          className="rounded-lg w-full h-40 object-cover mb-4 cursor-pointer"
         />
       ) : (
         <div className="w-full h-40 bg-gray-200 rounded-lg flex items-center justify-center">

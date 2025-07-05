@@ -274,7 +274,7 @@ const CourseDetail = () => {
                   key={test._id}
                   // Giả sử bạn có route вида `/course/:courseId/test/:testId`
                   to={`/course/${course._id}/test/${test._id}`}
-                  className="block w-full text-left p-1 text-xs rounded-md hover:bg-gray-300"
+                  className="block w-full text-left p-1 text-xs md:text-sm rounded-md hover:bg-gray-300"
                   onClick={() => setIsSidebarOpen(false)} // Ẩn sidebar khi click trên mobile
                 >
                   📝 {test.title}
