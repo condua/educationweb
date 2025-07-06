@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react"; // ✅ Thêm useRef
 import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   FaArrowLeft,
@@ -7,8 +7,8 @@ import {
   FaTrash,
   FaArrowUp,
   FaArrowDown,
-  FaEye, // Import icon mắt
-  FaEyeSlash, // Import icon mắt gạch chéo
+  FaEye,
+  FaEyeSlash,
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -58,11 +58,12 @@ const MathRenderer = ({ text }) => {
 //======================================================================
 // QuestionEditor (Component con để chỉnh sửa từng câu hỏi)
 // Đã được cập nhật để sử dụng MathRenderer mới và toggle preview
+// ✅ Đã thêm Debounce cho onUpdate
 //======================================================================
 const QuestionEditor = ({ question, onUpdate, onDelete }) => {
   const [qData, setQData] = useState(question);
-  // State để quản lý việc hiển thị preview
   const [showPreview, setShowPreview] = useState(true);
+  const debounceTimeoutRef = useRef(null); // ✅ Ref để lưu timeout
 
   useEffect(() => {
     setQData(question);
@@ -70,34 +71,74 @@ const QuestionEditor = ({ question, onUpdate, onDelete }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Cập nhật state cục bộ ngay lập tức để input không bị lag
     setQData((prev) => ({ ...prev, [name]: value }));
+
+    // ✅ Clear timeout cũ và đặt timeout mới
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+    debounceTimeoutRef.current = setTimeout(() => {
+      onUpdate({ ...qData, [name]: value }); // Gửi giá trị mới nhất sau khi debounce
+    }, 300); // Debounce 300ms
   };
 
   const handleOptionChange = (index, value) => {
     const newOptions = [...qData.options];
     newOptions[index] = value;
+    // Cập nhật state cục bộ ngay lập tức
     setQData((prev) => ({ ...prev, options: newOptions }));
+
+    // ✅ Clear timeout cũ và đặt timeout mới
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+    debounceTimeoutRef.current = setTimeout(() => {
+      onUpdate({ ...qData, options: newOptions }); // Gửi giá trị mới nhất sau khi debounce
+    }, 300); // Debounce 300ms
   };
 
   const handleAddOption = () => {
-    setQData((prev) => ({ ...prev, options: [...prev.options, ""] }));
+    const newOptions = [...qData.options, ""];
+    setQData((prev) => ({ ...prev, options: newOptions }));
+    // Kích hoạt update ngay lập tức hoặc sau một debounce ngắn
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+    onUpdate({ ...qData, options: newOptions }); // Có thể muốn update ngay lập tức khi thêm option
   };
 
   const handleRemoveOption = (index) => {
     const newOptions = qData.options.filter((_, i) => i !== index);
     setQData((prev) => ({ ...prev, options: newOptions }));
+    // Kích hoạt update ngay lập tức hoặc sau một debounce ngắn
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+    onUpdate({ ...qData, options: newOptions }); // Có thể muốn update ngay lập tức khi xóa option
   };
 
   const handleCorrectAnswerChange = (e) => {
+    const value = parseInt(e.target.value, 10);
     setQData((prev) => ({
       ...prev,
-      correctAnswer: parseInt(e.target.value, 10),
+      correctAnswer: value,
     }));
+    // Kích hoạt update ngay lập tức khi chọn đáp án đúng
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+    onUpdate({ ...qData, correctAnswer: value });
   };
 
+  // ✅ Cleanup timeout khi component unmount
   useEffect(() => {
-    onUpdate(qData);
-  }, [qData]);
+    return () => {
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="border border-gray-200 p-4 rounded-md bg-white shadow-sm mb-4">
@@ -136,13 +177,12 @@ const QuestionEditor = ({ question, onUpdate, onDelete }) => {
           placeholder="Nhập câu hỏi, có thể dùng LaTeX ví dụ: $x^2 + y^2 = r^2$"
           required
         ></textarea>
-        {showPreview &&
-          qData.question && ( // Chỉ hiển thị preview khi showPreview là true
-            <div className="mt-2 p-2 border rounded bg-gray-50 text-sm">
-              <p className="font-medium text-gray-600 mb-1">Xem trước:</p>
-              <MathRenderer text={qData.question} />
-            </div>
-          )}
+        {showPreview && qData.question && (
+          <div className="mt-2 p-2 border rounded bg-gray-50 text-sm">
+            <p className="font-medium text-gray-600 mb-1">Xem trước:</p>
+            <MathRenderer text={qData.question} />
+          </div>
+        )}
       </div>
 
       <div className="mb-3">
@@ -183,20 +223,19 @@ const QuestionEditor = ({ question, onUpdate, onDelete }) => {
         >
           <FaPlus className="mr-1" /> Thêm lựa chọn
         </button>
-        {showPreview &&
-          qData.options.some((opt) => opt) && ( // Chỉ hiển thị preview khi showPreview là true
-            <div className="mt-2 p-2 border rounded bg-gray-50 text-sm">
-              <p className="font-medium text-gray-600 mb-1">
-                Xem trước lựa chọn:
+        {showPreview && qData.options.some((opt) => opt) && (
+          <div className="mt-2 p-2 border rounded bg-gray-50 text-sm">
+            <p className="font-medium text-gray-600 mb-1">
+              Xem trước lựa chọn:
+            </p>
+            {qData.options.map((option, index) => (
+              <p key={`preview-${index}`}>
+                {String.fromCharCode(65 + index)}.{" "}
+                <MathRenderer text={option} />
               </p>
-              {qData.options.map((option, index) => (
-                <p key={`preview-${index}`}>
-                  {String.fromCharCode(65 + index)}.{" "}
-                  <MathRenderer text={option} />
-                </p>
-              ))}
-            </div>
-          )}
+            ))}
+          </div>
+        )}
       </div>
 
       <div>
@@ -211,13 +250,12 @@ const QuestionEditor = ({ question, onUpdate, onDelete }) => {
           className="mt-1 block w-full px-3 py-2 border rounded-md"
           placeholder="Giải thích, có thể dùng LaTeX."
         ></textarea>
-        {showPreview &&
-          qData.explanation && ( // Chỉ hiển thị preview khi showPreview là true
-            <div className="mt-2 p-2 border rounded bg-gray-50 text-sm">
-              <p className="font-medium text-gray-600 mb-1">Xem trước:</p>
-              <MathRenderer text={qData.explanation} />
-            </div>
-          )}
+        {showPreview && qData.explanation && (
+          <div className="mt-2 p-2 border rounded bg-gray-50 text-sm">
+            <p className="font-medium text-gray-600 mb-1">Xem trước:</p>
+            <MathRenderer text={qData.explanation} />
+          </div>
+        )}
       </div>
     </div>
   );
@@ -226,12 +264,13 @@ const QuestionEditor = ({ question, onUpdate, onDelete }) => {
 //======================================================================
 // QuestionGroupEditor (Component con để chỉnh sửa nhóm câu hỏi)
 // Đã được cập nhật để sử dụng MathRenderer mới và toggle preview
+// ✅ Đã thêm Debounce cho onUpdate
 //======================================================================
 const QuestionGroupEditor = ({ group, onUpdate, onDelete }) => {
   const [groupData, setGroupData] = useState(group);
   const [isExpanded, setIsExpanded] = useState(true);
-  // State để quản lý việc hiển thị preview
   const [showGroupPreview, setShowGroupPreview] = useState(true);
+  const debounceTimeoutRef = useRef(null); // ✅ Ref để lưu timeout
 
   useEffect(() => {
     setGroupData(group);
@@ -240,6 +279,14 @@ const QuestionGroupEditor = ({ group, onUpdate, onDelete }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setGroupData((prev) => ({ ...prev, [name]: value }));
+
+    // ✅ Debounce
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+    debounceTimeoutRef.current = setTimeout(() => {
+      onUpdate({ ...groupData, [name]: value });
+    }, 300); // Debounce 300ms
   };
 
   const handleAddQuestion = () => {
@@ -252,6 +299,11 @@ const QuestionGroupEditor = ({ group, onUpdate, onDelete }) => {
     };
     const updatedQuestions = [...groupData.group_questions, newQuestion];
     setGroupData((prev) => ({ ...prev, group_questions: updatedQuestions }));
+    // Kích hoạt update ngay lập tức khi thêm câu hỏi
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+    onUpdate({ ...groupData, group_questions: updatedQuestions });
   };
 
   const handleUpdateQuestion = (updatedQuestion) => {
@@ -259,6 +311,14 @@ const QuestionGroupEditor = ({ group, onUpdate, onDelete }) => {
       q.id === updatedQuestion.id ? updatedQuestion : q
     );
     setGroupData((prev) => ({ ...prev, group_questions: updatedQuestions }));
+    // ✅ Kích hoạt debounce update cho toàn bộ group khi một câu hỏi con thay đổi
+    // Để tránh re-render quá nhiều, có thể debounce cả phần này
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+    debounceTimeoutRef.current = setTimeout(() => {
+      onUpdate({ ...groupData, group_questions: updatedQuestions });
+    }, 300);
   };
 
   const handleDeleteQuestion = (questionId) => {
@@ -266,11 +326,21 @@ const QuestionGroupEditor = ({ group, onUpdate, onDelete }) => {
       (q) => q.id !== questionId
     );
     setGroupData((prev) => ({ ...prev, group_questions: updatedQuestions }));
+    // Kích hoạt update ngay lập tức khi xóa câu hỏi
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+    onUpdate({ ...groupData, group_questions: updatedQuestions });
   };
 
+  // ✅ Cleanup timeout khi component unmount
   useEffect(() => {
-    onUpdate(groupData);
-  }, [groupData]);
+    return () => {
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="border border-blue-300 p-5 rounded-lg bg-blue-50 shadow-md mb-6">
@@ -282,7 +352,6 @@ const QuestionGroupEditor = ({ group, onUpdate, onDelete }) => {
           Nhóm câu hỏi: {groupData.title || "Chưa có tiêu đề"}
         </h3>
         <div className="flex items-center space-x-3">
-          {/* Toggle preview cho nhóm câu hỏi */}
           <button
             type="button"
             onClick={(e) => {
@@ -357,13 +426,12 @@ const QuestionGroupEditor = ({ group, onUpdate, onDelete }) => {
               className="mt-1 block w-full px-3 py-2 border rounded-md"
               placeholder="Nhập hướng dẫn, có thể chứa LaTeX."
             ></textarea>
-            {showGroupPreview &&
-              groupData.instructions && ( // Chỉ hiển thị preview khi showGroupPreview là true
-                <div className="mt-2 p-2 border rounded bg-gray-50 text-sm">
-                  <p className="font-medium text-gray-600 mb-1">Xem trước:</p>
-                  <MathRenderer text={groupData.instructions} />
-                </div>
-              )}
+            {showGroupPreview && groupData.instructions && (
+              <div className="mt-2 p-2 border rounded bg-gray-50 text-sm">
+                <p className="font-medium text-gray-600 mb-1">Xem trước:</p>
+                <MathRenderer text={groupData.instructions} />
+              </div>
+            )}
           </div>
 
           <div className="mb-4">
@@ -378,13 +446,12 @@ const QuestionGroupEditor = ({ group, onUpdate, onDelete }) => {
               className="mt-1 block w-full px-3 py-2 border rounded-md"
               placeholder="Dán đoạn văn vào đây, có thể chứa công thức toán học LaTeX như: Phương trình $E=mc^2$."
             ></textarea>
-            {showGroupPreview &&
-              groupData.passage && ( // Chỉ hiển thị preview khi showGroupPreview là true
-                <div className="mt-2 p-2 border rounded bg-gray-50 text-sm">
-                  <p className="font-medium text-gray-600 mb-1">Xem trước:</p>
-                  <MathRenderer text={groupData.passage} />
-                </div>
-              )}
+            {showGroupPreview && groupData.passage && (
+              <div className="mt-2 p-2 border rounded bg-gray-50 text-sm">
+                <p className="font-medium text-gray-600 mb-1">Xem trước:</p>
+                <MathRenderer text={groupData.passage} />
+              </div>
+            )}
           </div>
 
           <h4 className="text-lg font-bold mb-3 text-blue-700">
