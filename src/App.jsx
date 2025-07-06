@@ -40,6 +40,7 @@ import "katex/dist/katex.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import CourseNewPage from "./pages/admin/CourseNewPage.jsx";
+import TestPreviewPage from "./pages/admin/TestPreviewPage.jsx";
 
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
@@ -174,6 +175,10 @@ function App() {
         <Route
           path="/admin/course/:courseId/test/:testId/attempt/:attemptId"
           element={<AdminRoute element={<TestAttemptResults />} />}
+        />
+        <Route
+          path="/admin/course/:courseId/test/:testId/preview"
+          element={<AdminRoute element={<TestPreviewPage />} />}
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

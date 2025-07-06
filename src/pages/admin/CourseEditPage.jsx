@@ -9,6 +9,7 @@ import {
   FaArrowDown,
   FaGripVertical,
   FaArrowLeft,
+  FaEye, // ✅ Import FaEye icon
   FaClipboardList,
 } from "react-icons/fa";
 // Nhập các actions và hooks từ Redux
@@ -809,6 +810,13 @@ const CourseEditPage = () => {
                       className="text-green-600 hover:text-green-800"
                     >
                       <FaClipboardList size={18} />
+                    </Link>
+                    <Link
+                      to={`/admin/course/${courseId}/test/${test._id}/preview`}
+                      title="Xem trước bài kiểm tra"
+                      className="text-purple-600 hover:text-purple-800"
+                    >
+                      <FaEye size={18} />
                     </Link>
                     <button
                       onClick={() => handleOpenEditTestModal(test)}

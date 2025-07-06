@@ -50,6 +50,7 @@
     "redux-persist": "^6.0.0",
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.0.14",
+    "uuid": "^11.1.0",
     "y": "file:"
   },
   "devDependencies": {
