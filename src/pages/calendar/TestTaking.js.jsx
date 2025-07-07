@@ -19,38 +19,30 @@ import { ClockIcon } from "@heroicons/react/24/outline"; // <-- Thêm import ico
 // được bao bởi $...$ (inline) hoặc $$...$$ (block) và render chúng.
 // --- THÊM MỚI: COMPONENT MATH RENDERER ---
 const MathRenderer = ({ text }) => {
-  if (typeof text !== "string" || !text) {
-    return null;
-  }
-
-  const mathRegex = /\$\$(.*?)\$\$|\$(.*?)\$/g;
-
-  // Tách văn bản thành các đoạn văn dựa trên hàng trống
-  const paragraphs = text.split(/\n\s*\n/);
+  if (typeof text !== "string" || !text) return null;
+  const mathRegex = /(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/g;
+  const parts = text.split(mathRegex);
 
   return (
     <>
-      {paragraphs.map((paragraph, pIndex) => (
-        // THAY ĐỔI: Đặt cứng className là "mb-2"
-        <p key={pIndex} className="mb-3">
-          {
-            // Logic bên trong không thay đổi
-            paragraph.split(mathRegex).map((part, index) => {
-              if (!part) return null;
-              if (index % 4 === 1) return <BlockMath key={index} math={part} />;
-              if (index % 4 === 2)
-                return <InlineMath key={index} math={part} />;
-
-              return part.split("\n").map((line, i, arr) => (
+      {parts.map((part, index) => {
+        if (part.startsWith("$$") && part.endsWith("$$")) {
+          return <BlockMath key={index} math={part.slice(2, -2)} />;
+        } else if (part.startsWith("$") && part.endsWith("$")) {
+          return <InlineMath key={index} math={part.slice(1, -1)} />;
+        } else {
+          return (
+            <span key={index}>
+              {part.split("\n").map((line, i, arr) => (
                 <React.Fragment key={i}>
                   {line}
                   {i < arr.length - 1 && <br />}
                 </React.Fragment>
-              ));
-            })
-          }
-        </p>
-      ))}
+              ))}
+            </span>
+          );
+        }
+      })}
     </>
   );
 };
