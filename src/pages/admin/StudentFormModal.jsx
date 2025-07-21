@@ -1,154 +1,87 @@
-// src/components/StudentFormModal.js
-import React, { useState, useEffect } from "react";
-import { FaTimes } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllUsers } from "../../redux/userSlice"; // chỉnh lại path nếu khác
 
-const StudentFormModal = ({ isOpen, onClose, onSave, student }) => {
-  // BƯỚC 1: Thêm 'password' vào state ban đầu
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    password: "", // Thêm trường password
-  });
+const StudentManagement = () => {
+  const dispatch = useDispatch();
+  const { usersList, status, currentPage, totalPages } = useSelector(
+    (state) => state.user
+  );
 
-  const isEditMode = Boolean(student);
+  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
 
+  // Fetch user list when component mounts or search/page changes
   useEffect(() => {
-    if (isEditMode && student) {
-      // Ở chế độ sửa, không điền mật khẩu
-      setFormData({
-        fullName: student.fullName,
-        email: student.email,
-        phone: student.phone,
-        password: "", // Luôn để trống khi sửa
-      });
-    } else {
-      // BƯỚC 3: Reset cả trường password khi mở form thêm mới
-      setFormData({ fullName: "", email: "", phone: "", password: "" });
-    }
-  }, [student, isOpen]);
+    dispatch(fetchAllUsers({ page, limit: 10, search }));
+  }, [dispatch, page, search]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+    setPage(1); // Reset to page 1 when searching
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Khi lưu, dữ liệu password sẽ tự động được gửi đi nếu người dùng đã nhập
-    onSave({ ...student, ...formData });
-  };
-
-  if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-md">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">
-            {isEditMode ? "Chỉnh sửa Học viên" : "Thêm Học viên mới"}
-          </h2>
+    <div className="p-4 max-w-screen-md mx-auto">
+      <h2 className="text-xl font-bold mb-4 text-center">Quản lý Học viên</h2>
+
+      <input
+        type="text"
+        placeholder="Tìm kiếm theo tên hoặc email..."
+        value={search}
+        onChange={handleSearchChange}
+        className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+      />
+
+      {status === "loading" ? (
+        <p className="text-center">Đang tải dữ liệu...</p>
+      ) : (
+        <ul className="space-y-3">
+          {usersList.length === 0 ? (
+            <li className="text-center text-gray-500">Không có người dùng.</li>
+          ) : (
+            usersList.map((user) => (
+              <li
+                key={user._id}
+                className="bg-white rounded-lg shadow-md p-4 flex flex-col sm:flex-row sm:items-center justify-between"
+              >
+                <div>
+                  <p className="font-semibold">{user.fullName}</p>
+                  <p className="text-sm text-gray-600">{user.email}</p>
+                </div>
+                <span className="mt-2 sm:mt-0 text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">
+                  {user.role}
+                </span>
+              </li>
+            ))
+          )}
+        </ul>
+      )}
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-4 gap-2">
           <button
-            onClick={onClose}
-            className="text-gray-500 hover:text-gray-800"
+            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+            disabled={page === 1}
+            className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
           >
-            <FaTimes size={20} />
+            Trang trước
+          </button>
+          <span className="px-3 py-1 text-sm text-gray-700">
+            Trang {currentPage} / {totalPages}
+          </span>
+          <button
+            onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={page === totalPages}
+            className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+          >
+            Trang sau
           </button>
         </div>
-        <form onSubmit={handleSubmit}>
-          {/* Các trường fullName, email, phone giữ nguyên */}
-          <div className="mb-4">
-            <label
-              htmlFor="fullName"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Họ và Tên
-            </label>
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="phone"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Số điện thoại
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          {/* BƯỚC 2: Thêm trường mật khẩu vào form, chỉ hiển thị ở chế độ "Thêm mới" */}
-          {!isEditMode && (
-            <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Mật khẩu
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required // Mật khẩu là bắt buộc khi tạo mới
-                minLength={6} // Thêm validation cơ bản
-              />
-            </div>
-          )}
-
-          <div className="flex justify-end pt-4">
-            <button
-              type="button"
-              onClick={onClose}
-              className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg mr-2 hover:bg-gray-300"
-            >
-              Hủy
-            </button>
-            <button
-              type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-            >
-              Lưu
-            </button>
-          </div>
-        </form>
-      </div>
+      )}
     </div>
   );
 };
 
-export default StudentFormModal;
+export default StudentManagement;
