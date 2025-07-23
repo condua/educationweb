@@ -1,0 +1,161 @@
+// src/components/chat/ChatWindow.jsx
+import React, { useState } from "react";
+import MessageList from "./MessageList";
+import MessageInput from "./MessageInput";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import MediaGalleryModal from "./MediaGalleryModal";
+import {
+  ArrowLeftIcon,
+  PaintBrushIcon,
+  PhotoIcon as GalleryIcon,
+} from "@heroicons/react/24/solid";
+
+const THEME_COLORS = [
+  "#1f2937",
+  "#374151",
+  "#1e3a8a",
+  "#312e81",
+  "#581c87",
+  "#9d174d",
+  "#0c4a6e",
+];
+
+const ChatWindow = ({
+  conversation,
+  onSendMessage,
+  currentUser,
+  allUsers,
+  onBack,
+  onChangeThemeColor,
+}) => {
+  const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+
+  if (!conversation) {
+    return (
+      <div className="hidden h-full flex-col items-center justify-center bg-gray-800 text-gray-400 md:flex">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="h-24 w-24 text-gray-600"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
+          />
+        </svg>
+        <p className="mt-4 text-xl">Chọn một cuộc trò chuyện</p>
+      </div>
+    );
+  }
+
+  const imagesInConversation = conversation.messages
+    .filter((msg) => msg.type === "image")
+    .map((msg) => ({ id: msg.id, src: msg.content.url }));
+  const handleImageClick = (messageId) => {
+    const imageIndex = imagesInConversation.findIndex(
+      (img) => img.id === messageId
+    );
+    if (imageIndex > -1) {
+      setCurrentImageIndex(imageIndex);
+      setIsLightboxOpen(true);
+    }
+  };
+  const handleSelectImageFromGallery = (messageId) => {
+    setIsGalleryOpen(false);
+    handleImageClick(messageId);
+  };
+  const handleColorChange = (color) => {
+    onChangeThemeColor(conversation.id, color);
+    setIsPaletteOpen(false);
+  };
+  const getHeaderInfo = () => {
+    if (conversation.type === "group")
+      return { name: conversation.name, avatarUrl: conversation.avatarUrl };
+    const otherUserId = conversation.memberIds.find(
+      (id) => id !== currentUser.id
+    );
+    const otherUser = allUsers.find((user) => user.id === otherUserId);
+    return otherUser
+      ? { name: otherUser.name, avatarUrl: otherUser.avatarUrl }
+      : { name: "Unknown", avatarUrl: "" };
+  };
+  const { name, avatarUrl } = getHeaderInfo();
+
+  return (
+    <>
+      <div className="flex h-full flex-col bg-gray-800">
+        <div className="relative flex flex-shrink-0 items-center border-b border-gray-700 bg-gray-900 p-3 shadow-md">
+          <button
+            onClick={onBack}
+            className="mr-2 rounded-full p-2 text-white hover:bg-gray-700 md:hidden"
+          >
+            <ArrowLeftIcon className="h-6 w-6" />
+          </button>
+          <img src={avatarUrl} alt={name} className="h-10 w-10 rounded-full" />
+          <div className="ml-3 flex-1">
+            <h2 className="text-lg font-semibold text-white">{name}</h2>
+          </div>
+          <button
+            onClick={() => setIsGalleryOpen(true)}
+            className="rounded-full p-2 text-white hover:bg-gray-700"
+          >
+            <GalleryIcon className="h-6 w-6" />
+          </button>
+          <div className="relative">
+            <button
+              onClick={() => setIsPaletteOpen(!isPaletteOpen)}
+              className="rounded-full p-2 text-white hover:bg-gray-700"
+            >
+              <PaintBrushIcon className="h-6 w-6" />
+            </button>
+            {isPaletteOpen && (
+              <div className="absolute top-full right-0 z-20 mt-2 w-max rounded-lg bg-gray-700 p-2 shadow-lg">
+                <div className="grid grid-cols-4 gap-2">
+                  {THEME_COLORS.map((color) => (
+                    <div
+                      key={color}
+                      onClick={() => handleColorChange(color)}
+                      className="h-8 w-8 cursor-pointer rounded-full border-2 border-transparent transition-transform hover:scale-110 hover:border-white"
+                      style={{ backgroundColor: color }}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <MessageList
+          messages={conversation.messages}
+          themeColor={conversation.themeColor}
+          currentUser={currentUser}
+          allUsers={allUsers}
+          onImageClick={handleImageClick}
+        />
+        <MessageInput onSendMessage={onSendMessage} />
+      </div>
+      <Lightbox
+        open={isLightboxOpen}
+        close={() => setIsLightboxOpen(false)}
+        slides={imagesInConversation}
+        index={currentImageIndex}
+      />
+      {isGalleryOpen && (
+        <MediaGalleryModal
+          images={imagesInConversation}
+          onClose={() => setIsGalleryOpen(false)}
+          onImageSelect={handleSelectImageFromGallery}
+        />
+      )}
+    </>
+  );
+};
+
+export default ChatWindow;

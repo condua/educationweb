@@ -41,6 +41,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import CourseNewPage from "./pages/admin/CourseNewPage.jsx";
 import TestPreviewPage from "./pages/admin/TestPreviewPage.jsx";
+import ChatPage from "./pages/message/ChatPage.jsx";
 
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
@@ -142,6 +143,8 @@ function App() {
           path="/course/:courseId/test/:testId/results/:attemptId"
           element={<PrivateRoute element={<TestResults />} />}
         />
+        {/* Chat Message*/}
+        <Route path="/chat" element={<PrivateRoute element={<ChatPage />} />} />
 
         <Route path="/exams" element={<ExamList />} />
         <Route path="/exams/do/:examId" element={<ExamDo />} />
