@@ -73,6 +73,10 @@ const Header = () => {
       title: "Blog",
       path: "/blog",
     },
+    {
+      title: "Chat",
+      path: "/chat",
+    },
   ];
   // Đóng menu khi click bên ngoài
   useEffect(() => {

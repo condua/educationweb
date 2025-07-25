@@ -16,9 +16,11 @@ const MessageList = ({
     {}
   );
 
+  // Cải thiện: Tự động cuộn xuống dưới khi có tin nhắn mới
   useEffect(() => {
     if (listContainerRef.current) {
-      listContainerRef.current.scrollTop = 0;
+      listContainerRef.current.scrollTop =
+        listContainerRef.current.scrollHeight;
     }
   }, [messages]);
 
@@ -26,7 +28,8 @@ const MessageList = ({
     <div
       ref={listContainerRef}
       className="flex-1 space-y-4 p-4 overflow-y-auto transition-colors duration-500"
-      style={{ backgroundColor: themeColor || "#1f2937" }}
+      // THAY ĐỔI CHÍNH: Sử dụng 'background' thay vì 'backgroundColor'
+      style={{ background: themeColor || "#1f2937" }}
     >
       <AnimatePresence>
         {messages.map((message) => (

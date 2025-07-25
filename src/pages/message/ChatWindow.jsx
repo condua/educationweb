@@ -11,7 +11,10 @@ import {
   PhotoIcon as GalleryIcon,
 } from "@heroicons/react/24/solid";
 
+// Danh sách màu đơn sắc
 const THEME_COLORS = [
+  "#ffffff",
+  "#f8fafc",
   "#1f2937",
   "#374151",
   "#1e3a8a",
@@ -19,6 +22,50 @@ const THEME_COLORS = [
   "#581c87",
   "#9d174d",
   "#0c4a6e",
+  "#065f46",
+  "#854d0e",
+  "#7f1d1d",
+  "#4d0d29",
+  "#363062",
+  "#2c3e50",
+  "#1a5276",
+  "#2874a6",
+  "#0a0a0a",
+  "#1e1e1e",
+  "#4a4e69",
+  "#625e83",
+  "#3a0ca3",
+  "#4361ee",
+  "#3f37c9",
+  "#4895ee",
+  "#7209b7",
+  "#f72585",
+  "#900020",
+  "#c73e1d",
+  "#e07a5f",
+  "#3d405b",
+  "#5d5d81",
+  "#81b29a",
+  "#3d5a80",
+  "#8b6a6d",
+  "#4a4a4a",
+  "#1c7ed6",
+];
+
+// MỚI: Danh sách theme gradient
+const THEME_GRADIENTS = [
+  "linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)",
+  "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%)",
+  "linear-gradient(to right, #6a11cb 0%, #2575fc 100%)",
+  "linear-gradient(to right, #868f96 0%, #596164 100%)",
+  "linear-gradient(to top, #30cfd0 0%, #330867 100%)",
+  "linear-gradient(to right, #12c2e9, #c471ed, #f64f59)",
+  "linear-gradient(to right, #f7971e, #ffd200)",
+  "linear-gradient(to right, #ed213a, #93291e)",
+  "linear-gradient(to right, #43e97b, #38f9d7)",
+  "linear-gradient(to right, #ee0979, #ff6a00)",
+  "linear-gradient(to right, #833ab4, #fd1d1d, #fcb045)",
+  "linear-gradient(to top, #0ba360 0%, #3cba92 100%)",
 ];
 
 const ChatWindow = ({
@@ -59,6 +106,7 @@ const ChatWindow = ({
   const imagesInConversation = conversation.messages
     .filter((msg) => msg.type === "image")
     .map((msg) => ({ id: msg.id, src: msg.content.url }));
+
   const handleImageClick = (messageId) => {
     const imageIndex = imagesInConversation.findIndex(
       (img) => img.id === messageId
@@ -68,14 +116,17 @@ const ChatWindow = ({
       setIsLightboxOpen(true);
     }
   };
+
   const handleSelectImageFromGallery = (messageId) => {
     setIsGalleryOpen(false);
     handleImageClick(messageId);
   };
-  const handleColorChange = (color) => {
-    onChangeThemeColor(conversation.id, color);
+
+  const handleThemeChange = (theme) => {
+    onChangeThemeColor(conversation.id, theme);
     setIsPaletteOpen(false);
   };
+
   const getHeaderInfo = () => {
     if (conversation.type === "group")
       return { name: conversation.name, avatarUrl: conversation.avatarUrl };
@@ -87,6 +138,7 @@ const ChatWindow = ({
       ? { name: otherUser.name, avatarUrl: otherUser.avatarUrl }
       : { name: "Unknown", avatarUrl: "" };
   };
+
   const { name, avatarUrl } = getHeaderInfo();
 
   return (
@@ -117,16 +169,37 @@ const ChatWindow = ({
               <PaintBrushIcon className="h-6 w-6" />
             </button>
             {isPaletteOpen && (
-              <div className="absolute top-full right-0 z-20 mt-2 w-max rounded-lg bg-gray-700 p-2 shadow-lg">
-                <div className="grid grid-cols-4 gap-2">
-                  {THEME_COLORS.map((color) => (
-                    <div
-                      key={color}
-                      onClick={() => handleColorChange(color)}
-                      className="h-8 w-8 cursor-pointer rounded-full border-2 border-transparent transition-transform hover:scale-110 hover:border-white"
-                      style={{ backgroundColor: color }}
-                    ></div>
-                  ))}
+              // CẬP NHẬT: Giao diện bảng màu
+              <div className="absolute top-full right-0 z-20 mt-2 max-h-96 w-max overflow-y-auto rounded-lg bg-gray-700 p-3 shadow-lg">
+                <div className="mb-2">
+                  <h4 className="text-sm font-semibold text-gray-300">
+                    Màu sắc
+                  </h4>
+                  <div className="mt-1 grid grid-cols-5 gap-2 border-t border-gray-600 pt-2">
+                    {THEME_COLORS.map((color) => (
+                      <div
+                        key={color}
+                        onClick={() => handleThemeChange(color)}
+                        className="h-8 w-8 cursor-pointer rounded-full border-2 border-transparent transition-transform hover:scale-110 hover:border-white"
+                        style={{ backgroundColor: color }}
+                      ></div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-300">
+                    Gradient
+                  </h4>
+                  <div className="mt-1 grid grid-cols-5 gap-2 border-t border-gray-600 pt-2">
+                    {THEME_GRADIENTS.map((gradient) => (
+                      <div
+                        key={gradient}
+                        onClick={() => handleThemeChange(gradient)}
+                        className="h-8 w-8 cursor-pointer rounded-full border-2 border-transparent transition-transform hover:scale-110 hover:border-white"
+                        style={{ background: gradient }}
+                      ></div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
