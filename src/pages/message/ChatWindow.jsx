@@ -142,9 +142,10 @@ const ChatWindow = ({
   const { name, avatarUrl } = getHeaderInfo();
 
   return (
-    <>
+    <div className="flex flex-col h-full w-full bg-blue-500 text-white">
       <div className="flex h-full flex-col bg-gray-800">
-        <div className="relative flex flex-shrink-0 items-center border-b border-gray-700 bg-gray-900 p-3 shadow-md">
+        {/* Header */}
+        <div className="relative flex items-center border-b border-gray-700 bg-gray-900 p-3 shadow-md">
           <button
             onClick={onBack}
             className="mr-2 rounded-full p-2 text-white hover:bg-gray-700 md:hidden"
@@ -169,7 +170,6 @@ const ChatWindow = ({
               <PaintBrushIcon className="h-6 w-6" />
             </button>
             {isPaletteOpen && (
-              // CẬP NHẬT: Giao diện bảng màu
               <div className="absolute top-full right-0 z-20 mt-2 max-h-96 w-max overflow-y-auto rounded-lg bg-gray-700 p-3 shadow-lg">
                 <div className="mb-2">
                   <h4 className="text-sm font-semibold text-gray-300">
@@ -182,7 +182,7 @@ const ChatWindow = ({
                         onClick={() => handleThemeChange(color)}
                         className="h-8 w-8 cursor-pointer rounded-full border-2 border-transparent transition-transform hover:scale-110 hover:border-white"
                         style={{ backgroundColor: color }}
-                      ></div>
+                      />
                     ))}
                   </div>
                 </div>
@@ -197,7 +197,7 @@ const ChatWindow = ({
                         onClick={() => handleThemeChange(gradient)}
                         className="h-8 w-8 cursor-pointer rounded-full border-2 border-transparent transition-transform hover:scale-110 hover:border-white"
                         style={{ background: gradient }}
-                      ></div>
+                      />
                     ))}
                   </div>
                 </div>
@@ -205,21 +205,31 @@ const ChatWindow = ({
             )}
           </div>
         </div>
-        <MessageList
-          messages={conversation.messages}
-          themeColor={conversation.themeColor}
-          currentUser={currentUser}
-          allUsers={allUsers}
-          onImageClick={handleImageClick}
-        />
-        <MessageInput onSendMessage={onSendMessage} />
+
+        {/* Message List */}
+        <div className="flex-1 overflow-y-auto">
+          <MessageList
+            messages={conversation.messages}
+            themeColor={conversation.themeColor}
+            currentUser={currentUser}
+            allUsers={allUsers}
+            onImageClick={handleImageClick}
+          />
+        </div>
+
+        {/* Message Input */}
+        <div className="border-t border-gray-700 bg-gray-900">
+          <MessageInput onSendMessage={onSendMessage} />
+        </div>
       </div>
+
       <Lightbox
         open={isLightboxOpen}
         close={() => setIsLightboxOpen(false)}
         slides={imagesInConversation}
         index={currentImageIndex}
       />
+
       {isGalleryOpen && (
         <MediaGalleryModal
           images={imagesInConversation}
@@ -227,8 +237,7 @@ const ChatWindow = ({
           onImageSelect={handleSelectImageFromGallery}
         />
       )}
-    </>
+    </div>
   );
 };
-
 export default ChatWindow;
