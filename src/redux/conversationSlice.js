@@ -176,17 +176,9 @@ const conversationSlice = createSlice({
     },
     addMessageToConversation: (state, action) => {
       const newMessage = action.payload;
-
-      // Lấy ID của cuộc trò chuyện từ tin nhắn mới
-      // Dùng optional chaining (?.) để an toàn hơn
-      const conversationIdFromMessage = newMessage.conversationId?._id;
-      if (!conversationIdFromMessage) return;
-
-      // Cập nhật danh sách tin nhắn của cuộc trò chuyện đang mở
       if (
-        state.currentConversation.details?._id === conversationIdFromMessage
+        state.currentConversation.details?._id === newMessage.conversationId
       ) {
-        // Tránh thêm tin nhắn trùng lặp
         if (
           !state.currentConversation.messages.find(
             (m) => m._id === newMessage._id
@@ -195,18 +187,11 @@ const conversationSlice = createSlice({
           state.currentConversation.messages.push(newMessage);
         }
       }
-
-      // Tìm và cập nhật cuộc trò chuyện trong danh sách chính
       const convoIndex = state.conversations.findIndex(
-        (c) => c._id === conversationIdFromMessage // ✅ SỬA Ở ĐÂY: so sánh ID với ID
+        (c) => c._id === newMessage.conversationId
       );
-
       if (convoIndex !== -1) {
-        // Cập nhật tin nhắn cuối cùng
         state.conversations[convoIndex].lastMessage = newMessage;
-        state.conversations[convoIndex].updatedAt = newMessage.createdAt; // Cập nhật thời gian để sắp xếp
-
-        // Đưa cuộc trò chuyện vừa có tin nhắn mới lên đầu danh sách
         const updatedConvo = state.conversations.splice(convoIndex, 1)[0];
         state.conversations.unshift(updatedConvo);
       }
