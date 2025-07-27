@@ -69,7 +69,7 @@ const ChatWindow = ({
     );
   }
 
-  const isOwner = currentUser?._id === conversation?.ownerId._id;
+  const isOwner = currentUser?._id === conversation?.ownerId?._id;
   console.log("ownerId:", conversation.ownerId);
   console.log("currentUser:", currentUser._id);
 
