@@ -1,67 +1,80 @@
-// src/components/chat/MessageItem.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import { DocumentIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
+import {
+  DocumentTextIcon,
+  ArrowDownTrayIcon,
+  PhotoIcon,
+} from "@heroicons/react/24/solid";
 
+// --- Component con để hiển thị nội dung tin nhắn ---
 const MessageContent = ({ message, onImageClick }) => {
   switch (message.type) {
     case "image":
       return (
-        <img
-          src={message.content.url}
-          alt={message.content.name || "Hình ảnh được gửi"}
-          className="max-w-xs cursor-pointer rounded-lg object-cover transition-transform hover:scale-105"
-          onClick={() => onImageClick(message._id)} // Dùng _id
-        />
+        <div
+          className="relative group cursor-pointer"
+          onClick={() => onImageClick(message._id)}
+        >
+          <img
+            src={message.content.url}
+            alt={message.content.name || "Hình ảnh được gửi"}
+            className="max-w-xs rounded-lg object-cover"
+          />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center rounded-lg opacity-0 group-hover:opacity-100">
+            <PhotoIcon className="h-8 w-8 text-white" />
+          </div>
+        </div>
       );
     case "file":
       return (
         <a
           href={message.content.url || "#"}
           download={message.content.name}
-          className="flex min-w-[200px] items-center space-x-3 rounded-lg bg-gray-500/30 p-3 transition-colors hover:bg-gray-500/50"
+          className="flex w-64 items-center gap-3 rounded-lg bg-black/20 p-3 transition-colors hover:bg-black/30"
           title={`Tải xuống ${message.content.name}`}
         >
-          <DocumentIcon className="h-8 w-8 flex-shrink-0 text-white" />
-          <div className="overflow-hidden">
-            <p className="font-medium truncate">{message.content.name}</p>
+          <div className="flex-shrink-0 grid place-items-center bg-white/10 h-10 w-10 rounded-full">
+            <DocumentTextIcon className="h-6 w-6 text-white" />
+          </div>
+          <div className="overflow-hidden flex-grow">
+            <p className="font-medium truncate text-sm">
+              {message.content.name}
+            </p>
             {message.content.size && (
-              <p className="text-sm text-gray-400">
+              <p className="text-xs text-gray-400">
                 {Math.round(message.content.size / 1024)} KB
               </p>
             )}
           </div>
-          <ArrowDownTrayIcon className="ml-auto h-6 w-6 flex-shrink-0" />
+          <ArrowDownTrayIcon className="ml-auto h-5 w-5 flex-shrink-0 text-gray-400" />
         </a>
       );
     default:
-      // **THAY ĐỔI 2: Xử lý `message.content` là object hoặc string**
       const textContent =
         typeof message.content === "string"
           ? message.content
           : message.content?.text;
       return (
-        <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">
+        <p className="text-[15px] leading-relaxed whitespace-pre-wrap break-words">
           {textContent}
         </p>
       );
   }
 };
 
+// --- Component chính cho mỗi tin nhắn ---
 const MessageItem = ({ message, sender, isCurrentUser, onImageClick }) => {
-  const alignment = isCurrentUser ? "justify-end" : "justify-start";
-  const bubbleColor = isCurrentUser
-    ? "bg-blue-600 text-white"
-    : "bg-gray-700 text-gray-200";
-  const bubbleRadius = isCurrentUser
-    ? "rounded-l-2xl rounded-tr-2xl"
-    : "rounded-r-2xl rounded-tl-2xl";
-  const bubbleClasses =
-    message.type === "text"
-      ? `${bubbleColor} ${bubbleRadius} p-3`
-      : "p-0 bg-transparent";
+  // ✅ Cải tiến 1: Phân chia style rõ ràng hơn
+  const messageAlignment = isCurrentUser ? "ml-auto" : "mr-auto";
+  const bubbleStyles = isCurrentUser
+    ? "bg-blue-600 text-white rounded-l-xl rounded-br-xl"
+    : // ? "bg-gradient-to-br from-sky-500 to-blue-600 text-white rounded-l-xl rounded-br-xl"
+      "bg-gray-700 text-gray-200 rounded-r-xl rounded-bl-xl";
+  const timeStyles = isCurrentUser ? "text-blue-200/70" : "text-gray-400";
 
-  // **THAY ĐỔI 3: Chuẩn hóa thuộc tính và thêm fallback**
+  // ✅ Cải tiến 2: Bỏ padding cho ảnh/file để chúng vừa khít bong bóng
+  const bubblePadding = message.type === "text" ? "px-3.5 py-2.5" : "p-1";
+
   const senderName = sender ? sender.fullName : "Người dùng ẩn";
   const senderAvatar = sender
     ? sender.avatar
@@ -70,12 +83,20 @@ const MessageItem = ({ message, sender, isCurrentUser, onImageClick }) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 20, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`flex w-full items-end gap-2 ${alignment}`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{
+        duration: 0.3,
+        type: "spring",
+        stiffness: 150,
+        damping: 20,
+      }}
+      className={`flex items-start gap-2.5 w-full ${
+        isCurrentUser ? "justify-end" : "justify-start"
+      }`}
     >
+      {/* Avatar người gửi */}
       {!isCurrentUser && (
         <img
           src={senderAvatar}
@@ -83,18 +104,56 @@ const MessageItem = ({ message, sender, isCurrentUser, onImageClick }) => {
           className="h-8 w-8 flex-shrink-0 self-end rounded-full object-cover"
         />
       )}
-      <div className={`max-w-[70%] shadow-md ${bubbleClasses}`}>
-        {!isCurrentUser && message.type === "text" && (
-          <p className="mb-1 text-xs font-bold text-indigo-300">{senderName}</p>
+
+      {/* Nội dung tin nhắn và thời gian */}
+      <div
+        className={`flex flex-col gap-1 w-full max-w-[75%] sm:max-w-[60%] ${
+          isCurrentUser ? "items-end" : "items-start"
+        }`}
+      >
+        {/* Tên người gửi (chỉ cho tin nhắn nhóm từ người khác) */}
+        {!isCurrentUser && (
+          <p className="text-xs text-gray-400 ml-3">{senderName}</p>
         )}
-        <MessageContent message={message} onImageClick={onImageClick} />
-        <p
-          className={`mt-1 text-right text-xs ${
-            message.type === "text" ? "text-gray-400" : "text-gray-500"
-          }`}
+
+        {/* Bong bóng chat */}
+        <div
+          className={`relative shadow-md ${messageAlignment} ${bubbleStyles} ${bubblePadding}`}
         >
+          <MessageContent message={message} onImageClick={onImageClick} />
+
+          {/* ✅ Cải tiến 3: Đuôi bong bóng chat bằng SVG */}
+          {!isCurrentUser && (
+            <div className="absolute left-[-7px] bottom-0">
+              <svg
+                width="8"
+                height="11"
+                viewBox="0 0 8 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M8 11C3.5 11 0 7.5 0 3V0L8 11Z" fill="#374151" />
+              </svg>
+            </div>
+          )}
+          {isCurrentUser && (
+            <div className="absolute right-[-7px] bottom-0">
+              <svg
+                width="8"
+                height="11"
+                viewBox="0 0 8 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 11C4.5 11 8 7.5 8 3V0L0 11Z" fill="#2563eb" />
+              </svg>
+            </div>
+          )}
+        </div>
+
+        {/* Thời gian gửi */}
+        <p className={`text-xs px-2 ${timeStyles}`}>
           {new Date(message.createdAt).toLocaleTimeString([], {
-            // Dùng createdAt
             hour: "2-digit",
             minute: "2-digit",
           })}

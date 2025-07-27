@@ -70,12 +70,35 @@ const ChatWindow = ({
   }
 
   const isOwner = currentUser?._id === conversation?.ownerId?._id;
-  console.log("ownerId:", conversation.ownerId);
-  console.log("currentUser:", currentUser._id);
+
+  // ✅ **THAY ĐỔI 1: Lọc và chuẩn hóa dữ liệu ảnh**
+  // Lấy tất cả tin nhắn có type là 'image' từ prop `messages`
+  const imagesInConversation = messages
+    .filter((msg) => msg.type === "image" && msg.content?.url)
+    .map((msg) => ({
+      id: msg._id, // Dùng để xác định ảnh nào được click
+      src: msg.content.url, // URL để hiển thị ảnh
+    }));
+
+  // Hàm được gọi khi người dùng click vào một ảnh trong MessageList
+  const handleImageClick = (messageId) => {
+    const imageIndex = imagesInConversation.findIndex(
+      (img) => img.id === messageId
+    );
+    if (imageIndex > -1) {
+      setCurrentImageIndex(imageIndex);
+      setIsLightboxOpen(true);
+    }
+  };
+
+  // Hàm được gọi khi người dùng chọn một ảnh từ thư viện (gallery)
+  const handleSelectImageFromGallery = (messageId) => {
+    setIsGalleryOpen(false); // Đóng gallery
+    handleImageClick(messageId); // Mở lightbox tại ảnh đã chọn
+  };
 
   const handleThemeChange = (theme) => {
     if (isOwner || conversation.type === "private") {
-      // Chủ nhóm hoặc chat riêng mới được đổi màu
       dispatch(
         updateGroupInfo({
           conversationId: conversation._id,
@@ -122,14 +145,12 @@ const ChatWindow = ({
           <div className="ml-3 flex-1">
             <h2 className="text-lg font-semibold text-white">{name}</h2>
           </div>
-
           <button
             onClick={() => setIsGalleryOpen(true)}
             className="rounded-full p-2 text-white hover:bg-gray-700"
           >
             <GalleryIcon className="h-6 w-6" />
           </button>
-
           <div className="relative">
             <button
               onClick={() => setIsPaletteOpen(!isPaletteOpen)}
@@ -162,7 +183,6 @@ const ChatWindow = ({
               </div>
             )}
           </div>
-
           {conversation.type === "group" && (
             <button
               onClick={() => setSettingsModalOpen(true)}
@@ -174,28 +194,32 @@ const ChatWindow = ({
           )}
         </div>
 
+        {/* Message List */}
         <MessageList
           messages={messages}
           themeColor={conversation.themeColor}
           currentUser={currentUser}
-          onImageClick={() => {}}
+          onImageClick={handleImageClick} // 👈 Truyền hàm này xuống
         />
+
+        {/* Message Input */}
         <MessageInput onSendMessage={onSendMessage} />
       </div>
 
+      {/* ✅ **THAY ĐỔI 2: Truyền đúng dữ liệu ảnh vào Lightbox và Gallery** */}
       <Lightbox
         open={isLightboxOpen}
         close={() => setIsLightboxOpen(false)}
-        slides={[]}
+        slides={imagesInConversation}
+        index={currentImageIndex}
       />
       {isGalleryOpen && (
         <MediaGalleryModal
-          images={[]}
+          images={imagesInConversation}
           onClose={() => setIsGalleryOpen(false)}
-          onImageSelect={() => {}}
+          onImageSelect={handleSelectImageFromGallery}
         />
       )}
-
       {isSettingsModalOpen && (
         <GroupSettingsModal
           isOpen={isSettingsModalOpen}
