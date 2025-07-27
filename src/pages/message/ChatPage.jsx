@@ -13,6 +13,7 @@ import {
   setCurrentConversation,
   createGroupConversation,
   addMessageToConversation,
+  addConversation,
 } from "../../redux/conversationSlice";
 
 const ENDPOINT = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -30,20 +31,19 @@ const ChatPage = () => {
   useEffect(() => {
     if (currentUser?._id) {
       socket = io(ENDPOINT);
-
-      // ✅ SỬA 1: Phát sự kiện `joinUserRoom` khớp với backend
       socket.emit("joinUserRoom", currentUser._id);
 
-      // Lắng nghe sự kiện `newMessage` từ server
       socket.on("newMessage", (newMessage) => {
         dispatch(addMessageToConversation(newMessage));
       });
 
-      // Lắng nghe sự kiện khi có người mời vào nhóm mới
+      // ✅ **THAY ĐỔI 3: Lắng nghe sự kiện có cuộc trò chuyện mới**
+      socket.on("new conversation", (newConversation) => {
+        dispatch(addConversation(newConversation));
+      });
+
       socket.on("invitedToGroup", (newGroup) => {
-        // Tạm thời chỉ fetch lại danh sách cuộc trò chuyện
-        // Nâng cao hơn: Thêm trực tiếp group mới vào state Redux
-        dispatch(fetchConversations());
+        dispatch(addConversation(newGroup)); // Dùng lại action addConversation
         alert(`Bạn vừa được mời vào nhóm: ${newGroup.name}`);
       });
     }

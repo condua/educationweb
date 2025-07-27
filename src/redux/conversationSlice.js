@@ -167,6 +167,13 @@ const conversationSlice = createSlice({
     error: null,
   },
   reducers: {
+    addConversation: (state, action) => {
+      const newConvo = action.payload;
+      // Tránh thêm trùng lặp nếu người dùng là người tạo
+      if (!state.conversations.some((c) => c._id === newConvo._id)) {
+        state.conversations.unshift(newConvo);
+      }
+    },
     addMessageToConversation: (state, action) => {
       const newMessage = action.payload;
       if (
@@ -282,6 +289,7 @@ export const {
   addMessageToConversation,
   setCurrentConversation,
   clearCurrentConversation,
+  addConversation,
 } = conversationSlice.actions;
 
 export default conversationSlice.reducer;
