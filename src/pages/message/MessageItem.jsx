@@ -145,7 +145,10 @@ const MessageItem = ({ message, sender, isCurrentUser, onImageClick }) => {
           )}
         </div>
         <p className={`text-xs px-2 ${timeStyles}`}>
-          {new Date(message.createdAt).toLocaleTimeString([], {
+          {new Date(message.createdAt).toLocaleString([], {
+            year: "numeric", // 👈 Thêm năm
+            month: "numeric", // 👈 Thêm tháng
+            day: "numeric", // 👈 Thêm ngày
             hour: "2-digit",
             minute: "2-digit",
           })}
