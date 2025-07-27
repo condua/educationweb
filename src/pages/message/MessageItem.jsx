@@ -18,7 +18,10 @@ const MessageContent = ({ message, onImageClick }) => {
           <img
             src={message.content.url}
             alt={message.content.name || "Hình ảnh được gửi"}
-            className="max-w-xs rounded-lg object-cover"
+            // ✅ SỬA Ở ĐÂY: Thêm class responsive cho ảnh
+            // - `max-w-[16rem]`: Chiều rộng tối đa là 256px trên màn hình nhỏ (mặc định).
+            // - `sm:max-w-xs`: Trên màn hình từ small (640px) trở lên, chiều rộng tối đa là 320px.
+            className="max-w-[16rem] sm:max-w-xs rounded-lg object-cover"
           />
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center rounded-lg opacity-0 group-hover:opacity-100">
             <PhotoIcon className="h-8 w-8 text-white" />
@@ -30,7 +33,10 @@ const MessageContent = ({ message, onImageClick }) => {
         <a
           href={message.content.url || "#"}
           download={message.content.name}
-          className="flex w-64 items-center gap-3 rounded-lg bg-black/20 p-3 transition-colors hover:bg-black/30"
+          // ✅ SỬA Ở ĐÂY: Thêm class responsive cho khung file
+          // - `w-56`: Chiều rộng là 224px trên màn hình nhỏ.
+          // - `sm:w-64`: Trên màn hình từ small trở lên, chiều rộng là 256px.
+          className="flex w-56 sm:w-64 items-center gap-3 rounded-lg bg-black/20 p-3 transition-colors hover:bg-black/30"
           title={`Tải xuống ${message.content.name}`}
         >
           <div className="flex-shrink-0 grid place-items-center bg-white/10 h-10 w-10 rounded-full">
@@ -62,17 +68,13 @@ const MessageContent = ({ message, onImageClick }) => {
   }
 };
 
-// --- Component chính cho mỗi tin nhắn ---
+// --- Component chính cho mỗi tin nhắn (không thay đổi) ---
 const MessageItem = ({ message, sender, isCurrentUser, onImageClick }) => {
-  // ✅ Cải tiến 1: Phân chia style rõ ràng hơn
   const messageAlignment = isCurrentUser ? "ml-auto" : "mr-auto";
   const bubbleStyles = isCurrentUser
     ? "bg-blue-600 text-white rounded-l-xl rounded-br-xl"
-    : // ? "bg-gradient-to-br from-sky-500 to-blue-600 text-white rounded-l-xl rounded-br-xl"
-      "bg-gray-700 text-gray-200 rounded-r-xl rounded-bl-xl";
+    : "bg-gray-700 text-gray-200 rounded-r-xl rounded-bl-xl";
   const timeStyles = isCurrentUser ? "text-blue-200/70" : "text-gray-400";
-
-  // ✅ Cải tiến 2: Bỏ padding cho ảnh/file để chúng vừa khít bong bóng
   const bubblePadding = message.type === "text" ? "px-3.5 py-2.5" : "p-1";
 
   const senderName = sender ? sender.fullName : "Người dùng ẩn";
@@ -96,7 +98,6 @@ const MessageItem = ({ message, sender, isCurrentUser, onImageClick }) => {
         isCurrentUser ? "justify-end" : "justify-start"
       }`}
     >
-      {/* Avatar người gửi */}
       {!isCurrentUser && (
         <img
           src={senderAvatar}
@@ -104,25 +105,18 @@ const MessageItem = ({ message, sender, isCurrentUser, onImageClick }) => {
           className="h-8 w-8 flex-shrink-0 self-end rounded-full object-cover"
         />
       )}
-
-      {/* Nội dung tin nhắn và thời gian */}
       <div
         className={`flex flex-col gap-1 w-full max-w-[75%] sm:max-w-[60%] ${
           isCurrentUser ? "items-end" : "items-start"
         }`}
       >
-        {/* Tên người gửi (chỉ cho tin nhắn nhóm từ người khác) */}
         {!isCurrentUser && (
           <p className="text-xs text-gray-400 ml-3">{senderName}</p>
         )}
-
-        {/* Bong bóng chat */}
         <div
           className={`relative shadow-md ${messageAlignment} ${bubbleStyles} ${bubblePadding}`}
         >
           <MessageContent message={message} onImageClick={onImageClick} />
-
-          {/* ✅ Cải tiến 3: Đuôi bong bóng chat bằng SVG */}
           {!isCurrentUser && (
             <div className="absolute left-[-7px] bottom-0">
               <svg
@@ -150,8 +144,6 @@ const MessageItem = ({ message, sender, isCurrentUser, onImageClick }) => {
             </div>
           )}
         </div>
-
-        {/* Thời gian gửi */}
         <p className={`text-xs px-2 ${timeStyles}`}>
           {new Date(message.createdAt).toLocaleTimeString([], {
             hour: "2-digit",
