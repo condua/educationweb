@@ -3,6 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourseById } from "../redux/coursesSlice";
+import {
+  DocumentTextIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/outline";
+
 import ReactPlayer from "react-player";
 import {
   FaPlay,
@@ -264,26 +269,47 @@ const CourseDetail = () => {
             )}
           </div>
         ))}
-        {/* Bước 2: Hiển thị danh sách bài kiểm tra */}
-        <div className="mt-3">
-          <h3 className="sm:text-l text-lg font-bold mb-2">Bài kiểm tra</h3>
+        <div className="mt-6">
+          <h3 className="text-xl font-bold text-gray-800 mb-4 px-2">
+            📝 Bài kiểm tra
+          </h3>
+
           {course.tests?.length > 0 ? (
-            <div>
+            <div className="space-y-3">
               {course.tests.map((test) => (
                 <Link
                   key={test._id}
-                  // Giả sử bạn có route вида `/course/:courseId/test/:testId`
                   to={`/course/${course._id}/test/${test._id}`}
-                  className="block w-full text-left p-1 text-xs md:text-sm rounded-md hover:bg-gray-300"
-                  onClick={() => setIsSidebarOpen(false)} // Ẩn sidebar khi click trên mobile
+                  onClick={() => setIsSidebarOpen(false)}
+                  className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition duration-200 border border-gray-200 hover:border-blue-400"
                 >
-                  📝 {test.title}
+                  <div className="flex-shrink-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 text-blue-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                  </div>
+
+                  <span className="text-gray-800 font-medium text-base">
+                    {test.title ||
+                      "Bài kiểm tra về Thói quen và Giá trị Gia đình"}
+                  </span>
                 </Link>
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-sm ml-2">
-              Chưa có bài kiểm tra nào.
+            <p className="text-gray-500 text-sm italic px-2 py-3">
+              Chưa có bài kiểm tra nào trong khóa học này.
             </p>
           )}
         </div>
