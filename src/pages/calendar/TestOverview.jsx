@@ -145,27 +145,33 @@ const TestOverview = () => {
       <div className="max-w-5xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Phần Header: Giảm padding trên mobile */}
-          <div className="p-6 md:p-8">
+          <div className="bg-white rounded-2xl shadow-md p-6 md:p-8">
+            {/* Link quay về */}
             {test?.course && (
               <div className="mb-6">
                 <Link
                   to={`/course/${test.course}`}
-                  className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 font-semibold transition-colors"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors"
                 >
                   <ArrowLeftIcon className="h-4 w-4" />
-                  Quay về khóa học
+                  <span>Quay về khóa học</span>
                 </Link>
               </div>
             )}
-            <div className="flex items-center space-x-3 mb-6">
-              <DocumentTextIcon className="h-8 w-8 text-indigo-500" />
-              {/* Tối ưu kích thước font chữ cho mobile */}
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 tracking-tight">
+
+            {/* Tiêu đề và icon */}
+            <div className="flex items-start sm:items-center gap-4 mb-6">
+              <div className="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-xl p-2">
+                <DocumentTextIcon className="h-7 w-7" />
+              </div>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 leading-snug">
                 {test.title}
               </h1>
             </div>
-            <p className="mt-2 text-base sm:text-lg text-gray-600">
-              {test.description}
+
+            {/* Mô tả bài kiểm tra */}
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+              {test.description || "Không có mô tả cho bài kiểm tra này."}
             </p>
           </div>
 
