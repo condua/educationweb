@@ -3,18 +3,8 @@ import React, { useEffect, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import MessageItem from "./MessageItem";
 
-const MessageList = ({
-  messages,
-  themeColor,
-  currentUser,
-  allUsers,
-  onImageClick,
-}) => {
+const MessageList = ({ messages, themeColor, currentUser, onImageClick }) => {
   const listContainerRef = useRef(null);
-  const usersMap = allUsers.reduce(
-    (acc, user) => ({ ...acc, [user.id]: user }),
-    {}
-  );
 
   // Cải thiện: Tự động cuộn xuống dưới khi có tin nhắn mới
   useEffect(() => {
@@ -28,16 +18,20 @@ const MessageList = ({
     <div
       ref={listContainerRef}
       className="flex-1 space-y-4 p-4 overflow-y-auto transition-colors duration-500"
-      // THAY ĐỔI CHÍNH: Sử dụng 'background' thay vì 'backgroundColor'
       style={{ background: themeColor || "#1f2937" }}
     >
       <AnimatePresence>
+        {/*
+          **THAY ĐỔI 1: Xóa bỏ `usersMap` và truyền thẳng `message.senderId`**
+          - Vì backend đã populate `senderId`, nó giờ là một object user đầy đủ.
+          - So sánh `_id` để xác định `isCurrentUser`.
+        */}
         {messages.map((message) => (
           <MessageItem
-            key={message.id}
+            key={message._id}
             message={message}
-            sender={usersMap[message.senderId]}
-            isCurrentUser={message.senderId === currentUser.id}
+            sender={message.senderId} // Truyền thẳng object sender đã được populate
+            isCurrentUser={message.senderId?._id === currentUser?._id}
             onImageClick={onImageClick}
           />
         ))}

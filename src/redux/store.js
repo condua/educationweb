@@ -8,9 +8,10 @@ import userReducer from "./userSlice";
 import blogReducer from "./blogSlice";
 import testReducer from "./testSlice";
 import testAttemptReducer from "./testAttemptSlice";
-// ✅ 1. Import các reducer mới
-import chapterReducer from "./chapterSlice"; // 👈 thêm dòng này
-import lessonReducer from "./lessonSlice"; // 👈 thêm dòng này
+import chapterReducer from "./chapterSlice";
+import lessonReducer from "./lessonSlice";
+// ✅ 1. Import reducer của conversation
+import conversationReducer from "./conversationSlice";
 
 // Cấu hình Redux Persist
 const authPersistConfig = {
@@ -22,7 +23,6 @@ const authPersistConfig = {
 const coursesPersistConfig = {
   key: "courses",
   storage,
-  // Lưu danh sách khóa học và chi tiết khóa học đã fetch
   whitelist: ["courses", "courseDetails"],
 };
 
@@ -41,15 +41,16 @@ const blogPersistConfig = {
 const testPersistConfig = {
   key: "tests",
   storage,
-  whitelist: ["testsByCourse"], // Chỉ lưu danh sách test theo khóa học
+  whitelist: ["testsByCourse"],
 };
 
 const testAttemptPersistConfig = {
   key: "testAttempts",
   storage,
-  whitelist: ["userAttempts"], // Chỉ lưu lịch sử làm bài của người dùng
+  whitelist: ["userAttempts"],
 };
 
+// Cấu hình Redux Persist cho conversationReducer
 // Tạo persisted reducers
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 const persistedCoursesReducer = persistReducer(
@@ -73,9 +74,10 @@ const store = configureStore({
     blog: persistedBlogReducer,
     tests: persistedTestReducer,
     testAttempts: persistedTestAttemptReducer,
-    // ✅ 2. Thêm các reducer mới (không cần persist) vào store
-    chapters: chapterReducer, // 👈 thêm dòng này
-    lessons: lessonReducer, // 👈 thêm dòng này
+    chapters: chapterReducer,
+    lessons: lessonReducer,
+    // ✅ 2. Thêm conversationReducer vào store (không cần persist)
+    conversations: conversationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

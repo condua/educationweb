@@ -1,7 +1,9 @@
 // src/components/chat/ConversationList.jsx
 
 import React, { useState, useMemo } from "react";
+import { UserPlusIcon } from "@heroicons/react/24/solid";
 
+// Hàm tiện ích không thay đổi
 const removeAccents = (str) => {
   if (!str) return "";
   return str
@@ -21,30 +23,28 @@ const ConversationList = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const usersMap = useMemo(
-    () => allUsers.reduce((acc, user) => ({ ...acc, [user.id]: user }), {}),
-    [allUsers]
-  );
-
   const getConversationDisplayInfo = (convo) => {
     if (convo.type === "group") {
-      return { name: convo.name, avatarUrl: convo.avatarUrl };
+      return {
+        name: convo.name,
+        avatar: convo.avatarUrl || "https://placehold.co/100",
+      };
     }
-    const otherUserId = convo.memberIds.find(
-      (id) => currentUser && id !== currentUser.id
+    const otherMember = convo.memberIds.find(
+      (member) => currentUser && member._id !== currentUser._id
     );
-    const otherUser = usersMap[otherUserId];
-    return otherUser
-      ? { name: otherUser.name, avatarUrl: otherUser.avatarUrl }
+    return otherMember
+      ? { name: otherMember.fullName, avatar: otherMember.avatar }
       : {
-          name: "Unknown User",
-          avatarUrl: "https://placehold.co/100x100/666/FFF?text=?",
+          name: "Cuộc trò chuyện riêng tư",
+          avatar: "https://placehold.co/100x100/666/FFF?text=?",
         };
   };
 
-  const getLastMessage = (messages) => {
-    if (!messages || messages.length === 0) return "Chưa có tin nhắn.";
-    const lastMsg = messages[messages.length - 1];
+  const getLastMessageText = (convo) => {
+    const lastMsg = convo.lastMessage;
+    if (!lastMsg) return "Chưa có tin nhắn.";
+
     let displayMsg = "";
     switch (lastMsg.type) {
       case "image":
@@ -54,51 +54,54 @@ const ConversationList = ({
         displayMsg = "Đã gửi một tệp";
         break;
       default:
-        displayMsg =
-          typeof lastMsg.content === "string"
-            ? lastMsg.content
-            : lastMsg.content.text;
+        displayMsg = lastMsg.content?.text || "";
         break;
     }
-    if (!currentUser) return displayMsg;
-    const sender = usersMap[lastMsg.senderId];
-    if (!sender) return displayMsg;
-    const prefix = sender.id === currentUser.id ? "Bạn: " : "";
+
+    if (!currentUser || !lastMsg.senderId) return displayMsg;
+
+    const prefix = lastMsg.senderId._id === currentUser._id ? "Bạn: " : "";
     return `${prefix}${displayMsg}`;
   };
 
-  const processedConversations = useMemo(
+  const filteredConversations = useMemo(
     () =>
-      [...conversations]
-        .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
-        .filter((convo) => {
-          if (!searchTerm) return true;
-          const { name } = getConversationDisplayInfo(convo);
-          const normalizedName = removeAccents(name);
-          const normalizedSearchTerm = removeAccents(searchTerm);
-          return normalizedName.includes(normalizedSearchTerm);
-        }),
+      conversations.filter((convo) => {
+        if (!searchTerm) return true;
+        const { name } = getConversationDisplayInfo(convo);
+        return removeAccents(name).includes(removeAccents(searchTerm));
+      }),
     [conversations, searchTerm, currentUser]
   );
 
-  const processedUsers = useMemo(() => {
+  // ✅ **THAY ĐỔI CHÍNH: Cập nhật logic lọc người dùng**
+  const filteredUsers = useMemo(() => {
+    // 1. Lấy ID của những người dùng đã có cuộc trò chuyện riêng
     const existingPrivateChatUserIds = new Set(
       conversations
         .filter((c) => c.type === "private")
-        .flatMap((c) => c.memberIds)
+        .flatMap((c) => c.memberIds.map((m) => m._id))
     );
 
+    // 2. Lọc toàn bộ danh sách người dùng
     return allUsers.filter((user) => {
-      if (
-        user.id === currentUser.id ||
-        existingPrivateChatUserIds.has(user.id)
-      ) {
+      // Điều kiện 1: Loại bỏ người dùng hiện tại và những người đã có chat riêng
+      const isUnavailable =
+        user._id === currentUser?._id ||
+        existingPrivateChatUserIds.has(user._id);
+
+      if (isUnavailable) {
         return false;
       }
-      if (!searchTerm) return true;
-      const normalizedName = removeAccents(user.name);
-      const normalizedSearchTerm = removeAccents(searchTerm);
-      return normalizedName.includes(normalizedSearchTerm);
+
+      // Điều kiện 2: Nếu có tìm kiếm, thì lọc theo tên.
+      // Nếu không, không cần lọc gì thêm.
+      if (searchTerm) {
+        return removeAccents(user.fullName).includes(removeAccents(searchTerm));
+      }
+
+      // Nếu không có tìm kiếm và user hợp lệ, luôn hiển thị
+      return true;
     });
   }, [searchTerm, allUsers, conversations, currentUser]);
 
@@ -117,20 +120,7 @@ const ConversationList = ({
             className="p-2 rounded-full hover:bg-slate-700 transition-colors"
             title="Tạo nhóm mới"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
+            <UserPlusIcon className="h-6 w-6" />
           </button>
         </div>
         <input
@@ -143,20 +133,21 @@ const ConversationList = ({
       </div>
 
       <div className="flex-1 overflow-y-auto">
-        {processedConversations.map((convo) => {
-          const { name, avatarUrl } = getConversationDisplayInfo(convo);
-          const lastMessageText = getLastMessage(convo.messages);
-          const isActive = convo.id === activeConversationId;
+        {/* Danh sách các cuộc trò chuyện */}
+        {filteredConversations.map((convo) => {
+          const { name, avatar } = getConversationDisplayInfo(convo);
+          const lastMessageText = getLastMessageText(convo);
+          const isActive = convo._id === activeConversationId;
           return (
             <div
-              key={convo.id}
-              onClick={() => onSelectConversation(convo.id)}
+              key={convo._id}
+              onClick={() => onSelectConversation(convo._id)}
               className={`flex items-center p-3 cursor-pointer transition-colors duration-200 border-b border-slate-700/50 ${
                 isActive ? "bg-blue-600/30" : "hover:bg-slate-700/50"
               }`}
             >
               <img
-                src={avatarUrl}
+                src={avatar}
                 alt={name}
                 className="h-12 w-12 rounded-full mr-4 object-cover flex-shrink-0"
               />
@@ -174,25 +165,26 @@ const ConversationList = ({
           );
         })}
 
-        {processedUsers.length > 0 && (
+        {/* Danh sách người dùng để bắt đầu chat mới */}
+        {filteredUsers.length > 0 && (
           <div>
             <h3 className="p-3 text-xs font-bold uppercase text-slate-400">
               Mọi người
             </h3>
-            {processedUsers.map((user) => (
+            {filteredUsers.map((user) => (
               <div
-                key={user.id}
-                onClick={() => handleSelectNewUser(user.id)}
+                key={user._id}
+                onClick={() => handleSelectNewUser(user._id)}
                 className="flex items-center p-3 cursor-pointer transition-colors duration-200 hover:bg-slate-700/50 border-b border-slate-700/50"
               >
                 <img
-                  src={user.avatarUrl}
-                  alt={user.name}
+                  src={user.avatar}
+                  alt={user.fullName}
                   className="h-12 w-12 rounded-full mr-4 object-cover flex-shrink-0"
                 />
                 <div className="flex-1 overflow-hidden">
                   <p className="font-semibold text-white truncate">
-                    {user.name}
+                    {user.fullName}
                   </p>
                   <p className="text-sm text-slate-400">
                     Bắt đầu cuộc trò chuyện mới

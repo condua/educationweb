@@ -1,157 +1,117 @@
+// src/pages/ChatPage.jsx
 import React, { useState, useEffect } from "react";
-import Confetti from "react-confetti";
-import { users, conversations as initialConversations } from "./mockData";
+import { useDispatch, useSelector } from "react-redux";
+import io from "socket.io-client";
 import ConversationList from "./ConversationList";
 import ChatWindow from "./ChatWindow";
 import CreateGroupModal from "./CreateGroupModal";
+import {
+  fetchConversations,
+  fetchAllUsersForChat,
+  sendMessage,
+  findOrCreatePrivateConversation,
+  setCurrentConversation,
+  createGroupConversation,
+  addMessageToConversation,
+} from "../../redux/conversationSlice";
 
-const MOCK_USER_ID_FOR_DEV = "user1";
+const ENDPOINT = import.meta.env.VITE_API_URL || "http://localhost:5000";
+let socket;
 
 const ChatPage = () => {
-  const currentUser = users.find((u) => u.id === MOCK_USER_ID_FOR_DEV);
-
-  const [conversations, setConversations] = useState([]);
-  const [activeConversationId, setActiveConversationId] = useState(null);
-  const [showConfetti, setShowConfetti] = useState(false);
+  const dispatch = useDispatch();
+  const { user: currentUser } = useSelector((state) => state.auth);
+  const { conversations, users, currentConversation, status } = useSelector(
+    (state) => state.conversations
+  );
   const [isCreateGroupModalOpen, setCreateGroupModalOpen] = useState(false);
 
+  // --- THIẾT LẬP SOCKET.IO ---
   useEffect(() => {
-    if (currentUser) {
-      const userConversations = initialConversations
-        .filter((c) => c.memberIds.includes(currentUser.id))
-        .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-      setConversations(userConversations);
-      if (userConversations.length > 0 && !activeConversationId) {
-        setActiveConversationId(userConversations[0].id);
+    if (currentUser?._id) {
+      socket = io(ENDPOINT);
+
+      // ✅ SỬA 1: Phát sự kiện `joinUserRoom` khớp với backend
+      socket.emit("joinUserRoom", currentUser._id);
+
+      // Lắng nghe sự kiện `newMessage` từ server
+      socket.on("newMessage", (newMessage) => {
+        dispatch(addMessageToConversation(newMessage));
+      });
+
+      // Lắng nghe sự kiện khi có người mời vào nhóm mới
+      socket.on("invitedToGroup", (newGroup) => {
+        // Tạm thời chỉ fetch lại danh sách cuộc trò chuyện
+        // Nâng cao hơn: Thêm trực tiếp group mới vào state Redux
+        dispatch(fetchConversations());
+        alert(`Bạn vừa được mời vào nhóm: ${newGroup.name}`);
+      });
+    }
+
+    return () => {
+      if (socket) {
+        socket.disconnect();
       }
-    }
-  }, [currentUser]);
-
-  const handleSendMessage = (content, type) => {
-    if (!activeConversationId || !currentUser) return;
-
-    const newMessage = {
-      id: `msg${Date.now()}`,
-      senderId: currentUser.id,
-      type: type,
-      content: content, // Không cần { text: content } nữa
-      timestamp: new Date().toISOString(),
     };
+  }, [currentUser, dispatch]);
 
-    setConversations((prevConversations) =>
-      [...prevConversations]
-        .map((convo) =>
-          convo.id === activeConversationId
-            ? {
-                ...convo,
-                messages: [...convo.messages, newMessage],
-                updatedAt: new Date().toISOString(),
-              }
-            : convo
-        )
-        .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
-    );
-
-    if (
-      type === "text" &&
-      typeof content === "string" &&
-      content.toLowerCase().includes("chúc mừng")
-    ) {
-      setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 5000);
+  // --- THAM GIA PHÒNG CHAT KHI CHỌN CUỘC TRÒ CHUYỆN ---
+  useEffect(() => {
+    if (currentConversation.details?._id) {
+      // ✅ SỬA 2: Phát sự kiện `joinConversation` khớp với backend
+      socket.emit("joinConversation", currentConversation.details._id);
     }
+  }, [currentConversation.details]);
+
+  // Lấy dữ liệu ban đầu
+  useEffect(() => {
+    dispatch(fetchConversations());
+    dispatch(fetchAllUsersForChat());
+  }, [dispatch]);
+
+  // Các hàm handler không thay đổi...
+  const handleSendMessage = (formData) => {
+    if (!currentConversation.details?._id) return;
+    dispatch(
+      sendMessage({
+        conversationId: currentConversation.details._id,
+        formData,
+      })
+    );
   };
 
-  const handleCreateGroup = ({ name, memberIds }) => {
-    if (!currentUser) return;
-
-    const newConversation = {
-      id: `convo_${Date.now()}`,
-      type: "group",
-      name,
-      avatarUrl: `https://placehold.co/100x100/8E94F2/FFFFFF?text=${name
-        .substring(0, 2)
-        .toUpperCase()}`,
-      memberIds: [currentUser.id, ...memberIds],
-      themeColor: "#1f2937",
-      messages: [],
-      updatedAt: new Date().toISOString(),
-    };
-
-    setConversations((prev) =>
-      [newConversation, ...prev].sort(
-        (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
-      )
-    );
-    setActiveConversationId(newConversation.id);
+  const handleCreateGroup = (groupData) => {
+    dispatch(createGroupConversation(groupData));
     setCreateGroupModalOpen(false);
   };
 
   const handleStartNewConversation = (userId) => {
-    if (!currentUser) return;
+    dispatch(findOrCreatePrivateConversation(userId));
+  };
 
-    const existingConvo = conversations.find(
-      (c) => c.type === "private" && c.memberIds.includes(userId)
-    );
-
-    if (existingConvo) {
-      setActiveConversationId(existingConvo.id);
-    } else {
-      const newConversation = {
-        id: `convo_${Date.now()}`,
-        type: "private",
-        memberIds: [currentUser.id, userId],
-        messages: [],
-        updatedAt: new Date().toISOString(),
-      };
-      setConversations((prev) =>
-        [newConversation, ...prev].sort(
-          (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
-        )
-      );
-      setActiveConversationId(newConversation.id);
+  const handleSelectConversation = (conversationId) => {
+    const selectedConvo = conversations.find((c) => c._id === conversationId);
+    if (selectedConvo) {
+      dispatch(setCurrentConversation(selectedConvo));
     }
   };
 
-  const handleChangeThemeColor = (conversationId, newColor) => {
-    setConversations((prevConversations) =>
-      prevConversations.map((convo) =>
-        convo.id === conversationId ? { ...convo, themeColor: newColor } : convo
-      )
-    );
-  };
-
-  const activeConversation = conversations.find(
-    (c) => c.id === activeConversationId
-  );
-
-  if (!currentUser) {
-    return (
-      <div className="flex h-screen flex-col items-center justify-center bg-slate-900 text-white">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
-        <p className="mt-4 text-lg">Đang tải dữ liệu...</p>
-      </div>
-    );
+  if (status === "loading" && conversations.length === 0) {
+    return <div className="...loading-spinner...">Đang tải...</div>;
   }
 
   return (
     <>
       <main className="flex h-screen overflow-hidden bg-slate-900 font-sans text-white">
-        {showConfetti && <Confetti recycle={false} numberOfPieces={300} />}
-
         <div
-          className={`
-            h-full bg-slate-800 transition-transform duration-300 ease-in-out
-            absolute w-full z-10 
-            md:static md:w-80 lg:w-96 md:flex-shrink-0
-            md:border-r md:border-slate-700 md:translate-x-0
-            ${activeConversationId ? "-translate-x-full" : "translate-x-0"}
-          `}
+          className={`h-full bg-slate-800 transition-transform duration-300 ease-in-out absolute w-full z-10 md:static md:w-80 lg:w-96 md:flex-shrink-0 md:border-r md:border-slate-700 md:translate-x-0 ${
+            currentConversation.details ? "-translate-x-full" : "translate-x-0"
+          }`}
         >
           <ConversationList
             conversations={conversations}
-            onSelectConversation={setActiveConversationId}
-            activeConversationId={activeConversationId}
+            onSelectConversation={handleSelectConversation}
+            activeConversationId={currentConversation.details?._id}
             currentUser={currentUser}
             allUsers={users}
             onOpenCreateGroup={() => setCreateGroupModalOpen(true)}
@@ -161,13 +121,12 @@ const ChatPage = () => {
 
         <div className="flex-1 flex flex-col h-full bg-slate-900">
           <ChatWindow
-            key={activeConversationId}
-            conversation={activeConversation}
+            conversation={currentConversation.details}
+            messages={currentConversation.messages}
             onSendMessage={handleSendMessage}
             currentUser={currentUser}
             allUsers={users}
-            onChangeThemeColor={handleChangeThemeColor}
-            onBack={() => setActiveConversationId(null)}
+            onBack={() => dispatch(setCurrentConversation(null))}
           />
         </div>
       </main>
