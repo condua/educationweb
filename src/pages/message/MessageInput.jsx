@@ -78,13 +78,13 @@ const MessageInput = ({ onSendMessage }) => {
         >
           <PhotoIcon className="h-6 w-6" />
         </button>
-        <button
+        {/* <button
           onClick={() => fileInputRef.current.click()}
           className="p-2 text-gray-400 hover:text-white"
           title="Đính kèm tệp"
         >
           <PaperClipIcon className="h-6 w-6" />
-        </button>
+        </button> */}
 
         {/* Gộp 2 input file và dùng một hàm xử lý duy nhất */}
         <input

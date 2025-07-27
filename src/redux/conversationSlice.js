@@ -156,6 +156,61 @@ export const leaveGroup = createAsyncThunk(
   }
 );
 
+// ✅ **THÊM MỚI: Cập nhật thông tin nhóm (tên, avatar, theme)**
+export const updateGroupInfo = createAsyncThunk(
+  "conversations/updateGroup",
+  async ({ conversationId, groupData }, { getState, rejectWithValue }) => {
+    try {
+      const token = getToken(getState());
+      const response = await axios.put(
+        `${API_URL}/${conversationId}/group`,
+        groupData,
+        getAuthHeaders(token)
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data);
+    }
+  }
+);
+
+// ✅ **THÊM MỚI: Xóa thành viên khỏi nhóm**
+export const removeMemberFromGroup = createAsyncThunk(
+  "conversations/removeMember",
+  async (
+    { conversationId, memberIdToRemove },
+    { getState, rejectWithValue }
+  ) => {
+    try {
+      const token = getToken(getState());
+      const response = await axios.post(
+        `${API_URL}/${conversationId}/remove-member`,
+        { memberIdToRemove },
+        getAuthHeaders(token)
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data);
+    }
+  }
+);
+
+// ✅ **THÊM MỚI: Xóa hoàn toàn một nhóm**
+export const deleteGroup = createAsyncThunk(
+  "conversations/deleteGroup",
+  async (conversationId, { getState, rejectWithValue }) => {
+    try {
+      const token = getToken(getState());
+      await axios.delete(
+        `${API_URL}/${conversationId}/group`,
+        getAuthHeaders(token)
+      );
+      return { conversationId }; // Trả về ID để reducer xử lý
+    } catch (error) {
+      return rejectWithValue(error.response?.data);
+    }
+  }
+);
 // 📦 Slice Definition
 const conversationSlice = createSlice({
   name: "conversations",
@@ -194,6 +249,29 @@ const conversationSlice = createSlice({
         state.conversations[convoIndex].lastMessage = newMessage;
         const updatedConvo = state.conversations.splice(convoIndex, 1)[0];
         state.conversations.unshift(updatedConvo);
+      }
+    },
+    // ✅ **THÊM MỚI: Reducer để cập nhật một cuộc trò chuyện**
+    updateConversation: (state, action) => {
+      const updatedConvo = action.payload;
+      const index = state.conversations.findIndex(
+        (c) => c._id === updatedConvo._id
+      );
+      if (index !== -1) {
+        state.conversations[index] = updatedConvo;
+      }
+      if (state.currentConversation.details?._id === updatedConvo._id) {
+        state.currentConversation.details = updatedConvo;
+      }
+    },
+    // ✅ **THÊM MỚI: Reducer để xóa một cuộc trò chuyện**
+    removeConversation: (state, action) => {
+      const { conversationId } = action.payload;
+      state.conversations = state.conversations.filter(
+        (c) => c._id !== conversationId
+      );
+      if (state.currentConversation.details?._id === conversationId) {
+        state.currentConversation = { details: null, messages: [] };
       }
     },
     setCurrentConversation: (state, action) => {
@@ -254,7 +332,16 @@ const conversationSlice = createSlice({
           state.currentConversation = { details: null, messages: [] };
         }
       })
-
+      // ✅ **THÊM MỚI: Xử lý các action quản lý nhóm**
+      .addCase(updateGroupInfo.fulfilled, (state, action) => {
+        conversationSlice.caseReducers.updateConversation(state, action);
+      })
+      .addCase(removeMemberFromGroup.fulfilled, (state, action) => {
+        conversationSlice.caseReducers.updateConversation(state, action);
+      })
+      .addCase(deleteGroup.fulfilled, (state, action) => {
+        conversationSlice.caseReducers.removeConversation(state, action);
+      })
       // BƯỚC 2: Đặt tất cả .addMatcher ở phía dưới
       .addMatcher(
         (action) =>
@@ -290,6 +377,8 @@ export const {
   setCurrentConversation,
   clearCurrentConversation,
   addConversation,
+  updateConversation,
+  removeConversation,
 } = conversationSlice.actions;
 
 export default conversationSlice.reducer;

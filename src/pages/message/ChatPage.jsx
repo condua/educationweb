@@ -1,4 +1,3 @@
-// src/pages/ChatPage.jsx
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import io from "socket.io-client";
@@ -12,12 +11,14 @@ import {
   findOrCreatePrivateConversation,
   setCurrentConversation,
   createGroupConversation,
+  // Actions cho real-time
   addMessageToConversation,
   addConversation,
+  updateConversation,
+  removeConversation,
 } from "../../redux/conversationSlice";
 
 const ENDPOINT = import.meta.env.VITE_API_URL || "http://localhost:5000";
-let socket;
 
 const ChatPage = () => {
   const dispatch = useDispatch();
@@ -25,70 +26,82 @@ const ChatPage = () => {
   const { conversations, users, currentConversation, status } = useSelector(
     (state) => state.conversations
   );
+
+  // ✅ Quản lý socket bằng state để đảm bảo sự ổn định
+  const [socket, setSocket] = useState(null);
   const [isCreateGroupModalOpen, setCreateGroupModalOpen] = useState(false);
 
-  // --- THIẾT LẬP SOCKET.IO ---
+  // --- 1. THIẾT LẬP VÀ QUẢN LÝ KẾT NỐI SOCKET.IO ---
   useEffect(() => {
-    if (currentUser?._id) {
-      socket = io(ENDPOINT);
-      socket.emit("joinUserRoom", currentUser._id);
+    if (!currentUser?._id) return;
 
-      socket.on("newMessage", (newMessage) => {
-        dispatch(addMessageToConversation(newMessage));
-      });
+    // Khởi tạo kết nối và lưu vào state
+    const newSocket = io(ENDPOINT);
+    setSocket(newSocket);
 
-      // ✅ **THAY ĐỔI 3: Lắng nghe sự kiện có cuộc trò chuyện mới**
-      socket.on("new conversation", (newConversation) => {
-        dispatch(addConversation(newConversation));
-      });
+    // Lắng nghe sự kiện 'connect' để đảm bảo đã kết nối thành công
+    newSocket.on("connect", () => {
+      console.log(`✅ [Socket] Đã kết nối với server! ID: ${newSocket.id}`);
+      newSocket.emit("joinUserRoom", currentUser._id);
+    });
 
-      socket.on("invitedToGroup", (newGroup) => {
-        dispatch(addConversation(newGroup)); // Dùng lại action addConversation
-        alert(`Bạn vừa được mời vào nhóm: ${newGroup.name}`);
-      });
-    }
+    // --- Lắng nghe tất cả sự kiện real-time từ server ---
+    newSocket.on("newMessage", (newMessage) => {
+      dispatch(addMessageToConversation(newMessage));
+    });
+    newSocket.on("new conversation", (newConversation) => {
+      dispatch(addConversation(newConversation));
+    });
+    newSocket.on("invitedToGroup", (newGroup) => {
+      dispatch(addConversation(newGroup));
+      // Cân nhắc dùng thông báo (toast) thay vì alert
+      // alert(`Bạn vừa được mời vào nhóm: ${newGroup.name}`);
+    });
+    newSocket.on("conversation updated", (updatedConvo) => {
+      dispatch(updateConversation(updatedConvo));
+    });
+    newSocket.on("removed from group", ({ conversationId }) => {
+      dispatch(removeConversation({ conversationId }));
+      // alert("Bạn đã bị xóa khỏi một nhóm.");
+    });
+    newSocket.on("group deleted", ({ conversationId }) => {
+      dispatch(removeConversation({ conversationId }));
+      // alert("Một nhóm bạn tham gia đã bị chủ nhóm xóa.");
+    });
 
+    // Dọn dẹp kết nối khi component bị hủy
     return () => {
-      if (socket) {
-        socket.disconnect();
-      }
+      newSocket.disconnect();
     };
   }, [currentUser, dispatch]);
 
-  // --- THAM GIA PHÒNG CHAT KHI CHỌN CUỘC TRÒ CHUYỆN ---
+  // --- 2. THAM GIA PHÒNG CHAT KHI CHỌN MỘT CUỘC TRÒ CHUYỆN ---
   useEffect(() => {
-    if (currentConversation.details?._id) {
-      // ✅ SỬA 2: Phát sự kiện `joinConversation` khớp với backend
+    if (socket && currentConversation.details?._id) {
       socket.emit("joinConversation", currentConversation.details._id);
     }
-  }, [currentConversation.details]);
+  }, [currentConversation.details, socket]);
 
-  // Lấy dữ liệu ban đầu
+  // --- 3. LẤY DỮ LIỆU BAN ĐẦU ---
   useEffect(() => {
     dispatch(fetchConversations());
     dispatch(fetchAllUsersForChat());
   }, [dispatch]);
 
-  // Các hàm handler không thay đổi...
+  // --- 4. CÁC HÀM XỬ LÝ SỰ KIỆN ---
   const handleSendMessage = (formData) => {
     if (!currentConversation.details?._id) return;
     dispatch(
-      sendMessage({
-        conversationId: currentConversation.details._id,
-        formData,
-      })
+      sendMessage({ conversationId: currentConversation.details._id, formData })
     );
   };
-
   const handleCreateGroup = (groupData) => {
     dispatch(createGroupConversation(groupData));
     setCreateGroupModalOpen(false);
   };
-
   const handleStartNewConversation = (userId) => {
     dispatch(findOrCreatePrivateConversation(userId));
   };
-
   const handleSelectConversation = (conversationId) => {
     const selectedConvo = conversations.find((c) => c._id === conversationId);
     if (selectedConvo) {
@@ -96,8 +109,13 @@ const ChatPage = () => {
     }
   };
 
+  // --- 5. GIAO DIỆN ---
   if (status === "loading" && conversations.length === 0) {
-    return <div className="...loading-spinner...">Đang tải...</div>;
+    return (
+      <div className="flex h-screen items-center justify-center bg-slate-900">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+      </div>
+    );
   }
 
   return (
@@ -125,7 +143,6 @@ const ChatPage = () => {
             messages={currentConversation.messages}
             onSendMessage={handleSendMessage}
             currentUser={currentUser}
-            allUsers={users}
             onBack={() => dispatch(setCurrentConversation(null))}
           />
         </div>
