@@ -104,14 +104,13 @@ const ChatWindow = ({
   };
 
   const handleThemeChange = (theme) => {
-    if (isOwner || conversation.type === "private") {
-      dispatch(
-        updateGroupInfo({
-          conversationId: conversation._id,
-          groupData: { themeColor: theme },
-        })
-      );
-    }
+    dispatch(
+      updateGroupInfo({
+        conversationId: conversation._id,
+        groupData: { themeColor: theme },
+      })
+    );
+
     setIsPaletteOpen(false);
   };
 
