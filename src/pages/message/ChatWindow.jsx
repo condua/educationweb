@@ -69,7 +69,13 @@ const ChatWindow = ({
     );
   }
 
-  const isOwner = currentUser?._id === conversation?.ownerId?._id;
+  // ✅ **SỬA LỖI TẠI ĐÂY: Logic kiểm tra quyền Owner linh hoạt**
+  // Lấy ra chuỗi ID của owner, bất kể ownerId là object hay string
+  const ownerIdString =
+    typeof conversation?.ownerId === "object"
+      ? conversation.ownerId?._id
+      : conversation?.ownerId;
+  const isOwner = currentUser?._id === ownerIdString;
 
   // ✅ **THAY ĐỔI 1: Lọc và chuẩn hóa dữ liệu ảnh**
   // Lấy tất cả tin nhắn có type là 'image' từ prop `messages`
