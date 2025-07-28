@@ -19,26 +19,104 @@ import {
 
 // Mảng màu sắc và gradient không thay đổi
 const THEME_COLORS = [
-  "#1f2937",
-  "#374151",
-  "#1e3a8a",
-  "#312e81",
-  "#581c87",
-  "#9d174d",
-  "#0c4a6e",
-  "#065f46",
-  "#854d0e",
-  "#7f1d1d",
-  "#4d0d29",
-  "#363062",
+  // === Gam màu Xám & Trung tính (Grays & Neutrals) ===
+  "#0f172a", // Gray-950
+  "#111827", // Gray-900
+  "#1f2937", // Gray-800
+  "#374151", // Gray-700
+  "#4b5563", // Gray-600
+  "#6b7280", // Gray-500
+  "#9ca3af", // Gray-400
+  "#d1d5db", // Gray-300
+
+  // === Gam màu Xanh dương & Lam (Blues & Cyans) ===
+  "#0c4a6e", // Sky-900
+  "#172554", // Blue-950
+  "#1e3a8a", // Blue-900
+  "#1e40af", // Blue-800
+  "#2563eb", // Blue-600
+  "#38bdf8", // Sky-400
+  "#7dd3fc", // Sky-300
+  "#bae6fd", // Sky-200
+
+  // === Gam màu Chàm & Tím (Indigos & Purples) ===
+  "#1e1b4b", // Indigo-950
+  "#312e81", // Indigo-900
+  "#4338ca", // Indigo-700
+  "#4c1d95", // Violet-800
+  "#581c87", // Purple-900
+  "#6d28d9", // Violet-700
+  "#7c3aed", // Violet-600
+  "#a78bfa", // Violet-400
+  "#c4b5fd", // Violet-300
+  "#363062", // Tím than
+
+  // === Gam màu Lục & Mòng két (Greens & Teals) ===
+  "#042f2e", // Teal-950
+  "#134e4a", // Teal-800
+  "#065f46", // Green-800
+  "#166534", // Green-700
+  "#16a34a", // Green-600
+  "#22c55e", // Green-500
+  "#4ade80", // Green-400
+  "#86efac", // Green-300
+
+  // === Gam màu Đỏ & Hồng (Reds & Pinks) ===
+  "#4d0d29", // Tím hồng đậm
+  "#7f1d1d", // Red-900
+  "#9f1239", // Rose-800
+  "#be123c", // Rose-700
+  "#e11d48", // Rose-600
+  "#f43f5e", // Rose-500
+  "#f87171", // Red-400
+  "#fb7185", // Pink-400
+  "#fda4af", // Pink-300
+  "#86198f", // Fuchsia-800
+  "#a21caf", // Fuchsia-700
+  "#4a044e", // Fuchsia-950
+
+  // === Gam màu Vàng & Nâu (Yellows & Browns) ===
+  "#78350f", // Amber-900
+  "#854d0e", // Amber-800
+  "#92400e", // Amber-700
+  "#b45309", // Amber-600
+  "#f59e0b", // Amber-500
+  "#facc15", // Yellow-400
+  "#fde047", // Yellow-300
+  "#fff176", // Vàng chanh nhạt
 ];
+
 const THEME_GRADIENTS = [
+  // === Original Gradients ===
   "linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)",
   "linear-gradient(to right, #6a11cb 0%, #2575fc 100%)",
   "linear-gradient(to top, #30cfd0 0%, #330867 100%)",
   "linear-gradient(to right, #12c2e9, #c471ed, #f64f59)",
   "linear-gradient(to right, #ed213a, #93291e)",
   "linear-gradient(to top, #0ba360 0%, #3cba92 100%)",
+  "linear-gradient(to right, #ff7e5f, #feb47b)", // Peach
+  "linear-gradient(to right, #ff9a9e 0%, #fecfef 100%)", // Soft Pink
+  "linear-gradient(to right, #2c3e50, #4ca1af)", // Night Sky
+  "linear-gradient(to right, #000000, #434343)", // Charcoal
+  "linear-gradient(to right, #56ab2f, #a8e063)", // Fresh Lime
+  "linear-gradient(to right, #eaafc8, #654ea3)", // Grapefruit
+  "linear-gradient(to top, #1d976c, #93f9b9)", // Mojito
+
+  // === New Additions ===
+  "linear-gradient(to right, #ff6a00, #ee0979)", // Sunset
+  "linear-gradient(to top, #8e2de2, #4a00e0)", // Purple Dream
+  "linear-gradient(to right, #00b09b, #96c93d)", // Green Bliss
+  "linear-gradient(to right, #f7971e, #ffd200)", // Warm Gold
+  "linear-gradient(to right, #bdc3c7, #2c3e50)", // Silver Night
+  "linear-gradient(to top, #f953c6, #b91d73)", // Candy Pink
+  "linear-gradient(to right, #de6161, #2657eb)", // Raspberry Blue
+  "linear-gradient(to top, #c6ffdd, #fbd786, #f7797d)", // Tropical
+  "linear-gradient(to right, #fc466b, #3f5efb)", // Crimson Blue
+  "linear-gradient(to top, #fd746c, #ff9068)", // Orange Smoothie
+  "linear-gradient(to right, #ffecd2, #fcb69f)", // Light Cream
+  "linear-gradient(to top, #667eea, #764ba2)", // Royal Purple
+  "linear-gradient(to right, #43cea2, #185a9d)", // Ocean Breeze
+  "linear-gradient(to top, #e0c3fc, #8ec5fc)", // Soft Violet
 ];
 
 const ChatWindow = ({
