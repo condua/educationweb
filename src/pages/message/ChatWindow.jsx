@@ -15,6 +15,7 @@ import {
   PaintBrushIcon,
   PhotoIcon as GalleryIcon,
   Cog6ToothIcon, // 👈 Import icon Cài đặt
+  HeartIcon, // 👈 Import icon trái tim
 } from "@heroicons/react/24/solid";
 
 // Mảng màu sắc và gradient không thay đổi
@@ -118,7 +119,23 @@ const THEME_GRADIENTS = [
   "linear-gradient(to right, #43cea2, #185a9d)", // Ocean Breeze
   "linear-gradient(to top, #e0c3fc, #8ec5fc)", // Soft Violet
 ];
+// ✅ THÊM MỚI: Định nghĩa một giá trị đặc biệt cho theme trái tim
+const HEART_THEME = "linear-gradient(to top, #ff758c 0%, #ff7eb3 100%)";
 
+// ✅ THÊM MỚI: Component con để hiển thị icon theme
+// Component này có thể hiển thị màu trơn, gradient, hoặc theme đặc biệt có icon
+const ThemeIcon = ({ theme, onClick }) => {
+  const isHeartTheme = theme === HEART_THEME;
+  return (
+    <div
+      onClick={() => onClick(theme)}
+      className="h-8 w-8 cursor-pointer rounded-full relative flex items-center justify-center transition-transform hover:scale-110 border-2 border-transparent hover:border-white"
+      style={{ background: theme }}
+    >
+      {isHeartTheme && <HeartIcon className="h-5 w-5 text-white/80" />}
+    </div>
+  );
+};
 const ChatWindow = ({
   conversation,
   messages,
@@ -262,6 +279,8 @@ const ChatWindow = ({
                       style={{ background: gradient }}
                     />
                   ))}
+                  {/* Thêm theme trái tim */}
+                  <ThemeIcon theme={HEART_THEME} onClick={handleThemeChange} />
                 </div>
               </div>
             )}
