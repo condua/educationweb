@@ -23,22 +23,46 @@ const ConversationList = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
+  // ✅ SỬA LỖI 1: Tạo một bản đồ (map) để tra cứu thông tin user hiệu quả
+  // Điều này giúp chúng ta luôn có thông tin đầy đủ bất kể memberIds là string hay object.
+  const usersMap = useMemo(
+    () =>
+      allUsers.reduce((acc, user) => {
+        acc[user._id] = user;
+        return acc;
+      }, {}),
+    [allUsers]
+  );
+
+  // ✅ SỬA LỖI 2: Viết lại hàm lấy thông tin hiển thị một cách an toàn
   const getConversationDisplayInfo = (convo) => {
     if (convo.type === "group") {
       return {
         name: convo.name,
-        avatar: convo.avatarUrl || "https://placehold.co/100",
+        avatar:
+          convo.avatarUrl || `https://ui-avatars.com/api/?name=${convo.name}`,
       };
     }
-    const otherMember = convo.memberIds.find(
-      (member) => currentUser && member._id !== currentUser._id
-    );
-    return otherMember
-      ? { name: otherMember.fullName, avatar: otherMember.avatar }
-      : {
-          name: "Cuộc trò chuyện riêng tư",
-          avatar: "https://placehold.co/100x100/666/FFF?text=?",
-        };
+
+    // --- Logic tìm "người kia" mạnh mẽ hơn ---
+    // 1. Tìm ra ID của người còn lại, bất kể memberIds là [object] hay [string]
+    const otherMemberIdString = convo.memberIds.find((member) => {
+      const memberId = typeof member === "object" ? member._id : member;
+      return memberId !== currentUser?._id;
+    });
+
+    // 2. Dùng ID tìm được để tra cứu thông tin đầy đủ trong `usersMap`
+    const otherUser = usersMap[otherMemberIdString];
+
+    if (otherUser) {
+      return { name: otherUser.fullName, avatar: otherUser.avatar };
+    }
+
+    // Fallback an toàn nếu không tìm thấy user
+    return {
+      name: "Trò chuyện bị ẩn",
+      avatar: "https://via.placeholder.com/100",
+    };
   };
 
   const getLastMessageText = (convo) => {
