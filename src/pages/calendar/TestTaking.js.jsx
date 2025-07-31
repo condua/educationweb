@@ -264,6 +264,10 @@ const TestTaking = () => {
   const [showIncompleteWarning, setShowIncompleteWarning] = useState(false);
 
   const courseId = useParams().courseId; // Lấy courseId từ params
+  // ✅ **THÊM MỚI: Tự động cuộn lên đầu trang khi vào**
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); // Mảng rỗng đảm bảo nó chỉ chạy một lần khi component được mount
   useEffect(() => {
     if (!startedAt) {
       alert(
