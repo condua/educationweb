@@ -857,6 +857,198 @@
       "type": "noun",
       "meaning": "trợ lý ảo bằng giọng nói",
       "example": "Alexa is a popular voice assistant."
+    },
+    {
+      "word": "Smart Home",
+      "options": ["Smart Home", "Smart Hoom", "Smart Hom", "Smart Houm"],
+      "ipa": "/smɑːt həʊm/",
+      "type": "noun",
+      "meaning": "nhà thông minh",
+      "example": "Smart homes use IoT devices for automation."
+    },
+    {
+      "word": "Wearable Technology",
+      "options": ["Wearable Technology", "Wearibel Technology", "Wearabel Technology", "Whereable Technology"],
+      "ipa": "/ˈweərəbl tekˈnɒlədʒi/",
+      "type": "noun",
+      "meaning": "công nghệ thiết bị đeo",
+      "example": "Wearable technology tracks fitness data."
+    },
+    {
+      "word": "Digital Payment",
+      "options": ["Digital Payment", "Digitol Payment", "Digital Paymant", "Digitel Payment"],
+      "ipa": "/ˈdɪdʒɪtəl ˈpeɪmənt/",
+      "type": "noun",
+      "meaning": "thanh toán kỹ thuật số",
+      "example": "Digital payments are replacing cash."
+    },
+    {
+      "word": "Smart City",
+      "options": ["Smart City", "Smart Sity", "Smart Citty", "Smat City"],
+      "ipa": "/smɑːt ˈsɪti/",
+      "type": "noun",
+      "meaning": "thành phố thông minh",
+      "example": "Smart cities use technology to improve services."
+    },
+    {
+      "word": "Chatbot",
+      "options": ["Chatbot", "Chatbott", "Chatbot", "Chatbote"],
+      "ipa": "/ˈtʃætbɒt/",
+      "type": "noun",
+      "meaning": "trợ lý ảo trò chuyện",
+      "example": "Chatbots answer customer questions automatically."
+    },
+    {
+      "word": "Augmented Analytics",
+      "options": ["Augmented Analytics", "Augmanted Analytics", "Augmanted Analitics", "Augmanted Analythics"],
+      "ipa": "/ɔːɡˈmentɪd ˌænəˈlɪtɪks/",
+      "type": "noun",
+      "meaning": "phân tích tăng cường",
+      "example": "Augmented analytics uses AI to enhance data analysis."
+    },
+    {
+      "word": "Robotic Process Automation",
+      "options": ["Robotic Process Automation", "Robotik Process Automation", "Robotic Proccess Automation", "Robotic Process Automasion"],
+      "ipa": "/rəʊˈbɒtɪk ˈprəʊses ˌɔːtəˈmeɪʃən/",
+      "type": "noun",
+      "meaning": "tự động hóa quy trình bằng robot",
+      "example": "RPA reduces repetitive manual work."
+    },
+    {
+      "word": "Neural Interface",
+      "options": ["Neural Interface", "Nural Interface", "Neurel Interface", "Neural Interfase"],
+      "ipa": "/ˈnjʊərəl ˈɪntəfeɪs/",
+      "type": "noun",
+      "meaning": "giao diện thần kinh",
+      "example": "Neural interfaces connect the brain to devices."
+    },
+    {
+      "word": "Synthetic Biology",
+      "options": ["Synthetic Biology", "Synthetik Biology", "Synthetick Biology", "Synthetyc Biology"],
+      "ipa": "/sɪnˈθetɪk baɪˈɒlədʒi/",
+      "type": "noun",
+      "meaning": "sinh học tổng hợp",
+      "example": "Synthetic biology designs new biological parts."
+    },
+    {
+      "word": "Digital Footprint",
+      "options": ["Digital Footprint", "Digitol Footprint", "Digital Footprinnt", "Digitel Footprint"],
+      "ipa": "/ˈdɪdʒɪtəl ˈfʊtprɪnt/",
+      "type": "noun",
+      "meaning": "dấu vết kỹ thuật số",
+      "example": "Your digital footprint shows your online activity."
+    },
+    {
+      "word": "Cloud Infrastructure",
+      "options": ["Cloud Infrastructure", "Clowd Infrastructure", "Cloud Infrastruture", "Claoud Infrastructure"],
+      "ipa": "/klaʊd ˈɪnfrəˌstrʌktʃə(r)/",
+      "type": "noun",
+      "meaning": "hạ tầng điện toán đám mây",
+      "example": "Cloud infrastructure supports remote work."
+    },
+    {
+      "word": "Smart Contract",
+      "options": ["Smart Contract", "Smart Kontract", "Smart Contrakt", "Smat Contract"],
+      "ipa": "/smɑːt ˈkɒntrækt/",
+      "type": "noun",
+      "meaning": "hợp đồng thông minh",
+      "example": "Smart contracts run on blockchain technology."
+    },
+    {
+      "word": "Geolocation",
+      "options": ["Geolocation", "Geo Location", "Geolocasion", "Geolokation"],
+      "ipa": "/ˌdʒiːəʊləʊˈkeɪʃən/",
+      "type": "noun",
+      "meaning": "định vị địa lý",
+      "example": "Geolocation is used in navigation apps."
+    },
+    {
+      "word": "Crowdsourcing",
+      "options": ["Crowdsourcing", "Crowd Sourcing", "Crowdsorcing", "Crowdsurcing"],
+      "ipa": "/ˈkraʊdsɔːsɪŋ/",
+      "type": "noun",
+      "meaning": "gọi vốn từ cộng đồng",
+      "example": "Crowdsourcing gathers ideas from many people."
+    },
+    {
+      "word": "Quantum Encryption",
+      "options": ["Quantum Encryption", "Quantom Encryption", "Quantam Encryption", "Quantim Encryption"],
+      "ipa": "/ˈkwɒntəm ɪnˈkrɪpʃən/",
+      "type": "noun",
+      "meaning": "mã hóa lượng tử",
+      "example": "Quantum encryption promises unbreakable security."
+    },
+    {
+      "word": "Neuroprosthetics",
+      "options": ["Neuroprosthetics", "Nuroprosthetics", "Neuroprosthentics", "Neuroprostetiks"],
+      "ipa": "/ˌnjʊərəʊprɒsˈθetɪks/",
+      "type": "noun",
+      "meaning": "công nghệ chân tay giả thần kinh",
+      "example": "Neuroprosthetics restore movement to patients."
+    },
+    {
+      "word": "Smart Sensor",
+      "options": ["Smart Sensor", "Smat Sensor", "Smart Sensore", "Smart Sencor"],
+      "ipa": "/smɑːt ˈsensə(r)/",
+      "type": "noun",
+      "meaning": "cảm biến thông minh",
+      "example": "Smart sensors monitor environmental changes."
+    },
+    {
+      "word": "Edge Device",
+      "options": ["Edge Device", "Edje Device", "Egde Device", "Edge Devise"],
+      "ipa": "/edʒ dɪˈvaɪs/",
+      "type": "noun",
+      "meaning": "thiết bị biên",
+      "example": "Edge devices process data locally."
+    },
+    {
+      "word": "Bioinformatics",
+      "options": ["Bioinformatics", "Bioinformaticks", "Bioinformatix", "Bioinformatik"],
+      "ipa": "/ˌbaɪəʊˌɪnfəˈmætɪks/",
+      "type": "noun",
+      "meaning": "tin sinh học",
+      "example": "Bioinformatics analyzes biological data."
+    },
+    {
+      "word": "Swarm Robotics",
+      "options": ["Swarm Robotics", "Sworm Robotics", "Swarm Robotiks", "Swarn Robotics"],
+      "ipa": "/swɔːm rəʊˈbɒtɪks/",
+      "type": "noun",
+      "meaning": "robot bầy đàn",
+      "example": "Swarm robotics mimics insect behavior."
+    },
+    {
+      "word": "Biometric Authentication",
+      "options": ["Biometric Authentication", "Biometrik Authentication", "Biometric Authentification", "Biometric Autentacation"],
+      "ipa": "/ˌbaɪəˈmetrɪk ɔːˌθentɪˈkeɪʃən/",
+      "type": "noun",
+      "meaning": "xác thực sinh trắc học",
+      "example": "Biometric authentication uses fingerprints or face scans."
+    },
+    {
+      "word": "Digital Signature",
+      "options": ["Digital Signature", "Digitol Signature", "Digital Signatuer", "Digitel Signature"],
+      "ipa": "/ˈdɪdʒɪtəl ˈsɪɡnətʃə(r)/",
+      "type": "noun",
+      "meaning": "chữ ký số",
+      "example": "Digital signatures verify document authenticity."
+    },
+    {
+      "word": "Predictive Maintenance",
+      "options": ["Predictive Maintenance", "Predictiv Maintenance", "Predective Maintenance", "Predictive Maintanance"],
+      "ipa": "/prɪˈdɪktɪv ˈmeɪntənəns/",
+      "type": "noun",
+      "meaning": "bảo trì dự đoán",
+      "example": "Predictive maintenance reduces downtime."
+    },
+    {
+      "word": "Cloud-native Application",
+      "options": ["Cloud-native Application", "Clowd-native Application", "Cloud-nativ Application", "Claoud-native Application"],
+      "ipa": "/klaʊd ˈneɪtɪv ˌæplɪˈkeɪʃən/",
+      "type": "noun",
+      "meaning": "ứng dụng gốc đám mây",
+      "example": "Cloud-native applications scale easily."
     }
   ]
 }
