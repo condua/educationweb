@@ -1,0 +1,70 @@
+{
+  "name": "Mental Wellness 😊",
+  "slug": "mental-wellness",
+  "words": [
+    {
+      "word": "Mindfulness",
+      "options": ["Mindfulness", "Mindless", "Mightiness", "Mind files"],
+      "ipa": "/ˈmaɪndfəlnəs/",
+      "type": "noun",
+      "meaning": "Chánh niệm",
+      "example": "Practicing mindfulness can help reduce stress and anxiety."
+    },
+    {
+      "word": "Resilience",
+      "options": ["Resilience", "Resistance", "Residence", "Recital"],
+      "ipa": "/rɪˈzɪliəns/",
+      "type": "noun",
+      "meaning": "Sự kiên cường",
+      "example": "Building resilience helps you bounce back from difficult situations."
+    },
+    {
+      "word": "Balance",
+      "options": ["Balance", "Ballast", "Palace", "Valance"],
+      "ipa": "/ˈbæləns/",
+      "type": "noun",
+      "meaning": "Sự cân bằng",
+      "example": "It's important to find a balance between school, friends, and hobbies."
+    },
+    {
+      "word": "Gratitude",
+      "options": ["Gratitude", "Graduate", "Altitude", "Latitude"],
+      "ipa": "/ˈɡrætɪtjuːd/",
+      "type": "noun",
+      "meaning": "Lòng biết ơn",
+      "example": "Keeping a gratitude journal can improve your mental wellness."
+    },
+    {
+      "word": "Anxiety",
+      "options": ["Anxiety", "Angiety", "Ancsiety", "Anxyety"],
+      "ipa": "/æŋˈzaɪəti/",
+      "type": "noun",
+      "meaning": "Sự lo lắng",
+      "example": "It's normal to feel some anxiety before a big exam."
+    },
+    {
+      "word": "Stress",
+      "options": ["Stress", "Stressed", "Strait", "Stripe"],
+      "ipa": "/stres/",
+      "type": "noun",
+      "meaning": "Căng thẳng",
+      "example": "Deep breathing is a simple way to relieve stress."
+    },
+    {
+      "word": "Emotion",
+      "options": ["Emotion", "E-motion", "Motion", "Omission"],
+      "ipa": "/ɪˈməʊʃən/",
+      "type": "noun",
+      "meaning": "Cảm xúc",
+      "example": "It's healthy to talk about your emotions with someone you trust."
+    },
+    {
+      "word": "Relaxation",
+      "options": ["Relaxation", "Relation", "Realization", "Relegation"],
+      "ipa": "/ˌriːlækˈseɪʃən/",
+      "type": "noun",
+      "meaning": "Sự thư giãn",
+      "example": "Listening to calm music is a good relaxation technique."
+    }
+  ]
+}

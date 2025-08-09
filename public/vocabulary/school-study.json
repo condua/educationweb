@@ -1,0 +1,70 @@
+{
+  "name": "School & Study 📚",
+  "slug": "school-study",
+  "words": [
+    {
+      "word": "Homework",
+      "options": ["Homework", "Housework", "Teamwork", "Framework"],
+      "ipa": "/ˈhəʊmwɜːk/",
+      "type": "noun",
+      "meaning": "Bài tập về nhà",
+      "example": "I have a lot of math homework to do tonight."
+    },
+    {
+      "word": "Examination",
+      "options": ["Examination", "Excitement", "Explanation", "Exclamation"],
+      "ipa": "/ɪɡˌzæmɪˈneɪʃən/",
+      "type": "noun",
+      "meaning": "Kỳ thi",
+      "example": "The final examination will cover all the topics from this semester."
+    },
+    {
+      "word": "Knowledge",
+      "options": ["Knowledge", "Acknowledge", "College", "No-ledge"],
+      "ipa": "/ˈnɒlɪdʒ/",
+      "type": "noun",
+      "meaning": "Kiến thức",
+      "example": "Reading books is a great way to gain knowledge."
+    },
+    {
+      "word": "Concentrate",
+      "options": ["Concentrate", "Congratulate", "Consecrate", "Concertrate"],
+      "ipa": "/ˈkɒnsəntreɪt/",
+      "type": "verb",
+      "meaning": "Tập trung",
+      "example": "It's hard to concentrate when there is a lot of noise."
+    },
+    {
+      "word": "Timetable",
+      "options": ["Timetable", "Time-table", "Timeline", "Time travel"],
+      "ipa": "/ˈtaɪmˌteɪbəl/",
+      "type": "noun",
+      "meaning": "Thời khóa biểu",
+      "example": "According to the timetable, our next class is history."
+    },
+    {
+      "word": "Assignment",
+      "options": ["Assignment", "Assistance", "Assessment", "Alignment"],
+      "ipa": "/əˈsaɪnmənt/",
+      "type": "noun",
+      "meaning": "Bài tập lớn",
+      "example": "The teacher gave us a new writing assignment."
+    },
+    {
+      "word": "Research",
+      "options": ["Research", "Re-search", "Resurge", "Resource"],
+      "ipa": "/rɪˈsɜːtʃ/",
+      "type": "noun",
+      "meaning": "Nghiên cứu",
+      "example": "She is doing research for her science project."
+    },
+    {
+      "word": "Deadline",
+      "options": ["Deadline", "Headline", "Redline", "Dead-line"],
+      "ipa": "/ˈdedlaɪn/",
+      "type": "noun",
+      "meaning": "Hạn chót",
+      "example": "The deadline for submitting the essay is this Friday."
+    }
+  ]
+}

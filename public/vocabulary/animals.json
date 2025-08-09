@@ -1,0 +1,798 @@
+{
+  "name": "Animals 🐘",
+  "slug": "animals",
+  "words": [
+    {
+      "word": "Elephant",
+      "options": ["Elephant", "Elegant", "Element", "Elevant"],
+      "ipa": "/ˈelɪfənt/",
+      "type": "noun",
+      "meaning": "Con voi",
+      "example": "The elephant is the largest land animal."
+    },
+    {
+      "word": "Tiger",
+      "options": ["Tiger", "Taller", "Tired", "Trigger"],
+      "ipa": "/ˈtaɪɡər/",
+      "type": "noun",
+      "meaning": "Con hổ",
+      "example": "A tiger is a large carnivorous feline."
+    },
+    {
+      "word": "Dolphin",
+      "options": ["Dolphin", "Domain", "Doll-fin", "Door-pin"],
+      "ipa": "/ˈdɒlfɪn/",
+      "type": "noun",
+      "meaning": "Cá heo",
+      "example": "Dolphins are known for their intelligence."
+    },
+    {
+      "word": "Lion",
+      "options": ["Lion", "Loin", "Line", "Loan"],
+      "ipa": "/ˈlaɪən/",
+      "type": "noun",
+      "meaning": "Sư tử",
+      "example": "The lion is often called the 'king of the jungle'."
+    },
+    {
+      "word": "Monkey",
+      "options": ["Monkey", "Money", "Donkey", "Monk"],
+      "ipa": "/ˈmʌŋki/",
+      "type": "noun",
+      "meaning": "Con khỉ",
+      "example": "A monkey is swinging from the tree branch."
+    },
+    {
+      "word": "Giraffe",
+      "options": ["Giraffe", "Graph", "Draft", "Sheriff"],
+      "ipa": "/dʒəˈræf/",
+      "type": "noun",
+      "meaning": "Hươu cao cổ",
+      "example": "The giraffe has a very long neck."
+    },
+    {
+      "word": "Zebra",
+      "options": ["Zebra", "Debra", "Zero", "Algebra"],
+      "ipa": "/ˈzebrə/",
+      "type": "noun",
+      "meaning": "Ngựa vằn",
+      "example": "A zebra's stripes are unique, like fingerprints."
+    },
+    {
+      "word": "Kangaroo",
+      "options": ["Kangaroo", "Kanga-glue", "Congo-roo", "Can-guru"],
+      "ipa": "/ˌkæŋɡəˈruː/",
+      "type": "noun",
+      "meaning": "Chuột túi",
+      "example": "The kangaroo carries its baby in a pouch."
+    },
+    {
+      "word": "Penguin",
+      "options": ["Penguin", "Pencil", "Pen-friend", "Engine"],
+      "ipa": "/ˈpeŋɡwɪn/",
+      "type": "noun",
+      "meaning": "Chim cánh cụt",
+      "example": "A penguin cannot fly, but it is an excellent swimmer."
+    },
+    {
+      "word": "Bear",
+      "options": ["Bear", "Beer", "Bare", "Beard"],
+      "ipa": "/ber/",
+      "type": "noun",
+      "meaning": "Con gấu",
+      "example": "A brown bear is searching for berries in the forest."
+    },
+    {
+      "word": "Wolf",
+      "options": ["Wolf", "Woof", "Golf", "Wife"],
+      "ipa": "/wʊlf/",
+      "type": "noun",
+      "meaning": "Sói",
+      "example": "The wolf howled at the full moon."
+    },
+    {
+      "word": "Fox",
+      "options": ["Fox", "Box", "Fog", "Fix"],
+      "ipa": "/fɒks/",
+      "type": "noun",
+      "meaning": "Cáo",
+      "example": "The quick brown fox jumps over the lazy dog."
+    },
+    {
+      "word": "Rabbit",
+      "options": ["Rabbit", "Habit", "Rabbi", "Robot"],
+      "ipa": "/ˈræbɪt/",
+      "type": "noun",
+      "meaning": "Thỏ",
+      "example": "A rabbit has long ears and a fluffy tail."
+    },
+    {
+      "word": "Squirrel",
+      "options": ["Squirrel", "Spiral", "Quarrel", "Several"],
+      "ipa": "/ˈskwɪrəl/",
+      "type": "noun",
+      "meaning": "Sóc",
+      "example": "The squirrel is gathering nuts for the winter."
+    },
+    {
+      "word": "Horse",
+      "options": ["Horse", "House", "Coarse", "Force"],
+      "ipa": "/hɔːrs/",
+      "type": "noun",
+      "meaning": "Ngựa",
+      "example": "She learned to ride a horse when she was young."
+    },
+    {
+      "word": "Cow",
+      "options": ["Cow", "Chow", "How", "Vow"],
+      "ipa": "/kaʊ/",
+      "type": "noun",
+      "meaning": "Bò cái",
+      "example": "A cow produces milk that we drink."
+    },
+    {
+      "word": "Sheep",
+      "options": ["Sheep", "Ship", "Cheap", "Shape"],
+      "ipa": "/ʃiːp/",
+      "type": "noun",
+      "meaning": "Cừu",
+      "example": "Wool comes from the fleece of a sheep."
+    },
+    {
+      "word": "Pig",
+      "options": ["Pig", "Big", "Dig", "Fig"],
+      "ipa": "/pɪɡ/",
+      "type": "noun",
+      "meaning": "Heo (Lợn)",
+      "example": "A pig likes to roll in the mud."
+    },
+    {
+      "word": "Chicken",
+      "options": ["Chicken", "Kitchen", "Checking", "Thicken"],
+      "ipa": "/ˈtʃɪkɪn/",
+      "type": "noun",
+      "meaning": "Gà",
+      "example": "The chicken is pecking at seeds on the ground."
+    },
+    {
+      "word": "Duck",
+      "options": ["Duck", "Dock", "Dark", "Desk"],
+      "ipa": "/dʌk/",
+      "type": "noun",
+      "meaning": "Vịt",
+      "example": "A duck is swimming in the pond."
+    },
+    {
+      "word": "Goat",
+      "options": ["Goat", "Coat", "Boat", "Gout"],
+      "ipa": "/ɡəʊt/",
+      "type": "noun",
+      "meaning": "Dê",
+      "example": "A mountain goat can climb very steep cliffs."
+    },
+    {
+      "word": "Deer",
+      "options": ["Deer", "Dear", "Beer", "Door"],
+      "ipa": "/dɪər/",
+      "type": "noun",
+      "meaning": "Hươu, nai",
+      "example": "We saw a young deer in the woods."
+    },
+    {
+      "word": "Mouse",
+      "options": ["Mouse", "House", "Moose", "Mouth"],
+      "ipa": "/maʊs/",
+      "type": "noun",
+      "meaning": "Chuột",
+      "example": "The cat is trying to catch the mouse."
+    },
+    {
+      "word": "Frog",
+      "options": ["Frog", "Fog", "Flag", "From"],
+      "ipa": "/frɒɡ/",
+      "type": "noun",
+      "meaning": "Ếch",
+      "example": "A frog can jump very high."
+    },
+    {
+      "word": "Snake",
+      "options": ["Snake", "Snack", "Sake", "Shake"],
+      "ipa": "/sneɪk/",
+      "type": "noun",
+      "meaning": "Rắn",
+      "example": "The snake slithered through the grass."
+    },
+    {
+      "word": "Turtle",
+      "options": ["Turtle", "Title", "Tunnel", "Tutor"],
+      "ipa": "/ˈtɜːrtl/",
+      "type": "noun",
+      "meaning": "Rùa",
+      "example": "A sea turtle can live for a very long time."
+    },
+    {
+      "word": "Fish",
+      "options": ["Fish", "Fist", "Wish", "Dish"],
+      "ipa": "/fɪʃ/",
+      "type": "noun",
+      "meaning": "Cá",
+      "example": "There are many colorful fish in the coral reef."
+    },
+    {
+      "word": "Shark",
+      "options": ["Shark", "Sharp", "Shack", "Shock"],
+      "ipa": "/ʃɑːrk/",
+      "type": "noun",
+      "meaning": "Cá mập",
+      "example": "The great white shark is a powerful predator."
+    },
+    {
+      "word": "Whale",
+      "options": ["Whale", "While", "Wheel", "Whole"],
+      "ipa": "/weɪl/",
+      "type": "noun",
+      "meaning": "Cá voi",
+      "example": "The blue whale is the largest animal on Earth."
+    },
+    {
+      "word": "Octopus",
+      "options": ["Octopus", "October", "Optics", "Cactus"],
+      "ipa": "/ˈɒktəpəs/",
+      "type": "noun",
+      "meaning": "Bạch tuộc",
+      "example": "An octopus has eight arms and is very intelligent."
+    },
+    {
+      "word": "Crab",
+      "options": ["Crab", "Grab", "Crib", "Crash"],
+      "ipa": "/kræb/",
+      "type": "noun",
+      "meaning": "Cua",
+      "example": "A crab walks sideways on the sand."
+    },
+    {
+      "word": "Bird",
+      "options": ["Bird", "Beard", "Board", "Burn"],
+      "ipa": "/bɜːrd/",
+      "type": "noun",
+      "meaning": "Chim",
+      "example": "A small bird is singing on the branch."
+    },
+    {
+      "word": "Eagle",
+      "options": ["Eagle", "Eager", "Angle", "Equal"],
+      "ipa": "/ˈiːɡl/",
+      "type": "noun",
+      "meaning": "Đại bàng",
+      "example": "The eagle soared high in the sky."
+    },
+    {
+      "word": "Owl",
+      "options": ["Owl", "Owe", "Oil", "Old"],
+      "ipa": "/aʊl/",
+      "type": "noun",
+      "meaning": "Cú",
+      "example": "An owl is a nocturnal bird of prey."
+    },
+    {
+      "word": "Parrot",
+      "options": ["Parrot", "Carrot", "Parent", "Pilot"],
+      "ipa": "/ˈpærət/",
+      "type": "noun",
+      "meaning": "Vẹt",
+      "example": "Some parrots can learn to imitate human speech."
+    },
+    {
+      "word": "Butterfly",
+      "options": ["Butterfly", "Butter-fly", "Butter-lie", "Flutter-by"],
+      "ipa": "/ˈbʌtərflaɪ/",
+      "type": "noun",
+      "meaning": "Bướm",
+      "example": "A colorful butterfly landed on the flower."
+    },
+    {
+      "word": "Bee",
+      "options": ["Bee", "Been", "See", "Knee"],
+      "ipa": "/biː/",
+      "type": "noun",
+      "meaning": "Ong",
+      "example": "A bee collects nectar to make honey."
+    },
+    {
+      "word": "Ant",
+      "options": ["Ant", "Aunt", "And", "Art"],
+      "ipa": "/ænt/",
+      "type": "noun",
+      "meaning": "Kiến",
+      "example": "An ant can carry things much heavier than itself."
+    },
+    {
+      "word": "Spider",
+      "options": ["Spider", "Spender", "Spicy", "Spy-door"],
+      "ipa": "/ˈspaɪdər/",
+      "type": "noun",
+      "meaning": "Nhện",
+      "example": "The spider is spinning a web."
+    },
+    {
+      "word": "Bat",
+      "options": ["Bat", "Bad", "Bet", "But"],
+      "ipa": "/bæt/",
+      "type": "noun",
+      "meaning": "Dơi",
+      "example": "A bat is a mammal that can fly."
+    },
+    {
+      "word": "Cat",
+      "options": ["Cat", "Cut", "Car", "Cap"],
+      "ipa": "/kæt/",
+      "type": "noun",
+      "meaning": "Mèo",
+      "example": "My cat loves to sleep in the sun."
+    },
+    {
+      "word": "Dog",
+      "options": ["Dog", "Dig", "Dock", "Dot"],
+      "ipa": "/dɒɡ/",
+      "type": "noun",
+      "meaning": "Chó",
+      "example": "A dog is often called 'man's best friend'."
+    },
+    {
+      "word": "Panda",
+      "options": ["Panda", "Pond", "Pasta", "Panama"],
+      "ipa": "/ˈpændə/",
+      "type": "noun",
+      "meaning": "Gấu trúc",
+      "example": "The giant panda mainly eats bamboo."
+    },
+    {
+      "word": "Koala",
+      "options": ["Koala", "Cola", "Goal", "Kola"],
+      "ipa": "/kəʊˈɑːlə/",
+      "type": "noun",
+      "meaning": "Gấu túi",
+      "example": "A koala sleeps for up to 20 hours a day."
+    },
+    {
+      "word": "Crocodile",
+      "options": ["Crocodile", "Clock-dial", "Crock-pot", "Cocoa-dile"],
+      "ipa": "/ˈkrɒkədaɪl/",
+      "type": "noun",
+      "meaning": "Cá sấu",
+      "example": "A crocodile has very powerful jaws."
+    },
+    {
+      "word": "Alligator",
+      "options": ["Alligator", "Elevator", "Navigator", "Investigator"],
+      "ipa": "/ˈælɪɡeɪtər/",
+      "type": "noun",
+      "meaning": "Cá sấu Mỹ",
+      "example": "An alligator has a wider, U-shaped snout."
+    },
+    {
+      "word": "Lizard",
+      "options": ["Lizard", "Wizard", "Blizzard", "Gizzard"],
+      "ipa": "/ˈlɪzərd/",
+      "type": "noun",
+      "meaning": "Thằn lằn",
+      "example": "The lizard is basking in the sun on a rock."
+    },
+    {
+      "word": "Hippo",
+      "options": ["Hippo", "Hip-hop", "Hypo", "Dippo"],
+      "ipa": "/ˈhɪpəʊ/",
+      "type": "noun",
+      "meaning": "Hà mã",
+      "example": "A hippo spends most of its day in the water."
+    },
+    {
+      "word": "Rhino",
+      "options": ["Rhino", "Reno", "Rind", "Rialto"],
+      "ipa": "/ˈraɪnəʊ/",
+      "type": "noun",
+      "meaning": "Tê giác",
+      "example": "A rhino has a large horn on its nose."
+    },
+    {
+      "word": "Camel",
+      "options": ["Camel", "Camera", "Canal", "Cancel"],
+      "ipa": "/ˈkæməl/",
+      "type": "noun",
+      "meaning": "Lạc đà",
+      "example": "A camel can store water in its hump."
+    },
+    {
+      "word": "Gorilla",
+      "options": ["Gorilla", "Guerrilla", "Vanilla", "Godzilla"],
+      "ipa": "/ɡəˈrɪlə/",
+      "type": "noun",
+      "meaning": "Khỉ đột",
+      "example": "The gorilla is a very strong and intelligent primate."
+    },
+    {
+      "word": "Chimpanzee",
+      "options": ["Chimpanzee", "Champagne-sea", "Chim-pan-Z", "Champion-Z"],
+      "ipa": "/ˌtʃɪmpænˈziː/",
+      "type": "noun",
+      "meaning": "Tinh tinh",
+      "example": "A chimpanzee shares about 98% of its DNA with humans."
+    },
+    {
+      "word": "Orangutan",
+      "options": ["Orangutan", "Orange-tan", "O-ring-tan", "Organ-tan"],
+      "ipa": "/əˈræŋətæn/",
+      "type": "noun",
+      "meaning": "Đười ươi",
+      "example": "The orangutan is known for its long arms."
+    },
+    {
+      "word": "Peacock",
+      "options": ["Peacock", "Pea-cook", "P-clock", "Peak-cock"],
+      "ipa": "/ˈpiːkɒk/",
+      "type": "noun",
+      "meaning": "Công (trống)",
+      "example": "The peacock displayed its beautiful tail feathers."
+    },
+    {
+      "word": "Swan",
+      "options": ["Swan", "Swam", "Sworn", "Spawn"],
+      "ipa": "/swɒn/",
+      "type": "noun",
+      "meaning": "Thiên nga",
+      "example": "A graceful swan is gliding across the lake."
+    },
+    {
+      "word": "Flamingo",
+      "options": ["Flamingo", "Flaming-go", "Flea-mango", "Flan-in-go"],
+      "ipa": "/fləˈmɪŋɡəʊ/",
+      "type": "noun",
+      "meaning": "Hồng hạc",
+      "example": "A flamingo gets its pink color from the food it eats."
+    },
+    {
+      "word": "Woodpecker",
+      "options": ["Woodpecker", "Wood-packer", "Good-pecker", "Would-pecker"],
+      "ipa": "/ˈwʊdˌpekər/",
+      "type": "noun",
+      "meaning": "Chim gõ kiến",
+      "example": "The woodpecker is pecking a hole in the tree."
+    },
+    {
+      "word": "Hummingbird",
+      "options": ["Hummingbird", "Humming-board", "Homing-bird", "Human-bird"],
+      "ipa": "/ˈhʌmɪŋbɜːrd/",
+      "type": "noun",
+      "meaning": "Chim ruồi",
+      "example": "A hummingbird can flap its wings incredibly fast."
+    },
+    {
+      "word": "Ostrich",
+      "options": ["Ostrich", "Ost-rich", "Off-stretch", "Austrian"],
+      "ipa": "/ˈɒstrɪtʃ/",
+      "type": "noun",
+      "meaning": "Đà điểu",
+      "example": "The ostrich is the world's largest bird."
+    },
+    {
+      "word": "Jellyfish",
+      "options": ["Jellyfish", "Jelly-fish", "Jolly-fish", "Jealous-fish"],
+      "ipa": "/ˈdʒelifɪʃ/",
+      "type": "noun",
+      "meaning": "Sứa",
+      "example": "A jellyfish has no brain, heart, or bones."
+    },
+    {
+      "word": "Starfish",
+      "options": ["Starfish", "Stare-fish", "Start-fish", "Stark-fish"],
+      "ipa": "/ˈstɑːrfɪʃ/",
+      "type": "noun",
+      "meaning": "Sao biển",
+      "example": "A starfish can regrow a lost arm."
+    },
+    {
+      "word": "Seahorse",
+      "options": ["Seahorse", "See-horse", "She-horse", "Shore-horse"],
+      "ipa": "/ˈsiːhɔːrs/",
+      "type": "noun",
+      "meaning": "Cá ngựa",
+      "example": "The male seahorse carries the eggs in a pouch."
+    },
+    {
+      "word": "Lobster",
+      "options": ["Lobster", "Mobster", "Lobb-star", "Lost-her"],
+      "ipa": "/ˈlɒbstər/",
+      "type": "noun",
+      "meaning": "Tôm hùm",
+      "example": "A lobster has a hard protective exoskeleton."
+    },
+    {
+      "word": "Shrimp",
+      "options": ["Shrimp", "Shrink", "Simple", "Shred"],
+      "ipa": "/ʃrɪmp/",
+      "type": "noun",
+      "meaning": "Tôm",
+      "example": "Shrimp is a popular type of seafood."
+    },
+    {
+      "word": "Clam",
+      "options": ["Clam", "Calm", "Claim", "Clamp"],
+      "ipa": "/klæm/",
+      "type": "noun",
+      "meaning": "Nghêu, sò",
+      "example": "Some clams can produce pearls."
+    },
+    {
+      "word": "Oyster",
+      "options": ["Oyster", "Roister", "Boister", "Old-ster"],
+      "ipa": "/ˈɔɪstər/",
+      "type": "noun",
+      "meaning": "Hàu",
+      "example": "Oysters are considered a delicacy in many cultures."
+    },
+    {
+      "word": "Mussel",
+      "options": ["Mussel", "Muscle", "Muzzle", "Missile"],
+      "ipa": "/ˈmʌsəl/",
+      "type": "noun",
+      "meaning": "Trai, vẹm",
+      "example": "Mussels often attach themselves to rocks."
+    },
+    {
+      "word": "Ladybug",
+      "options": ["Ladybug", "Lady-bug", "Lazy-bug", "Lady-bag"],
+      "ipa": "/ˈleɪdibʌɡ/",
+      "type": "noun",
+      "meaning": "Bọ rùa",
+      "example": "A ladybug is a symbol of good luck."
+    },
+    {
+      "word": "Dragonfly",
+      "options": ["Dragonfly", "Dragon-fly", "Dragging-fly", "Diagonal-fly"],
+      "ipa": "/ˈdræɡənflaɪ/",
+      "type": "noun",
+      "meaning": "Chuồn chuồn",
+      "example": "A dragonfly has two pairs of strong wings."
+    },
+    {
+      "word": "Grasshopper",
+      "options": ["Grasshopper", "Glass-hopper", "Grass-shopper", "Grace-hopper"],
+      "ipa": "/ˈɡræshɒpər/",
+      "type": "noun",
+      "meaning": "Châu chấu",
+      "example": "A grasshopper can jump long distances."
+    },
+    {
+      "word": "Mosquito",
+      "options": ["Mosquito", "Moscow-toe", "Must-quit", "Most-key-to"],
+      "ipa": "/məˈskiːtəʊ/",
+      "type": "noun",
+      "meaning": "Muỗi",
+      "example": "Only female mosquitoes bite humans."
+    },
+    {
+      "word": "Fly",
+      "options": ["Fly", "Flee", "Fry", "File"],
+      "ipa": "/flaɪ/",
+      "type": "noun",
+      "meaning": "Ruồi",
+      "example": "A fly has compound eyes."
+    },
+    {
+      "word": "Wasp",
+      "options": ["Wasp", "Gasp", "Clasp", "Rasp"],
+      "ipa": "/wɒsp/",
+      "type": "noun",
+      "meaning": "Ong bắp cày",
+      "example": "A wasp can sting multiple times."
+    },
+    {
+      "word": "Hornet",
+      "options": ["Hornet", "Honest", "Horn-net", "Cornet"],
+      "ipa": "/ˈhɔːrnɪt/",
+      "type": "noun",
+      "meaning": "Ong bắp cày (loại lớn)",
+      "example": "A hornet is a type of large wasp."
+    },
+    {
+      "word": "Termite",
+      "options": ["Termite", "Turn-might", "Tear-might", "Hermit"],
+      "ipa": "/ˈtɜːrmaɪt/",
+      "type": "noun",
+      "meaning": "Mối",
+      "example": "Termites can cause serious damage to wooden structures."
+    },
+    {
+      "word": "Cockroach",
+      "options": ["Cockroach", "Cock-roach", "Clock-roach", "Cook-roach"],
+      "ipa": "/ˈkɒkrəʊtʃ/",
+      "type": "noun",
+      "meaning": "Gián",
+      "example": "A cockroach is a very resilient insect."
+    },
+    {
+      "word": "Scorpion",
+      "options": ["Scorpion", "Scorn-pion", "Score-pion", "Scorching"],
+      "ipa": "/ˈskɔːrpiən/",
+      "type": "noun",
+      "meaning": "Bọ cạp",
+      "example": "A scorpion has a venomous sting at the end of its tail."
+    },
+    {
+      "word": "Centipede",
+      "options": ["Centipede", "Scented-peed", "Center-peed", "Sent-a-peed"],
+      "ipa": "/ˈsentɪpiːd/",
+      "type": "noun",
+      "meaning": "Rết",
+      "example": "A centipede has many pairs of legs."
+    },
+    {
+      "word": "Millipede",
+      "options": ["Millipede", "Milli-peed", "Mile-a-peed", "Meal-a-peed"],
+      "ipa": "/ˈmɪlɪpiːd/",
+      "type": "noun",
+      "meaning": "Cuốn chiếu",
+      "example": "A millipede has two pairs of legs per body segment."
+    },
+    {
+      "word": "Earthworm",
+      "options": ["Earthworm", "Earth-warm", "Hearth-worm", "Early-worm"],
+      "ipa": "/ˈɜːrθwɜːrm/",
+      "type": "noun",
+      "meaning": "Giun đất",
+      "example": "An earthworm helps to aerate the soil."
+    },
+    {
+      "word": "Snail",
+      "options": ["Snail", "Sail", "Nail", "Scale"],
+      "ipa": "/sneɪl/",
+      "type": "noun",
+      "meaning": "Ốc sên",
+      "example": "A snail carries its shell on its back."
+    },
+    {
+      "word": "Slug",
+      "options": ["Slug", "Slag", "Snug", "Slum"],
+      "ipa": "/slʌɡ/",
+      "type": "noun",
+      "meaning": "Sên (không vỏ)",
+      "example": "A slug is like a snail without a shell."
+    },
+    {
+      "word": "Leech",
+      "options": ["Leech", "Leash", "Each", "Bleach"],
+      "ipa": "/liːtʃ/",
+      "type": "noun",
+      "meaning": "Đỉa",
+      "example": "A leech is a type of segmented worm."
+    },
+    {
+      "word": "Hedgehog",
+      "options": ["Hedgehog", "Hedge-hog", "Head-hog", "Edge-hog"],
+      "ipa": "/ˈhedʒhɒɡ/",
+      "type": "noun",
+      "meaning": "Nhím (kiểng)",
+      "example": "A hedgehog can roll into a spiky ball for defense."
+    },
+    {
+      "word": "Porcupine",
+      "options": ["Porcupine", "Pork-you-pine", "Pour-cue-pine", "Park-your-pine"],
+      "ipa": "/ˈpɔːrkjupaɪn/",
+      "type": "noun",
+      "meaning": "Nhím (lông)",
+      "example": "A porcupine has sharp quills on its back."
+    },
+    {
+      "word": "Badger",
+      "options": ["Badger", "Bag-her", "Badge", "Barge"],
+      "ipa": "/ˈbædʒər/",
+      "type": "noun",
+      "meaning": "Lửng",
+      "example": "A badger is a nocturnal animal that lives in burrows."
+    },
+    {
+      "word": "Otter",
+      "options": ["Otter", "Other", "Outer", "Utter"],
+      "ipa": "/ˈɒtər/",
+      "type": "noun",
+      "meaning": "Rái cá",
+      "example": "A sea otter floats on its back to eat."
+    },
+    {
+      "word": "Beaver",
+      "options": ["Beaver", "Believer", "Beverage", "Cleaver"],
+      "ipa": "/ˈbiːvər/",
+      "type": "noun",
+      "meaning": "Hải ly",
+      "example": "A beaver builds dams on rivers."
+    },
+    {
+      "word": "Raccoon",
+      "options": ["Raccoon", "Rack-coon", "Tycoon", "Monsoon"],
+      "ipa": "/rəˈkuːn/",
+      "type": "noun",
+      "meaning": "Gấu mèo",
+      "example": "A raccoon is known for its mask-like face markings."
+    },
+    {
+      "word": "Skunk",
+      "options": ["Skunk", "Sunk", "Drunk", "Chunk"],
+      "ipa": "/skʌŋk/",
+      "type": "noun",
+      "meaning": "Chồn hôi",
+      "example": "A skunk can spray a foul-smelling liquid."
+    },
+    {
+      "word": "Moose",
+      "options": ["Moose", "Mouse", "Goose", "Loose"],
+      "ipa": "/muːs/",
+      "type": "noun",
+      "meaning": "Nai sừng tấm",
+      "example": "A moose is the largest species in the deer family."
+    },
+    {
+      "word": "Elk",
+      "options": ["Elk", "Ink", "Elm", "Eke"],
+      "ipa": "/elk/",
+      "type": "noun",
+      "meaning": "Nai sừng xám",
+      "example": "An elk is also known as a wapiti."
+    },
+    {
+      "word": "Bison",
+      "options": ["Bison", "Basin", "Poison", "Tyson"],
+      "ipa": "/ˈbaɪsən/",
+      "type": "noun",
+      "meaning": "Bò rừng",
+      "example": "A bison is a large bovine animal."
+    },
+    {
+      "word": "Buffalo",
+      "options": ["Buffalo", "Buffet-low", "Baffle-oh", "Ruffle-oh"],
+      "ipa": "/ˈbʌfələʊ/",
+      "type": "noun",
+      "meaning": "Trâu",
+      "example": "The water buffalo is common in Asia."
+    },
+    {
+      "word": "Cheetah",
+      "options": ["Cheetah", "Cheater", "Chatter", "Cheaper"],
+      "ipa": "/ˈtʃiːtə/",
+      "type": "noun",
+      "meaning": "Báo Gêpa",
+      "example": "The cheetah is the fastest land animal."
+    },
+    {
+      "word": "Leopard",
+      "options": ["Leopard", "Leotard", "Jeopardy", "Shepherd"],
+      "ipa": "/ˈlepərd/",
+      "type": "noun",
+      "meaning": "Báo hoa mai",
+      "example": "A leopard is known for its spotted coat."
+    },
+    {
+      "word": "Jaguar",
+      "options": ["Jaguar", "Jogger", "Jagger", "Juggler"],
+      "ipa": "/ˈdʒæɡjuər/",
+      "type": "noun",
+      "meaning": "Báo đốm Mỹ",
+      "example": "A jaguar has a very powerful bite."
+    },
+    {
+      "word": "Panther",
+      "options": ["Panther", "Painter", "Pantry", "Partner"],
+      "ipa": "/ˈpænθər/",
+      "type": "noun",
+      "meaning": "Báo đen",
+      "example": "A black panther is a melanistic color variant of a leopard or jaguar."
+    },
+    {
+      "word": "Hyena",
+      "options": ["Hyena", "Hygiene", "Hay-in-a", "Hymn-a"],
+      "ipa": "/haɪˈiːnə/",
+      "type": "noun",
+      "meaning": "Linh cẩu",
+      "example": "A hyena is known for its distinctive 'laughing' sound."
+    }
+  ]
+}

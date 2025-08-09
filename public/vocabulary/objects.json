@@ -1,0 +1,45 @@
+ {
+            "name": "Common Objects 💻",
+            "slug": "objects",
+            "words": [
+                {
+                    "word": "Computer",
+                    "options": [
+                        "Computer",
+                        "Commuter",
+                        "Competitor",
+                        "Compiler"
+                    ],
+                    "ipa": "/kəmˈpjuːtər/",
+                    "type": "noun",
+                    "meaning": "Máy tính",
+                    "example": "I use my computer for both work and gaming."
+                },
+                {
+                    "word": "Bicycle",
+                    "options": [
+                        "Bicycle",
+                        "Article",
+                        "Vehicle",
+                        "Icicle"
+                    ],
+                    "ipa": "/ˈbaɪsɪkl/",
+                    "type": "noun",
+                    "meaning": "Xe đạp",
+                    "example": "He rides his bicycle to work every day."
+                },
+                {
+                    "word": "Library",
+                    "options": [
+                        "Library",
+                        "Liberty",
+                        "Lingerie",
+                        "Littery"
+                    ],
+                    "ipa": "/ˈlaɪbrəri/",
+                    "type": "noun",
+                    "meaning": "Thư viện",
+                    "example": "I need to return these books to the library."
+                }
+            ]
+        }

@@ -74,6 +74,10 @@ const Header = () => {
       path: "/blog",
     },
     {
+      title: "Trò chơi",
+      path: "/games",
+    },
+    {
       title: "Chat",
       path: "/chat",
     },

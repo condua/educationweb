@@ -1,0 +1,70 @@
+{
+  "name": "Healthy Food 🥗",
+  "slug": "healthy-food",
+  "words": [
+    {
+      "word": "Nutrition",
+      "options": ["Nutrition", "Nutrient", "Notion", "Natation"],
+      "ipa": "/njuːˈtrɪʃən/",
+      "type": "noun",
+      "meaning": "Dinh dưỡng",
+      "example": "Good nutrition is essential for a growing teen."
+    },
+    {
+      "word": "Hydration",
+      "options": ["Hydration", "Hydrogen", "Hidration", "Headation"],
+      "ipa": "/haɪˈdreɪʃən/",
+      "type": "noun",
+      "meaning": "Sự cấp nước",
+      "example": "Proper hydration is important, so drink plenty of water."
+    },
+    {
+      "word": "Protein",
+      "options": ["Protein", "Protect", "Proton", "Protain"],
+      "ipa": "/ˈprəʊtiːn/",
+      "type": "noun",
+      "meaning": "Chất đạm",
+      "example": "Chicken, beans, and tofu are good sources of protein."
+    },
+    {
+      "word": "Vegetable",
+      "options": ["Vegetable", "Visible", "Valuable", "Eligible"],
+      "ipa": "/ˈvɛdʒtəbəl/",
+      "type": "noun",
+      "meaning": "Rau củ",
+      "example": "Eating a variety of vegetables is great for your health."
+    },
+    {
+      "word": "Calorie",
+      "options": ["Calorie", "Gallery", "Celery", "Colony"],
+      "ipa": "/ˈkæləri/",
+      "type": "noun",
+      "meaning": "Ca-lo",
+      "example": "This meal is low in calories but high in nutrients."
+    },
+    {
+      "word": "Vitamin",
+      "options": ["Vitamin", "Vitality", "Villain", "Violin"],
+      "ipa": "/ˈvɪtəmɪn/",
+      "type": "noun",
+      "meaning": "Vi-ta-min",
+      "example": "Oranges are a great source of Vitamin C."
+    },
+    {
+      "word": "Mineral",
+      "options": ["Mineral", "Minimal", "Mirror", "Miracle"],
+      "ipa": "/ˈmɪnərəl/",
+      "type": "noun",
+      "meaning": "Chất khoáng",
+      "example": "Milk is rich in the mineral calcium, which is good for bones."
+    },
+    {
+      "word": "Fiber",
+      "options": ["Fiber", "Fever", "Viper", "Fighter"],
+      "ipa": "/ˈfaɪbər/",
+      "type": "noun",
+      "meaning": "Chất xơ",
+      "example": "Whole grains and fruits are high in dietary fiber."
+    }
+  ]
+}

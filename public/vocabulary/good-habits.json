@@ -1,0 +1,70 @@
+{
+  "name": "Good Habits 💤",
+  "slug": "good-habits",
+  "words": [
+    {
+      "word": "Sleep",
+      "options": ["Sleep", "Slip", "Sheep", "Spleen"],
+      "ipa": "/sliːp/",
+      "type": "noun",
+      "meaning": "Giấc ngủ",
+      "example": "Teens need about 8 to 10 hours of sleep per night."
+    },
+    {
+      "word": "Routine",
+      "options": ["Routine", "Route", "Rotate", "Ruining"],
+      "ipa": "/ruːˈtiːn/",
+      "type": "noun",
+      "meaning": "Thói quen, lịch trình",
+      "example": "A consistent morning routine can make your day more productive."
+    },
+    {
+      "word": "Hygiene",
+      "options": ["Hygiene", "High gene", "Hydrogen", "Highly"],
+      "ipa": "/ˈhaɪdʒiːn/",
+      "type": "noun",
+      "meaning": "Vệ sinh cá nhân",
+      "example": "Good personal hygiene is an important part of a healthy lifestyle."
+    },
+    {
+      "word": "Hobby",
+      "options": ["Hobby", "Lobby", "Hobbit", "Horribly"],
+      "ipa": "/ˈhɒbi/",
+      "type": "noun",
+      "meaning": "Sở thích",
+      "example": "Having a creative hobby is a great way to relax."
+    },
+    {
+      "word": "Consistency",
+      "options": ["Consistency", "Consist", "Conscious", "Consequence"],
+      "ipa": "/kənˈsɪstənsi/",
+      "type": "noun",
+      "meaning": "Sự nhất quán",
+      "example": "Consistency is key to forming a new good habit."
+    },
+    {
+      "word": "Productive",
+      "options": ["Productive", "Protective", "Producing", "Proactive"],
+      "ipa": "/prəˈdʌktɪv/",
+      "type": "adjective",
+      "meaning": "Năng suất",
+      "example": "Breaking down a big task into smaller steps can make you more productive."
+    },
+    {
+      "word": "Organize",
+      "options": ["Organize", "Origami", "Organic", "Origin"],
+      "ipa": "/ˈɔːɡənaɪz/",
+      "type": "verb",
+      "meaning": "Sắp xếp",
+      "example": "You should organize your desk to create a better study space."
+    },
+    {
+      "word": "Punctual",
+      "options": ["Punctual", "Puncture", "Painful", "Puntual"],
+      "ipa": "/ˈpʌŋktʃuəl/",
+      "type": "adjective",
+      "meaning": "Đúng giờ",
+      "example": "Being punctual shows respect for other people's time."
+    }
+  ]
+}

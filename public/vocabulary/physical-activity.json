@@ -1,0 +1,70 @@
+{
+  "name": "Physical Activity 🏃‍♀️",
+  "slug": "physical-activity",
+  "words": [
+    {
+      "word": "Exercise",
+      "options": ["Exercise", "Exorcise", "Excess", "Excite"],
+      "ipa": "/ˈeksəsaɪz/",
+      "type": "noun/verb",
+      "meaning": "Tập thể dục",
+      "example": "Regular exercise helps improve your mood and energy."
+    },
+    {
+      "word": "Stretching",
+      "options": ["Stretching", "Sketching", "Stressing", "Searching"],
+      "ipa": "/ˈstretʃɪŋ/",
+      "type": "noun",
+      "meaning": "Giãn cơ",
+      "example": "Stretching before a workout can help prevent injuries."
+    },
+    {
+      "word": "Cardio",
+      "options": ["Cardio", "Cargo", "Cartoon", "Cardinal"],
+      "ipa": "/ˈkɑːdiəʊ/",
+      "type": "noun",
+      "meaning": "Bài tập tim mạch",
+      "example": "Running, swimming, and cycling are all forms of cardio."
+    },
+    {
+      "word": "Teamwork",
+      "options": ["Teamwork", "Teapot", "Dreamwork", "Teaware"],
+      "ipa": "/ˈtiːmwɜːk/",
+      "type": "noun",
+      "meaning": "Làm việc nhóm",
+      "example": "Playing sports teaches you the importance of teamwork."
+    },
+    {
+      "word": "Strength",
+      "options": ["Strength", "Straight", "Strait", "Stretch"],
+      "ipa": "/streŋθ/",
+      "type": "noun",
+      "meaning": "Sức mạnh",
+      "example": "Weightlifting is a great way to build muscle strength."
+    },
+    {
+      "word": "Flexibility",
+      "options": ["Flexibility", "Facility", "Feasibility", "Fatality"],
+      "ipa": "/ˌfleksəˈbɪləti/",
+      "type": "noun",
+      "meaning": "Sự dẻo dai",
+      "example": "Yoga and Pilates are excellent for improving flexibility."
+    },
+    {
+      "word": "Endurance",
+      "options": ["Endurance", "Insurance", "Entrance", "Hindrance"],
+      "ipa": "/ɪnˈdjʊərəns/",
+      "type": "noun",
+      "meaning": "Sức bền",
+      "example": "Long-distance running requires a lot of endurance."
+    },
+    {
+      "word": "Workout",
+      "options": ["Workout", "Work out", "Walkout", "Work on"],
+      "ipa": "/ˈwɜːkaʊt/",
+      "type": "noun",
+      "meaning": "Buổi tập",
+      "example": "I had a great workout at the gym this morning."
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "name": "Clothes & Accessories 👗",
+  "slug": "clothes-accessories",
+  "words": [
+    {
+      "word": "Shirt",
+      "options": ["Shirt", "Short", "Shirtless", "Shift"],
+      "ipa": "/ʃɜːt/",
+      "type": "noun",
+      "meaning": "Áo sơ mi",
+      "example": "He wore a white shirt to the meeting."
+    },
+    {
+      "word": "Pants",
+      "options": ["Paints", "Pants", "Plants", "Panes"],
+      "ipa": "/pænts/",
+      "type": "noun",
+      "meaning": "Quần dài",
+      "example": "She bought a new pair of black pants."
+    },
+    {
+      "word": "Dress",
+      "options": ["Address", "Dresser", "Dress", "Press"],
+      "ipa": "/dres/",
+      "type": "noun",
+      "meaning": "Váy liền",
+      "example": "She wore a red dress to the party."
+    },
+    {
+      "word": "Skirt",
+      "options": ["Dirt", "Skirt", "Shirt", "Skate"],
+      "ipa": "/skɜːt/",
+      "type": "noun",
+      "meaning": "Chân váy",
+      "example": "The skirt matches well with her blouse."
+    },
+    {
+      "word": "Blouse",
+      "options": ["Blouse", "Blose", "Bliss", "Blow"],
+      "ipa": "/blaʊz/",
+      "type": "noun",
+      "meaning": "Áo sơ mi nữ",
+      "example": "She tucked her blouse into her skirt."
+    },
+    {
+      "word": "T-shirt",
+      "options": ["T-shirt", "T-shade", "T-shore", "T-shire"],
+      "ipa": "/ˈtiː ʃɜːt/",
+      "type": "noun",
+      "meaning": "Áo phông",
+      "example": "He wore a graphic T-shirt and jeans."
+    },
+    {
+      "word": "Jeans",
+      "options": ["Jeans", "Gems", "Jeens", "Genes"],
+      "ipa": "/dʒiːnz/",
+      "type": "noun",
+      "meaning": "Quần bò",
+      "example": "She likes wearing ripped jeans."
+    },
+    {
+      "word": "Shorts",
+      "options": ["Shouts", "Shops", "Shorts", "Shoots"],
+      "ipa": "/ʃɔːts/",
+      "type": "noun",
+      "meaning": "Quần short",
+      "example": "It’s hot today, so I’ll wear shorts."
+    },
+    {
+      "word": "Jacket",
+      "options": ["Jacket", "Packet", "Jackal", "Jockey"],
+      "ipa": "/ˈdʒækɪt/",
+      "type": "noun",
+      "meaning": "Áo khoác",
+      "example": "He took off his jacket when he entered the room."
+    },
+    {
+      "word": "Coat",
+      "options": ["Coat", "Coast", "Colt", "Cart"],
+      "ipa": "/kəʊt/",
+      "type": "noun",
+      "meaning": "Áo choàng",
+      "example": "She put on a warm coat before going outside."
+    },
+    {
+      "word": "Sweater",
+      "options": ["Sweater", "Sweeper", "Swatter", "Swimmer"],
+      "ipa": "/ˈswetər/",
+      "type": "noun",
+      "meaning": "Áo len",
+      "example": "This sweater is made of wool."
+    },
+    {
+      "word": "Hoodie",
+      "options": ["Hoodie", "Hood", "Hootie", "Hooky"],
+      "ipa": "/ˈhʊdi/",
+      "type": "noun",
+      "meaning": "Áo hoodie",
+      "example": "He wore a black hoodie and sneakers."
+    },
+    {
+      "word": "Scarf",
+      "options": ["Scarf", "Scare", "Scar", "Scarfy"],
+      "ipa": "/skɑːf/",
+      "type": "noun",
+      "meaning": "Khăn choàng",
+      "example": "She wrapped a scarf around her neck."
+    },
+    {
+      "word": "Gloves",
+      "options": ["Glows", "Gloves", "Globes", "Gloes"],
+      "ipa": "/ɡlʌvz/",
+      "type": "noun",
+      "meaning": "Găng tay",
+      "example": "Wear gloves to keep your hands warm."
+    },
+    {
+      "word": "Hat",
+      "options": ["Hut", "Hit", "Hat", "Hot"],
+      "ipa": "/hæt/",
+      "type": "noun",
+      "meaning": "Mũ",
+      "example": "He tipped his hat to greet her."
+    },
+    {
+      "word": "Cap",
+      "options": ["Cup", "Cap", "Cab", "Cat"],
+      "ipa": "/kæp/",
+      "type": "noun",
+      "meaning": "Mũ lưỡi trai",
+      "example": "He wore a baseball cap."
+    },
+    {
+      "word": "Belt",
+      "options": ["Belt", "Built", "Bald", "Bolt"],
+      "ipa": "/belt/",
+      "type": "noun",
+      "meaning": "Thắt lưng",
+      "example": "He fastened his belt tightly."
+    },
+    {
+      "word": "Tie",
+      "options": ["Tie", "Tile", "Tide", "Tin"],
+      "ipa": "/taɪ/",
+      "type": "noun",
+      "meaning": "Cà vạt",
+      "example": "He wore a red tie to the wedding."
+    },
+    {
+      "word": "Bow tie",
+      "options": ["Bow tie", "Bow time", "Bow tide", "Bow tile"],
+      "ipa": "/ˈboʊ taɪ/",
+      "type": "noun",
+      "meaning": "Nơ đeo cổ",
+      "example": "He looked elegant in a bow tie."
+    },
+    {
+      "word": "Socks",
+      "options": ["Socks", "Sacks", "Sicks", "Sokes"],
+      "ipa": "/sɒks/",
+      "type": "noun",
+      "meaning": "Tất",
+      "example": "I need to buy new socks."
+    },
+    {
+      "word": "Shoes",
+      "options": ["Shoes", "Shows", "Shops", "Shocks"],
+      "ipa": "/ʃuːz/",
+      "type": "noun",
+      "meaning": "Giày",
+      "example": "She bought a new pair of running shoes."
+    },
+    {
+      "word": "Boots",
+      "options": ["Boots", "Boats", "Bouts", "Bots"],
+      "ipa": "/buːts/",
+      "type": "noun",
+      "meaning": "Ủng",
+      "example": "He wore boots to protect his feet from the snow."
+    },
+    {
+      "word": "Sandals",
+      "options": ["Sandals", "Handles", "Candles", "Sands"],
+      "ipa": "/ˈsændəlz/",
+      "type": "noun",
+      "meaning": "Dép quai hậu",
+      "example": "Sandals are perfect for summer."
+    },
+    {
+      "word": "Slippers",
+      "options": ["Slippers", "Slipperss", "Sleepers", "Slippery"],
+      "ipa": "/ˈslɪpərz/",
+      "type": "noun",
+      "meaning": "Dép đi trong nhà",
+      "example": "I wear slippers when I’m at home."
+    },
+    {
+      "word": "High heels",
+      "options": ["High heels", "High heal", "High hills", "High holes"],
+      "ipa": "/haɪ hiːlz/",
+      "type": "noun",
+      "meaning": "Giày cao gót",
+      "example": "She wore high heels to the party."
+    },
+    {
+      "word": "Sneakers",
+      "options": ["Sneakers", "Sneaks", "Snickers", "Speakers"],
+      "ipa": "/ˈsniːkərz/",
+      "type": "noun",
+      "meaning": "Giày thể thao",
+      "example": "He collects rare sneakers."
+    },
+    {
+      "word": "Suit",
+      "options": ["Suit", "Suite", "Sweet", "Soot"],
+      "ipa": "/suːt/",
+      "type": "noun",
+      "meaning": "Bộ vest",
+      "example": "He wore a black suit to the meeting."
+    },
+    {
+      "word": "Blazer",
+      "options": ["Blazer", "Blader", "Baker", "Blaster"],
+      "ipa": "/ˈbleɪzər/",
+      "type": "noun",
+      "meaning": "Áo khoác blazer",
+      "example": "A navy blazer goes well with khaki pants."
+    },
+    {
+      "word": "Overcoat",
+      "options": ["Overcoat", "Overload", "Overcome", "Overcast"],
+      "ipa": "/ˈoʊvərˌkoʊt/",
+      "type": "noun",
+      "meaning": "Áo măng tô",
+      "example": "The overcoat kept him warm in winter."
+    },
+    {
+      "word": "Raincoat",
+      "options": ["Raincoat", "Rancoat", "Raincast", "Raincart"],
+      "ipa": "/ˈreɪnˌkoʊt/",
+      "type": "noun",
+      "meaning": "Áo mưa",
+      "example": "Don’t forget your raincoat, it’s going to rain."
+    },
+    {
+      "word": "Vest",
+      "options": ["Vest", "Vast", "Vase", "Best"],
+      "ipa": "/vest/",
+      "type": "noun",
+      "meaning": "Áo gi-lê",
+      "example": "He wore a vest under his suit jacket."
+    },
+    {
+      "word": "Cardigan",
+      "options": ["Cardigan", "Guardian", "Carpigan", "Cartigan"],
+      "ipa": "/ˈkɑːrdɪɡən/",
+      "type": "noun",
+      "meaning": "Áo len cài khuy",
+      "example": "She knitted a cardigan for her daughter."
+    },
+    {
+      "word": "Necklace",
+      "options": ["Necklace", "Necklass", "Neckless", "Nacklace"],
+      "ipa": "/ˈnekləs/",
+      "type": "noun",
+      "meaning": "Vòng cổ",
+      "example": "He gave her a gold necklace."
+    },
+    {
+      "word": "Bracelet",
+      "options": ["Bracelet", "Braclet", "Braiselet", "Brasslet"],
+      "ipa": "/ˈbreɪslət/",
+      "type": "noun",
+      "meaning": "Vòng tay",
+      "example": "She wore a silver bracelet."
+    },
+    {
+      "word": "Earrings",
+      "options": ["Earrings", "Earing", "Earwings", "Earrangs"],
+      "ipa": "/ˈɪərɪŋz/",
+      "type": "noun",
+      "meaning": "Hoa tai",
+      "example": "She bought a pair of diamond earrings."
+    },
+    {
+      "word": "Ring",
+      "options": ["Ring", "Rang", "Rung", "Rink"],
+      "ipa": "/rɪŋ/",
+      "type": "noun",
+      "meaning": "Nhẫn",
+      "example": "He gave her an engagement ring."
+    },
+    {
+      "word": "Sunglasses",
+      "options": ["Sunglasses", "Sungrasses", "Sunclass", "Sunglases"],
+      "ipa": "/ˈsʌnˌɡlæsɪz/",
+      "type": "noun",
+      "meaning": "Kính râm",
+      "example": "She wears sunglasses at the beach."
+    }
+  ]
+}

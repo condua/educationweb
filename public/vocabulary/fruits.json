@@ -1,0 +1,22 @@
+{
+  "name": "Healthy Food 🥗",
+  "slug": "healthy-food",
+  "words": [
+    {
+      "word": "Nutrition",
+      "options": ["Nutrition", "Nutrient", "Notion", "Natation"],
+      "ipa": "/njuːˈtrɪʃən/",
+      "type": "noun",
+      "meaning": "Dinh dưỡng",
+      "example": "Good nutrition is essential for a growing teen."
+    },
+    {
+      "word": "Protein",
+      "options": ["Protect", "Proton", "Protein", "Protain"],
+      "ipa": "/ˈprəʊtiːn/",
+      "type": "noun",
+      "meaning": "Chất đạm",
+      "example": "Chicken, beans, and tofu are good sources of protein."
+    }
+  ]
+}

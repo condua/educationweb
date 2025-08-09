@@ -42,6 +42,20 @@ import ReactDOM from "react-dom/client";
 import CourseNewPage from "./pages/admin/CourseNewPage.jsx";
 import TestPreviewPage from "./pages/admin/TestPreviewPage.jsx";
 import ChatPage from "./pages/message/ChatPage.jsx";
+// import games components
+import GamesHome from "./pages/games/GamesHome.jsx"; // Import GamesHome component
+
+import TypingGame from "./pages/games/TypingGame.jsx";
+import GrammarGame from "./pages/games/GrammarGame.jsx";
+import MatchingGame from "./pages/games/MatchingGame.jsx";
+import WordfallGame from "./pages/games/WordfallGame.jsx";
+import GalaxyGrammarGame from "./pages/games/GalaxyGrammarGame.jsx";
+import DetectiveGame from "./pages/games/DetectiveGame.jsx";
+import EnglishWordSprint from "./pages/games/EnglishWordSprint.jsx";
+import MillionaireGame from "./pages/games/MillionaireGame .jsx";
+import VocabularyGame from "./pages/games/VocabularyGame.jsx";
+import ListeningGame from "./pages/games/ListeningGame.jsx";
+import SentenceScrambleGame from "./pages/games/SentenceScrambleGame.jsx";
 
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
@@ -115,6 +129,22 @@ function App() {
           element={<AuthRoute element={<Register />} />}
         />
         <Route path="/services" element={<Portfolio />} />
+        <Route path="/games" element={<GamesHome />} />
+
+        {/* Các game theo yêu cầu */}
+        <Route path="/games/listening" element={<ListeningGame />} />
+        <Route path="/vocabulary-game" element={<VocabularyGame />} />
+        <Route path="/game2" element={<SentenceScrambleGame />} />
+        <Route path="/listening-game" element={<ListeningGame />} />
+        <Route path="/typing-game" element={<TypingGame />} />
+        <Route path="/grammar-game" element={<GrammarGame />} />
+        <Route path="/matching-game" element={<MatchingGame />} />
+        <Route path="/wordfall-game" element={<WordfallGame />} />
+        <Route path="/galaxy-grammar-game" element={<GalaxyGrammarGame />} />
+        <Route path="/detective-game" element={<DetectiveGame />} />
+        <Route path="/english-word-sprint" element={<EnglishWordSprint />} />
+        <Route path="/millionaire-game" element={<MillionaireGame />} />
+        {/* Thêm route cho GamesHome */}
         <Route
           path="/profile"
           element={<PrivateRoute element={<ProfilePage />} />}
@@ -145,12 +175,10 @@ function App() {
         />
         {/* Chat Message*/}
         <Route path="/chat" element={<PrivateRoute element={<ChatPage />} />} />
-
         <Route path="/exams" element={<ExamList />} />
         <Route path="/exams/do/:examId" element={<ExamDo />} />
         <Route path="/exams/result/:examId" element={<ExamResultPage />} />
         <Route path="/calendar" element={<CourseCalendar />} />
-
         {/* ================================================================= */}
         {/* 2. SỬ DỤNG AdminRoute ĐỂ BẢO VỆ CÁC ROUTE CỦA ADMIN            */}
         {/* ================================================================= */}

@@ -1,0 +1,70 @@
+{
+  "name": "Technology & Innovation 💻",
+  "slug": "tech-innovation",
+  "words": [
+    {
+      "word": "Internet",
+      "options": ["Internet", "Internal", "Internship", "Interpret"],
+      "ipa": "/ˈɪntənet/",
+      "type": "noun",
+      "meaning": "Mạng Internet",
+      "example": "The internet has changed the way we live and work."
+    },
+    {
+      "word": "Smartphone",
+      "options": ["Smartphone", "Smart phone", "Smart-phone", "Smarphone"],
+      "ipa": "/ˈsmɑːtfəʊn/",
+      "type": "noun",
+      "meaning": "Điện thoại thông minh",
+      "example": "Most teens today own a smartphone."
+    },
+    {
+      "word": "Application",
+      "options": ["Application", "Applicant", "Appliance", "Applicable"],
+      "ipa": "/ˌæplɪˈkeɪʃən/",
+      "type": "noun",
+      "meaning": "Ứng dụng",
+      "example": "There's a mobile application for almost everything now."
+    },
+    {
+      "word": "Innovation",
+      "options": ["Innovation", "Invitation", "Renovation", "Invasion"],
+      "ipa": "/ˌɪnəˈveɪʃən/",
+      "type": "noun",
+      "meaning": "Sự đổi mới",
+      "example": "The company is known for its innovation in technology."
+    },
+    {
+      "word": "Digital",
+      "options": ["Digital", "Digit", "Dignity", "Digging"],
+      "ipa": "/ˈdɪdʒɪtəl/",
+      "type": "adjective",
+      "meaning": "Kỹ thuật số",
+      "example": "We are living in a digital age."
+    },
+    {
+      "word": "Artificial",
+      "options": ["Artificial", "Artifice", "Artful", "Artist"],
+      "ipa": "/ˌɑːtɪˈfɪʃəl/",
+      "type": "adjective",
+      "meaning": "Nhân tạo",
+      "example": "Artificial Intelligence (AI) is a rapidly growing field."
+    },
+    {
+      "word": "Social Media",
+      "options": ["Social Media", "Social Medium", "Society Media", "Social Medial"],
+      "ipa": "/ˌsəʊʃəl ˈmiːdiə/",
+      "type": "noun",
+      "meaning": "Mạng xã hội",
+      "example": "It's important to use social media responsibly."
+    },
+    {
+      "word": "Algorithm",
+      "options": ["Algorithm", "Alligator", "Logarithm", "Algae-rhythm"],
+      "ipa": "/ˈælɡərɪðəm/",
+      "type": "noun",
+      "meaning": "Thuật toán",
+      "example": "Recommendation systems use a complex algorithm."
+    }
+  ]
+}
