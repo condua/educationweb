@@ -2908,112 +2908,580 @@
       ]
     },
     {
-      "name": "Technology & Innovation 💻",
-      "slug": "tech-innovation",
+      "name": "Technology & Innovation",
+      "slug": "technology-and-innovation",
       "words": [
         {
-          "word": "Internet",
+          "word": "Technology",
           "options": [
-            "Internet",
-            "Internal",
-            "Internship",
-            "Interpret"
+            "Technology",
+            "Technlogy",
+            "Technolgy",
+            "Technalgy"
           ],
-          "ipa": "/ˈɪntənet/",
+          "ipa": "/tekˈnɒlədʒi/",
           "type": "noun",
-          "meaning": "Mạng Internet",
-          "example": "The internet has changed the way we live and work."
+          "meaning": "công nghệ",
+          "example": "Technology has improved our daily lives."
         },
         {
-          "word": "Smartphone",
+          "word": "Device",
           "options": [
-            "Smartphone",
-            "Smart phone",
-            "Smart-phone",
-            "Smarphone"
+            "Device",
+            "Devise",
+            "Devoice",
+            "Divice"
           ],
-          "ipa": "/ˈsmɑːtfəʊn/",
+          "ipa": "/dɪˈvaɪs/",
           "type": "noun",
-          "meaning": "Điện thoại thông minh",
-          "example": "Most teens today own a smartphone."
+          "meaning": "thiết bị",
+          "example": "This device can connect to the internet."
         },
         {
-          "word": "Application",
+          "word": "System",
           "options": [
-            "Application",
-            "Applicant",
-            "Appliance",
-            "Applicable"
+            "System",
+            "Systerm",
+            "Systom",
+            "Sistim"
           ],
-          "ipa": "/ˌæplɪˈkeɪʃən/",
+          "ipa": "/ˈsɪstəm/",
           "type": "noun",
-          "meaning": "Ứng dụng",
-          "example": "There's a mobile application for almost everything now."
+          "meaning": "hệ thống",
+          "example": "The new system is more efficient."
         },
         {
-          "word": "Innovation",
+          "word": "Network",
           "options": [
-            "Innovation",
-            "Invitation",
-            "Renovation",
-            "Invasion"
+            "Network",
+            "Netwrok",
+            "Netwerck",
+            "Nettwork"
           ],
-          "ipa": "/ˌɪnəˈveɪʃən/",
+          "ipa": "/ˈnetwɜːk/",
           "type": "noun",
-          "meaning": "Sự đổi mới",
-          "example": "The company is known for its innovation in technology."
+          "meaning": "mạng lưới",
+          "example": "Our office network is down today."
+        },
+        {
+          "word": "Hardware",
+          "options": [
+            "Hardware",
+            "Hardwer",
+            "Hardwair",
+            "Hardwere"
+          ],
+          "ipa": "/ˈhɑːdweə(r)/",
+          "type": "noun",
+          "meaning": "phần cứng",
+          "example": "The hardware needs upgrading."
+        },
+        {
+          "word": "Software",
+          "options": [
+            "Software",
+            "Softwer",
+            "Softwair",
+            "Softwere"
+          ],
+          "ipa": "/ˈsɒftweə(r)/",
+          "type": "noun",
+          "meaning": "phần mềm",
+          "example": "We use software to edit videos."
         },
         {
           "word": "Digital",
           "options": [
             "Digital",
-            "Digit",
-            "Dignity",
-            "Digging"
+            "Digitol",
+            "Digetal",
+            "Digitle"
           ],
           "ipa": "/ˈdɪdʒɪtəl/",
           "type": "adjective",
-          "meaning": "Kỹ thuật số",
-          "example": "We are living in a digital age."
+          "meaning": "kỹ thuật số",
+          "example": "Digital payments are common now."
         },
         {
-          "word": "Artificial",
+          "word": "Analog",
           "options": [
-            "Artificial",
-            "Artifice",
-            "Artful",
-            "Artist"
+            "Analog",
+            "Anallog",
+            "Analogue",
+            "Anolog"
           ],
-          "ipa": "/ˌɑːtɪˈfɪʃəl/",
+          "ipa": "/ˈænəlɒg/",
           "type": "adjective",
-          "meaning": "Nhân tạo",
-          "example": "Artificial Intelligence (AI) is a rapidly growing field."
+          "meaning": "tương tự",
+          "example": "Older TVs use analog signals."
         },
         {
-          "word": "Social Media",
+          "word": "Application",
           "options": [
-            "Social Media",
-            "Social Medium",
-            "Society Media",
-            "Social Medial"
+            "Application",
+            "Aplication",
+            "Apllication",
+            "Applikation"
           ],
-          "ipa": "/ˌsəʊʃəl ˈmiːdiə/",
+          "ipa": "/ˌæplɪˈkeɪʃən/",
           "type": "noun",
-          "meaning": "Mạng xã hội",
-          "example": "It's important to use social media responsibly."
+          "meaning": "ứng dụng",
+          "example": "I downloaded a new fitness app."
+        },
+        {
+          "word": "Platform",
+          "options": [
+            "Platform",
+            "Platfourm",
+            "Plattform",
+            "Platfarm"
+          ],
+          "ipa": "/ˈplætfɔːm/",
+          "type": "noun",
+          "meaning": "nền tảng",
+          "example": "Facebook is a social media platform."
+        },
+        {
+          "word": "Artificial Intelligence",
+          "options": [
+            "Artificial Intelligence",
+            "Artifical Intelligence",
+            "Artificial Inteligence",
+            "Artificiel Intelligence"
+          ],
+          "ipa": "/ˌɑːtɪˈfɪʃəl ɪnˈtelɪdʒəns/",
+          "type": "noun",
+          "meaning": "trí tuệ nhân tạo",
+          "example": "AI can recognize faces."
+        },
+        {
+          "word": "Machine Learning",
+          "options": [
+            "Machine Learning",
+            "Mashine Learning",
+            "Machin Learning",
+            "Machine Lurning"
+          ],
+          "ipa": "/məˈʃiːn ˈlɜːnɪŋ/",
+          "type": "noun",
+          "meaning": "máy học",
+          "example": "Machine learning improves over time."
+        },
+        {
+          "word": "Deep Learning",
+          "options": [
+            "Deep Learning",
+            "Deap Learning",
+            "Deep Lurning",
+            "Deeep Learning"
+          ],
+          "ipa": "/diːp ˈlɜːnɪŋ/",
+          "type": "noun",
+          "meaning": "học sâu",
+          "example": "Deep learning is used in self-driving cars."
         },
         {
           "word": "Algorithm",
           "options": [
             "Algorithm",
-            "Alligator",
-            "Logarithm",
-            "Algae-rhythm"
+            "Algorhythm",
+            "Algoritm",
+            "Algorism"
           ],
           "ipa": "/ˈælɡərɪðəm/",
           "type": "noun",
-          "meaning": "Thuật toán",
-          "example": "Recommendation systems use a complex algorithm."
+          "meaning": "thuật toán",
+          "example": "The algorithm suggests videos."
+        },
+        {
+          "word": "Neural Network",
+          "options": [
+            "Neural Network",
+            "Nural Network",
+            "Neurel Network",
+            "Neural Netwok"
+          ],
+          "ipa": "/ˈnjʊərəl ˈnetwɜːk/",
+          "type": "noun",
+          "meaning": "mạng nơ-ron",
+          "example": "Neural networks mimic the human brain."
+        },
+        {
+          "word": "Data",
+          "options": [
+            "Data",
+            "Date",
+            "Deta",
+            "Datta"
+          ],
+          "ipa": "/ˈdeɪtə/",
+          "type": "noun",
+          "meaning": "dữ liệu",
+          "example": "Data is essential for AI systems."
+        },
+        {
+          "word": "Database",
+          "options": [
+            "Database",
+            "Databace",
+            "Databass",
+            "Databes"
+          ],
+          "ipa": "/ˈdeɪtəbeɪs/",
+          "type": "noun",
+          "meaning": "cơ sở dữ liệu",
+          "example": "The database stores customer information."
+        },
+        {
+          "word": "Data Mining",
+          "options": [
+            "Data Mining",
+            "Date Mining",
+            "Data Maining",
+            "Data Minning"
+          ],
+          "ipa": "/ˈdeɪtə ˌmaɪnɪŋ/",
+          "type": "noun",
+          "meaning": "khai thác dữ liệu",
+          "example": "Data mining reveals patterns."
+        },
+        {
+          "word": "Big Data",
+          "options": [
+            "Big Data",
+            "Big Deta",
+            "Bic Data",
+            "Big Datta"
+          ],
+          "ipa": "/bɪɡ ˈdeɪtə/",
+          "type": "noun",
+          "meaning": "dữ liệu lớn",
+          "example": "Big data helps predict trends."
+        },
+        {
+          "word": "Predictive Analytics",
+          "options": [
+            "Predictive Analytics",
+            "Predictiv Analytics",
+            "Predictive Analythics",
+            "Predective Analytics"
+          ],
+          "ipa": "/prɪˈdɪktɪv ˌænəˈlɪtɪks/",
+          "type": "noun",
+          "meaning": "phân tích dự đoán",
+          "example": "Predictive analytics improves marketing."
+        },
+        {
+          "word": "Internet",
+          "options": [
+            "Internet",
+            "Interner",
+            "Internat",
+            "Ineternet"
+          ],
+          "ipa": "/ˈɪntənet/",
+          "type": "noun",
+          "meaning": "Internet",
+          "example": "The internet is essential for work."
+        },
+        {
+          "word": "Wi-Fi",
+          "options": [
+            "Wi-Fi",
+            "Wi Fai",
+            "WiFai",
+            "Wai-Fi"
+          ],
+          "ipa": "/ˈwaɪfaɪ/",
+          "type": "noun",
+          "meaning": "mạng không dây",
+          "example": "The cafe offers free Wi-Fi."
+        },
+        {
+          "word": "Broadband",
+          "options": [
+            "Broadband",
+            "Brodband",
+            "Broadbend",
+            "Brodbend"
+          ],
+          "ipa": "/ˈbrɔːdbænd/",
+          "type": "noun",
+          "meaning": "mạng băng thông rộng",
+          "example": "Broadband internet is faster."
+        },
+        {
+          "word": "Server",
+          "options": [
+            "Server",
+            "Servor",
+            "Servar",
+            "Serwer"
+          ],
+          "ipa": "/ˈsɜːvə(r)/",
+          "type": "noun",
+          "meaning": "máy chủ",
+          "example": "The server is down."
+        },
+        {
+          "word": "Cloud Computing",
+          "options": [
+            "Cloud Computing",
+            "Clowd Computing",
+            "Cloud Computting",
+            "Claoud Computing"
+          ],
+          "ipa": "/klaʊd kəmˈpjuːtɪŋ/",
+          "type": "noun",
+          "meaning": "điện toán đám mây",
+          "example": "Cloud computing stores data online."
+        },
+        {
+          "word": "Upload",
+          "options": [
+            "Upload",
+            "Uplode",
+            "Uplood",
+            "Upplod"
+          ],
+          "ipa": "/ˈʌpləʊd/",
+          "type": "verb",
+          "meaning": "tải lên",
+          "example": "I uploaded a video to YouTube."
+        },
+        {
+          "word": "Download",
+          "options": [
+            "Download",
+            "Dounload",
+            "Downlood",
+            "Downlode"
+          ],
+          "ipa": "/ˈdaʊnləʊd/",
+          "type": "verb",
+          "meaning": "tải xuống",
+          "example": "I downloaded a new game."
+        },
+        {
+          "word": "Streaming",
+          "options": [
+            "Streaming",
+            "Streeming",
+            "Streming",
+            "Streamming"
+          ],
+          "ipa": "/ˈstriːmɪŋ/",
+          "type": "noun",
+          "meaning": "phát trực tuyến",
+          "example": "Streaming services are popular."
+        },
+        {
+          "word": "Bandwidth",
+          "options": [
+            "Bandwidth",
+            "Bandwid",
+            "Bandwidh",
+            "Bandwith"
+          ],
+          "ipa": "/ˈbændwɪdθ/",
+          "type": "noun",
+          "meaning": "băng thông",
+          "example": "More bandwidth improves video quality."
+        },
+        {
+          "word": "IP Address",
+          "options": [
+            "IP Address",
+            "IP Adress",
+            "IP Adres",
+            "IP Addres"
+          ],
+          "ipa": "/ˌaɪ ˈpiː əˌdres/",
+          "type": "noun",
+          "meaning": "địa chỉ IP",
+          "example": "Each device has a unique IP address."
+        },
+        {
+          "word": "Innovation",
+          "options": [
+            "Innovation",
+            "Innovetion",
+            "Inovation",
+            "Innovasion"
+          ],
+          "ipa": "/ˌɪnəˈveɪʃən/",
+          "type": "noun",
+          "meaning": "sự đổi mới",
+          "example": "Innovation drives progress."
+        },
+        {
+          "word": "Startup",
+          "options": [
+            "Startup",
+            "Starup",
+            "Startap",
+            "Sturtup"
+          ],
+          "ipa": "/ˈstɑːtʌp/",
+          "type": "noun",
+          "meaning": "công ty khởi nghiệp",
+          "example": "He runs a tech startup."
+        },
+        {
+          "word": "Entrepreneur",
+          "options": [
+            "Entrepreneur",
+            "Entrepeneur",
+            "Entreperneur",
+            "Entrepraneur"
+          ],
+          "ipa": "/ˌɒntrəprəˈnɜː(r)/",
+          "type": "noun",
+          "meaning": "doanh nhân",
+          "example": "Entrepreneurs create businesses."
+        },
+        {
+          "word": "Incubator",
+          "options": [
+            "Incubator",
+            "Incubater",
+            "Incubetor",
+            "Incubaitor"
+          ],
+          "ipa": "/ˈɪnkjʊbeɪtə(r)/",
+          "type": "noun",
+          "meaning": "vườn ươm khởi nghiệp",
+          "example": "The incubator helps startups grow."
+        },
+        {
+          "word": "Accelerator",
+          "options": [
+            "Accelerator",
+            "Accelarator",
+            "Acelerator",
+            "Accelaretor"
+          ],
+          "ipa": "/əkˈseləreɪtə(r)/",
+          "type": "noun",
+          "meaning": "chương trình tăng tốc",
+          "example": "The accelerator funds young companies."
+        },
+        {
+          "word": "Prototype",
+          "options": [
+            "Prototype",
+            "Prototipe",
+            "Prototybe",
+            "Prototeip"
+          ],
+          "ipa": "/ˈprəʊtətaɪp/",
+          "type": "noun",
+          "meaning": "nguyên mẫu",
+          "example": "They built a prototype for testing."
+        },
+        {
+          "word": "Patent",
+          "options": [
+            "Patent",
+            "Patant",
+            "Patant",
+            "Pattent"
+          ],
+          "ipa": "/ˈpætənt/",
+          "type": "noun",
+          "meaning": "bằng sáng chế",
+          "example": "He filed a patent for the invention."
+        },
+        {
+          "word": "Research & Development",
+          "options": [
+            "Research & Development",
+            "Reseach & Development",
+            "Research and Develpment",
+            "Reserch & Development"
+          ],
+          "ipa": "/rɪˈsɜːtʃ ænd dɪˈveləpmənt/",
+          "type": "noun",
+          "meaning": "nghiên cứu và phát triển",
+          "example": "R&D is essential in tech."
+        },
+        {
+          "word": "Disruption",
+          "options": [
+            "Disruption",
+            "Desruption",
+            "Disreption",
+            "Disroption"
+          ],
+          "ipa": "/dɪsˈrʌpʃən/",
+          "type": "noun",
+          "meaning": "sự phá vỡ",
+          "example": "Smartphones caused industry disruption."
+        },
+        {
+          "word": "Breakthrough",
+          "options": [
+            "Breakthrough",
+            "Breakthru",
+            "Brakthrough",
+            "Breaktrough"
+          ],
+          "ipa": "/ˈbreɪkˌθruː/",
+          "type": "noun",
+          "meaning": "bước đột phá",
+          "example": "The vaccine was a breakthrough."
+        },
+        {
+          "word": "Cybersecurity",
+          "options": [
+            "Cybersecurity",
+            "Cyberscurity",
+            "Cybersecurty",
+            "Cybersecurite"
+          ],
+          "ipa": "/ˌsaɪbəsɪˈkjʊərəti/",
+          "type": "noun",
+          "meaning": "an ninh mạng",
+          "example": "Cybersecurity protects data."
+        },
+        {
+          "word": "Encryption",
+          "options": [
+            "Encryption",
+            "Encription",
+            "Encrypcion",
+            "Encripsion"
+          ],
+          "ipa": "/ɪnˈkrɪpʃən/",
+          "type": "noun",
+          "meaning": "mã hóa",
+          "example": "Encryption keeps messages private."
+        },
+        {
+          "word": "Firewall",
+          "options": [
+            "Firewall",
+            "Firewal",
+            "Firewoll",
+            "Firewoll"
+          ],
+          "ipa": "/ˈfaɪəwɔːl/",
+          "type": "noun",
+          "meaning": "tường lửa",
+          "example": "The firewall blocks attacks."
+        },
+        {
+          "word": "Malware",
+          "options": [
+            "Malware",
+            "Malwer",
+            "Malwere",
+            "Malweer"
+          ],
+          "ipa": "/ˈmælweə(r)/",
+          "type": "noun",
+          "meaning": "phần mềm độc hại",
+          "example": "Malware infected the system."
         }
       ]
     }
