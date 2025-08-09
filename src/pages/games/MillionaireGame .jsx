@@ -297,6 +297,40 @@ export default function MillionaireGame() {
   // --- Giao diện chơi game chính ---
   return (
     <div className="flex h-screen w-full flex-col lg:flex-row bg-slate-900 text-white font-sans p-2 sm:p-4 gap-4">
+      {/* Thang điểm được đưa lên đầu trên mobile, và là sidebar trên desktop */}
+      <div className="w-full lg:order-last lg:w-72 lg:flex-shrink-0 lg:hidden">
+        <div className="bg-slate-800/60 lg:h-full lg:p-4 rounded-b-lg lg:rounded-lg">
+          {/* SỬA 2: Cho phép cuộn ngang trên mobile, và là danh sách dọc trên desktop */}
+          <ul className="flex flex-row-reverse gap-x-2 p-2 overflow-x-auto lg:flex-col lg:gap-y-1 lg:overflow-x-hidden lg:p-0">
+            {prizeLevels.map((prize, i) => {
+              const prizeIndex = prizeLevels.length - 1 - i;
+              return (
+                <li
+                  key={prize}
+                  // SỬA 3: Thêm flex-shrink-0 trên mobile để các item không bị co lại
+                  className={`flex-shrink-0 p-2 rounded-md text-sm sm:text-base text-right transition-colors duration-300 w-36 lg:w-full
+                        ${
+                          level === prizeIndex
+                            ? "bg-orange-500 animate-pulse"
+                            : ""
+                        }
+                        ${
+                          [4, 9, 14].includes(prizeIndex)
+                            ? "font-bold text-white"
+                            : "text-gray-300"
+                        }
+                      `}
+                >
+                  <span className="text-gray-500 mr-2">
+                    {prizeLevels.length - i}
+                  </span>
+                  {prize} VNĐ
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
       {/* Cột chính (Câu hỏi & Trả lời) */}
       <div className="flex flex-col flex-grow justify-between">
         <div className="flex justify-around mb-4">
@@ -385,7 +419,7 @@ export default function MillionaireGame() {
       </div>
 
       {/* Cột phụ (Thang tiền thưởng) */}
-      <div className="flex-shrink-0 w-full lg:w-72 bg-slate-800/60 p-4 rounded-lg mt-4 lg:mt-0">
+      <div className="flex-shrink-0 w-full lg:w-72 bg-slate-800/60 p-4 rounded-lg mt-4 lg:mt-0 hidden lg:block">
         <ul className="flex flex-row-reverse flex-wrap justify-center lg:flex-col gap-1">
           {prizeLevels.map((prize, i) => (
             <motion.li
