@@ -665,6 +665,198 @@
       "type": "noun",
       "meaning": "mạng nơ-ron nhân tạo",
       "example": "Artificial neural networks power deep learning."
+    },
+     {
+      "word": "Augmented Intelligence",
+      "options": ["Augmented Intelligence", "Augmanted Intelligence", "Augmanted Inteligence", "Augmanted Intelligance"],
+      "ipa": "/ɔːɡˈmentɪd ɪnˈtelɪdʒəns/",
+      "type": "noun",
+      "meaning": "trí tuệ tăng cường",
+      "example": "Augmented intelligence helps humans make better decisions."
+    },
+    {
+      "word": "Digital Transformation",
+      "options": ["Digital Transformation", "Digitol Transformation", "Digital Transfomation", "Digitel Transformation"],
+      "ipa": "/ˈdɪdʒɪtəl ˌtrænsfəˈmeɪʃən/",
+      "type": "noun",
+      "meaning": "chuyển đổi số",
+      "example": "Digital transformation is key for modern businesses."
+    },
+    {
+      "word": "Data Visualization",
+      "options": ["Data Visualization", "Deta Visualization", "Data Visualisation", "Data Visualizasion"],
+      "ipa": "/ˈdeɪtə ˌvɪʒuəlaɪˈzeɪʃən/",
+      "type": "noun",
+      "meaning": "trực quan hóa dữ liệu",
+      "example": "Data visualization makes information easier to understand."
+    },
+    {
+      "word": "Neurotechnology",
+      "options": ["Neurotechnology", "Neuroteknology", "Neurotechonology", "Neurotechnollogy"],
+      "ipa": "/ˌnjʊərəʊtekˈnɒlədʒi/",
+      "type": "noun",
+      "meaning": "công nghệ thần kinh",
+      "example": "Neurotechnology can help treat brain disorders."
+    },
+    {
+      "word": "Hologram",
+      "options": ["Hologram", "Holagram", "Hollogram", "Holgram"],
+      "ipa": "/ˈhɒləɡræm/",
+      "type": "noun",
+      "meaning": "hình ba chiều",
+      "example": "The singer appeared as a hologram on stage."
+    },
+    {
+      "word": "Digital Twin",
+      "options": ["Digital Twin", "Digitol Twin", "Digital Twinn", "Digitel Twin"],
+      "ipa": "/ˈdɪdʒɪtəl twɪn/",
+      "type": "noun",
+      "meaning": "bản sao kỹ thuật số",
+      "example": "Digital twins are used in manufacturing to simulate processes."
+    },
+    {
+      "word": "Voice Recognition",
+      "options": ["Voice Recognition", "Voise Recognition", "Voice Recognision", "Vois Recognition"],
+      "ipa": "/vɔɪs ˌrekəɡˈnɪʃən/",
+      "type": "noun",
+      "meaning": "nhận dạng giọng nói",
+      "example": "Voice recognition is used in virtual assistants."
+    },
+    {
+      "word": "Face Recognition",
+      "options": ["Face Recognition", "Fase Recognition", "Face Recognision", "Fase Recognation"],
+      "ipa": "/feɪs ˌrekəɡˈnɪʃən/",
+      "type": "noun",
+      "meaning": "nhận dạng khuôn mặt",
+      "example": "Face recognition unlocks the phone."
+    },
+    {
+      "word": "Gesture Control",
+      "options": ["Gesture Control", "Gestur Control", "Gesture Controll", "Gestuer Control"],
+      "ipa": "/ˈdʒestʃə kənˈtrəʊl/",
+      "type": "noun",
+      "meaning": "điều khiển bằng cử chỉ",
+      "example": "Gesture control allows users to interact without touching the screen."
+    },
+    {
+      "word": "Biohacking",
+      "options": ["Biohacking", "Biohaking", "Biohackking", "Biiohacking"],
+      "ipa": "/ˈbaɪəʊˌhækɪŋ/",
+      "type": "noun",
+      "meaning": "tự cải tiến sinh học",
+      "example": "Biohacking involves lifestyle and technology changes."
+    },
+    {
+      "word": "Genetic Engineering",
+      "options": ["Genetic Engineering", "Genetick Engineering", "Genetic Enginering", "Genetick Enginering"],
+      "ipa": "/dʒəˈnetɪk ˌendʒɪˈnɪərɪŋ/",
+      "type": "noun",
+      "meaning": "kỹ thuật di truyền",
+      "example": "Genetic engineering modifies the DNA of organisms."
+    },
+    {
+      "word": "Smart Grid",
+      "options": ["Smart Grid", "Smart Gridd", "Smart Gread", "Smart Greed"],
+      "ipa": "/smɑːt ɡrɪd/",
+      "type": "noun",
+      "meaning": "lưới điện thông minh",
+      "example": "Smart grids improve energy efficiency."
+    },
+    {
+      "word": "Renewable Energy",
+      "options": ["Renewable Energy", "Renovable Energy", "Renowable Energy", "Renewible Energy"],
+      "ipa": "/rɪˈnjuːəbl ˈenədʒi/",
+      "type": "noun",
+      "meaning": "năng lượng tái tạo",
+      "example": "Solar power is a form of renewable energy."
+    },
+    {
+      "word": "Green Technology",
+      "options": ["Green Technology", "Grean Technology", "Green Teknology", "Green Technollogy"],
+      "ipa": "/ɡriːn tekˈnɒlədʒi/",
+      "type": "noun",
+      "meaning": "công nghệ xanh",
+      "example": "Green technology reduces environmental impact."
+    },
+    {
+      "word": "Autonomous Vehicle",
+      "options": ["Autonomous Vehicle", "Autonomus Vehicle", "Autonomous Vehical", "Autonomus Vehicul"],
+      "ipa": "/ɔːˈtɒnəməs ˈviːɪkl/",
+      "type": "noun",
+      "meaning": "xe tự lái",
+      "example": "Autonomous vehicles use sensors and AI to navigate."
+    },
+    {
+      "word": "LiDAR",
+      "options": ["LiDAR", "LIDAR", "Lidar", "Lidarr"],
+      "ipa": "/ˈlaɪ.dɑːr/",
+      "type": "noun",
+      "meaning": "công nghệ quét laser",
+      "example": "LiDAR is used in mapping and self-driving cars."
+    },
+    {
+      "word": "Computer Vision",
+      "options": ["Computer Vision", "Compyuter Vision", "Computor Vision", "Computer Vison"],
+      "ipa": "/kəmˈpjuːtə ˈvɪʒən/",
+      "type": "noun",
+      "meaning": "thị giác máy tính",
+      "example": "Computer vision allows machines to interpret images."
+    },
+    {
+      "word": "Edge AI",
+      "options": ["Edge AI", "Edje AI", "Egde AI", "Edge A I"],
+      "ipa": "/edʒ eɪ.aɪ/",
+      "type": "noun",
+      "meaning": "AI tại biên mạng",
+      "example": "Edge AI processes data locally on devices."
+    },
+    {
+      "word": "Digital Currency",
+      "options": ["Digital Currency", "Digitol Currency", "Digital Currancy", "Digitel Currency"],
+      "ipa": "/ˈdɪdʒɪtəl ˈkʌrənsi/",
+      "type": "noun",
+      "meaning": "tiền kỹ thuật số",
+      "example": "Central banks are exploring digital currencies."
+    },
+    {
+      "word": "Metaverse",
+      "options": ["Metaverse", "Metavers", "Metavarse", "Metaverss"],
+      "ipa": "/ˈmetəvɜːs/",
+      "type": "noun",
+      "meaning": "vũ trụ ảo",
+      "example": "The metaverse combines VR, AR, and the internet."
+    },
+    {
+      "word": "Digital Rights Management",
+      "options": ["Digital Rights Management", "Digitol Rights Management", "Digital Right Management", "Digitel Rights Management"],
+      "ipa": "/ˈdɪdʒɪtəl raɪts ˈmænɪdʒmənt/",
+      "type": "noun",
+      "meaning": "quản lý quyền kỹ thuật số",
+      "example": "DRM protects digital content from piracy."
+    },
+    {
+      "word": "Cloud Gaming",
+      "options": ["Cloud Gaming", "Clowd Gaming", "Cloud Gameing", "Claoud Gaming"],
+      "ipa": "/klaʊd ˈɡeɪmɪŋ/",
+      "type": "noun",
+      "meaning": "chơi game trên đám mây",
+      "example": "Cloud gaming streams games to any device."
+    },
+    {
+      "word": "5G Network",
+      "options": ["5G Network", "5-G Network", "5 G Network", "FiveG Network"],
+      "ipa": "/ˈfaɪv dʒiː ˈnetwɜːk/",
+      "type": "noun",
+      "meaning": "mạng 5G",
+      "example": "5G networks enable faster data transfer."
+    },
+    {
+      "word": "Voice Assistant",
+      "options": ["Voice Assistant", "Voise Assistant", "Voice Assistent", "Vois Assistant"],
+      "ipa": "/vɔɪs əˈsɪstənt/",
+      "type": "noun",
+      "meaning": "trợ lý ảo bằng giọng nói",
+      "example": "Alexa is a popular voice assistant."
     }
   ]
 }
