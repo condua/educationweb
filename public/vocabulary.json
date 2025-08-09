@@ -1781,6 +1781,506 @@
       ]
     },
     {
+      "name": "Ethnic groups of Viet Nam",
+      "slug": "ethnic-groups-of-viet-nam",
+      "words": [
+        {
+          "word": "ethnic group",
+          "options": [
+            "ethnic group",
+            "ethic group",
+            "epic group",
+            "ethnic soup"
+          ],
+          "ipa": "/ˈeθ.nɪk ɡruːp/",
+          "type": "noun",
+          "meaning": "nhóm dân tộc",
+          "example": "Vietnam has 54 official ethnic groups."
+        },
+        {
+          "word": "minority group",
+          "options": [
+            "minority group",
+            "majority group",
+            "minute group",
+            "miner group"
+          ],
+          "ipa": "/maɪˈnɔː.rə.ti ɡruːp/",
+          "type": "noun",
+          "meaning": "dân tộc thiểu số",
+          "example": "The Tay are one of the largest minority groups in Vietnam."
+        },
+        {
+          "word": "indigenous people",
+          "options": [
+            "indigenous people",
+            "ingenious people",
+            "indignant people",
+            "individual people"
+          ],
+          "ipa": "/ɪnˈdɪdʒ.ɪ.nəs ˈpiː.pəl/",
+          "type": "noun",
+          "meaning": "người bản địa",
+          "example": "Indigenous people often preserve unique traditions."
+        },
+        {
+          "word": "Kinh people",
+          "options": [
+            "Kinh people",
+            "King people",
+            "Kin people",
+            "Kind people"
+          ],
+          "ipa": "/kɪŋ ˈpiː.pəl/",
+          "type": "noun",
+          "meaning": "người Kinh",
+          "example": "The Kinh people make up the majority of Vietnam’s population."
+        },
+        {
+          "word": "Tay people",
+          "options": [
+            "Tay people",
+            "Toy people",
+            "Day people",
+            "Stay people"
+          ],
+          "ipa": "/taɪ ˈpiː.pəl/",
+          "type": "noun",
+          "meaning": "người Tày",
+          "example": "The Tay people live mainly in the northern mountains."
+        },
+        {
+          "word": "Thai people",
+          "options": [
+            "Thai people",
+            "Tie people",
+            "Thigh people",
+            "That people"
+          ],
+          "ipa": "/taɪ ˈpiː.pəl/",
+          "type": "noun",
+          "meaning": "người Thái",
+          "example": "The Thai people are famous for their Xoe dance."
+        },
+        {
+          "word": "Hmong people",
+          "options": [
+            "Hmong people",
+            "Among people",
+            "Human people",
+            "Wrong people"
+          ],
+          "ipa": "/ˈmɒŋ ˈpiː.pəl/",
+          "type": "noun",
+          "meaning": "người Mông",
+          "example": "The Hmong people are known for their colorful costumes."
+        },
+        {
+          "word": "Khmer people",
+          "options": [
+            "Khmer people",
+            "Comber people",
+            "Kramer people",
+            "Khmer pepper"
+          ],
+          "ipa": "/kəˈmɛər ˈpiː.pəl/",
+          "type": "noun",
+          "meaning": "người Khmer",
+          "example": "The Khmer people mainly live in the Mekong Delta."
+        },
+        {
+          "word": "Cham people",
+          "options": [
+            "Cham people",
+            "Charm people",
+            "Champ people",
+            "Calm people"
+          ],
+          "ipa": "/tʃæm ˈpiː.pəl/",
+          "type": "noun",
+          "meaning": "người Chăm",
+          "example": "The Cham people have a long history in central Vietnam."
+        },
+        {
+          "word": "Dao people",
+          "options": [
+            "Dao people",
+            "Dow people",
+            "Wow people",
+            "Sao people"
+          ],
+          "ipa": "/daʊ ˈpiː.pəl/",
+          "type": "noun",
+          "meaning": "người Dao",
+          "example": "Dao women wear beautifully embroidered clothes."
+        },
+        {
+          "word": "Ede people",
+          "options": [
+            "Ede people",
+            "Edge people",
+            "Edit people",
+            "Eden people"
+          ],
+          "ipa": "/ˈɛ.deɪ ˈpiː.pəl/",
+          "type": "noun",
+          "meaning": "người Ê-đê",
+          "example": "The Ede people live in the Central Highlands."
+        },
+        {
+          "word": "Bahnar people",
+          "options": [
+            "Bahnar people",
+            "Banana people",
+            "Banner people",
+            "Barnacle people"
+          ],
+          "ipa": "/ˈbɑː.nɑː ˈpiː.pəl/",
+          "type": "noun",
+          "meaning": "người Ba-na",
+          "example": "The Bahnar people have unique gong music."
+        },
+        {
+          "word": "traditional costume",
+          "options": [
+            "traditional costume",
+            "conditional costume",
+            "trading costume",
+            "additional costume"
+          ],
+          "ipa": "/trəˈdɪʃ.ən.əl ˈkɒs.tjuːm/",
+          "type": "noun",
+          "meaning": "trang phục truyền thống",
+          "example": "Each ethnic group has its own traditional costume."
+        },
+        {
+          "word": "brocade weaving",
+          "options": [
+            "brocade weaving",
+            "broke weaving",
+            "abroad weaving",
+            "broadcast weaving"
+          ],
+          "ipa": "/ˈbrəʊ.keɪd ˈwiː.vɪŋ/",
+          "type": "noun",
+          "meaning": "dệt thổ cẩm",
+          "example": "Brocade weaving is a traditional craft of many ethnic groups."
+        },
+        {
+          "word": "stilt house",
+          "options": [
+            "stilt house",
+            "still house",
+            "split house",
+            "tilt house"
+          ],
+          "ipa": "/stɪlt haʊs/",
+          "type": "noun",
+          "meaning": "nhà sàn",
+          "example": "Stilt houses are common in northern and central Vietnam."
+        },
+        {
+          "word": "communal house",
+          "options": [
+            "communal house",
+            "community house",
+            "colonial house",
+            "common house"
+          ],
+          "ipa": "/kəˈmjuː.nəl haʊs/",
+          "type": "noun",
+          "meaning": "nhà rông/nhà cộng đồng",
+          "example": "The communal house is a place for village meetings."
+        },
+        {
+          "word": "gong culture",
+          "options": [
+            "gong culture",
+            "going culture",
+            "gone culture",
+            "song culture"
+          ],
+          "ipa": "/ɡɒŋ ˈkʌl.tʃər/",
+          "type": "noun",
+          "meaning": "văn hóa cồng chiêng",
+          "example": "Gong culture is recognized by UNESCO as a heritage."
+        },
+        {
+          "word": "folk dance",
+          "options": [
+            "folk dance",
+            "fork dance",
+            "pork dance",
+            "fog dance"
+          ],
+          "ipa": "/fəʊk dæns/",
+          "type": "noun",
+          "meaning": "điệu nhảy dân gian",
+          "example": "The Xoe dance is a famous Thai folk dance."
+        },
+        {
+          "word": "harvest festival",
+          "options": [
+            "harvest festival",
+            "hardest festival",
+            "honest festival",
+            "harness festival"
+          ],
+          "ipa": "/ˈhɑː.vɪst ˈfes.tɪ.vəl/",
+          "type": "noun",
+          "meaning": "lễ hội mùa gặt",
+          "example": "Many ethnic groups celebrate the harvest festival every year."
+        },
+        {
+          "word": "New Rice Festival",
+          "options": [
+            "New Rice Festival",
+            "Nice Rice Festival",
+            "New Price Festival",
+            "Knew Rice Festival"
+          ],
+          "ipa": "/njuː raɪs ˈfes.tɪ.vəl/",
+          "type": "noun",
+          "meaning": "lễ hội mừng lúa mới",
+          "example": "The New Rice Festival thanks the gods for good harvests."
+        },
+        {
+          "word": "buffalo sacrifice ceremony",
+          "options": [
+            "buffalo sacrifice ceremony",
+            "buffalo satisfaction ceremony",
+            "buffalo science ceremony",
+            "buffalo sacred ceremony"
+          ],
+          "ipa": "/ˈbʌf.ə.ləʊ ˈsæ.krɪ.faɪs ˈser.ɪ.mə.ni/",
+          "type": "noun",
+          "meaning": "lễ hiến sinh trâu",
+          "example": "This ceremony is held in the Central Highlands."
+        },
+        {
+          "word": "hand embroidery",
+          "options": [
+            "hand embroidery",
+            "hard embroidery",
+            "end embroidery",
+            "handsome bribery"
+          ],
+          "ipa": "/hænd ɪmˈbrɔɪ.dəri/",
+          "type": "noun",
+          "meaning": "thêu tay",
+          "example": "Hmong women are skilled in hand embroidery."
+        },
+        {
+          "word": "bamboo pole dance",
+          "options": [
+            "bamboo pole dance",
+            "bamboo pool dance",
+            "shampoo pole dance",
+            "bamboo pile dance"
+          ],
+          "ipa": "/ˈbæm.buː pəʊl dæns/",
+          "type": "noun",
+          "meaning": "múa sạp",
+          "example": "The bamboo pole dance is popular among the Thai ethnic group."
+        },
+        {
+          "word": "ancestor worship",
+          "options": [
+            "ancestor worship",
+            "ancient worship",
+            "and sister worship",
+            "answer worship"
+          ],
+          "ipa": "/ˈæn.ses.tər ˈwɜː.ʃɪp/",
+          "type": "noun",
+          "meaning": "thờ cúng tổ tiên",
+          "example": "Ancestor worship is an important tradition in Vietnam."
+        },
+        {
+          "word": "oral tradition",
+          "options": [
+            "oral tradition",
+            "aural tradition",
+            "mural tradition",
+            "orange tradition"
+          ],
+          "ipa": "/ˈɔː.rəl trəˈdɪʃ.ən/",
+          "type": "noun",
+          "meaning": "truyền thống truyền miệng",
+          "example": "Many legends are passed down through oral tradition."
+        },
+        {
+          "word": "drum performance",
+          "options": [
+            "drum performance",
+            "dream performance",
+            "drama performance",
+            "drunk performance"
+          ],
+          "ipa": "/drʌm pəˈfɔː.məns/",
+          "type": "noun",
+          "meaning": "biểu diễn trống",
+          "example": "Drum performances are common during festivals."
+        },
+        {
+          "word": "rice terrace",
+          "options": [
+            "rice terrace",
+            "rise terrace",
+            "price terrace",
+            "race terrace"
+          ],
+          "ipa": "/raɪs ˈter.əs/",
+          "type": "noun",
+          "meaning": "ruộng bậc thang",
+          "example": "The rice terraces in Mu Cang Chai are breathtaking."
+        },
+        {
+          "word": "ethnic market",
+          "options": [
+            "ethnic market",
+            "ethic market",
+            "epic market",
+            "evening market"
+          ],
+          "ipa": "/ˈeθ.nɪk ˈmɑː.kɪt/",
+          "type": "noun",
+          "meaning": "chợ phiên dân tộc",
+          "example": "Sapa’s ethnic markets sell handicrafts and local food."
+        },
+        {
+          "word": "handwoven fabric",
+          "options": [
+            "handwoven fabric",
+            "hand-washed fabric",
+            "hardwoven fabric",
+            "handmade fabric"
+          ],
+          "ipa": "/ˌhændˈwəʊ.vən ˈfæb.rɪk/",
+          "type": "noun",
+          "meaning": "vải dệt tay",
+          "example": "Handwoven fabrics are colorful and unique."
+        },
+        {
+          "word": "silver jewelry",
+          "options": [
+            "silver jewelry",
+            "sliver jewelry",
+            "similar jewelry",
+            "solver jewelry"
+          ],
+          "ipa": "/ˈsɪl.vər ˈdʒuː.əl.ri/",
+          "type": "noun",
+          "meaning": "trang sức bạc",
+          "example": "Silver jewelry is a specialty of the Dao people."
+        },
+        {
+          "word": "betrothal ceremony",
+          "options": [
+            "betrothal ceremony",
+            "betrayal ceremony",
+            "be total ceremony",
+            "petrol ceremony"
+          ],
+          "ipa": "/bɪˈtrəʊ.ðəl ˈser.ɪ.mə.ni/",
+          "type": "noun",
+          "meaning": "lễ dạm ngõ",
+          "example": "The betrothal ceremony is an important wedding custom."
+        },
+        {
+          "word": "harvest ritual",
+          "options": [
+            "harvest ritual",
+            "hardest ritual",
+            "honest ritual",
+            "harness ritual"
+          ],
+          "ipa": "/ˈhɑː.vɪst ˈrɪtʃ.u.əl/",
+          "type": "noun",
+          "meaning": "nghi lễ mùa gặt",
+          "example": "Harvest rituals thank the gods for blessings."
+        },
+        {
+          "word": "nomadic lifestyle",
+          "options": [
+            "nomadic lifestyle",
+            "automatic lifestyle",
+            "dramatic lifestyle",
+            "nomad life"
+          ],
+          "ipa": "/nəʊˈmæd.ɪk ˈlaɪf.staɪl/",
+          "type": "noun",
+          "meaning": "lối sống du mục",
+          "example": "Some ethnic groups still have a nomadic lifestyle."
+        },
+        {
+          "word": "oral epic",
+          "options": [
+            "oral epic",
+            "aural epic",
+            "mural epic",
+            "orange epic"
+          ],
+          "ipa": "/ˈɔː.rəl ˈep.ɪk/",
+          "type": "noun",
+          "meaning": "sử thi truyền miệng",
+          "example": "The Bahnar people have famous oral epics."
+        },
+        {
+          "word": "weaving loom",
+          "options": [
+            "weaving loom",
+            "leaving loom",
+            "waving loom",
+            "weaving room"
+          ],
+          "ipa": "/ˈwiː.vɪŋ luːm/",
+          "type": "noun",
+          "meaning": "khung cửi dệt",
+          "example": "The loom is essential in brocade weaving."
+        },
+        {
+          "word": "basketry",
+          "options": [
+            "basketry",
+            "bakery",
+            "battery",
+            "casket-tree"
+          ],
+          "ipa": "/ˈbɑː.skɪ.tri/",
+          "type": "noun",
+          "meaning": "nghề đan lát",
+          "example": "Basketry is a traditional craft using bamboo or rattan."
+        },
+        {
+          "word": "wooden statue garden",
+          "options": [
+            "wooden statue garden",
+            "wouldn't statue garden",
+            "golden statue garden",
+            "wooden status garden"
+          ],
+          "ipa": "/ˈwʊd.ən ˈstætʃ.uː ˈɡɑː.dən/",
+          "type": "noun",
+          "meaning": "vườn tượng gỗ",
+          "example": "Wooden statue gardens are often seen in Central Highlands villages."
+        },
+        {
+          "word": "ethnic solidarity",
+          "options": [
+            "ethnic solidarity",
+            "ethic solidarity",
+            "ethnic solitude",
+            "ethnic solid-dairy"
+          ],
+          "ipa": "/ˈeθ.nɪk ˌsɒ.lɪˈdær.ɪ.ti/",
+          "type": "noun",
+          "meaning": "sự đoàn kết dân tộc",
+          "example": "Ethnic solidarity is promoted through cultural festivals."
+        }
+      ]
+    },
+    {
       "name": "Healthy Food 🥗",
       "slug": "healthy-food",
       "words": [
