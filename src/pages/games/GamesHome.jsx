@@ -25,6 +25,20 @@ import {
 
 const GAMES = [
   {
+    title: "Who Wants to Be a Millionaire?",
+    path: "/millionaire-game",
+    description: "15 questions, lifelines, and a ladder of prizes. Good luck!",
+    Icon: Trophy,
+    tags: ["Quiz", "General"],
+  },
+  {
+    title: "Listening Challenge",
+    path: "/listening-game",
+    description: "Sharpen listening skills and pick the right answer.",
+    Icon: Headphones,
+    tags: ["Listening"],
+  },
+  {
     title: "Vocabulary Builder",
     path: "/vocabulary-game",
     description:
@@ -39,13 +53,7 @@ const GAMES = [
     Icon: Shuffle,
     tags: ["Grammar", "Sentence"],
   },
-  {
-    title: "Listening Challenge",
-    path: "/listening-game",
-    description: "Sharpen listening skills and pick the right answer.",
-    Icon: Headphones,
-    tags: ["Listening"],
-  },
+
   {
     title: "Typing Sprint",
     path: "/typing-game",
@@ -94,13 +102,6 @@ const GAMES = [
     description: "A 60s sprint: listen, think fast, and choose correctly.",
     Icon: Gamepad2,
     tags: ["Speed", "Vocabulary"],
-  },
-  {
-    title: "Who Wants to Be a Millionaire?",
-    path: "/millionaire-game",
-    description: "15 questions, lifelines, and a ladder of prizes. Good luck!",
-    Icon: Trophy,
-    tags: ["Quiz", "General"],
   },
 ];
 
