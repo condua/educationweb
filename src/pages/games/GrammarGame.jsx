@@ -1,87 +1,24 @@
 import React, { useState, useEffect } from "react";
+import grammarQuestions from "./grammarQuestions";
 
-// --- Dữ liệu câu hỏi ---
-// Mỗi câu hỏi có phần trước và sau chỗ trống, các lựa chọn, đáp án và giải thích.
-const initialQuestions = [
-  {
-    preBlank: "The cat is ",
-    postBlank: " on the mat.",
-    options: ["sit", "sits", "sitting", "sat"],
-    correctAnswer: "sitting",
-    explanation:
-      "Sử dụng thì Hiện tại Tiếp diễn (is + V-ing) để diễn tả hành động đang xảy ra.",
-  },
-  {
-    preBlank: "I haven't seen him ",
-    postBlank: " last year.",
-    options: ["for", "since", "ago", "in"],
-    correctAnswer: "since",
-    explanation:
-      "'Since' được dùng với một mốc thời gian cụ thể (last year). 'For' được dùng với một khoảng thời gian (for two years).",
-  },
-  {
-    preBlank: "She is the ",
-    postBlank: " student in the class.",
-    options: ["tall", "taller", "tallest", "more tall"],
-    correctAnswer: "tallest",
-    explanation:
-      "Dùng dạng so sánh nhất (the + adj-est) để chỉ người cao nhất trong một nhóm.",
-  },
-  {
-    preBlank: "If I were you, I ",
-    postBlank: " study harder.",
-    options: ["will", "would", "can", "should have"],
-    correctAnswer: "would",
-    explanation:
-      "Đây là câu điều kiện loại 2 (If + S + V2/Ved, S + would + V), diễn tả một giả định không có thật ở hiện tại.",
-  },
-  {
-    preBlank: "My keys are ",
-    postBlank: " the table.",
-    options: ["in", "at", "on", "under"],
-    correctAnswer: "on",
-    explanation: "Sử dụng giới từ 'on' để chỉ vị trí trên một bề mặt.",
-  },
-  {
-    preBlank: "He bought ",
-    postBlank: " new car yesterday.",
-    options: ["a", "an", "the", "(no article)"],
-    correctAnswer: "a",
-    explanation:
-      "Sử dụng mạo từ 'a' trước một danh từ đếm được số ít (car) được nhắc đến lần đầu tiên.",
-  },
-  {
-    preBlank: "There isn't ",
-    postBlank: " milk left in the fridge.",
-    options: ["some", "any", "many", "a lot"],
-    correctAnswer: "any",
-    explanation: "'Any' thường được dùng trong câu phủ định và câu hỏi.",
-  },
-  {
-    preBlank: "You speak English very ",
-    postBlank: ".",
-    options: ["good", "well", "best", "better"],
-    correctAnswer: "well",
-    explanation:
-      "Dùng trạng từ 'well' để bổ nghĩa cho động từ 'speak'. 'Good' là một tính từ.",
-  },
-  {
-    preBlank: "The train ",
-    postBlank: " at 8 AM tomorrow.",
-    options: ["leave", "is leaving", "left", "has left"],
-    correctAnswer: "is leaving",
-    explanation:
-      "Sử dụng thì Hiện tại Tiếp diễn để nói về một lịch trình hoặc kế hoạch chắc chắn trong tương lai gần.",
-  },
-  {
-    preBlank: "This book was written ",
-    postBlank: " a famous author.",
-    options: ["by", "with", "from", "for"],
-    correctAnswer: "by",
-    explanation:
-      "Trong câu bị động, 'by' được dùng để chỉ tác nhân thực hiện hành động.",
-  },
-];
+// --- Phần Âm thanh ---
+const playSound = (src, volume = 0.5) => {
+  const sound = new Audio(src);
+  sound.volume = volume;
+  sound.play().catch((e) => console.error("Không thể phát âm thanh:", e));
+};
+
+const sounds = {
+  correct:
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581169/answer-correct_izdhpx.mp3",
+  incorrect:
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581291/answer-wrong_vjm3vq.mp3",
+  start:
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754664206/gamestart-272829_ccnfqa.mp3",
+  gameOver:
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1721554585/success-fanfare-trumpets-6185_wkvhpf.mp3",
+  next: "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754667282/computer-mouse-click-351398_wrnaek.mp3",
+};
 
 const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
 
@@ -94,7 +31,8 @@ export default function GrammarGame() {
   const [isQuizOver, setIsQuizOver] = useState(false);
 
   const startGame = () => {
-    setQuestions(shuffleArray(initialQuestions));
+    playSound(sounds.start); // Âm thanh bắt đầu game
+    setQuestions(shuffleArray(grammarQuestions));
     setCurrentQuestionIndex(0);
     setSelectedAnswer(null);
     setIsAnswered(false);
@@ -111,17 +49,22 @@ export default function GrammarGame() {
     setIsAnswered(true);
     setSelectedAnswer(option);
     if (option === questions[currentQuestionIndex].correctAnswer) {
+      playSound(sounds.correct); // Âm thanh trả lời đúng
       setScore(score + 1);
+    } else {
+      playSound(sounds.incorrect); // Âm thanh trả lời sai
     }
   };
 
   const handleNextQuestion = () => {
     const nextIndex = currentQuestionIndex + 1;
     if (nextIndex < questions.length) {
+      playSound(sounds.next, 0.3); // Âm thanh chuyển câu
       setCurrentQuestionIndex(nextIndex);
       setSelectedAnswer(null);
       setIsAnswered(false);
     } else {
+      playSound(sounds.gameOver); // Âm thanh kết thúc game
       setIsQuizOver(true);
     }
   };
@@ -169,7 +112,7 @@ export default function GrammarGame() {
   const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4">
+    <div className="flex min-h-screen items-center justify-center p-4 bg-slate-50">
       <div className="w-full max-w-2xl rounded-2xl bg-white p-8 shadow-lg">
         {/* Header */}
         <div className="mb-6 flex justify-between text-lg">
