@@ -353,6 +353,318 @@
       "type": "noun",
       "meaning": "phần mềm độc hại",
       "example": "Malware infected the system."
+    },
+    {
+      "word": "Virus",
+      "options": ["Virus", "Viros", "Virrus", "Virous"],
+      "ipa": "/ˈvaɪrəs/",
+      "type": "noun",
+      "meaning": "virus máy tính",
+      "example": "The virus damaged files."
+    },
+    {
+      "word": "Trojan",
+      "options": ["Trojan", "Trojen", "Trojian", "Trojaan"],
+      "ipa": "/ˈtrəʊdʒən/",
+      "type": "noun",
+      "meaning": "Trojan (mã độc)",
+      "example": "A Trojan disguises itself as safe software."
+    },
+    {
+      "word": "Phishing",
+      "options": ["Phishing", "Phising", "Phisshing", "Phishin"],
+      "ipa": "/ˈfɪʃɪŋ/",
+      "type": "noun",
+      "meaning": "lừa đảo trực tuyến",
+      "example": "Phishing emails steal information."
+    },
+    {
+      "word": "Hacking",
+      "options": ["Hacking", "Haking", "Hackking", "Haccking"],
+      "ipa": "/ˈhækɪŋ/",
+      "type": "noun",
+      "meaning": "tấn công mạng",
+      "example": "Hacking is illegal."
+    },
+    {
+      "word": "Password",
+      "options": ["Password", "Pasword", "Passwerd", "Passwrod"],
+      "ipa": "/ˈpɑːswɜːd/",
+      "type": "noun",
+      "meaning": "mật khẩu",
+      "example": "Create a strong password."
+    },
+    {
+      "word": "Two-Factor Authentication",
+      "options": ["Two-Factor Authentication", "Two Factor Authentification", "Two-Facter Authentication", "Two-Factor Authentacation"],
+      "ipa": "/ˌtuː ˈfæktə ɔːˌθentɪˈkeɪʃən/",
+      "type": "noun",
+      "meaning": "xác thực hai yếu tố",
+      "example": "Use two-factor authentication for safety."
+    },
+    {
+      "word": "Virtual Reality",
+      "options": ["Virtual Reality", "Virtuel Reality", "Virchual Reality", "Virtuall Reality"],
+      "ipa": "/ˌvɜːtjʊəl riˈæləti/",
+      "type": "noun",
+      "meaning": "thực tế ảo",
+      "example": "VR games are immersive."
+    },
+    {
+      "word": "Augmented Reality",
+      "options": ["Augmented Reality", "Augmanted Reality", "Augmanted Reallity", "Augmanted Realiti"],
+      "ipa": "/ɔːɡˌmentɪd riˈæləti/",
+      "type": "noun",
+      "meaning": "thực tế tăng cường",
+      "example": "AR apps overlay digital images on reality."
+    },
+    {
+      "word": "Mixed Reality",
+      "options": ["Mixed Reality", "Mixxed Reality", "Mixd Reality", "Mext Reality"],
+      "ipa": "/mɪkst riˈæləti/",
+      "type": "noun",
+      "meaning": "thực tế hỗn hợp",
+      "example": "MR blends physical and digital worlds."
+    },
+    {
+      "word": "Robotics",
+      "options": ["Robotics", "Robotiks", "Robotix", "Robottics"],
+      "ipa": "/rəʊˈbɒtɪks/",
+      "type": "noun",
+      "meaning": "khoa học robot",
+      "example": "Robotics automates production."
+    },
+    {
+      "word": "Drone",
+      "options": ["Drone", "Dron", "Drown", "Droen"],
+      "ipa": "/drəʊn/",
+      "type": "noun",
+      "meaning": "máy bay không người lái",
+      "example": "Drones are used for deliveries."
+    },
+    {
+      "word": "3D Printing",
+      "options": ["3D Printing", "3D Prenting", "3D Printting", "3D Pranting"],
+      "ipa": "/ˌθriː diː ˈprɪntɪŋ/",
+      "type": "noun",
+      "meaning": "in 3D",
+      "example": "3D printing creates prototypes fast."
+    },
+    {
+      "word": "Biotechnology",
+      "options": ["Biotechnology", "Bioteknology", "Biotechonology", "Biotechology"],
+      "ipa": "/ˌbaɪəʊtekˈnɒlədʒi/",
+      "type": "noun",
+      "meaning": "công nghệ sinh học",
+      "example": "Biotechnology improves healthcare."
+    },
+    {
+      "word": "Nanotechnology",
+      "options": ["Nanotechnology", "Nanoteknology", "Nanotehnology", "Nanotechnollogy"],
+      "ipa": "/ˌnænəʊtekˈnɒlədʒi/",
+      "type": "noun",
+      "meaning": "công nghệ nano",
+      "example": "Nanotechnology works at the molecular level."
+    },
+    {
+      "word": "Quantum Computing",
+      "options": ["Quantum Computing", "Quantom Computing", "Quantam Computing", "Quantim Computing"],
+      "ipa": "/ˈkwɒntəm kəmˈpjuːtɪŋ/",
+      "type": "noun",
+      "meaning": "máy tính lượng tử",
+      "example": "Quantum computing solves complex problems."
+    },
+    {
+      "word": "Space Exploration",
+      "options": ["Space Exploration", "Spase Exploration", "Space Explaration", "Space Explorration"],
+      "ipa": "/speɪs ˌekspləˈreɪʃən/",
+      "type": "noun",
+      "meaning": "khám phá vũ trụ",
+      "example": "Space exploration expands human knowledge."
+    },
+    {
+      "word": "Smartphone",
+      "options": ["Smartphone", "Smartfon", "Smartphoen", "Smartfone"],
+      "ipa": "/ˈsmɑːtfəʊn/",
+      "type": "noun",
+      "meaning": "điện thoại thông minh",
+      "example": "I use my smartphone for everything."
+    },
+    {
+      "word": "Tablet",
+      "options": ["Tablet", "Tablett", "Tabllet", "Tablit"],
+      "ipa": "/ˈtæblət/",
+      "type": "noun",
+      "meaning": "máy tính bảng",
+      "example": "She reads e-books on her tablet."
+    },
+    {
+      "word": "Wearable",
+      "options": ["Wearable", "Wearible", "Wearabel", "Whereable"],
+      "ipa": "/ˈweərəbl/",
+      "type": "noun",
+      "meaning": "thiết bị đeo",
+      "example": "Smartwatches are popular wearables."
+    },
+    {
+      "word": "Smartwatch",
+      "options": ["Smartwatch", "Smartwach", "Smartwotch", "Smartwotch"],
+      "ipa": "/ˈsmɑːtwɒtʃ/",
+      "type": "noun",
+      "meaning": "đồng hồ thông minh",
+      "example": "My smartwatch tracks my heart rate."
+    },
+    {
+      "word": "Cloud Storage",
+      "options": ["Cloud Storage", "Clowd Storage", "Cloud Storige", "Claoud Storage"],
+      "ipa": "/klaʊd ˈstɔːrɪdʒ/",
+      "type": "noun",
+      "meaning": "lưu trữ đám mây",
+      "example": "I back up files to cloud storage."
+    },
+    {
+      "word": "Data Center",
+      "options": ["Data Center", "Deta Center", "Datta Center", "Data Cennter"],
+      "ipa": "/ˈdeɪtə ˈsentə(r)/",
+      "type": "noun",
+      "meaning": "trung tâm dữ liệu",
+      "example": "The company has a large data center."
+    },
+    {
+      "word": "Blockchain",
+      "options": ["Blockchain", "Blockchein", "Blocchain", "Blockchane"],
+      "ipa": "/ˈblɒktʃeɪn/",
+      "type": "noun",
+      "meaning": "chuỗi khối",
+      "example": "Blockchain is used in cryptocurrency."
+    },
+    {
+      "word": "Cryptocurrency",
+      "options": ["Cryptocurrency", "Crypto Currency", "Criptocurrency", "Cryptocurency"],
+      "ipa": "/ˈkrɪptəʊˌkʌrənsi/",
+      "type": "noun",
+      "meaning": "tiền mã hóa",
+      "example": "Bitcoin is a popular cryptocurrency."
+    },
+    {
+      "word": "E-commerce",
+      "options": ["E-commerce", "Ecomerce", "E-commarce", "E-commers"],
+      "ipa": "/ˌiːˈkɒmɜːs/",
+      "type": "noun",
+      "meaning": "thương mại điện tử",
+      "example": "E-commerce sales are growing."
+    },
+    {
+      "word": "SEO",
+      "options": ["SEO", "S E O", "S.E.O", "SOE"],
+      "ipa": "/ˌes.iːˈəʊ/",
+      "type": "noun",
+      "meaning": "tối ưu hóa công cụ tìm kiếm",
+      "example": "SEO helps websites rank higher."
+    },
+    {
+      "word": "UI Design",
+      "options": ["UI Design", "U I Design", "UI Desine", "UI Desing"],
+      "ipa": "/ˌjuːˈaɪ dɪˈzaɪn/",
+      "type": "noun",
+      "meaning": "thiết kế giao diện người dùng",
+      "example": "UI design affects usability."
+    },
+    {
+      "word": "UX Design",
+      "options": ["UX Design", "U X Design", "UX Desine", "UX Desing"],
+      "ipa": "/ˌjuːˈeks dɪˈzaɪn/",
+      "type": "noun",
+      "meaning": "thiết kế trải nghiệm người dùng",
+      "example": "UX design focuses on user satisfaction."
+    },
+    {
+      "word": "Gamification",
+      "options": ["Gamification", "Gamefication", "Gamificasion", "Gamificasion"],
+      "ipa": "/ˌɡeɪmɪfɪˈkeɪʃən/",
+      "type": "noun",
+      "meaning": "trò chơi hóa",
+      "example": "Gamification makes learning fun."
+    },
+    {
+      "word": "Automation",
+      "options": ["Automation", "Automashion", "Automasion", "Automaition"],
+      "ipa": "/ˌɔːtəˈmeɪʃən/",
+      "type": "noun",
+      "meaning": "tự động hóa",
+      "example": "Automation increases efficiency."
+    },
+    {
+      "word": "SaaS",
+      "options": ["SaaS", "S A A S", "SAAS", "Sas"],
+      "ipa": "/sæs/",
+      "type": "noun",
+      "meaning": "phần mềm như một dịch vụ",
+      "example": "Google Docs is a SaaS application."
+    },
+    {
+      "word": "API",
+      "options": ["API", "A P I", "APAI", "APY"],
+      "ipa": "/ˌeɪ.piːˈaɪ/",
+      "type": "noun",
+      "meaning": "giao diện lập trình ứng dụng",
+      "example": "We integrated the API into our system."
+    },
+    {
+      "word": "Open Source",
+      "options": ["Open Source", "Opan Source", "Open Sorce", "Opan Sorce"],
+      "ipa": "/ˌəʊpən ˈsɔːs/",
+      "type": "adjective",
+      "meaning": "mã nguồn mở",
+      "example": "Linux is an open-source OS."
+    },
+    {
+      "word": "Operating System",
+      "options": ["Operating System", "Opereting System", "Oprating System", "Operating Systom"],
+      "ipa": "/ˈɒpəreɪtɪŋ ˈsɪstəm/",
+      "type": "noun",
+      "meaning": "hệ điều hành",
+      "example": "Windows is a popular operating system."
+    },
+    {
+      "word": "Virtual Machine",
+      "options": ["Virtual Machine", "Virtuel Machine", "Virtual Masheen", "Virtuall Machine"],
+      "ipa": "/ˌvɜːtjʊəl məˈʃiːn/",
+      "type": "noun",
+      "meaning": "máy ảo",
+      "example": "A virtual machine can run multiple OS."
+    },
+    {
+      "word": "Edge Computing",
+      "options": ["Edge Computing", "Edje Computing", "Edge Computting", "Egde Computing"],
+      "ipa": "/edʒ kəmˈpjuːtɪŋ/",
+      "type": "noun",
+      "meaning": "điện toán biên",
+      "example": "Edge computing processes data locally."
+    },
+    {
+      "word": "Internet of Things",
+      "options": ["Internet of Things", "Internet of Thing", "Ineternet of Things", "Internet of Thinngs"],
+      "ipa": "/ˌɪntənet əv ˈθɪŋz/",
+      "type": "noun",
+      "meaning": "Internet vạn vật",
+      "example": "Smart homes use the Internet of Things."
+    },
+    {
+      "word": "5G",
+      "options": ["5G", "5-G", "5 G", "FiveG"],
+      "ipa": "/ˈfaɪv dʒiː/",
+      "type": "noun",
+      "meaning": "mạng di động 5G",
+      "example": "5G enables faster mobile internet."
+    },
+    {
+      "word": "Artificial Neural Network",
+      "options": ["Artificial Neural Network", "Artifical Neural Network", "Artificial Neurel Network", "Artificiel Neural Network"],
+      "ipa": "/ˌɑːtɪˈfɪʃəl ˈnjʊərəl ˈnetwɜːk/",
+      "type": "noun",
+      "meaning": "mạng nơ-ron nhân tạo",
+      "example": "Artificial neural networks power deep learning."
     }
   ]
 }
