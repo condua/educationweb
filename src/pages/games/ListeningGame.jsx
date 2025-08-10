@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// --- Âm thanh ---
+// --- CÁC HÀM VÀ BIẾN TIỆN ÍCH (ĐƯA RA NGOÀI COMPONENT) ---
+// Chỉ tạo 1 lần duy nhất, tránh tạo lại mỗi khi re-render
 const sounds = {
   correct: new Audio(
     "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581169/answer-correct_izdhpx.mp3"
@@ -33,7 +34,8 @@ const speakWord = (text) => {
   }
 };
 
-export default function ListeningGame() {
+// --- CUSTOM HOOK ĐỂ QUẢN LÝ LOGIC GAME ---
+const useListeningGame = () => {
   const [gameState, setGameState] = useState("loading"); // loading, topic_selection, playing, finished
   const [topics, setTopics] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -42,7 +44,7 @@ export default function ListeningGame() {
   const [isAnswered, setIsAnswered] = useState(false);
   const [score, setScore] = useState(0);
 
-  // Tải dữ liệu từ file JSON
+  // Tải dữ liệu từ file JSON và các giọng đọc
   useEffect(() => {
     fetch("/vocabulary.json")
       .then((res) => res.json())
@@ -55,33 +57,50 @@ export default function ListeningGame() {
         setGameState("error");
       });
 
-    // Tải giọng đọc
+    // Tải trước giọng đọc
     speechSynthesis.getVoices();
   }, []);
 
-  const handleTopicSelect = (topic) => {
+  // ✅ SỬA LỖI: Chuẩn bị câu hỏi với các lựa chọn đã được xáo trộn sẵn
+  const prepareQuestions = (words) => {
+    // Xáo trộn thứ tự các câu hỏi
+    const shuffledWords = [...words].sort(() => Math.random() - 0.5);
+    // Với mỗi câu hỏi, tạo một mảng lựa chọn đã được xáo trộn và lưu lại
+    return shuffledWords.map((q) => ({
+      ...q,
+      shuffledOptions: [...q.options].sort(() => Math.random() - 0.5),
+    }));
+  };
+
+  const handleTopicSelect = useCallback((topic) => {
     playSound(sounds.click);
-    setQuestions(topic.words.sort(() => Math.random() - 0.5));
+    setQuestions(prepareQuestions(topic.words));
     setCurrentQuestionIndex(0);
     setSelectedAnswer(null);
     setIsAnswered(false);
     setScore(0);
     setGameState("playing");
-  };
+  }, []);
 
-  const handleAnswerClick = (option) => {
-    if (isAnswered) return;
-    setIsAnswered(true);
-    setSelectedAnswer(option);
-    if (option === questions[currentQuestionIndex].word) {
-      playSound(sounds.correct);
-      setScore(score + 1);
-    } else {
-      playSound(sounds.incorrect);
-    }
-  };
+  const handleAnswerClick = useCallback(
+    (option) => {
+      if (isAnswered) return;
 
-  const handleNextQuestion = () => {
+      const currentQuestion = questions[currentQuestionIndex];
+      setIsAnswered(true);
+      setSelectedAnswer(option);
+
+      if (option === currentQuestion.word) {
+        playSound(sounds.correct);
+        setScore((prevScore) => prevScore + 1);
+      } else {
+        playSound(sounds.incorrect);
+      }
+    },
+    [isAnswered, questions, currentQuestionIndex]
+  );
+
+  const handleNextQuestion = useCallback(() => {
     playSound(sounds.click);
     const nextIndex = currentQuestionIndex + 1;
     if (nextIndex < questions.length) {
@@ -91,22 +110,50 @@ export default function ListeningGame() {
     } else {
       setGameState("finished");
     }
-  };
+  }, [currentQuestionIndex, questions.length]);
+
+  const resetGame = useCallback(() => {
+    setGameState("topic_selection");
+    // Không cần reset các state khác ở đây vì handleTopicSelect sẽ làm điều đó
+  }, []);
 
   const currentQuestion = useMemo(
     () => questions[currentQuestionIndex],
     [questions, currentQuestionIndex]
   );
 
-  // ✅ THAY ĐỔI: Tạo một danh sách các lựa chọn đã được xáo trộn
-  const shuffledOptions = useMemo(() => {
-    if (!currentQuestion) return [];
-    return [...currentQuestion.options].sort(() => Math.random() - 0.5);
-  }, [currentQuestion]);
+  return {
+    gameState,
+    topics,
+    questions,
+    currentQuestion,
+    currentQuestionIndex, // <-- Trả về thêm currentQuestionIndex
+    isAnswered,
+    selectedAnswer,
+    score,
+    handleTopicSelect,
+    handleAnswerClick,
+    handleNextQuestion,
+    resetGame,
+  };
+};
 
-  const isCorrect = selectedAnswer === currentQuestion?.word;
-
-  // --- Giao diện các màn hình ---
+// --- COMPONENT GIAO DIỆN ---
+export default function ListeningGame() {
+  const {
+    gameState,
+    topics,
+    questions,
+    currentQuestion,
+    currentQuestionIndex, // <-- Nhận currentQuestionIndex
+    isAnswered,
+    selectedAnswer,
+    score,
+    handleTopicSelect,
+    handleAnswerClick,
+    handleNextQuestion,
+    resetGame,
+  } = useListeningGame();
 
   if (gameState === "loading" || gameState === "error") {
     return (
@@ -151,7 +198,7 @@ export default function ListeningGame() {
         </p>
         <div className="flex gap-4">
           <button
-            onClick={() => setGameState("topic_selection")}
+            onClick={resetGame}
             className="rounded-full bg-white px-8 py-4 text-xl font-semibold text-slate-900 shadow-xl transition-transform hover:scale-105"
           >
             Choose Another Topic
@@ -161,20 +208,57 @@ export default function ListeningGame() {
     );
   }
 
+  // Guard clause để đề phòng currentQuestion chưa kịp tải
+  if (!currentQuestion) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-slate-900 text-white text-2xl">
+        Preparing questions...
+      </div>
+    );
+  }
+
+  const isCorrect = selectedAnswer === currentQuestion.word;
+  // --- THÊM MỚI: TÍNH TOÁN PHẦN TRĂM TIẾN ĐỘ ---
+  const progressPercentage = questions.length
+    ? ((currentQuestionIndex + 1) / questions.length) * 100
+    : 0;
+
   return (
     <div className="flex min-h-screen items-center justify-center p-2 sm:p-4 bg-slate-900">
       <div className="w-full max-w-xl rounded-2xl bg-gray-900 p-6 sm:p-8 text-white shadow-2xl shadow-violet-500/20">
-        <header className="mb-6 sm:mb-8 flex justify-between items-center text-lg">
+        <header className="mb-4 sm:mb-6 flex justify-between items-center text-lg">
           <button
-            onClick={() => setGameState("topic_selection")}
+            onClick={resetGame}
             className="text-violet-400 hover:text-violet-300"
           >
             ← Back to Topics
           </button>
           <p>
-            Score: <span className="font-bold">{score}</span>
+            {/* ✅ THAY ĐỔI: Hiển thị điểm / tổng số câu */}
+            Score:{" "}
+            <span className="font-bold">
+              {score} / {questions.length}
+            </span>
           </p>
         </header>
+
+        {/* --- THANH TIẾN TRÌNH (BẮT ĐẦU) --- */}
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-2 text-sm text-gray-400 font-medium">
+            <span>
+              Question {currentQuestionIndex + 1} of {questions.length}
+            </span>
+          </div>
+          <div className="w-full bg-gray-700 rounded-full h-2.5">
+            <motion.div
+              className="bg-violet-600 h-2.5 rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: `${progressPercentage}%` }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            />
+          </div>
+        </div>
+        {/* --- THANH TIẾN TRÌNH (KẾT THÚC) --- */}
 
         {!isAnswered && (
           <div className="text-center">
@@ -206,8 +290,8 @@ export default function ListeningGame() {
         )}
 
         <div className="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {/* ✅ THAY ĐỔI: Render từ mảng shuffledOptions */}
-          {shuffledOptions.map((option) => {
+          {/* ✅ SỬA LỖI: Render từ mảng shuffledOptions đã được chuẩn bị sẵn */}
+          {currentQuestion.shuffledOptions.map((option) => {
             let buttonClass = "bg-gray-700 hover:bg-violet-500";
             if (isAnswered) {
               if (option === currentQuestion.word) buttonClass = "bg-green-500";
