@@ -274,7 +274,8 @@ export default function MillionaireGame() {
             <div className="mt-6">
               <p className="text-3xl">Bạn đã giành được</p>
               <p className="text-6xl font-bold text-yellow-400 my-4">
-                {level > 0 ? prizeLevels[prizeLevels.length - level] : "0"} VNĐ
+                {level > 0 ? prizeLevels[prizeLevels.length - level + 1] : "0"}{" "}
+                VNĐ
               </p>
             </div>
           )}
