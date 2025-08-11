@@ -23,6 +23,7 @@ const sounds = {
     "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754664209/the-suspenseful-braam-334309_ggotug.mp3",
   start:
     "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754664206/gamestart-272829_ccnfqa.mp3",
+  win: "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754926334/winning_ywueii.mp3",
 };
 
 // --- Dữ liệu Game ---
@@ -44,9 +45,9 @@ const prizeLevels = [
   "150.000.000",
 ].reverse();
 
-const easyQuestions = allQuestions.slice(0, 10);
-const mediumQuestions = allQuestions.slice(10, 40);
-const hardQuestions = allQuestions.slice(40, 75);
+const easyQuestions = allQuestions.slice(0, 40);
+const mediumQuestions = allQuestions.slice(40, 65);
+const hardQuestions = allQuestions.slice(65, 150);
 
 // Hàm xáo trộn mảng (Fisher-Yates shuffle)
 const shuffleArray = (array) => {
@@ -73,7 +74,23 @@ export default function MillionaireGame() {
 
   // Dùng useRef để lưu trữ kho câu hỏi và không bị reset giữa các lần render
   const availableQuestionsRef = useRef(null);
+  const SAFE_LEVELS = [4, 9]; // làm đậm ở UI: [4,9,14] – 14 là câu cuối
 
+  const getPayout = (gameState, level) => {
+    // Đã thắng toàn bộ
+    if (gameState === "won") return prizeLevels[0]; // 150.000.000
+
+    // Thua ở level hiện tại -> nhận theo câu đã vượt qua gần nhất
+    if (level === 0) return "0";
+
+    const lastCleared = level - 1; // câu gần nhất đã đúng
+    // Nếu muốn mốc an toàn:
+    const lastSafe = SAFE_LEVELS.filter((i) => i <= lastCleared).pop();
+    const paidIndex = lastSafe !== undefined ? lastSafe : lastCleared;
+
+    // prizeLevels đang theo thứ tự: cao -> thấp, nên phải quy đổi chỉ số
+    return prizeLevels[prizeLevels.length - 1 - paidIndex];
+  };
   // Hàm khởi tạo hoặc reset lại kho câu hỏi
   const resetQuestionPools = () => {
     availableQuestionsRef.current = {
@@ -166,6 +183,7 @@ export default function MillionaireGame() {
         if (level === 14) {
           // Nếu đúng, chờ một chút rồi chuyển sang trạng thái thắng cuộc
           setTimeout(() => {
+            playSound(sounds.win, 0.5);
             setGameState("won");
           }, 1500);
         } else {
@@ -274,8 +292,7 @@ export default function MillionaireGame() {
             <div className="mt-6">
               <p className="text-3xl">Bạn đã giành được</p>
               <p className="text-6xl font-bold text-yellow-400 my-4">
-                {level > 0 ? prizeLevels[prizeLevels.length - level + 1] : "0"}{" "}
-                VNĐ
+                {getPayout(gameState, level)} VNĐ
               </p>
             </div>
           )}
