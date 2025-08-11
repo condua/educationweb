@@ -821,5 +821,206 @@ const allQuestions = [
     ],
     answer: "Lý thuyết dây",
   },
+  {
+    question: "Nguyên tố hóa học nào có điểm nóng chảy cao nhất?",
+    options: ["Carbon", "Wolfram (Tungsten)", "Osmium", "Tantalum"],
+    answer: "Wolfram (Tungsten)",
+  },
+  {
+    question: "Trong thuyết tương đối hẹp, công thức E = mc² biểu thị điều gì?",
+    options: [
+      "Khối lượng và năng lượng là tương đương",
+      "Năng lượng phụ thuộc vào vận tốc",
+      "Khối lượng phụ thuộc vào nhiệt độ",
+      "Không gian và thời gian là bất biến",
+    ],
+    answer: "Khối lượng và năng lượng là tương đương",
+  },
+  {
+    question: "Ai là nhà toán học đặt nền móng cho lý thuyết tập hợp hiện đại?",
+    options: ["Georg Cantor", "David Hilbert", "Kurt Gödel", "Henri Poincaré"],
+    answer: "Georg Cantor",
+  },
+  {
+    question: "Ngôn ngữ lập trình nào được coi là ngôn ngữ cấp cao đầu tiên?",
+    options: ["Fortran", "COBOL", "Assembly", "ALGOL"],
+    answer: "Fortran",
+  },
+  {
+    question: "Trong sinh học, 'apoptosis' chỉ hiện tượng gì?",
+    options: [
+      "Tế bào phân chia nhanh chóng",
+      "Tế bào chết theo chương trình",
+      "Tế bào đột biến gen",
+      "Tế bào biến đổi hình dạng",
+    ],
+    answer: "Tế bào chết theo chương trình",
+  },
+  {
+    question: "Tác phẩm 'The Republic' (Cộng hòa) là của triết gia nào?",
+    options: ["Aristotle", "Plato", "Socrates", "Cicero"],
+    answer: "Plato",
+  },
+  {
+    question: "Hiện tượng 'Siêu dẫn' xảy ra ở điều kiện nào?",
+    options: [
+      "Nhiệt độ rất cao",
+      "Nhiệt độ cực thấp",
+      "Áp suất cao",
+      "Từ trường mạnh",
+    ],
+    answer: "Nhiệt độ cực thấp",
+  },
+  {
+    question: "Hệ điều hành UNIX ban đầu được phát triển tại đâu?",
+    options: ["MIT", "Bell Labs", "IBM", "Stanford University"],
+    answer: "Bell Labs",
+  },
+  {
+    question: "Trong hóa học, số Avogadro xấp xỉ bằng bao nhiêu?",
+    options: ["6,022 × 10²³", "3,14 × 10⁸", "9,81 × 10⁶", "1,6 × 10⁻¹⁹"],
+    answer: "6,022 × 10²³",
+  },
+  {
+    question: "Ai là nhà khoa học phát hiện ra hiện tượng phóng xạ?",
+    options: [
+      "Marie Curie",
+      "Henri Becquerel",
+      "Pierre Curie",
+      "Ernest Rutherford",
+    ],
+    answer: "Henri Becquerel",
+  },
+  {
+    question:
+      "Trong lịch sử Nhật Bản, thời kỳ 'Edo' kéo dài từ năm nào đến năm nào?",
+    options: ["1603–1868", "1467–1600", "1868–1912", "794–1185"],
+    answer: "1603–1868",
+  },
+  {
+    question: "Nguyên tắc Pauli trong vật lý lượng tử nói về điều gì?",
+    options: [
+      "Hạt không thể vượt tốc độ ánh sáng",
+      "Hai fermion không thể chiếm cùng trạng thái lượng tử",
+      "Năng lượng không thể tạo ra hoặc mất đi",
+      "Tần số và bước sóng tỷ lệ nghịch",
+    ],
+    answer: "Hai fermion không thể chiếm cùng trạng thái lượng tử",
+  },
+  {
+    question: "Ai là tác giả của 'Divine Comedy' (Thần khúc)?",
+    options: ["Dante Alighieri", "Geoffrey Chaucer", "John Milton", "Homer"],
+    answer: "Dante Alighieri",
+  },
+  {
+    question:
+      "Hiện tượng 'đỏ dịch chuyển' (redshift) trong thiên văn học chỉ điều gì?",
+    options: [
+      "Sao trở nên nóng hơn",
+      "Vũ trụ đang giãn nở",
+      "Sao di chuyển về phía Trái Đất",
+      "Bức xạ bị hấp thụ",
+    ],
+    answer: "Vũ trụ đang giãn nở",
+  },
+  {
+    question: "Trong y học, 'placebo effect' là gì?",
+    options: [
+      "Tác dụng phụ của thuốc",
+      "Tác dụng giả dược do niềm tin",
+      "Hiệu ứng tăng liều",
+      "Phản ứng dị ứng",
+    ],
+    answer: "Tác dụng giả dược do niềm tin",
+  },
+  {
+    question:
+      "Vị hoàng đế nào của La Mã đã ra sắc lệnh Công giáo trở thành tôn giáo chính thức?",
+    options: ["Constantine I", "Theodosius I", "Augustus", "Nero"],
+    answer: "Theodosius I",
+  },
+  {
+    question:
+      "Trong kinh tế học, 'lạm phát đình trệ' (stagflation) mô tả tình trạng gì?",
+    options: [
+      "Kinh tế tăng trưởng nhanh và lạm phát cao",
+      "Tăng trưởng chậm nhưng lạm phát cao",
+      "Lạm phát giảm mạnh",
+      "Giảm phát và thất nghiệp thấp",
+    ],
+    answer: "Tăng trưởng chậm nhưng lạm phát cao",
+  },
+  {
+    question: "Khái niệm 'Deep Learning' là một nhánh của lĩnh vực nào?",
+    options: [
+      "Thị giác máy tính",
+      "Học máy (Machine Learning)",
+      "Khoa học dữ liệu",
+      "Trí tuệ nhân tạo",
+    ],
+    answer: "Học máy (Machine Learning)",
+  },
+  {
+    question: "Ai là người đầu tiên đi bộ trên Mặt Trăng?",
+    options: [
+      "Buzz Aldrin",
+      "Neil Armstrong",
+      "Yuri Gagarin",
+      "Michael Collins",
+    ],
+    answer: "Neil Armstrong",
+  },
+  {
+    question: "Phần mềm 'Mosaic' nổi tiếng vì điều gì?",
+    options: [
+      "Trình duyệt web đầu tiên phổ biến rộng rãi",
+      "Hệ điều hành mã nguồn mở",
+      "Phần mềm xử lý ảnh đầu tiên",
+      "Chương trình email đầu tiên",
+    ],
+    answer: "Trình duyệt web đầu tiên phổ biến rộng rãi",
+  },
+  {
+    question:
+      "Trong sinh học, bộ phận nào của tế bào chịu trách nhiệm sản xuất ATP?",
+    options: ["Nhân", "Ti thể", "Lục lạp", "Lysosome"],
+    answer: "Ti thể",
+  },
+  {
+    question: "Nguyên tố nào là kim loại kiềm thổ?",
+    options: ["Sodium", "Calcium", "Potassium", "Lithium"],
+    answer: "Calcium",
+  },
+  {
+    question: "Ai là người đã phát minh ra máy in vào thế kỷ 15?",
+    options: [
+      "Johannes Gutenberg",
+      "Leonardo da Vinci",
+      "Isaac Newton",
+      "Galileo Galilei",
+    ],
+    answer: "Johannes Gutenberg",
+  },
+  {
+    question: "Hằng số Planck có giá trị xấp xỉ bao nhiêu?",
+    options: [
+      "6,626 × 10⁻³⁴ J·s",
+      "3,00 × 10⁸ m/s",
+      "1,60 × 10⁻¹⁹ C",
+      "9,81 m/s²",
+    ],
+    answer: "6,626 × 10⁻³⁴ J·s",
+  },
+  {
+    question:
+      "Tác phẩm 'War and Peace' (Chiến tranh và Hòa bình) là của nhà văn nào?",
+    options: [
+      "Fyodor Dostoevsky",
+      "Leo Tolstoy",
+      "Anton Chekhov",
+      "Alexander Pushkin",
+    ],
+    answer: "Leo Tolstoy",
+  },
 ];
 export default allQuestions;
