@@ -6,6 +6,7 @@ import React, {
   useRef,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Maximize, Minimize } from "lucide-react"; // ✨ THÊM MỚI: Import icon
 
 // --- Âm thanh ---
 const playSound = (src, volume = 0.5) => {
@@ -71,7 +72,9 @@ export default function MillionaireGame() {
   const [disabledOptions, setDisabledOptions] = useState([]);
   const [audiencePoll, setAudiencePoll] = useState(null);
   const [gameQuestions, setGameQuestions] = useState([]);
-
+  // ✨ THÊM MỚI: State và Ref cho chế độ toàn màn hình
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const gameContainerRef = useRef(null);
   // Dùng useRef để lưu trữ kho câu hỏi và không bị reset giữa các lần render
   const availableQuestionsRef = useRef(null);
   const SAFE_LEVELS = [4, 9]; // làm đậm ở UI: [4,9,14] – 14 là câu cuối
@@ -247,7 +250,24 @@ export default function MillionaireGame() {
     },
     [lifelines, currentQuestion, disabledOptions]
   );
+  // ✨ THÊM MỚI: Logic xử lý toàn màn hình
+  const toggleFullscreen = useCallback(() => {
+    const elem = gameContainerRef.current;
+    if (!elem) return;
+    if (!document.fullscreenElement) {
+      elem.requestFullscreen().catch((err) => alert(`Error: ${err.message}`));
+    } else {
+      document.exitFullscreen();
+    }
+  }, []);
 
+  useEffect(() => {
+    const onFullscreenChange = () =>
+      setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    return () =>
+      document.removeEventListener("fullscreenchange", onFullscreenChange);
+  }, []);
   const resetGame = useCallback(() => {
     playSound(sounds.start);
     generateAndSetQuestions(); // Tạo bộ câu hỏi mới khi chơi lại
@@ -314,7 +334,10 @@ export default function MillionaireGame() {
 
   // --- Giao diện chơi game chính ---
   return (
-    <div className="flex h-screen w-full flex-col lg:flex-row bg-slate-900 text-white font-sans p-2 sm:p-4 gap-4">
+    <div
+      ref={gameContainerRef}
+      className="flex h-screen w-full flex-col lg:flex-row bg-slate-900 text-white font-sans p-2 sm:p-4 gap-4"
+    >
       {/* Thang điểm được đưa lên đầu trên mobile, và là sidebar trên desktop */}
       <div className="w-full lg:order-last lg:w-72 lg:flex-shrink-0 lg:hidden">
         <div className="bg-slate-800/60 lg:h-full lg:p-4 rounded-b-lg lg:rounded-lg">
@@ -361,7 +384,14 @@ export default function MillionaireGame() {
             >
               {key === "fiftyFifty" ? "50:50" : "📊"}
             </button>
-          ))}
+          ))}{" "}
+          {/* ✨ THÊM MỚI: Nút toàn màn hình */}
+          <button
+            onClick={toggleFullscreen}
+            className="p-3 text-2xl bg-purple-700 rounded-full transition-transform hover:scale-110"
+          >
+            {isFullscreen ? <Minimize size={24} /> : <Maximize size={24} />}
+          </button>
         </div>
 
         {audiencePoll && (
