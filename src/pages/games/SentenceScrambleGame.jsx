@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import initialSentences from "./initialSentences"; // Import dữ liệu câu từ file khác
 // Dữ liệu các câu cho trò chơi
-const initialSentences = [
-  "The quick brown fox jumps over the lazy dog",
-  "I love to learn English with fun games",
-  "She reads a new book every week",
-  "They are playing football in the park",
-  "What is your favorite color",
-  "The sun always shines brightly in the morning",
-  "My brother works as a software engineer",
-  "We are planning a trip to the mountains",
-  "Can you please help me with my homework",
-  "Elephants are the largest land animals",
-];
 
 // Hàm xáo trộn một mảng
 const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);

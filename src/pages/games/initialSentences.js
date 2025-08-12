@@ -1,0 +1,123 @@
+const initialSentences = [
+  // Present Tenses (Simple & Continuous)
+  "Water boils at one hundred degrees Celsius.",
+  "He is listening to music in his room right now.",
+  "My parents live in a small town near the river.",
+  "The children are playing happily in the garden.",
+  "She often reads books before going to sleep.",
+  "Why are you wearing a coat? It's not cold.",
+  "The Earth revolves around the Sun.",
+  "I am not feeling well today.",
+  "He works from home on Fridays.",
+  "Look! That bird is building a nest.",
+
+  // Past Tenses (Simple & Continuous)
+  "We visited our grandparents last weekend.",
+  "She was studying when the phone rang.",
+  "They went to the cinema yesterday evening.",
+  "He bought a new car a few months ago.",
+  "I didn't see you at the party last night.",
+  "What were you doing at 8 PM yesterday?",
+  "The Titanic sank in 1912.",
+  "He fell off his bike and hurt his leg.",
+  "While they were hiking, it started to rain.",
+  "Did you finish your homework?",
+
+  // Perfect Tenses
+  "I have already finished my dinner.",
+  "She has lived in this city for ten years.",
+  "They had never seen such a beautiful sunset before.",
+  "Have you ever been to Paris?",
+  "He has just left the office.",
+  "By the time we arrived, the movie had already started.",
+  "We have known each other since we were children.",
+  "She has not called me yet.",
+  "He had finished his work before he went out.",
+  "I have lost my keys, so I can't open the door.",
+
+  // Future Tenses
+  "I think it will rain tomorrow.",
+  "We are going to visit a museum next Saturday.",
+  "The train will arrive at platform 3.",
+  "She is going to start a new course in September.",
+  "I will call you as soon as I get home.",
+  "Look at those dark clouds! It is going to rain.",
+  "He will be 30 years old next year.",
+  "They are going to travel around the world.",
+  "I promise I will not tell anyone.",
+  "Are you going to the concert tonight?",
+
+  // Modal Verbs
+  "You should drink more water every day.",
+  "He can play the guitar very well.",
+  "May I borrow your pen for a moment?",
+  "You must wear a helmet when riding a motorbike.",
+  "It might be a good idea to check the weather first.",
+  "Could you please pass the salt?",
+  "She must be very tired after her long flight.",
+  "We should leave now or we will be late.",
+  "He can't speak German fluently.",
+  "You shouldn't eat too much junk food.",
+
+  // Comparatives & Superlatives
+  "This car is more expensive than that one.",
+  "She is the smartest student in her class.",
+  "An elephant is much bigger than a mouse.",
+  "Mount Everest is the highest mountain in the world.",
+  "This book is less interesting than the one I read last week.",
+  "He runs faster than his brother.",
+  "This is the most beautiful painting I have ever seen.",
+  "She is the youngest child in her family.",
+  "My new phone is better than my old one.",
+  "This was the worst movie I have ever watched.",
+
+  // Compound & Complex Sentences (Conjunctions & Clauses)
+  "I like coffee, but my sister prefers tea.",
+  "He was feeling tired, so he went to bed early.",
+  "Although it was cold outside, we went for a walk.",
+  "She called me while I was having dinner.",
+  "If you study hard, you will pass the exam.",
+  "He went to the library because he needed to borrow some books.",
+  "I will wait here until you come back.",
+  "She is not only intelligent but also very kind.",
+  "You can either stay here or come with us.",
+  "He was walking down the street when he saw an old friend.",
+
+  // Passive Voice
+  "This famous book was written by a Vietnamese author.",
+  "The window was broken by the strong wind.",
+  "English is spoken in many countries around the world.",
+  "The new bridge will be completed next year.",
+  "My car is being repaired at the moment.",
+  "The cake was eaten before I could have a slice.",
+  "The letters were delivered this morning.",
+  "This beautiful house was built in 1990.",
+  "The thief was arrested by the police.",
+  "The problem will be solved soon.",
+
+  // Questions
+  "How often do you go to the gym?",
+  "Where did you buy that beautiful dress?",
+  "Who is your favorite singer?",
+  "Have you finished reading the book I gave you?",
+  "Does your father work in a bank?",
+  "Why was she crying this morning?",
+  "What time does the meeting start?",
+  "Is this your first time visiting Vietnam?",
+  "Whose bag is this on the table?",
+  "Can you show me the way to the nearest post office?",
+
+  // Gerunds, Infinitives & Others
+  "Swimming is my favorite summer activity.",
+  "I decided to learn a new language this year.",
+  "He is very good at playing chess.",
+  "She stopped to buy some milk on her way home.",
+  "There is a lot of traffic in the city during rush hour.",
+  "He enjoys listening to music in his free time.",
+  "Remember to lock the door before you leave the house.",
+  "She is afraid of flying in airplanes.",
+  "It is important to eat a balanced diet.",
+  "Thank you for helping me with my project.",
+];
+
+export default initialSentences;
