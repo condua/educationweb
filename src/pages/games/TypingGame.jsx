@@ -1,5 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+// --- Âm thanh ---
+const correctSound = new Audio(
+  "https://cdn.pixabay.com/audio/2022/03/10/audio_c8488d6e55.mp3"
+);
+correctSound.volume = 0.5;
 // Danh sách từ vựng cho trò chơi
 const wordList = [
   "ability",
@@ -736,7 +741,9 @@ const wordList = [
   "yourself",
 ];
 
-const GAME_DURATION = 10000; // Thời gian chơi: 60 giây
+const GAME_DURATION = 60; // Thời gian chơi: 60 giây
+
+const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
 
 export default function TypingGame() {
   const [words, setWords] = useState([]);
@@ -748,9 +755,17 @@ export default function TypingGame() {
 
   const inputRef = useRef(null);
 
-  // Khởi tạo và xáo trộn danh sách từ
-  useEffect(() => {
-    setWords(shuffleArray(wordList));
+  const startGame = useCallback(() => {
+    const shuffledWords = shuffleArray(wordList);
+    setWords(shuffledWords);
+    setIsGameRunning(true);
+    setTimeLeft(GAME_DURATION);
+    setScore(0);
+    setCurrentWordIndex(0);
+    setTypedValue("");
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   }, []);
 
   // Xử lý bộ đếm thời gian
@@ -760,143 +775,157 @@ export default function TypingGame() {
       interval = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
-    } else if (timeLeft === 0) {
+    } else if (timeLeft === 0 && isGameRunning) {
       setIsGameRunning(false);
     }
     return () => clearInterval(interval);
   }, [isGameRunning, timeLeft]);
 
-  // Tự động focus vào ô input khi game bắt đầu
+  // Tự động focus vào ô input
   useEffect(() => {
     if (isGameRunning) {
-      inputRef.current.focus();
+      inputRef.current?.focus();
     }
   }, [isGameRunning]);
 
-  const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
-
-  const startGame = () => {
-    setWords(shuffleArray(wordList));
-    setIsGameRunning(true);
-    setTimeLeft(GAME_DURATION);
-    setScore(0);
-    setCurrentWordIndex(0);
-    setTypedValue("");
-  };
+  // ✨ LOGIC MỚI: Tự động chuyển từ khi gõ đúng
+  useEffect(() => {
+    if (
+      isGameRunning &&
+      words.length > 0 &&
+      typedValue === words[currentWordIndex]
+    ) {
+      correctSound.currentTime = 0;
+      correctSound.play();
+      setScore((prevScore) => prevScore + 1);
+      setCurrentWordIndex((prevIndex) => prevIndex + 1);
+      setTypedValue("");
+    }
+  }, [typedValue, currentWordIndex, words, isGameRunning]);
 
   const handleInputChange = (e) => {
-    const newTypedValue = e.target.value;
-
-    // Không cho phép gõ space ở đầu
-    if (newTypedValue.trim() === "") {
-      setTypedValue("");
-      return;
-    }
-
+    if (!isGameRunning) return;
+    // Chỉ cho phép gõ chữ cái, không cho gõ space
+    const newTypedValue = e.target.value.trim();
     setTypedValue(newTypedValue);
-
-    // Kiểm tra khi người dùng gõ xong từ và nhấn space
-    if (newTypedValue.endsWith(" ")) {
-      const typedWord = newTypedValue.trim();
-      if (typedWord === words[currentWordIndex]) {
-        setScore(score + 1);
-        setCurrentWordIndex(currentWordIndex + 1);
-        setTypedValue(""); // Xóa ô input để gõ từ mới
-      }
-    }
   };
 
   const currentWord = words[currentWordIndex];
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center p-4 font-mono">
-      <div className="w-full max-w-3xl">
-        <h1 className="text-center text-4xl font-bold text-yellow-400 mb-8">
-          Typing Speedster ⚡
-        </h1>
-
-        {isGameRunning ? (
-          <div>
-            {/* Header thông số game */}
-            <div className="mb-8 flex justify-around text-2xl">
-              <div className="text-center">
-                <p className="text-gray-400">Time Left</p>
-                <p className="text-5xl font-bold text-yellow-400">{timeLeft}</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400">Score</p>
-                <p className="text-5xl font-bold text-green-400">{score}</p>
-              </div>
-            </div>
-
-            {/* Khu vực hiển thị từ */}
-            <div className="relative mb-8 flex h-20 items-center justify-center rounded-lg bg-gray-700 p-4 text-3xl tracking-widest">
-              {currentWord?.split("").map((char, index) => {
-                let charClass = "text-gray-400";
-                if (index < typedValue.length) {
-                  charClass =
-                    typedValue[index] === char
-                      ? "text-green-400"
-                      : "text-red-500 underline";
-                }
-                return (
-                  <span key={index} className={charClass}>
-                    {char}
-                  </span>
-                );
-              })}
-            </div>
-
-            {/* Ô nhập liệu */}
-            <input
-              ref={inputRef}
-              type="text"
-              value={typedValue}
-              onChange={handleInputChange}
-              className="w-full rounded-lg border-2 border-gray-600 bg-gray-800 p-4 text-center text-2xl text-white outline-none focus:border-yellow-400"
-              placeholder="Start typing here..."
-              autoComplete="off"
-              autoCapitalize="off"
-              autoCorrect="off"
-            />
-          </div>
-        ) : (
-          // Màn hình bắt đầu / kết thúc
-          <div className="text-center">
-            {score > 0 ? ( // Màn hình kết thúc
-              <div>
-                <h2 className="text-3xl font-bold text-green-400">
-                  Time's up!
-                </h2>
-                <p className="mt-4 text-xl">Your final score is:</p>
-                <p className="my-6 text-8xl font-bold">{score}</p>
-                <p className="text-lg">
-                  That's approximately{" "}
-                  <span className="text-yellow-400 font-bold">{score} WPM</span>{" "}
-                  (Words Per Minute)!
-                </p>
-              </div>
-            ) : (
-              // Màn hình bắt đầu
-              <div>
-                <h2 className="text-2xl">
-                  Type all the words you can in 60 seconds.
-                </h2>
-                <p className="mt-2 text-gray-400">
-                  Type the word and press{" "}
-                  <span className="font-bold text-yellow-400">Spacebar</span> to
-                  move to the next one.
-                </p>
-              </div>
-            )}
-            <button
-              onClick={startGame}
-              className="mt-12 rounded-lg bg-yellow-400 px-10 py-4 text-2xl font-bold text-gray-900 transition-transform hover:scale-105"
+    <div className="flex h-screen w-full items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 p-4 font-mono">
+      <div className="w-full max-w-3xl text-white">
+        {/* Màn hình bắt đầu / kết thúc */}
+        <AnimatePresence>
+          {!isGameRunning && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="text-center"
             >
-              {score > 0 ? "Play Again" : "Start Game"}
-            </button>
-          </div>
-        )}
+              <h1 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+                Typing Sprint
+              </h1>
+              {timeLeft === 0 ? (
+                <div className="mt-8">
+                  <h2 className="text-3xl font-bold text-green-400">
+                    Time's up!
+                  </h2>
+                  <p className="mt-4 text-xl">Your final score is:</p>
+                  <p className="my-6 text-8xl font-bold">{score}</p>
+                  <p className="text-lg text-slate-400">
+                    That's approximately{" "}
+                    <span className="text-yellow-400 font-bold">
+                      {score} WPM
+                    </span>{" "}
+                    (Words Per Minute)!
+                  </p>
+                </div>
+              ) : (
+                <div>
+                  <p className="mt-4 text-lg text-slate-300">
+                    Type the words as fast as you can in {GAME_DURATION}{" "}
+                    seconds.
+                  </p>
+                  <p className="mt-2 text-slate-400">
+                    The next word appears automatically when you type correctly.
+                  </p>
+                </div>
+              )}
+              <motion.button
+                onClick={startGame}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-12 rounded-full bg-cyan-400 px-10 py-4 text-2xl font-bold text-slate-900 shadow-[0_0_20px_rgba(56,189,248,0.5)] transition-shadow hover:shadow-[0_0_30px_rgba(56,189,248,0.7)]"
+              >
+                {timeLeft === 0 ? "Play Again" : "Start Game"}
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Giao diện chơi game */}
+        <AnimatePresence>
+          {isGameRunning && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div className="mb-8 flex justify-around text-2xl">
+                <div className="text-center">
+                  <p className="text-slate-400">Time Left</p>
+                  <p className="text-5xl font-bold text-yellow-400">
+                    {timeLeft}
+                  </p>
+                </div>
+                <div className="text-center">
+                  <p className="text-slate-400">Score</p>
+                  <p className="text-5xl font-bold text-green-400">{score}</p>
+                </div>
+              </div>
+
+              <div className="relative mb-8 rounded-2xl bg-black/30 backdrop-blur-sm ring-1 ring-white/10 p-6 text-center text-4xl tracking-[0.2em]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentWord}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {currentWord?.split("").map((char, index) => {
+                      let charClass = "text-slate-500";
+                      if (index < typedValue.length) {
+                        charClass =
+                          typedValue[index] === char
+                            ? "text-green-400"
+                            : "text-red-500 underline decoration-2";
+                      }
+                      return (
+                        <span key={index} className={charClass}>
+                          {char}
+                        </span>
+                      );
+                    })}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              <input
+                ref={inputRef}
+                type="text"
+                value={typedValue}
+                onChange={handleInputChange}
+                className="w-full rounded-2xl border-2 border-slate-700 bg-slate-800 p-4 text-center text-3xl text-white outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 transition"
+                autoComplete="off"
+                autoCapitalize="off"
+                autoCorrect="off"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
