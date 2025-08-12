@@ -208,8 +208,8 @@ export default function GamesHome() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8 rounded-3xl bg-white/5 ring-1 ring-white/10 backdrop-blur p-6 sm:p-8"
         >
-          <div className="flex justify-between items-start">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+          <div className="flex-col lg:flex justify-between items-start">
+            <h1 className="text-2xl sm:text-4xl font-bold tracking-tight">
               {t.pageTitle}
             </h1>
             {/* Language Switcher */}

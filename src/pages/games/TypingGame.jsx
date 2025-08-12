@@ -741,7 +741,7 @@ const wordList = [
   "yourself",
 ];
 
-const GAME_DURATION = 60; // Thời gian chơi: 60 giây
+const GAME_DURATION = 600; // Thời gian chơi: 600 giây
 
 const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
 
