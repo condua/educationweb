@@ -14,6 +14,7 @@ const playSound = (src, volume = 0.5) => {
   sound.volume = volume;
   sound.play().catch((e) => console.error("Audio play failed:", e));
 };
+
 import allQuestions from "./milionaire";
 const sounds = {
   incorrect:
