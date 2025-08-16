@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 import MessageList from "./MessageList";
 import MessageInput from "./MessageInput";
@@ -77,7 +77,6 @@ const THEME_COLORS = [
   "#fde047",
   "#fff176",
 ];
-
 const THEME_GRADIENTS = [
   "linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)",
   "linear-gradient(to right, #6a11cb 0%, #2575fc 100%)",
@@ -107,7 +106,6 @@ const THEME_GRADIENTS = [
   "linear-gradient(to right, #43cea2, #185a9d)",
   "linear-gradient(to top, #e0c3fc, #8ec5fc)",
 ];
-
 const HEART_THEME = "linear-gradient(to top, #ff758c 0%, #ff7eb3 100%)";
 
 const ThemeIcon = ({ theme, onClick }) => {
@@ -137,14 +135,65 @@ const ChatWindow = ({
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [isSettingsModalOpen, setSettingsModalOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const chatContainerRef = useRef(null);
+
+  // --- THÊM MỚI: Ref để truy cập vào component MessageList ---
+  const messageListRef = useRef(null);
+
+  const handleToggleFullscreen = useCallback(() => {
+    const elem = chatContainerRef.current;
+    if (!elem) return;
+
+    if (!document.fullscreenElement) {
+      elem.requestFullscreen().catch((err) => {
+        console.error(`Lỗi khi bật fullscreen: ${err.message} (${err.name})`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  }, []);
 
   useEffect(() => {
-    const handleFullscreenChange = () => {
+    const onFullscreenChange = () => {
       setIsFullscreen(!!document.fullscreenElement);
     };
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener("fullscreenchange", onFullscreenChange);
     return () => {
-      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      document.removeEventListener("fullscreenchange", onFullscreenChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const container = chatContainerRef.current;
+    if (!container || typeof window.visualViewport === "undefined") return;
+
+    const handleViewportChange = () => {
+      const viewportHeight = window.visualViewport.height;
+      const keyboardHeight = window.innerHeight - viewportHeight;
+
+      // Điều chỉnh kích thước và padding cho phù hợp
+      container.style.height = `${viewportHeight}px`;
+      container.style.paddingBottom =
+        keyboardHeight > 0 ? `${keyboardHeight}px` : "0px";
+
+      // Scroll nếu đang ở gần đáy
+      if (messageListRef.current?.scrollToBottom) {
+        setTimeout(() => {
+          messageListRef.current.scrollToBottom();
+        }, 50);
+      }
+    };
+
+    window.visualViewport.addEventListener("resize", handleViewportChange);
+    window.visualViewport.addEventListener("scroll", handleViewportChange);
+
+    handleViewportChange();
+
+    return () => {
+      window.visualViewport.removeEventListener("resize", handleViewportChange);
+      window.visualViewport.removeEventListener("scroll", handleViewportChange);
+      container.style.height = "";
+      container.style.paddingBottom = "";
     };
   }, []);
 
@@ -153,6 +202,20 @@ const ChatWindow = ({
       dispatch(fetchMessagesForConversation(conversation._id));
     }
   }, [conversation?._id, dispatch]);
+  useEffect(() => {
+    if (messageListRef.current?.scrollToBottom) {
+      setTimeout(() => {
+        messageListRef.current.scrollToBottom();
+      }, 100);
+    }
+  }, [conversation?._id]);
+
+  const handleBackClick = () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+    onBack();
+  };
 
   if (!conversation) {
     return (
@@ -182,16 +245,6 @@ const ChatWindow = ({
     if (imageIndex > -1) {
       setCurrentImageIndex(imageIndex);
       setIsLightboxOpen(true);
-    }
-  };
-
-  const handleToggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch((err) => {
-        alert(`Lỗi khi bật fullscreen: ${err.message} (${err.name})`);
-      });
-    } else {
-      document.exitFullscreen();
     }
   };
 
@@ -229,12 +282,14 @@ const ChatWindow = ({
 
   return (
     <>
-      <div className="flex h-full w-full flex-col bg-gray-800 text-white">
+      <div
+        ref={chatContainerRef}
+        className="relative flex h-full w-full flex-col bg-gray-800 text-white overflow-hidden"
+      >
         {/* Header */}
         <div className="relative flex flex-shrink-0 items-center border-b border-gray-700 bg-gray-900 p-2 md:p-3 shadow-md">
           <button
-            onClick={onBack}
-            // ✅ THAY ĐỔI: Kích thước padding và icon responsive
+            onClick={handleBackClick}
             className="mr-2 rounded-full p-1.5 md:p-2 text-white hover:bg-gray-700 md:hidden"
           >
             <ArrowLeftIcon className="h-5 w-5 md:h-6 md:w-6" />
@@ -242,12 +297,9 @@ const ChatWindow = ({
           <img
             src={avatar}
             alt={name}
-            // ✅ THAY ĐỔI: Kích thước avatar responsive
             className="h-9 w-9 md:h-10 md:w-10 rounded-full object-cover"
           />
-          {/* ✅ THAY ĐỔI: Thêm min-w-0 để truncate hoạt động tốt trong flexbox */}
           <div className="ml-3 flex-1 min-w-0">
-            {/* ✅ THAY ĐỔI: Thêm class `truncate` */}
             <h2 className="truncate text-base md:text-lg font-semibold text-white">
               {name}
             </h2>
@@ -257,7 +309,6 @@ const ChatWindow = ({
           <div className="flex items-center">
             <button
               onClick={() => setIsGalleryOpen(true)}
-              // ✅ THAY ĐỔI: Kích thước padding và icon responsive
               className="rounded-full p-1.5 md:p-2 text-white hover:bg-gray-700"
             >
               <GalleryIcon className="h-5 w-5 md:h-6 md:w-6" />
@@ -265,7 +316,6 @@ const ChatWindow = ({
             <div className="relative">
               <button
                 onClick={() => setIsPaletteOpen(!isPaletteOpen)}
-                // ✅ THAY ĐỔI: Kích thước padding và icon responsive
                 className="rounded-full p-1.5 md:p-2 text-white hover:bg-gray-700"
               >
                 <PaintBrushIcon className="h-5 w-5 md:h-6 md:w-6" />
@@ -301,7 +351,6 @@ const ChatWindow = ({
             </div>
             <button
               onClick={handleToggleFullscreen}
-              // ✅ THAY ĐỔI: Kích thước padding và icon responsive
               className="rounded-full p-1.5 md:p-2 text-white hover:bg-gray-700"
               title={isFullscreen ? "Thu nhỏ" : "Phóng to toàn màn hình"}
             >
@@ -314,7 +363,6 @@ const ChatWindow = ({
             {conversation.type === "group" && (
               <button
                 onClick={() => setSettingsModalOpen(true)}
-                // ✅ THAY ĐỔI: Kích thước padding và icon responsive
                 className="rounded-full p-1.5 md:p-2 text-white hover:bg-gray-700"
                 title="Cài đặt nhóm"
               >
@@ -325,6 +373,7 @@ const ChatWindow = ({
         </div>
 
         <MessageList
+          ref={messageListRef}
           messages={messages}
           themeColor={conversation.themeColor}
           currentUser={currentUser}
@@ -332,32 +381,37 @@ const ChatWindow = ({
         />
 
         <div className="flex-shrink-0 border-t border-gray-700 bg-gray-900">
-          <MessageInput onSendMessage={onSendMessage} />
+          <MessageInput
+            onSendMessage={onSendMessage}
+            onFocusInput={() => {
+              messageListRef.current?.scrollToBottom?.();
+            }}
+          />
         </div>
-      </div>
 
-      <Lightbox
-        open={isLightboxOpen}
-        close={() => setIsLightboxOpen(false)}
-        slides={imagesInConversation}
-        index={currentImageIndex}
-      />
-      {isGalleryOpen && (
-        <MediaGalleryModal
-          images={imagesInConversation}
-          onClose={() => setIsGalleryOpen(false)}
-          onImageSelect={handleSelectImageFromGallery}
+        <Lightbox
+          open={isLightboxOpen}
+          close={() => setIsLightboxOpen(false)}
+          slides={imagesInConversation}
+          index={currentImageIndex}
         />
-      )}
-      {isSettingsModalOpen && (
-        <GroupSettingsModal
-          isOpen={isSettingsModalOpen}
-          onClose={() => setSettingsModalOpen(false)}
-          conversation={conversation}
-          currentUser={currentUser}
-          isOwner={isOwner}
-        />
-      )}
+        {isGalleryOpen && (
+          <MediaGalleryModal
+            images={imagesInConversation}
+            onClose={() => setIsGalleryOpen(false)}
+            onImageSelect={handleSelectImageFromGallery}
+          />
+        )}
+        {isSettingsModalOpen && (
+          <GroupSettingsModal
+            isOpen={isSettingsModalOpen}
+            onClose={() => setSettingsModalOpen(false)}
+            conversation={conversation}
+            currentUser={currentUser}
+            isOwner={isOwner}
+          />
+        )}
+      </div>
     </>
   );
 };
