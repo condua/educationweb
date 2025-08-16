@@ -53,7 +53,7 @@ const MessageInput = ({ onSendMessage }) => {
   };
 
   return (
-    <div className="relative flex-shrink-0 border-t border-gray-700 bg-gray-900 p-4">
+    <div className=" relative flex-shrink-0 border-t border-gray-700 bg-gray-900 p-4">
       {showPicker && (
         <div className="absolute bottom-full right-0 md:left-0 mb-2 z-10">
           <EmojiPicker
