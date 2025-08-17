@@ -38,7 +38,7 @@ const MessageList = forwardRef(
       }
     }, [messages]);
 
-    const isHeartTheme = themeColor === HEART_THEME;
+    const isHeartTheme = themeColor;
 
     return (
       <div
@@ -48,7 +48,17 @@ const MessageList = forwardRef(
         {/* Nền trái tim cố định */}
         {isHeartTheme && (
           <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-            <HeartIcon className="h-64 w-64 sm:h-80 sm:w-80 text-white" />
+            {/* Icon trái tim làm nền */}
+            <div className="animate-pulse relative">
+              <HeartIcon className="h-72 w-72 sm:h-96 sm:w-96 text-white drop-shadow-lg" />
+
+              {/* GIF nằm giữa trái tim */}
+              <img
+                src="https://res.cloudinary.com/dy9yts4fa/image/upload/v1755408605/i_love_you_puhmn0.webp"
+                alt="Love animation"
+                className="absolute top-1/2 left-1/2 w-24 h-24 sm:w-32 sm:h-32 transform -translate-x-1/2 -translate-y-1/2 z-10 object-contain"
+              />
+            </div>
           </div>
         )}
 

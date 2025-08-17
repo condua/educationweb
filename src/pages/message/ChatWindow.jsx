@@ -106,7 +106,7 @@ const THEME_GRADIENTS = [
   "linear-gradient(to right, #43cea2, #185a9d)",
   "linear-gradient(to top, #e0c3fc, #8ec5fc)",
 ];
-const HEART_THEME = "linear-gradient(to top, #ff758c 0%, #ff7eb3 100%)";
+const HEART_THEME = "linear-gradient(to top, #ff0055 0%, #ff7eb3 100%)";
 
 const ThemeIcon = ({ theme, onClick }) => {
   const isHeartTheme = theme === HEART_THEME;
@@ -116,7 +116,7 @@ const ThemeIcon = ({ theme, onClick }) => {
       className="h-8 w-8 cursor-pointer rounded-full relative flex items-center justify-center transition-transform hover:scale-110 border-2 border-transparent hover:border-white"
       style={{ background: theme }}
     >
-      {isHeartTheme && <HeartIcon className="h-5 w-5 text-white/80" />}
+      {isHeartTheme && <HeartIcon className="h-5 w-5 text-white" />}
     </div>
   );
 };
