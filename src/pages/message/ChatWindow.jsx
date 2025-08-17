@@ -203,12 +203,13 @@ const ChatWindow = ({
     }
   }, [conversation?._id, dispatch]);
   useEffect(() => {
-    if (messageListRef.current?.scrollToBottom) {
+    if (messageListRef.current?.scrollToBottom && messages?.length > 0) {
+      console.log("✅ Messages loaded, scroll to bottom");
       setTimeout(() => {
         messageListRef.current.scrollToBottom();
-      }, 100);
+      }, 100); // Delay nhỏ để đảm bảo DOM render
     }
-  }, [conversation?._id]);
+  }, [messages]);
 
   const handleBackClick = () => {
     if (document.fullscreenElement) {
@@ -372,6 +373,7 @@ const ChatWindow = ({
           </div>
         </div>
 
+        {/* ✅ ĐÃ ĐƯA VÀO ĐÂY */}
         <MessageList
           ref={messageListRef}
           messages={messages}

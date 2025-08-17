@@ -19,8 +19,9 @@ const MessageList = forwardRef(
     useImperativeHandle(ref, () => ({
       scrollToBottom: () => {
         const el = localListRef.current;
+        console.log("🟢 scrolling to bottom"); // DEBUG LOG
         if (el) {
-          el.scrollTop = el.scrollHeight;
+          el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
         }
       },
     }));
