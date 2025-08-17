@@ -19,7 +19,6 @@ const MessageList = forwardRef(
     useImperativeHandle(ref, () => ({
       scrollToBottom: () => {
         const el = localListRef.current;
-        console.log("🟢 scrolling to bottom"); // DEBUG LOG
         if (el) {
           el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
         }
@@ -35,7 +34,6 @@ const MessageList = forwardRef(
         el.scrollHeight - el.scrollTop <= el.clientHeight + 100;
 
       if (isAtBottom) {
-        // cuộn xuống nếu đang ở gần cuối
         el.scrollTop = el.scrollHeight;
       }
     }, [messages]);
@@ -44,34 +42,41 @@ const MessageList = forwardRef(
 
     return (
       <div
-        ref={localListRef}
-        className="relative flex-1 min-h-0 space-y-2 p-4 overflow-y-auto transition-colors duration-500"
+        className="relative flex-1 min-h-0"
         style={{ background: themeColor || "#1f2937" }}
       >
+        {/* Nền trái tim cố định */}
         {isHeartTheme && (
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <HeartIcon className="h-64 w-64 sm:h-80 sm:w-80 text-white/80" />
+          <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
+            <HeartIcon className="h-64 w-64 sm:h-80 sm:w-80 text-white" />
           </div>
         )}
-        <AnimatePresence initial={false}>
-          {messages.map((message) => (
-            <motion.div
-              key={message._id}
-              layout
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.95 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              <MessageItem
-                message={message}
-                sender={message.senderId}
-                isCurrentUser={message.senderId?._id === currentUser?._id}
-                onImageClick={onImageClick}
-              />
-            </motion.div>
-          ))}
-        </AnimatePresence>
+
+        {/* Vùng cuộn tin nhắn */}
+        <div
+          ref={localListRef}
+          className="relative z-10 h-full overflow-y-auto space-y-2 p-4"
+        >
+          <AnimatePresence initial={false}>
+            {messages.map((message) => (
+              <motion.div
+                key={message._id}
+                layout
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <MessageItem
+                  message={message}
+                  sender={message.senderId}
+                  isCurrentUser={message.senderId?._id === currentUser?._id}
+                  onImageClick={onImageClick}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
       </div>
     );
   }
