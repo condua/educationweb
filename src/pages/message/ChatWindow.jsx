@@ -18,6 +18,7 @@ import {
   HeartIcon,
   ArrowsPointingOutIcon,
   ArrowsPointingInIcon,
+  PhotoIcon,
 } from "@heroicons/react/24/solid";
 
 // Mảng màu sắc và gradient không thay đổi
@@ -135,15 +136,14 @@ const ChatWindow = ({
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [isSettingsModalOpen, setSettingsModalOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const chatContainerRef = useRef(null);
+  const [isUploadingAvatar, setIsUploadingAvatar] = useState(false); // trạng thái upload avatar
 
-  // --- THÊM MỚI: Ref để truy cập vào component MessageList ---
+  const chatContainerRef = useRef(null);
   const messageListRef = useRef(null);
 
   const handleToggleFullscreen = useCallback(() => {
     const elem = chatContainerRef.current;
     if (!elem) return;
-
     if (!document.fullscreenElement) {
       elem.requestFullscreen().catch((err) => {
         console.error(`Lỗi khi bật fullscreen: ${err.message} (${err.name})`);
@@ -170,13 +170,10 @@ const ChatWindow = ({
     const handleViewportChange = () => {
       const viewportHeight = window.visualViewport.height;
       const keyboardHeight = window.innerHeight - viewportHeight;
-
-      // Điều chỉnh kích thước và padding cho phù hợp
       container.style.height = `${viewportHeight}px`;
       container.style.paddingBottom =
         keyboardHeight > 0 ? `${keyboardHeight}px` : "0px";
 
-      // Scroll nếu đang ở gần đáy
       if (messageListRef.current?.scrollToBottom) {
         setTimeout(() => {
           messageListRef.current.scrollToBottom();
@@ -186,7 +183,6 @@ const ChatWindow = ({
 
     window.visualViewport.addEventListener("resize", handleViewportChange);
     window.visualViewport.addEventListener("scroll", handleViewportChange);
-
     handleViewportChange();
 
     return () => {
@@ -202,12 +198,12 @@ const ChatWindow = ({
       dispatch(fetchMessagesForConversation(conversation._id));
     }
   }, [conversation?._id, dispatch]);
+
   useEffect(() => {
     if (messageListRef.current?.scrollToBottom && messages?.length > 0) {
-      console.log("✅ Messages loaded, scroll to bottom");
       setTimeout(() => {
         messageListRef.current.scrollToBottom();
-      }, 100); // Delay nhỏ để đảm bảo DOM render
+      }, 100);
     }
   }, [messages]);
 
@@ -232,6 +228,7 @@ const ChatWindow = ({
       : conversation?.ownerId;
   const isOwner = currentUser?._id === ownerIdString;
 
+  // Ảnh trong cuộc trò chuyện để dùng Lightbox
   const imagesInConversation = messages
     .filter((msg) => msg.type === "image" && msg.content?.url)
     .map((msg) => ({
@@ -263,6 +260,60 @@ const ChatWindow = ({
     );
     setIsPaletteOpen(false);
   };
+
+  // =============== UPLOAD AVATAR NHÓM ===============
+  const handleGroupAvatarChange = async (event) => {
+    const imageFile = event.target.files?.[0];
+    if (!imageFile) return;
+
+    setIsUploadingAvatar(true);
+    let finalAvatarUrl = null;
+
+    try {
+      // Upload ảnh lên server để lấy URL
+      const formData = new FormData();
+      formData.append("image", imageFile);
+
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        throw new Error(`Upload failed with status ${res.status}`);
+      }
+
+      const data = await res.json();
+      if (data?.imageUrl) {
+        finalAvatarUrl = data.imageUrl;
+      } else {
+        throw new Error("Tải ảnh lên thất bại");
+      }
+    } catch (error) {
+      console.error("Lỗi tải ảnh:", error);
+      alert("Tải ảnh thất bại. Vui lòng thử lại.");
+      setIsUploadingAvatar(false);
+      event.target.value = ""; // reset input để có thể chọn lại cùng file
+      return;
+    }
+
+    try {
+      // Cập nhật avatarUrl nhóm
+      await dispatch(
+        updateGroupInfo({
+          conversationId: conversation._id,
+          groupData: { avatarUrl: finalAvatarUrl },
+        })
+      );
+    } catch (error) {
+      console.error("Lỗi cập nhật avatar nhóm:", error);
+      alert("Cập nhật avatar nhóm thất bại. Vui lòng thử lại.");
+    } finally {
+      setIsUploadingAvatar(false);
+      event.target.value = ""; // reset input
+    }
+  };
+  // ===================================================
 
   const getHeaderInfo = () => {
     if (conversation.type === "group") {
@@ -296,24 +347,54 @@ const ChatWindow = ({
             <ArrowLeftIcon className="h-5 w-5 md:h-6 md:w-6" />
           </button>
 
-          <div className="relative">
+          {/* Avatar + nút đổi ảnh (hover mới hiện icon) */}
+          <div className="relative group">
             <img
               src={avatar}
               alt={name}
               className="h-9 w-9 md:h-10 md:w-10 rounded-full object-cover"
             />
             {conversation.type === "group" && (
-              <label className="absolute bottom-0 right-0 bg-gray-800 p-0.5 rounded-full cursor-pointer">
+              <label
+                className={`absolute -bottom-1 -right-1 rounded-full p-1 cursor-pointer border border-black/20
+      ${isUploadingAvatar ? "bg-gray-600" : "bg-gray-800 hover:bg-gray-700"}
+      hidden group-hover:flex items-center justify-center`}
+                title={isUploadingAvatar ? "Đang tải..." : "Đổi ảnh nhóm"}
+              >
                 <input
                   type="file"
                   accept="image/*"
                   className="hidden"
-                  // onChange={handleGroupAvatarChange}
+                  onChange={handleGroupAvatarChange}
+                  disabled={isUploadingAvatar}
                 />
-                {/* <PhotoIcon className="h-4 w-4 text-white" /> */}
+                {isUploadingAvatar ? (
+                  <svg
+                    className="h-4 w-4 animate-spin"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                  </svg>
+                ) : (
+                  <PhotoIcon className="w-full text-white" />
+                )}
               </label>
             )}
           </div>
+
           <div className="ml-3 flex-1 min-w-0">
             <h2 className="truncate text-base md:text-lg font-semibold text-white">
               {name}
@@ -387,7 +468,7 @@ const ChatWindow = ({
           </div>
         </div>
 
-        {/* ✅ ĐÃ ĐƯA VÀO ĐÂY */}
+        {/* Danh sách tin nhắn */}
         <MessageList
           ref={messageListRef}
           messages={messages}
@@ -396,6 +477,7 @@ const ChatWindow = ({
           onImageClick={handleImageClick}
         />
 
+        {/* Input nhắn tin */}
         <div className="flex-shrink-0 border-t border-gray-700 bg-gray-900">
           <MessageInput
             onSendMessage={onSendMessage}
@@ -405,6 +487,7 @@ const ChatWindow = ({
           />
         </div>
 
+        {/* Lightbox & Gallery */}
         <Lightbox
           open={isLightboxOpen}
           close={() => setIsLightboxOpen(false)}

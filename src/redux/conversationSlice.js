@@ -201,10 +201,7 @@ export const deleteGroup = createAsyncThunk(
   async (conversationId, { getState, rejectWithValue }) => {
     try {
       const token = getToken(getState());
-      await axios.delete(
-        `${API_URL}/${conversationId}/group`,
-        getAuthHeaders(token)
-      );
+      await axios.delete(`${API_URL}/${conversationId}`, getAuthHeaders(token));
       return { conversationId }; // Trả về ID để reducer xử lý
     } catch (error) {
       return rejectWithValue(error.response?.data);
