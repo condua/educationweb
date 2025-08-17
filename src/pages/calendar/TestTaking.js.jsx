@@ -338,7 +338,9 @@ const TestTaking = () => {
     if (timeLeft === 0) {
       handleSubmit();
     }
-    if (timeLeft === null || timeLeft < 0) return;
+    if (timeLeft === null || timeLeft < 0) {
+      return;
+    }
     const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
     return () => clearInterval(timer);
   }, [timeLeft, handleSubmit]); // Thêm handleSubmit vào dependencies
@@ -406,7 +408,7 @@ const TestTaking = () => {
       <div className="bg-gray-50 min-h-screen">
         {/* Header cố định */}
 
-        <div className="sticky md:top-24 top-19 z-20  bg-white shadow-md">
+        <div className="sticky md:top-24 top-16 z-20  bg-white/50 shadow-md backdrop-blur-md">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Sử dụng gap để tạo khoảng cách và căn giữa các item */}
             <div className="flex justify-between items-center py-3 gap-4">
