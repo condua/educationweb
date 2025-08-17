@@ -295,11 +295,25 @@ const ChatWindow = ({
           >
             <ArrowLeftIcon className="h-5 w-5 md:h-6 md:w-6" />
           </button>
-          <img
-            src={avatar}
-            alt={name}
-            className="h-9 w-9 md:h-10 md:w-10 rounded-full object-cover"
-          />
+
+          <div className="relative">
+            <img
+              src={avatar}
+              alt={name}
+              className="h-9 w-9 md:h-10 md:w-10 rounded-full object-cover"
+            />
+            {conversation.type === "group" && (
+              <label className="absolute bottom-0 right-0 bg-gray-800 p-0.5 rounded-full cursor-pointer">
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  // onChange={handleGroupAvatarChange}
+                />
+                {/* <PhotoIcon className="h-4 w-4 text-white" /> */}
+              </label>
+            )}
+          </div>
           <div className="ml-3 flex-1 min-w-0">
             <h2 className="truncate text-base md:text-lg font-semibold text-white">
               {name}

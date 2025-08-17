@@ -21,25 +21,32 @@ const CreateGroupModal = ({
   const [groupName, setGroupName] = useState("");
   const [selectedUserIds, setSelectedUserIds] = useState([]);
   const [error, setError] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // **THAY ĐỔI 1: Lọc người dùng bằng `_id`**
+  // Lọc người dùng khác currentUser
   const otherUsers = useMemo(
     () =>
       allUsers.filter((user) => currentUser && user._id !== currentUser._id),
     [allUsers, currentUser]
   );
 
-  // Xử lý việc chọn hoặc bỏ chọn một người dùng
+  // Lọc người dùng theo từ khóa tìm kiếm
+  const filteredUsers = useMemo(() => {
+    return otherUsers.filter((user) =>
+      user.fullName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [otherUsers, searchQuery]);
+
+  // Xử lý chọn hoặc bỏ chọn người dùng
   const handleToggleUser = (userId) => {
-    setSelectedUserIds(
-      (prev) =>
-        prev.includes(userId)
-          ? prev.filter((id) => id !== userId) // Bỏ chọn
-          : [...prev, userId] // Chọn
+    setSelectedUserIds((prev) =>
+      prev.includes(userId)
+        ? prev.filter((id) => id !== userId)
+        : [...prev, userId]
     );
   };
 
-  // Xử lý khi gửi form
+  // Xử lý gửi form
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -47,20 +54,17 @@ const CreateGroupModal = ({
       setError("Vui lòng nhập tên nhóm.");
       return;
     }
-    // Backend yêu cầu nhóm có ít nhất 3 thành viên (bao gồm người tạo)
-    // => cần chọn ít nhất 2 người khác.
+
     if (selectedUserIds.length < 2) {
       setError("Vui lòng chọn ít nhất 2 thành viên.");
       return;
     }
 
-    // Gọi hàm từ component cha để xử lý việc tạo nhóm
     onCreateGroup({
       name: groupName,
       memberIds: selectedUserIds,
     });
 
-    // Reset trạng thái và đóng modal
     setGroupName("");
     setSelectedUserIds([]);
     setError("");
@@ -80,6 +84,7 @@ const CreateGroupModal = ({
       >
         <h2 className="text-2xl font-bold mb-4">Tạo nhóm mới</h2>
         <form onSubmit={handleSubmit}>
+          {/* Nhập tên nhóm */}
           <div className="mb-4">
             <label
               htmlFor="groupName"
@@ -98,35 +103,50 @@ const CreateGroupModal = ({
             />
           </div>
 
+          {/* Tìm kiếm và chọn thành viên */}
           <div className="mb-4">
             <label className="block mb-2 text-sm font-medium text-gray-300">
               Chọn thành viên (cần ít nhất 2 người)
             </label>
+            <input
+              type="text"
+              placeholder="Tìm kiếm thành viên..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="mb-2 w-full px-3 py-2 text-sm bg-gray-700 border border-gray-600 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
             <div className="max-h-60 overflow-y-auto p-2 bg-gray-900 rounded-lg border border-gray-600">
-              {/* **THAY ĐỔI 2: Sử dụng đúng thuộc tính user trong JSX** */}
-              {otherUsers.map((user) => (
-                <div
-                  key={user._id} // Dùng `_id` cho key
-                  onClick={() => handleToggleUser(user._id)} // Dùng `_id`
-                  className={`flex items-center p-2 rounded-md cursor-pointer transition-colors ${
-                    selectedUserIds.includes(user._id) // Dùng `_id`
-                      ? "bg-blue-600"
-                      : "hover:bg-gray-700"
-                  }`}
-                >
-                  <img
-                    src={user.avatar} // Dùng `avatar`
-                    alt={user.fullName} // Dùng `fullName`
-                    className="w-8 h-8 rounded-full mr-3 object-cover"
-                  />
-                  <span>{user.fullName}</span> {/* Dùng `fullName` */}
-                </div>
-              ))}
+              {filteredUsers.length > 0 ? (
+                filteredUsers.map((user) => (
+                  <div
+                    key={user._id}
+                    onClick={() => handleToggleUser(user._id)}
+                    className={`flex items-center p-2 rounded-md cursor-pointer transition-colors ${
+                      selectedUserIds.includes(user._id)
+                        ? "bg-blue-600"
+                        : "hover:bg-gray-700"
+                    }`}
+                  >
+                    <img
+                      src={user.avatar}
+                      alt={user.fullName}
+                      className="w-8 h-8 rounded-full mr-3 object-cover"
+                    />
+                    <span>{user.fullName}</span>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-gray-400 px-2">
+                  Không tìm thấy thành viên nào.
+                </p>
+              )}
             </div>
           </div>
 
+          {/* Hiển thị lỗi nếu có */}
           {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
 
+          {/* Nút hành động */}
           <div className="flex justify-end space-x-4">
             <button
               type="button"
