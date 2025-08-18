@@ -402,6 +402,7 @@ const TestTaking = () => {
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
+  
   return (
     // THAY ĐỔI: Thêm modal vào cuối JSX
     <>
