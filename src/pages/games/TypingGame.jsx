@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // --- Âm thanh ---
 const correctSound = new Audio(
-  "https://cdn.pixabay.com/audio/2022/03/10/audio_c8488d6e55.mp3"
+  "https://res.cloudinary.com/dy9yts4fa/video/upload/v1755585617/Sound%20effects/correctSound_exwgii.mp3"
 );
 correctSound.volume = 0.5;
 // Danh sách từ vựng cho trò chơi
