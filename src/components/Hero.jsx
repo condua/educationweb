@@ -56,7 +56,7 @@ const Hero = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 // transition={{ delay: 0.6, duration: 0.8 }}
-                className="cursor-pointer relative overflow-hidden group inline-block bg-gradient-to-r from-teal-500 via-teal-600 to-teal-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 font-semibold"
+                className="cursor-pointer relative overflow-hidden group inline-block bg-gradient-to-r from-teal-500 via-teal-600 to-teal-700 text-white md:px-6 px-3 py-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 font-semibold"
               >
                 <span className="relative z-10">Tham gia ngay</span>
 

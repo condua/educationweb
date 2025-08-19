@@ -106,6 +106,7 @@ const THEME_GRADIENTS = [
   "linear-gradient(to top, #667eea, #764ba2)",
   "linear-gradient(to right, #43cea2, #185a9d)",
   "linear-gradient(to top, #e0c3fc, #8ec5fc)",
+  "linear-gradient(to top, #FF0000 0%, #FF7F00 20%, #FFFF00 40%, #00FF00 60%, #0000FF 80%, #8B00FF 100%)",
 ];
 const HEART_THEME = "linear-gradient(to top, #ff0055 0%, #ff7eb3 100%)";
 
