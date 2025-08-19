@@ -5,13 +5,13 @@ import { Maximize, Minimize } from "lucide-react";
 // --- Âm thanh ---
 const sounds = {
   correct: new Audio(
-    "https://cdn.pixabay.com/audio/2022/03/19/audio_19c82b3539.mp3"
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1755585617/Sound%20effects/correctSound_exwgii.mp3"
   ), // Laser sound
   explosion: new Audio(
-    "https://cdn.pixabay.com/audio/2022/03/15/audio_1b3334e569.mp3"
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1755585615/Sound%20effects/explosionEffect_ipffs7.mp3"
   ),
   start: new Audio(
-    "https://cdn.pixabay.com/audio/2022/05/23/audio_a29b35123d.mp3"
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1755585616/Sound%20effects/startSound_pl6okv.mp3"
   ),
 };
 Object.values(sounds).forEach((s) => {
