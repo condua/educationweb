@@ -349,6 +349,7 @@ const ChatWindow = ({
           </button>
 
           {/* Avatar + nút đổi ảnh (hover mới hiện icon) */}
+
           <div className="relative group">
             <img
               src={avatar}
