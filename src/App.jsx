@@ -9,6 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchUser } from "./redux/userSlice"; // Import action fetchUser
 import Login from "./components/Login";
+import ForgetPassword from "./components/ForgetPassword";
+import VerifyCode from "./components/VerifyCode";
+import ResetPassword from "./components/ResetPassword";
 import Home from "./pages/Home";
 import Register from "./components/Register";
 import Header from "./components/Header";
@@ -124,6 +127,9 @@ function App() {
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="/createblog" element={<CreateBlog />} />
         <Route path="/login" element={<AuthRoute element={<Login />} />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/verify-code" element={<VerifyCode />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route
           path="/register"
           element={<AuthRoute element={<Register />} />}
