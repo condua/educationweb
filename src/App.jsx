@@ -179,7 +179,7 @@ function App() {
           path="/course/:courseId/test/:testId/results/:attemptId"
           element={<PrivateRoute element={<TestResults />} />}
         />
-        {/* Chat Message*/}
+        {/*Thêm các Route Chat Message*/}
         <Route path="/chat" element={<PrivateRoute element={<ChatPage />} />} />
         <Route path="/exams" element={<ExamList />} />
         <Route path="/exams/do/:examId" element={<ExamDo />} />
