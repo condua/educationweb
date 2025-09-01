@@ -65,6 +65,686 @@
       "type": "noun",
       "meaning": "Buổi tập",
       "example": "I had a great workout at the gym this morning."
+    },
+    {
+      "word": "Running",
+      "options": ["Running", "Ruinning", "Ranning", "Runing"],
+      "ipa": "/ˈrʌnɪŋ/",
+      "type": "noun",
+      "meaning": "Chạy bộ",
+      "example": "Running is a simple and effective way to stay fit."
+    },
+    {
+      "word": "Swimming",
+      "options": ["Swimming", "Sweeping", "Swinging", "Swiming"],
+      "ipa": "/ˈswɪmɪŋ/",
+      "type": "noun",
+      "meaning": "Bơi lội",
+      "example": "Swimming is a full-body workout that's easy on the joints."
+    },
+    {
+      "word": "Cycling",
+      "options": ["Cycling", "Circling", "Crying", "Cyling"],
+      "ipa": "/ˈsaɪklɪŋ/",
+      "type": "noun",
+      "meaning": "Đạp xe",
+      "example": "He goes cycling in the mountains every weekend."
+    },
+    {
+      "word": "Yoga",
+      "options": ["Yoga", "Yogurt", "Yoda", "Yugo"],
+      "ipa": "/ˈjəʊɡə/",
+      "type": "noun",
+      "meaning": "Yoga",
+      "example": "She practices yoga to reduce stress and improve her posture."
+    },
+    {
+      "word": "Weightlifting",
+      "options": ["Weightlifting", "Waitlifting", "Weight lighting", "Weightlifing"],
+      "ipa": "/ˈweɪtˌlɪftɪŋ/",
+      "type": "noun",
+      "meaning": "Cử tạ",
+      "example": "Weightlifting helps to increase bone density."
+    },
+    {
+      "word": "Hiking",
+      "options": ["Hiking", "Hiding", "Hiring", "Hicking"],
+      "ipa": "/ˈhaɪkɪŋ/",
+      "type": "noun",
+      "meaning": "Đi bộ đường dài",
+      "example": "We went hiking in the national park last summer."
+    },
+    {
+      "word": "Dancing",
+      "options": ["Dancing", "Dangling", "Dating", "Duncing"],
+      "ipa": "/ˈdɑːnsɪŋ/",
+      "type": "noun",
+      "meaning": "Khiêu vũ, nhảy múa",
+      "example": "Dancing is a fun way to exercise and express yourself."
+    },
+    {
+      "word": "Boxing",
+      "options": ["Boxing", "Boring", "Boxting", "Baxing"],
+      "ipa": "/ˈbɒksɪŋ/",
+      "type": "noun",
+      "meaning": "Đấm bốc",
+      "example": "Boxing requires speed, power, and agility."
+    },
+    {
+      "word": "Muscle",
+      "options": ["Muscle", "Mussel", "Puzzle", "Muzzle"],
+      "ipa": "/ˈmʌsəl/",
+      "type": "noun",
+      "meaning": "Cơ bắp",
+      "example": "He strained a muscle in his back while lifting a heavy box."
+    },
+    {
+      "word": "Heart",
+      "options": ["Heart", "Hurt", "Hard", "Part"],
+      "ipa": "/hɑːt/",
+      "type": "noun",
+      "meaning": "Trái tim",
+      "example": "Cardio exercises are important for a healthy heart."
+    },
+    {
+      "word": "Lungs",
+      "options": ["Lungs", "Lunch", "Longs", "Lunge"],
+      "ipa": "/lʌŋz/",
+      "type": "noun",
+      "meaning": "Phổi",
+      "example": "Deep breathing exercises can improve the capacity of your lungs."
+    },
+    {
+      "word": "Core",
+      "options": ["Core", "Chore", "Corn", "Cord"],
+      "ipa": "/kɔː/",
+      "type": "noun",
+      "meaning": "Nhóm cơ lõi",
+      "example": "A strong core is essential for stability and balance."
+    },
+    {
+      "word": "Squat",
+      "options": ["Squat", "Squad", "Quit", "Square"],
+      "ipa": "/skwɒt/",
+      "type": "noun/verb",
+      "meaning": "Đứng lên ngồi xuống",
+      "example": "The squat is a fundamental exercise for lower body strength."
+    },
+    {
+      "word": "Lunge",
+      "options": ["Lunge", "Lunch", "Lungs", "Launch"],
+      "ipa": "/lʌndʒ/",
+      "type": "noun/verb",
+      "meaning": "Chùng chân",
+      "example": "A forward lunge works your quadriceps and glutes."
+    },
+    {
+      "word": "Plank",
+      "options": ["Plank", "Blank", "Plant", "Planet"],
+      "ipa": "/plæŋk/",
+      "type": "noun",
+      "meaning": "Tư thế tấm ván",
+      "example": "She tried to hold the plank position for one minute."
+    },
+    {
+      "word": "Sprint",
+      "options": ["Sprint", "Split", "Spirit", "Sprung"],
+      "ipa": "/sprɪnt/",
+      "type": "noun/verb",
+      "meaning": "Chạy nước rút",
+      "example": "The runners began to sprint towards the finish line."
+    },
+    {
+      "word": "Jog",
+      "options": ["Jog", "Job", "Joke", "Jug"],
+      "ipa": "/dʒɒɡ/",
+      "type": "verb",
+      "meaning": "Chạy bộ chậm",
+      "example": "I like to jog in the park every morning to start my day."
+    },
+    {
+      "word": "Balance",
+      "options": ["Balance", "Palace", "Ballance", "Blanket"],
+      "ipa": "/ˈbæləns/",
+      "type": "noun/verb",
+      "meaning": "Sự cân bằng",
+      "example": "Good balance is crucial for sports like gymnastics and surfing."
+    },
+    {
+      "word": "Dumbbell",
+      "options": ["Dumbbell", "Dumb bell", "Dumble", "Dumbel"],
+      "ipa": "/ˈdʌmbel/",
+      "type": "noun",
+      "meaning": "Tạ tay",
+      "example": "He uses a 10kg dumbbell for his bicep curls."
+    },
+    {
+      "word": "Treadmill",
+      "options": ["Treadmill", "Tread mail", "Treatmill", "Tredmill"],
+      "ipa": "/ˈtredmɪl/",
+      "type": "noun",
+      "meaning": "Máy chạy bộ",
+      "example": "I prefer running on a treadmill when it's raining outside."
+    },
+    {
+      "word": "Fitness",
+      "options": ["Fitness", "Witness", "Fatness", "Finesse"],
+      "ipa": "/ˈfɪtnəs/",
+      "type": "noun",
+      "meaning": "Thể chất, sự sung sức",
+      "example": "Maintaining a high level of fitness requires dedication."
+    },
+    {
+      "word": "Health",
+      "options": ["Health", "Wealth", "Heal", "Hearth"],
+      "ipa": "/helθ/",
+      "type": "noun",
+      "meaning": "Sức khỏe",
+      "example": "A balanced diet is essential for good health."
+    },
+    {
+      "word": "Agility",
+      "options": ["Agility", "Ability", "Acidity", "Anxiety"],
+      "ipa": "/əˈdʒɪləti/",
+      "type": "noun",
+      "meaning": "Sự nhanh nhẹn",
+      "example": "The obstacle course was designed to test the athletes' agility."
+    },
+    {
+      "word": "Speed",
+      "options": ["Speed", "Seed", "Spend", "Speech"],
+      "ipa": "/spiːd/",
+      "type": "noun",
+      "meaning": "Tốc độ",
+      "example": "The cheetah is known for its incredible speed."
+    },
+    {
+      "word": "Power",
+      "options": ["Power", "Powder", "Tower", "Flower"],
+      "ipa": "/ˈpaʊə/",
+      "type": "noun",
+      "meaning": "Sức mạnh, năng lượng",
+      "example": "He generated a lot of power with his tennis serve."
+    },
+    {
+      "word": "Warm-up",
+      "options": ["Warm-up", "Wake-up", "Warm up", "Warn-up"],
+      "ipa": "/ˈwɔːm ʌp/",
+      "type": "noun",
+      "meaning": "Khởi động",
+      "example": "A proper warm-up prepares your body for exercise."
+    },
+    {
+      "word": "Cool-down",
+      "options": ["Cool-down", "Calm-down", "Cool down", "Cold-down"],
+      "ipa": "/ˈkuːl daʊn/",
+      "type": "noun",
+      "meaning": "Thả lỏng, hạ nhiệt",
+      "example": "The cool-down period helps your heart rate return to normal."
+    },
+    {
+      "word": "Repetition",
+      "options": ["Repetition", "Reception", "Reptition", "Reputation"],
+      "ipa": "/ˌrepəˈtɪʃn/",
+      "type": "noun",
+      "meaning": "Lần lặp lại (rep)",
+      "example": "For this exercise, you should do three sets of 12 repetitions."
+    },
+    {
+      "word": "Set",
+      "options": ["Set", "Sit", "Seat", "Send"],
+      "ipa": "/set/",
+      "type": "noun",
+      "meaning": "Hiệp, bộ",
+      "example": "Take a one-minute rest between each set of push-ups."
+    },
+    {
+      "word": "Circuit",
+      "options": ["Circuit", "Circus", "Circle", "Surcoat"],
+      "ipa": "/ˈsɜːkɪt/",
+      "type": "noun",
+      "meaning": "Bài tập vòng tròn",
+      "example": "Circuit training is a great way to combine cardio and strength."
+    },
+    {
+      "word": "Hydration",
+      "options": ["Hydration", "Hydrogen", "Hidration", "Hydraulics"],
+      "ipa": "/haɪˈdreɪʃn/",
+      "type": "noun",
+      "meaning": "Sự bù nước",
+      "example": "Proper hydration is crucial during intense physical activity."
+    },
+    {
+      "word": "Nutrition",
+      "options": ["Nutrition", "Notion", "Natrition", "Nutrient"],
+      "ipa": "/njuˈtrɪʃn/",
+      "type": "noun",
+      "meaning": "Dinh dưỡng",
+      "example": "Good nutrition is as important as exercise for a healthy lifestyle."
+    },
+    {
+      "word": "Calorie",
+      "options": ["Calorie", "Celery", "Colory", "Salary"],
+      "ipa": "/ˈkæləri/",
+      "type": "noun",
+      "meaning": "Calo",
+      "example": "He is trying to burn 500 calories during his workout."
+    },
+    {
+      "word": "Metabolism",
+      "options": ["Metabolism", "Metaphorism", "Matabolism", "Mechanism"],
+      "ipa": "/məˈtæbəlɪzəm/",
+      "type": "noun",
+      "meaning": "Sự trao đổi chất",
+      "example": "Regular exercise can boost your metabolism."
+    },
+    {
+      "word": "Recovery",
+      "options": ["Recovery", "Discovery", "Ricoveri", "Re-covery"],
+      "ipa": "/rɪˈkʌvəri/",
+      "type": "noun",
+      "meaning": "Sự phục hồi",
+      "example": "Rest and sleep are essential parts of recovery after training."
+    },
+    {
+      "word": "Athlete",
+      "options": ["Athlete", "Athletic", "Athlet", "Athelete"],
+      "ipa": "/ˈæθliːt/",
+      "type": "noun",
+      "meaning": "Vận động viên",
+      "example": "She is a professional athlete who competes internationally."
+    },
+    {
+      "word": "Coach",
+      "options": ["Coach", "Couch", "Coast", "Catch"],
+      "ipa": "/kəʊtʃ/",
+      "type": "noun",
+      "meaning": "Huấn luyện viên",
+      "example": "The coach gave the team an inspiring speech before the game."
+    },
+    {
+      "word": "Team",
+      "options": ["Team", "Teem", "Time", "Them"],
+      "ipa": "/tiːm/",
+      "type": "noun",
+      "meaning": "Đội",
+      "example": "He is the captain of the football team."
+    },
+    {
+      "word": "Competition",
+      "options": ["Competition", "Composition", "Comptition", "Compilation"],
+      "ipa": "/ˌkɒmpəˈtɪʃn/",
+      "type": "noun",
+      "meaning": "Cuộc thi đấu",
+      "example": "She won first place in the swimming competition."
+    },
+    {
+      "word": "Victory",
+      "options": ["Victory", "Vector", "Vectory", "History"],
+      "ipa": "/ˈvɪktəri/",
+      "type": "noun",
+      "meaning": "Chiến thắng",
+      "example": "The team celebrated their hard-earned victory."
+    },
+    {
+      "word": "Defeat",
+      "options": ["Defeat", "Defend", "Defect", "Defeet"],
+      "ipa": "/dɪˈfiːt/",
+      "type": "noun/verb",
+      "meaning": "Sự thất bại, đánh bại",
+      "example": "They learned valuable lessons from their defeat."
+    },
+    {
+      "word": "Score",
+      "options": ["Score", "Store", "Scare", "Shore"],
+      "ipa": "/skɔː/",
+      "type": "noun/verb",
+      "meaning": "Tỷ số, ghi điểm",
+      "example": "He managed to score the winning goal in the final minute."
+    },
+    {
+      "word": "Goal",
+      "options": ["Goal", "Goat", "Gold", "Gaol"],
+      "ipa": "/ɡəʊl/",
+      "type": "noun",
+      "meaning": "Bàn thắng, mục tiêu",
+      "example": "My fitness goal is to run a marathon by the end of the year."
+    },
+    {
+      "word": "Fatigue",
+      "options": ["Fatigue", "Fatige", "Fatique", "Fortune"],
+      "ipa": "/fəˈtiːɡ/",
+      "type": "noun",
+      "meaning": "Sự mệt mỏi",
+      "example": "After the long race, he suffered from extreme fatigue."
+    },
+    {
+      "word": "Soreness",
+      "options": ["Soreness", "Sadness", "Sorness", "Sourness"],
+      "ipa": "/ˈsɔːnəs/",
+      "type": "noun",
+      "meaning": "Đau nhức cơ",
+      "example": "Muscle soreness is common a day or two after an intense workout."
+    },
+    {
+      "word": "Injury",
+      "options": ["Injury", "Inquiry", "Injery", "Ingury"],
+      "ipa": "/ˈɪndʒəri/",
+      "type": "noun",
+      "meaning": "Chấn thương",
+      "example": "The player had to leave the field due to an ankle injury."
+    },
+    {
+      "word": "Healthy",
+      "options": ["Healthy", "Wealthy", "Hearthy", "Health"],
+      "ipa": "/ˈhelθi/",
+      "type": "adjective",
+      "meaning": "Khỏe mạnh",
+      "example": "Eating a healthy diet can prevent many diseases."
+    },
+    {
+      "word": "Fit",
+      "options": ["Fit", "Fat", "Feet", "Hit"],
+      "ipa": "/fɪt/",
+      "type": "adjective",
+      "meaning": "Cân đối, khỏe khoắn",
+      "example": "He stays fit by going to the gym three times a week."
+    },
+    {
+      "word": "Active",
+      "options": ["Active", "Archive", "Achieve", "Acting"],
+      "ipa": "/ˈæktɪv/",
+      "type": "adjective",
+      "meaning": "Năng động",
+      "example": "It's important to lead an active lifestyle."
+    },
+    {
+      "word": "Sedentary",
+      "options": ["Sedentary", "Secondary", "Sedimentary", "Sentence"],
+      "ipa": "/ˈsedəntəri/",
+      "type": "adjective",
+      "meaning": "Ít vận động",
+      "example": "A sedentary lifestyle can lead to various health problems."
+    },
+    {
+      "word": "Gym",
+      "options": ["Gym", "Gem", "Jim", "Game"],
+      "ipa": "/dʒɪm/",
+      "type": "noun",
+      "meaning": "Phòng tập thể hình",
+      "example": "The hotel has a gym with modern exercise equipment."
+    },
+    {
+      "word": "Stadium",
+      "options": ["Stadium", "Studio", "Statue", "Staduim"],
+      "ipa": "/ˈsteɪdiəm/",
+      "type": "noun",
+      "meaning": "Sân vận động",
+      "example": "Thousands of fans filled the stadium to watch the match."
+    },
+    {
+      "word": "Court",
+      "options": ["Court", "Count", "Coat", "Course"],
+      "ipa": "/kɔːt/",
+      "type": "noun",
+      "meaning": "Sân (tennis, bóng rổ)",
+      "example": "They booked a tennis court for an hour."
+    },
+    {
+      "word": "Field",
+      "options": ["Field", "Filled", "Felt", "Find"],
+      "ipa": "/fiːld/",
+      "type": "noun",
+      "meaning": "Sân (bóng đá, bóng chày)",
+      "example": "The players ran onto the football field."
+    },
+    {
+      "word": "Track",
+      "options": ["Track", "Truck", "Trick", "Trek"],
+      "ipa": "/træk/",
+      "type": "noun",
+      "meaning": "Đường chạy",
+      "example": "He completed ten laps around the running track."
+    },
+    {
+      "word": "Pool",
+      "options": ["Pool", "Poll", "Pull", "Poor"],
+      "ipa": "/puːl/",
+      "type": "noun",
+      "meaning": "Bể bơi",
+      "example": "The children love to splash around in the swimming pool."
+    },
+    {
+      "word": "Referee",
+      "options": ["Referee", "Reference", "Refree", "Referre"],
+      "ipa": "/ˌrefəˈriː/",
+      "type": "noun",
+      "meaning": "Trọng tài",
+      "example": "The referee blew the whistle to signal the end of the game."
+    },
+    {
+      "word": "Helmet",
+      "options": ["Helmet", "Help me", "Helment", "Helmut"],
+      "ipa": "/ˈhelmɪt/",
+      "type": "noun",
+      "meaning": "Mũ bảo hiểm",
+      "example": "Always wear a helmet when cycling to protect your head."
+    },
+    {
+      "word": "Medal",
+      "options": ["Medal", "Metal", "Model", "Middle"],
+      "ipa": "/ˈmedl/",
+      "type": "noun",
+      "meaning": "Huy chương",
+      "example": "She was very proud to win a gold medal at the Olympics."
+    },
+    {
+      "word": "Trophy",
+      "options": ["Trophy", "Topic", "Tropy", "Trophey"],
+      "ipa": "/ˈtrəʊfi/",
+      "type": "noun",
+      "meaning": "Cúp",
+      "example": "The winning team held the trophy high in celebration."
+    },
+    {
+      "word": "Championship",
+      "options": ["Championship", "Championchip", "Champanship", "Champion"],
+      "ipa": "/ˈtʃæmpiənʃɪp/",
+      "type": "noun",
+      "meaning": "Giải vô địch",
+      "example": "They are competing for the national championship."
+    },
+    {
+      "word": "Tournament",
+      "options": ["Tournament", "Tournement", "Tourment", "Turnament"],
+      "ipa": "/ˈtʊənəmənt/",
+      "type": "noun",
+      "meaning": "Giải đấu",
+      "example": "The annual tennis tournament attracts players from all over the world."
+    },
+    {
+      "word": "Practice",
+      "options": ["Practice", "Practise", "Pratice", "Practive"],
+      "ipa": "/ˈpræktɪs/",
+      "type": "noun/verb",
+      "meaning": "Luyện tập",
+      "example": "The team has football practice every Tuesday and Thursday."
+    },
+    {
+      "word": "Training",
+      "options": ["Training", "Straining", "Raining", "Traning"],
+      "ipa": "/ˈtreɪnɪŋ/",
+      "type": "noun",
+      "meaning": "Huấn luyện, rèn luyện",
+      "example": "She is in training for her next marathon."
+    },
+    {
+      "word": "Sport",
+      "options": ["Sport", "Spot", "Support", "Sort"],
+      "ipa": "/spɔːt/",
+      "type": "noun",
+      "meaning": "Môn thể thao",
+      "example": "What is your favorite sport to watch or play?"
+    },
+    {
+      "word": "Game",
+      "options": ["Game", "Gain", "Same", "Gem"],
+      "ipa": "/ɡeɪm/",
+      "type": "noun",
+      "meaning": "Trò chơi, trận đấu",
+      "example": "Are you going to the basketball game tonight?"
+    },
+    {
+      "word": "Match",
+      "options": ["Match", "Catch", "Patch", "Much"],
+      "ipa": "/mætʃ/",
+      "type": "noun",
+      "meaning": "Trận đấu",
+      "example": "It was an exciting tennis match between the two rivals."
+    },
+    {
+      "word": "Player",
+      "options": ["Player", "Payer", "Prayer", "Layer"],
+      "ipa": "/ˈpleɪə/",
+      "type": "noun",
+      "meaning": "Người chơi, cầu thủ",
+      "example": "He is the best player on the team."
+    },
+    {
+      "word": "Opponent",
+      "options": ["Opponent", "Component", "Oponent", "Opponant"],
+      "ipa": "/əˈpəʊnənt/",
+      "type": "noun",
+      "meaning": "Đối thủ",
+      "example": "You should never underestimate your opponent."
+    },
+    {
+      "word": "Strategy",
+      "options": ["Strategy", "Tragedy", "Stratergy", "Stratigy"],
+      "ipa": "/ˈstrætədʒi/",
+      "type": "noun",
+      "meaning": "Chiến lược",
+      "example": "The coach developed a new strategy for the upcoming match."
+    },
+    {
+      "word": "Technique",
+      "options": ["Technique", "Technology", "Technic", "Teknique"],
+      "ipa": "/tekˈniːk/",
+      "type": "noun",
+      "meaning": "Kỹ thuật",
+      "example": "She has an excellent swimming technique."
+    },
+    {
+      "word": "Skill",
+      "options": ["Skill", "Skull", "Still", "Spill"],
+      "ipa": "/skɪl/",
+      "type": "noun",
+      "meaning": "Kỹ năng",
+      "example": "Passing the ball accurately is a crucial skill in soccer."
+    },
+    {
+      "word": "Stamina",
+      "options": ["Stamina", "Stigma", "Stanima", "Stamen"],
+      "ipa": "/ˈstæmɪnə/",
+      "type": "noun",
+      "meaning": "Sức chịu đựng",
+      "example": "Marathon runners need incredible stamina."
+    },
+    {
+      "word": "Posture",
+      "options": ["Posture", "Poster", "Pasture", "Pasture"],
+      "ipa": "/ˈpɒstʃə/",
+      "type": "noun",
+      "meaning": "Tư thế",
+      "example": "Good posture can help prevent back pain."
+    },
+    {
+      "word": "Breathing",
+      "options": ["Breathing", "Bleeding", "Breething", "Breaking"],
+      "ipa": "/ˈbriːðɪŋ/",
+      "type": "noun",
+      "meaning": "Hít thở",
+      "example": "Controlled breathing is very important in yoga."
+    },
+    {
+      "word": "Aerobics",
+      "options": ["Aerobics", "Arobics", "Erobics", "Arabic"],
+      "ipa": "/eəˈrəʊbɪks/",
+      "type": "noun",
+      "meaning": "Thể dục nhịp điệu",
+      "example": "She attends an aerobics class twice a week."
+    },
+    {
+      "word": "Pilates",
+      "options": ["Pilates", "Pilots", "Pirates", "Pillates"],
+      "ipa": "/pɪˈlɑːtiːz/",
+      "type": "noun",
+      "meaning": "Tập Pilates",
+      "example": "Pilates is known for strengthening the core muscles."
+    },
+    {
+      "word": "Martial Arts",
+      "options": ["Martial Arts", "Marshal Arts", "Martial arts", "Martial Art"],
+      "ipa": "/ˌmɑːʃl ˈɑːts/",
+      "type": "noun",
+      "meaning": "Võ thuật",
+      "example": "Karate and Judo are popular forms of martial arts."
+    },
+    {
+      "word": "Intensity",
+      "options": ["Intensity", "Intensive", "Indensity", "Identity"],
+      "ipa": "/ɪnˈtensəti/",
+      "type": "noun",
+      "meaning": "Cường độ",
+      "example": "High-intensity interval training (HIIT) burns a lot of calories."
+    },
+    {
+      "word": "Motivation",
+      "options": ["Motivation", "Motion", "Motivasion", "Motive"],
+      "ipa": "/ˌməʊtɪˈveɪʃn/",
+      "type": "noun",
+      "meaning": "Động lực",
+      "example": "Finding the right motivation is key to sticking to an exercise plan."
+    },
+    {
+      "word": "Discipline",
+      "options": ["Discipline", "Disciples", "Disipline", "Decipline"],
+      "ipa": "/ˈdɪsəplɪn/",
+      "type": "noun",
+      "meaning": "Kỷ luật",
+      "example": "Becoming a top athlete requires a lot of discipline."
+    },
+    {
+      "word": "Jump",
+      "options": ["Jump", "Pump", "Lump", "Jamp"],
+      "ipa": "/dʒʌmp/",
+      "type": "verb",
+      "meaning": "Nhảy",
+      "example": "You need to jump over the hurdle to continue the race."
+    },
+    {
+      "word": "Lift",
+      "options": ["Lift", "Left", "List", "Gift"],
+      "ipa": "/lɪft/",
+      "type": "verb",
+      "meaning": "Nâng, nhấc",
+      "example": "Be careful not to lift weights that are too heavy for you."
+    },
+    {
+      "word": "Push",
+      "options": ["Push", "Bush", "Posh", "Pull"],
+      "ipa": "/pʊʃ/",
+      "type": "verb",
+      "meaning": "Đẩy",
+      "example": "A push-up is a great exercise for the chest and arms."
+    },
+    {
+      "word": "Pull",
+      "options": ["Pull", "Pool", "Pill", "Full"],
+      "ipa": "/pʊl/",
+      "type": "verb",
+      "meaning": "Kéo",
+      "example": "You have to pull the rope as hard as you can."
     }
   ]
 }
