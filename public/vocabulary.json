@@ -1,7 +1,7 @@
 {
   "topics": [
     {
-      "name": "Animals 🐘",
+      "name": "Động Vật 🐘",
       "slug": "animals",
       "words": [
         {
@@ -1294,7 +1294,7 @@
       ]
     },
     {
-      "name": "Clothes & Accessories 👗",
+      "name": "Quần áo và Trang sức👗",
       "slug": "clothes-accessories",
       "words": [
         {
@@ -1781,7 +1781,7 @@
       ]
     },
     {
-      "name": "Ethnic groups of Viet Nam",
+      "name": "Các dân tộc Việt Nam🧑‍🤝‍🧑",
       "slug": "ethnic-groups-of-viet-nam",
       "words": [
         {
@@ -2281,7 +2281,7 @@
       ]
     },
     {
-      "name": "Healthy Food 🥗",
+      "name": "Trái cây 🥗",
       "slug": "healthy-food",
       "words": [
         {
@@ -2313,7 +2313,7 @@
       ]
     },
     {
-      "name": "Good Habits 💤",
+      "name": "Thói quen tốt 💤",
       "slug": "good-habits",
       "words": [
         {
@@ -2423,7 +2423,7 @@
       ]
     },
     {
-      "name": "Healthy Food 🥗",
+      "name": "Thức ăn khỏe mạnh 🥗",
       "slug": "healthy-food",
       "words": [
         {
