@@ -1,22 +1,790 @@
 {
-  "name": "Trái cây 🥗",
-  "slug": "healthy-food",
+  "name": "Trái cây 🍓",
+  "slug": "fruits",
   "words": [
     {
-      "word": "Nutrition",
-      "options": ["Nutrition", "Nutrient", "Notion", "Natation"],
-      "ipa": "/njuːˈtrɪʃən/",
+      "word": "Apple",
+      "options": ["Apple", "Aple", "Aplle", "Appel"],
+      "ipa": "/ˈæpəl/",
       "type": "noun",
-      "meaning": "Dinh dưỡng",
-      "example": "Good nutrition is essential for a growing teen."
+      "meaning": "Quả táo",
+      "example": "An apple a day keeps the doctor away."
     },
     {
-      "word": "Protein",
-      "options": ["Protect", "Proton", "Protein", "Protain"],
-      "ipa": "/ˈprəʊtiːn/",
+      "word": "Banana",
+      "options": ["Banana", "Benana", "Banena", "Bananna"],
+      "ipa": "/bəˈnænə/",
       "type": "noun",
-      "meaning": "Chất đạm",
-      "example": "Chicken, beans, and tofu are good sources of protein."
+      "meaning": "Quả chuối",
+      "example": "Monkeys love to eat bananas."
+    },
+    {
+      "word": "Orange",
+      "options": ["Orange", "Orenge", "Orrange", "Orang"],
+      "ipa": "/ˈɒrɪndʒ/",
+      "type": "noun",
+      "meaning": "Quả cam",
+      "example": "I drank a glass of orange juice this morning."
+    },
+    {
+      "word": "Grape",
+      "options": ["Grape", "Gripe", "Grap", "Graap"],
+      "ipa": "/ɡreɪp/",
+      "type": "noun",
+      "meaning": "Quả nho",
+      "example": "He picked a bunch of grapes from the vine."
+    },
+    {
+      "word": "Strawberry",
+      "options": ["Strawberry", "Strawbery", "Strawbery", "Strowberry"],
+      "ipa": "/ˈstrɔːbəri/",
+      "type": "noun",
+      "meaning": "Quả dâu tây",
+      "example": "She made a delicious strawberry pie."
+    },
+    {
+      "word": "Pineapple",
+      "options": ["Pineapple", "Pineaple", "Pinapple", "Pinnaple"],
+      "ipa": "/ˈpaɪnˌæpəl/",
+      "type": "noun",
+      "meaning": "Quả dứa (thơm)",
+      "example": "I put pineapple on my pizza."
+    },
+    {
+      "word": "Watermelon",
+      "options": ["Watermelon", "Watermellon", "Watermelone", "Watarmelon"],
+      "ipa": "/ˈwɔːtərˌmelən/",
+      "type": "noun",
+      "meaning": "Quả dưa hấu",
+      "example": "We ate watermelon at the picnic."
+    },
+    {
+      "word": "Mango",
+      "options": ["Mango", "Mengo", "Mange", "Margo"],
+      "ipa": "/ˈmæŋɡoʊ/",
+      "type": "noun",
+      "meaning": "Quả xoài",
+      "example": "Mango is a very popular tropical fruit."
+    },
+    {
+      "word": "Lemon",
+      "options": ["Lemon", "Limon", "Lemmon", "Leman"],
+      "ipa": "/ˈlemən/",
+      "type": "noun",
+      "meaning": "Quả chanh vàng",
+      "example": "She squeezed a lemon into her tea."
+    },
+    {
+      "word": "Cherry",
+      "options": ["Cherry", "Cheri", "Chary", "Chery"],
+      "ipa": "/ˈtʃeri/",
+      "type": "noun",
+      "meaning": "Quả anh đào",
+      "example": "The top of the cake had a cherry on it."
+    },
+    {
+      "word": "Kiwi",
+      "options": ["Kiwi", "Kivi", "Kewi", "Kie"],
+      "ipa": "/ˈkiːwiː/",
+      "type": "noun",
+      "meaning": "Quả kiwi",
+      "example": "Kiwi has a fuzzy brown skin and green flesh."
+    },
+    {
+      "word": "Avocado",
+      "options": ["Avocado", "Avacado", "Avocaddo", "Avacaddo"],
+      "ipa": "/ˌævəˈkɑːdoʊ/",
+      "type": "noun",
+      "meaning": "Quả bơ",
+      "example": "I made guacamole with fresh avocados."
+    },
+    {
+      "word": "Blueberry",
+      "options": ["Blueberry", "Bluberry", "Bluebery", "Blueberrie"],
+      "ipa": "/ˈbluːˌberi/",
+      "type": "noun",
+      "meaning": "Quả việt quất",
+      "example": "Blueberries are great in pancakes."
+    },
+    {
+      "word": "Raspberry",
+      "options": ["Raspberry", "Rasberry", "Raspbery", "Rasberrie"],
+      "ipa": "/ˈræzˌberi/",
+      "type": "noun",
+      "meaning": "Quả mâm xôi",
+      "example": "She picked wild raspberries in the forest."
+    },
+    {
+      "word": "Peach",
+      "options": ["Peach", "Peash", "Peech", "Petch"],
+      "ipa": "/piːtʃ/",
+      "type": "noun",
+      "meaning": "Quả đào",
+      "example": "A ripe peach is soft and juicy."
+    },
+    {
+      "word": "Plum",
+      "options": ["Plum", "Plumm", "Plume", "Plume"],
+      "ipa": "/plʌm/",
+      "type": "noun",
+      "meaning": "Quả mận",
+      "example": "The plums were sweet and delicious."
+    },
+    {
+      "word": "Pear",
+      "options": ["Pear", "Peer", "Pire", "Pare"],
+      "ipa": "/per/",
+      "type": "noun",
+      "meaning": "Quả lê",
+      "example": "I like to eat a pear with cheese."
+    },
+    {
+      "word": "Fig",
+      "options": ["Fig", "Figg", "Phig", "Figue"],
+      "ipa": "/fɪɡ/",
+      "type": "noun",
+      "meaning": "Quả sung",
+      "example": "Dried figs are a healthy snack."
+    },
+    {
+      "word": "Pomegranate",
+      "options": ["Pomegranate", "Pomegrante", "Pomgranate", "Pomegrenate"],
+      "ipa": "/ˈpɑːməˌɡrænət/",
+      "type": "noun",
+      "meaning": "Quả lựu",
+      "example": "Pomegranate seeds are bright red and juicy."
+    },
+    {
+      "word": "Cantaloupe",
+      "options": ["Cantaloupe", "Cantaloup", "Cantalope", "Cantelope"],
+      "ipa": "/ˈkæntəlˌoʊp/",
+      "type": "noun",
+      "meaning": "Quả dưa lưới",
+      "example": "We had cantaloupe for breakfast."
+    },
+    {
+      "word": "Honeydew",
+      "options": ["Honeydew", "Honyedew", "Honeydue", "Honydew"],
+      "ipa": "/ˈhʌniˌduː/",
+      "type": "noun",
+      "meaning": "Quả dưa gang",
+      "example": "Honeydew melon has a pale green flesh."
+    },
+    {
+      "word": "Coconut",
+      "options": ["Coconut", "Coconat", "Coconute", "Coconet"],
+      "ipa": "/ˈkoʊkəˌnʌt/",
+      "type": "noun",
+      "meaning": "Quả dừa",
+      "example": "I drank fresh coconut water on the beach."
+    },
+    {
+      "word": "Guava",
+      "options": ["Guava", "Guaba", "Gueva", "Guave"],
+      "ipa": "/ˈɡwɑːvə/",
+      "type": "noun",
+      "meaning": "Quả ổi",
+      "example": "Guava has a strong, sweet scent."
+    },
+    {
+      "word": "Passion fruit",
+      "options": ["Passion fruit", "Passionfruit", "Passin fruit", "Pasion fruit"],
+      "ipa": "/ˈpæʃənˌfruːt/",
+      "type": "noun",
+      "meaning": "Quả chanh dây",
+      "example": "I love the tart taste of passion fruit."
+    },
+    {
+      "word": "Dragon fruit",
+      "options": ["Dragon fruit", "Dragonfruit", "Dragon fruite", "Draggon fruit"],
+      "ipa": "/ˈdræɡənˌfruːt/",
+      "type": "noun",
+      "meaning": "Quả thanh long",
+      "example": "Dragon fruit has a vibrant pink skin."
+    },
+    {
+      "word": "Lychee",
+      "options": ["Lychee", "Lyche", "Lychi", "Lechy"],
+      "ipa": "/ˈlaɪˌtʃiː/",
+      "type": "noun",
+      "meaning": "Quả vải",
+      "example": "Lychees are sweet and have a floral scent."
+    },
+    {
+      "word": "Jackfruit",
+      "options": ["Jackfruit", "Jackfruite", "Jakfruit", "Jackfuit"],
+      "ipa": "/ˈdʒækˌfruːt/",
+      "type": "noun",
+      "meaning": "Quả mít",
+      "example": "The jackfruit is the largest tree-borne fruit."
+    },
+    {
+      "word": "Starfruit",
+      "options": ["Starfruit", "Starfruite", "Staarfruit", "Starfrut"],
+      "ipa": "/ˈstɑːrˌfruːt/",
+      "type": "noun",
+      "meaning": "Quả khế",
+      "example": "A slice of starfruit looks like a star."
+    },
+    {
+      "word": "Durian",
+      "options": ["Durian", "Durin", "Durien", "Duran"],
+      "ipa": "/ˈdʊəriən/",
+      "type": "noun",
+      "meaning": "Quả sầu riêng",
+      "example": "Durian is known for its strong odor."
+    },
+    {
+      "word": "Papaya",
+      "options": ["Papaya", "Papaia", "Papyaya", "Papaye"],
+      "ipa": "/pəˈpaɪə/",
+      "type": "noun",
+      "meaning": "Quả đu đủ",
+      "example": "We made a salad with green papaya."
+    },
+    {
+      "word": "Lime",
+      "options": ["Lime", "Lyme", "Laim", "Leim"],
+      "ipa": "/laɪm/",
+      "type": "noun",
+      "meaning": "Quả chanh vỏ xanh",
+      "example": "She added a slice of lime to her drink."
+    },
+    {
+      "word": "Grapefruit",
+      "options": ["Grapefruit", "Grapefrut", "Grapfruit", "Graperuit"],
+      "ipa": "/ˈɡreɪpˌfruːt/",
+      "type": "noun",
+      "meaning": "Quả bưởi chùm",
+      "example": "Grapefruit is known for its tart and tangy taste."
+    },
+    {
+      "word": "Apricot",
+      "options": ["Apricot", "Aprecot", "Apricott", "Aprocot"],
+      "ipa": "/ˈæprɪˌkɒt/",
+      "type": "noun",
+      "meaning": "Quả mơ",
+      "example": "Dried apricots are a popular snack."
+    },
+    {
+      "word": "Blackberry",
+      "options": ["Blackberry", "Blakberry", "Blackbery", "Blackberrie"],
+      "ipa": "/ˈblækˌbɛri/",
+      "type": "noun",
+      "meaning": "Quả mâm xôi đen",
+      "example": "We went blackberry picking in the summer."
+    },
+    {
+      "word": "Cranberry",
+      "options": ["Cranberry", "Cranbery", "Cranberrie", "Kranberry"],
+      "ipa": "/ˈkrænˌbɛri/",
+      "type": "noun",
+      "meaning": "Quả nam việt quất",
+      "example": "Cranberry sauce is a traditional Thanksgiving dish."
+    },
+    {
+      "word": "Nectarine",
+      "options": ["Nectarine", "Nectarin", "Necterine", "Nectaryn"],
+      "ipa": "/ˌnɛktəˈriːn/",
+      "type": "noun",
+      "meaning": "Quả xuân đào",
+      "example": "A nectarine is a type of peach with smooth skin."
+    },
+    {
+      "word": "Persimmon",
+      "options": ["Persimmon", "Persimon", "Persimonn", "Persymmon"],
+      "ipa": "/pərˈsɪmən/",
+      "type": "noun",
+      "meaning": "Quả hồng",
+      "example": "When ripe, a persimmon is sweet and soft."
+    },
+    {
+      "word": "Rambutan",
+      "options": ["Rambutan", "Rambuten", "Rambootan", "Rambuten"],
+      "ipa": "/ræmˈbuːtən/",
+      "type": "noun",
+      "meaning": "Quả chôm chôm",
+      "example": "Rambutan has a hairy red skin and sweet, translucent flesh."
+    },
+    {
+      "word": "Mangosteen",
+      "options": ["Mangosteen", "Mangosten", "Mangostin", "Mangostene"],
+      "ipa": "/ˈmæŋɡəˌstiːn/",
+      "type": "noun",
+      "meaning": "Quả măng cụt",
+      "example": "Mangosteen is often called the 'queen of fruits'."
+    },
+    {
+      "word": "Tamarind",
+      "options": ["Tamarind", "Tamarinde", "Tamerind", "Tamrind"],
+      "ipa": "/ˈtæmərɪnd/",
+      "type": "noun",
+      "meaning": "Quả me",
+      "example": "Tamarind pulp is used in many Asian cuisines for its sour taste."
+    },
+    {
+      "word": "Soursop",
+      "options": ["Soursop", "Soursap", "Sorsop", "Sourop"],
+      "ipa": "/ˈsaʊərˌsɒp/",
+      "type": "noun",
+      "meaning": "Quả mãng cầu xiêm",
+      "example": "Soursop juice is a refreshing tropical drink."
+    },
+    {
+      "word": "Pomelo",
+      "options": ["Pomelo", "Pomello", "Pomilo", "Pomelo"],
+      "ipa": "/ˈpɒməloʊ/",
+      "type": "noun",
+      "meaning": "Quả bưởi",
+      "example": "The pomelo is the largest citrus fruit."
+    },
+    {
+      "word": "Longan",
+      "options": ["Longan", "Longen", "Logan", "Longan"],
+      "ipa": "/ˈlɒŋɡən/",
+      "type": "noun",
+      "meaning": "Quả nhãn",
+      "example": "Longan is a sweet fruit similar to lychee."
+    },
+    {
+      "word": "Kumquat",
+      "options": ["Kumquat", "Kumquot", "Kamquat", "Cumquat"],
+      "ipa": "/ˈkʌmkwɒt/",
+      "type": "noun",
+      "meaning": "Quả quất (tắc)",
+      "example": "You can eat the entire kumquat, including the peel."
+    },
+    {
+      "word": "Jujube",
+      "options": ["Jujube", "Jujub", "Jujubee", "Jujebe"],
+      "ipa": "/ˈdʒuːdʒuːb/",
+      "type": "noun",
+      "meaning": "Quả táo tàu",
+      "example": "Dried jujubes are often used in traditional medicine."
+    },
+    {
+      "word": "Sapodilla",
+      "options": ["Sapodilla", "Sapodila", "Sapoddilla", "Sapadilla"],
+      "ipa": "/ˌsæpəˈdɪlə/",
+      "type": "noun",
+      "meaning": "Quả hồng xiêm (sapôchê)",
+      "example": "Sapodilla has a sweet, malty flavor."
+    },
+    {
+      "word": "Custard apple",
+      "options": ["Custard apple", "Custardapple", "Custard aple", "Custerd apple"],
+      "ipa": "/ˈkʌstərd ˌæpəl/",
+      "type": "noun",
+      "meaning": "Quả na (mãng cầu ta)",
+      "example": "The flesh of a custard apple is creamy and sweet."
+    },
+    {
+      "word": "Date",
+      "options": ["Date", "Dait", "Dete", "Dat"],
+      "ipa": "/deɪt/",
+      "type": "noun",
+      "meaning": "Quả chà là",
+      "example": "Dates are a very sweet fruit that grows on palm trees."
+    },
+    {
+      "word": "Mulberry",
+      "options": ["Mulberry", "Mulbery", "Mulberrie", "Mallberry"],
+      "ipa": "/ˈmʌlˌbɛri/",
+      "type": "noun",
+      "meaning": "Quả dâu tằm",
+      "example": "Silkworms feed on mulberry leaves."
+    },
+    {
+      "word": "Gooseberry",
+      "options": ["Gooseberry", "Goosberry", "Goseberry", "Goosebery"],
+      "ipa": "/ˈɡuːsˌbɛri/",
+      "type": "noun",
+      "meaning": "Quả lý gai",
+      "example": "Gooseberry pie is a classic dessert."
+    },
+    {
+      "word": "Cherimoya",
+      "options": ["Cherimoya", "Cherimya", "Cherimoy", "Cherimoi"],
+      "ipa": "/ˌtʃɛrɪˈmɔɪə/",
+      "type": "noun",
+      "meaning": "Quả mãng cầu (Peru)",
+      "example": "Mark Twain called the cherimoya 'the most delicious fruit known to men'."
+    },
+    {
+      "word": "Clementine",
+      "options": ["Clementine", "Clementin", "Clemintine", "Clementyne"],
+      "ipa": "/ˈklɛmənˌtaɪn/",
+      "type": "noun",
+      "meaning": "Quả quýt Clementine",
+      "example": "Clementines are small, seedless, and easy to peel."
+    },
+    {
+      "word": "Tangerine",
+      "options": ["Tangerine", "Tangerin", "Tangarine", "Tanjerine"],
+      "ipa": "/ˈtændʒəˌriːn/",
+      "type": "noun",
+      "meaning": "Quả quýt hồng",
+      "example": "Tangerine peel is often used in cooking for its fragrant oil."
+    },
+    {
+      "word": "Blood orange",
+      "options": ["Blood orange", "Blud orange", "Bloodorange", "Blood orang"],
+      "ipa": "/ˈblʌd ˌɒrɪndʒ/",
+      "type": "noun",
+      "meaning": "Quả cam đỏ",
+      "example": "The juice of a blood orange is a beautiful crimson color."
+    },
+    {
+      "word": "Elderberry",
+      "options": ["Elderberry", "Elderbery", "Ederberry", "Elderberrie"],
+      "ipa": "/ˈɛldərˌbɛri/",
+      "type": "noun",
+      "meaning": "Quả cơm cháy",
+      "example": "Elderberry syrup is often used as a remedy for colds."
+    },
+    {
+      "word": "Quince",
+      "options": ["Quince", "Quinse", "Qwince", "Quinc"],
+      "ipa": "/kwɪns/",
+      "type": "noun",
+      "meaning": "Quả mộc qua",
+      "example": "Quince is too hard and sour to eat raw, but it makes delicious jelly."
+    },
+    {
+      "word": "Loquat",
+      "options": ["Loquat", "Loqwat", "Lokwat", "Loquot"],
+      "ipa": "/ˈloʊkwɒt/",
+      "type": "noun",
+      "meaning": "Quả tỳ bà (nhót tây)",
+      "example": "The loquat tree produces small, sweet, orange-colored fruits."
+    },
+    {
+      "word": "Plantain",
+      "options": ["Plantain", "Plantin", "Plantein", "Plaintain"],
+      "ipa": "/ˈplæntɪn/",
+      "type": "noun",
+      "meaning": "Quả chuối nấu ăn",
+      "example": "Fried plantains are a popular side dish in many countries."
+    },
+    {
+      "word": "Salak",
+      "options": ["Salak", "Salac", "Salack", "Salahk"],
+      "ipa": "/ˈsɑːlɑːk/",
+      "type": "noun",
+      "meaning": "Quả da rắn",
+      "example": "Salak is also known as snake fruit because of its scaly skin."
+    },
+    {
+      "word": "Ackee",
+      "options": ["Ackee", "Akee", "Ackie", "Acki"],
+      "ipa": "/ˈækiː/",
+      "type": "noun",
+      "meaning": "Quả Ackee",
+      "example": "Ackee and saltfish is the national dish of Jamaica."
+    },
+    {
+      "word": "Breadfruit",
+      "options": ["Breadfruit", "Breadfrut", "Bredfruit", "Breadfuit"],
+      "ipa": "/ˈbrɛdˌfruːt/",
+      "type": "noun",
+      "meaning": "Quả sa kê",
+      "example": "When cooked, breadfruit has a texture similar to freshly baked bread."
+    },
+    {
+      "word": "Feijoa",
+      "options": ["Feijoa", "Fejoa", "Feijao", "Feyjoa"],
+      "ipa": "/feɪˈʒoʊə/",
+      "type": "noun",
+      "meaning": "Quả ổi dứa",
+      "example": "Feijoa has an aromatic flavor that tastes like pineapple, apple, and mint."
+    },
+    {
+      "word": "Jabuticaba",
+      "options": ["Jabuticaba", "Jaboticaba", "Jabuticab", "Jabuticava"],
+      "ipa": "/ʒɑːˌbuːtɪˈkɑːbə/",
+      "type": "noun",
+      "meaning": "Quả nho thân gỗ",
+      "example": "The jabuticaba is unusual because its fruit grows directly on the trunk."
+    },
+    {
+      "word": "Miracle fruit",
+      "options": ["Miracle fruit", "Miraclefruit", "Miracle frut", "Miricle fruit"],
+      "ipa": "/ˈmɪrəkəl ˌfruːt/",
+      "type": "noun",
+      "meaning": "Quả thần kỳ",
+      "example": "After eating a miracle fruit, sour foods like lemons taste sweet."
+    },
+    {
+      "word": "Noni",
+      "options": ["Noni", "Nonni", "Nony", "No-ni"],
+      "ipa": "/ˈnoʊni/",
+      "type": "noun",
+      "meaning": "Quả nhàu",
+      "example": "Noni juice is known for its strong, pungent smell and health benefits."
+    },
+    {
+      "word": "Olive",
+      "options": ["Olive", "Ollive", "Oliv", "Olliv"],
+      "ipa": "/ˈɒlɪv/",
+      "type": "noun",
+      "meaning": "Quả ô liu",
+      "example": "Olive oil is made by pressing whole olives."
+    },
+    {
+      "word": "Tamarillo",
+      "options": ["Tamarillo", "Tamarilo", "Tamarello", "Tamariilo"],
+      "ipa": "/ˌtæməˈrɪloʊ/",
+      "type": "noun",
+      "meaning": "Cà chua thân gỗ",
+      "example": "The tamarillo has a tangy and slightly sweet flavor."
+    },
+    {
+      "word": "Yuzu",
+      "options": ["Yuzu", "Yusu", "Yuzo", "Yuzzu"],
+      "ipa": "/ˈjuːzuː/",
+      "type": "noun",
+      "meaning": "Quả thanh yên Nhật",
+      "example": "Yuzu is a highly aromatic citrus fruit used in Japanese cuisine."
+    },
+    {
+      "word": "Açaí",
+      "options": ["Açaí", "Acai", "Asai", "Açai"],
+      "ipa": "/ˌɑːsaɪˈiː/",
+      "type": "noun",
+      "meaning": "Quả Açaí",
+      "example": "Açaí bowls are a popular breakfast food, topped with granola and fruit."
+    },
+    {
+      "word": "Boysenberry",
+      "options": ["Boysenberry", "Boysenbery", "Boisonberry", "Boysenberrie"],
+      "ipa": "/ˈbɔɪzənˌbɛri/",
+      "type": "noun",
+      "meaning": "Quả mâm xôi lai",
+      "example": "A boysenberry is a cross between a raspberry, blackberry, and loganberry."
+    },
+    {
+      "word": "Cloudberry",
+      "options": ["Cloudberry", "Cloudbery", "Clouberry", "Clouberrie"],
+      "ipa": "/ˈklaʊdˌbɛri/",
+      "type": "noun",
+      "meaning": "Mâm xôi bắc cực",
+      "example": "Cloudberry jam is a delicacy in Scandinavian countries."
+    },
+    {
+      "word": "Blackcurrant",
+      "options": ["Blackcurrant", "Black currant", "Blackcurrent", "Blackcurent"],
+      "ipa": "/ˌblækˈkʌrənt/",
+      "type": "noun",
+      "meaning": "Lý chua đen",
+      "example": "Blackcurrant juice is rich in vitamin C."
+    },
+    {
+      "word": "Damson",
+      "options": ["Damson", "Damsen", "Damzon", "Damsonn"],
+      "ipa": "/ˈdæmzən/",
+      "type": "noun",
+      "meaning": "Mận Damson",
+      "example": "Damsons are a type of plum often used to make gin."
+    },
+    {
+      "word": "Goji berry",
+      "options": ["Goji berry", "Gojiberry", "Gogi berry", "Goji berrie"],
+      "ipa": "/ˈɡoʊdʒi ˌbɛri/",
+      "type": "noun",
+      "meaning": "Quả kỷ tử",
+      "example": "Goji berries are often sold dried and used in soups and teas."
+    },
+    {
+      "word": "Huckleberry",
+      "options": ["Huckleberry", "Hucklebery", "Hukleberry", "Huckleberrie"],
+      "ipa": "/ˈhʌkəlˌbɛri/",
+      "type": "noun",
+      "meaning": "Quả việt quất đen",
+      "example": "Huckleberry pie is a famous dessert in the Pacific Northwest."
+    },
+    {
+      "word": "Loganberry",
+      "options": ["Loganberry", "Loganbery", "Logenberry", "Loganberrie"],
+      "ipa": "/ˈloʊɡənˌbɛri/",
+      "type": "noun",
+      "meaning": "Mâm xôi Logan",
+      "example": "The loganberry is a hybrid of the raspberry and the blackberry."
+    },
+    {
+      "word": "Muscadine",
+      "options": ["Muscadine", "Muscadin", "Muscadene", "Muskedine"],
+      "ipa": "/ˈmʌskəˌdaɪn/",
+      "type": "noun",
+      "meaning": "Nho Muscadine",
+      "example": "Muscadine grapes have thick skins and are native to the southeastern US."
+    },
+    {
+      "word": "Rose apple",
+      "options": ["Rose apple", "Roseapple", "Rosapple", "Roseaple"],
+      "ipa": "/ˈroʊz ˌæpəl/",
+      "type": "noun",
+      "meaning": "Quả lý (roi)",
+      "example": "The rose apple is crisp and has a mild, sweet flavor."
+    },
+    {
+      "word": "Sea buckthorn",
+      "options": ["Sea buckthorn", "Seabuckthorn", "Sea bucktorn", "Sea bukthorn"],
+      "ipa": "/ˈsiː ˌbʌkθɔːrn/",
+      "type": "noun",
+      "meaning": "Hắc mai biển",
+      "example": "Sea buckthorn berries are very tart but incredibly rich in nutrients."
+    },
+    {
+      "word": "Canistel",
+      "options": ["Canistel", "Canistal", "Cannistel", "Kanistel"],
+      "ipa": "/kəˈnɪstɛl/",
+      "type": "noun",
+      "meaning": "Quả trứng gà",
+      "example": "Canistel is also called egg fruit for its texture like a hard-boiled egg yolk."
+    },
+    {
+      "word": "Black Sapote",
+      "options": ["Black Sapote", "Blacksapote", "Blak Sapote", "Black Sapot"],
+      "ipa": "/ˈblæk səˈpoʊti/",
+      "type": "noun",
+      "meaning": "Hồng xiêm đen",
+      "example": "Black sapote is known as the chocolate pudding fruit."
+    },
+    {
+      "word": "Mamey Sapote",
+      "options": ["Mamey Sapote", "Mameysapote", "Mamey Sapot", "Mamey Sapoti"],
+      "ipa": "/məˈmeɪ səˈpoʊti/",
+      "type": "noun",
+      "meaning": "Hồng xiêm Mamey",
+      "example": "The mamey sapote's flesh tastes like sweet potato and pumpkin."
+    },
+    {
+      "word": "Gac",
+      "options": ["Gac", "Gak", "Gacc", "Gax"],
+      "ipa": "/ɡæk/",
+      "type": "noun",
+      "meaning": "Quả gấc",
+      "example": "The aril of the Gac fruit is used to make a bright red sticky rice dish."
+    },
+    {
+      "word": "Ambarella",
+      "options": ["Ambarella", "Amberella", "Ambarela", "Ambarela"],
+      "ipa": "/ˌæmbəˈrɛlə/",
+      "type": "noun",
+      "meaning": "Quả cóc",
+      "example": "Ambarella is crunchy and has a mildly sour taste."
+    },
+    {
+      "word": "Langsat",
+      "options": ["Langsat", "Lansat", "Langset", "Langseth"],
+      "ipa": "/ˈlɑːŋsɑːt/",
+      "type": "noun",
+      "meaning": "Quả bòn bon",
+      "example": "Langsat fruit grows in clusters and has a sweet and sour taste."
+    },
+    {
+      "word": "Santol",
+      "options": ["Santol", "Santal", "Sentol", "Sontol"],
+      "ipa": "/ˈsæntɒl/",
+      "type": "noun",
+      "meaning": "Quả sấu",
+      "example": "The santol fruit can be either sweet or sour depending on the variety."
+    },
+    {
+      "word": "Medlar",
+      "options": ["Medlar", "Medler", "Medla", "Medlar"],
+      "ipa": "/ˈmɛdlər/",
+      "type": "noun",
+      "meaning": "Quả sơn tra",
+      "example": "The medlar fruit is only eaten after it has started to decay."
+    },
+    {
+      "word": "Bael",
+      "options": ["Bael", "Bail", "Beal", "Bale"],
+      "ipa": "/beɪl/",
+      "type": "noun",
+      "meaning": "Quả mây",
+      "example": "The bael fruit has a hard shell and is used to make a refreshing drink."
+    },
+    {
+      "word": "Cupuaçu",
+      "options": ["Cupuaçu", "Cupuacu", "Cupuassu", "Capuacu"],
+      "ipa": "/ˌkuːpuəˈsuː/",
+      "type": "noun",
+      "meaning": "Cacao Brasil",
+      "example": "Cupuaçu is a delicious tropical fruit related to cacao."
+    },
+    {
+      "word": "Finger lime",
+      "options": ["Finger lime", "Fingerlime", "Fnger lime", "Fingger lime"],
+      "ipa": "/ˈfɪŋɡər laɪm/",
+      "type": "noun",
+      "meaning": "Chanh ngón tay",
+      "example": "The vesicles inside a finger lime are like little pearls of citrus juice."
+    },
+    {
+      "word": "Ice Cream Bean",
+      "options": ["Ice Cream Bean", "Icecreambean", "Icecream Bean", "Ice Cream-Bean"],
+      "ipa": "/ˈaɪs ˌkriːm biːn/",
+      "type": "noun",
+      "meaning": "Quả inga",
+      "example": "The ice cream bean has a sweet, pulpy flesh with a vanilla ice cream flavor."
+    },
+    {
+      "word": "Prickly Pear",
+      "options": ["Prickly Pear", "Pricklypear", "Prikly Pear", "Prickly Pare"],
+      "ipa": "/ˈprɪkli pɛər/",
+      "type": "noun",
+      "meaning": "Quả lê gai",
+      "example": "Prickly pear is the fruit of a cactus and is sweet and juicy."
+    },
+    {
+      "word": "Star Apple",
+      "options": ["Star Apple", "Starapple", "Starr Apple", "Star apple"],
+      "ipa": "/ˈstɑːr ˌæpəl/",
+      "type": "noun",
+      "meaning": "Quả vú sữa",
+      "example": "When you cut a star apple in half, you can see a star pattern inside."
+    },
+    {
+      "word": "Pawpaw",
+      "options": ["Pawpaw", "Paw paw", "Pawpa", "Papaw"],
+      "ipa": "/ˈpɔːpɔː/",
+      "type": "noun",
+      "meaning": "Quả đu đủ Mỹ",
+      "example": "The pawpaw has a creamy, custard-like texture and a tropical flavor."
+    },
+    {
+      "word": "Pepino",
+      "options": ["Pepino", "Peppino", "Pepeno", "Pepinoo"],
+      "ipa": "/pəˈpiːnoʊ/",
+      "type": "noun",
+      "meaning": "Dưa Pepino",
+      "example": "The pepino tastes like a mix between a melon and a cucumber."
+    },
+    {
+      "word": "Ugli fruit",
+      "options": ["Ugli fruit", "Ugly fruit", "Uglifruit", "Ugli frut"],
+      "ipa": "/ˈʌɡli ˌfruːt/",
+      "type": "noun",
+      "meaning": "Quả Ugli",
+      "example": "The ugli fruit is a hybrid of a grapefruit, orange, and tangerine."
+    },
+    {
+      "word": "Imbe",
+      "options": ["Imbe", "Imbee", "Imeb", "Imbeh"],
+      "ipa": "/ˈɪmbeɪ/",
+      "type": "noun",
+      "meaning": "Quả Imbe",
+      "example": "Imbe is a small, sweet fruit native to Africa."
+    },
+    {
+      "word": "Marang",
+      "options": ["Marang", "Merang", "Marange", "Marrang"],
+      "ipa": "/məˈræŋ/",
+      "type": "noun",
+      "meaning": "Quả Marang",
+      "example": "Marang has a strong smell but a sweet and creamy taste, similar to jackfruit."
     }
   ]
 }
