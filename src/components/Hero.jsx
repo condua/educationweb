@@ -87,12 +87,13 @@ const Hero = () => {
                 <div className="rounded-lg sm:w-3/4 w-5/6 sm:h-3/4 box-shadow-lg bg-white sm:p-4 p-2">
                   <div className="relative w-full h-full">
                     <iframe
-                      className="w-full h-full rounded-lg"
-                      src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Thay link video YouTube ở đây
+                      className="absolute top-0 left-0 w-full h-full rounded-lg"
+                      src="https://www.youtube.com/embed/krE_uH9mpIg?si=bbFBNcR6YlefJlla"
                       title="YouTube video player"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allowfullscreen
                     ></iframe>
                   </div>
                 </div>
