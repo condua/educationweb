@@ -1,634 +1,447 @@
-const grammarQuestions = [
-  {
-    preBlank: "The cat is ",
-    postBlank: " on the mat.",
-    options: ["sit", "sits", "sitting", "sat"],
-    correctAnswer: "sitting",
-    explanation:
-      "Sử dụng thì Hiện tại Tiếp diễn (is + V-ing) để diễn tả hành động đang xảy ra.",
-  },
-  {
-    preBlank: "I haven't seen him ",
-    postBlank: " last year.",
-    options: ["for", "since", "ago", "in"],
-    correctAnswer: "since",
-    explanation:
-      "'Since' được dùng với một mốc thời gian cụ thể (last year). 'For' được dùng với một khoảng thời gian (for two years).",
-  },
-  {
-    preBlank: "She is the ",
-    postBlank: " student in the class.",
-    options: ["tall", "taller", "tallest", "more tall"],
-    correctAnswer: "tallest",
-    explanation:
-      "Dùng dạng so sánh nhất (the + adj-est) để chỉ người cao nhất trong một nhóm.",
-  },
-  {
-    preBlank: "If I were you, I ",
-    postBlank: " study harder.",
-    options: ["will", "would", "can", "should have"],
-    correctAnswer: "would",
-    explanation:
-      "Đây là câu điều kiện loại 2 (If + S + V2/Ved, S + would + V), diễn tả một giả định không có thật ở hiện tại.",
-  },
-  {
-    preBlank: "My keys are ",
-    postBlank: " the table.",
-    options: ["in", "at", "on", "under"],
-    correctAnswer: "on",
-    explanation: "Sử dụng giới từ 'on' để chỉ vị trí trên một bề mặt.",
-  },
-  {
-    preBlank: "He bought ",
-    postBlank: " new car yesterday.",
-    options: ["a", "an", "the", "(no article)"],
-    correctAnswer: "a",
-    explanation:
-      "Sử dụng mạo từ 'a' trước một danh từ đếm được số ít (car) được nhắc đến lần đầu tiên.",
-  },
-  {
-    preBlank: "There isn't ",
-    postBlank: " milk left in the fridge.",
-    options: ["some", "any", "many", "a lot"],
-    correctAnswer: "any",
-    explanation: "'Any' thường được dùng trong câu phủ định và câu hỏi.",
-  },
-  {
-    preBlank: "You speak English very ",
-    postBlank: ".",
-    options: ["good", "well", "best", "better"],
-    correctAnswer: "well",
-    explanation:
-      "Dùng trạng từ 'well' để bổ nghĩa cho động từ 'speak'. 'Good' là một tính từ.",
-  },
-  {
-    preBlank: "The train ",
-    postBlank: " at 8 AM tomorrow.",
-    options: ["leave", "is leaving", "left", "has left"],
-    correctAnswer: "is leaving",
-    explanation:
-      "Sử dụng thì Hiện tại Tiếp diễn để nói về một lịch trình hoặc kế hoạch chắc chắn trong tương lai gần.",
-  },
-  {
-    preBlank: "This book was written ",
-    postBlank: " a famous author.",
-    options: ["by", "with", "from", "for"],
-    correctAnswer: "by",
-    explanation:
-      "Trong câu bị động, 'by' được dùng để chỉ tác nhân thực hiện hành động.",
-  },
-  {
-    preBlank: "The cat is ",
-    postBlank: " on the mat.",
-    options: ["sit", "sits", "sitting", "sat"],
-    correctAnswer: "sitting",
-    explanation:
-      "Sử dụng thì Hiện tại Tiếp diễn (is + V-ing) để diễn tả hành động đang xảy ra.",
-  },
-  {
-    preBlank: "I haven't seen him ",
-    postBlank: " last year.",
-    options: ["for", "since", "ago", "in"],
-    correctAnswer: "since",
-    explanation:
-      "'Since' được dùng với một mốc thời gian cụ thể (last year). 'For' được dùng với một khoảng thời gian (for two years).",
-  },
-  {
-    preBlank: "She is the ",
-    postBlank: " student in the class.",
-    options: ["tall", "taller", "tallest", "more tall"],
-    correctAnswer: "tallest",
-    explanation:
-      "Dùng dạng so sánh nhất (the + adj-est) để chỉ người cao nhất trong một nhóm.",
-  },
-  {
-    preBlank: "If I were you, I ",
-    postBlank: " study harder.",
-    options: ["will", "would", "can", "should have"],
-    correctAnswer: "would",
-    explanation:
-      "Đây là câu điều kiện loại 2 (If + S + V2/Ved, S + would + V), diễn tả một giả định không có thật ở hiện tại.",
-  },
-  {
-    preBlank: "My keys are ",
-    postBlank: " the table.",
-    options: ["in", "at", "on", "under"],
-    correctAnswer: "on",
-    explanation: "Sử dụng giới từ 'on' để chỉ vị trí trên một bề mặt.",
-  },
-  {
-    preBlank: "He bought ",
-    postBlank: " new car yesterday.",
-    options: ["a", "an", "the", "(no article)"],
-    correctAnswer: "a",
-    explanation:
-      "Sử dụng mạo từ 'a' trước một danh từ đếm được số ít (car) được nhắc đến lần đầu tiên.",
-  },
-  {
-    preBlank: "There isn't ",
-    postBlank: " milk left in the fridge.",
-    options: ["some", "any", "many", "a lot"],
-    correctAnswer: "any",
-    explanation: "'Any' thường được dùng trong câu phủ định và câu hỏi.",
-  },
-  {
-    preBlank: "You speak English very ",
-    postBlank: ".",
-    options: ["good", "well", "best", "better"],
-    correctAnswer: "well",
-    explanation:
-      "Dùng trạng từ 'well' để bổ nghĩa cho động từ 'speak'. 'Good' là một tính từ.",
-  },
-  {
-    preBlank: "The train ",
-    postBlank: " at 8 AM tomorrow.",
-    options: ["leave", "is leaving", "left", "has left"],
-    correctAnswer: "is leaving",
-    explanation:
-      "Sử dụng thì Hiện tại Tiếp diễn để nói về một lịch trình hoặc kế hoạch chắc chắn trong tương lai gần.",
-  },
-  {
-    preBlank: "This book was written ",
-    postBlank: " a famous author.",
-    options: ["by", "with", "from", "for"],
-    correctAnswer: "by",
-    explanation:
-      "Trong câu bị động, 'by' được dùng để chỉ tác nhân thực hiện hành động.",
-  },
+// src/grammarQuestions.js
+// Dữ liệu câu hỏi ngữ pháp được phân loại theo từng chủ đề.
 
-  // --- Thêm 50 câu mới ---
-  {
-    preBlank: "She has lived here ",
-    postBlank: " 2015.",
-    options: ["for", "since", "in", "ago"],
-    correctAnswer: "since",
-    explanation:
-      "'Since' dùng cho mốc thời gian, 'for' dùng cho khoảng thời gian.",
-  },
-  {
-    preBlank: "We usually have lunch ",
-    postBlank: " noon.",
-    options: ["at", "in", "on", "by"],
-    correctAnswer: "at",
-    explanation: "'At' dùng cho thời điểm cụ thể trong ngày.",
-  },
-  {
-    preBlank: "I will call you when I ",
-    postBlank: " home.",
-    options: ["get", "gets", "got", "will get"],
-    correctAnswer: "get",
-    explanation:
-      "Trong mệnh đề thời gian (when), dùng thì Hiện tại đơn thay vì tương lai.",
-  },
-  {
-    preBlank: "She is interested ",
-    postBlank: " learning English.",
-    options: ["in", "on", "at", "about"],
-    correctAnswer: "in",
-    explanation: "'Interested in' là cụm cố định.",
-  },
-  {
-    preBlank: "My brother is better ",
-    postBlank: " maths than me.",
-    options: ["at", "in", "on", "with"],
-    correctAnswer: "at",
-    explanation: "'Be good/better at' diễn tả giỏi về lĩnh vực nào.",
-  },
-  {
-    preBlank: "We haven't seen each other ",
-    postBlank: " a long time.",
-    options: ["for", "since", "in", "during"],
-    correctAnswer: "for",
-    explanation: "'For' + khoảng thời gian.",
-  },
-  {
-    preBlank: "The Eiffel Tower is ",
-    postBlank: " Paris.",
-    options: ["at", "in", "on", "to"],
-    correctAnswer: "in",
-    explanation: "'In' dùng cho thành phố, quốc gia.",
-  },
-  {
-    preBlank: "I prefer tea ",
-    postBlank: " coffee.",
-    options: ["to", "than", "over", "for"],
-    correctAnswer: "to",
-    explanation: "'Prefer A to B' nghĩa là thích A hơn B.",
-  },
-  {
-    preBlank: "She speaks more fluently ",
-    postBlank: " before.",
-    options: ["than", "as", "like", "to"],
-    correctAnswer: "than",
-    explanation: "So sánh hơn dùng 'than'.",
-  },
-  {
-    preBlank: "We are looking forward ",
-    postBlank: " your reply.",
-    options: ["to", "for", "at", "with"],
-    correctAnswer: "to",
-    explanation: "'Look forward to' + danh động từ hoặc danh từ.",
-  },
-  {
-    preBlank: "I wish I ",
-    postBlank: " taller.",
-    options: ["am", "was", "were", "be"],
-    correctAnswer: "were",
-    explanation: "Câu giả định dùng 'were' cho mọi ngôi.",
-  },
-  {
-    preBlank: "He ",
-    postBlank: " to the gym every day.",
-    options: ["go", "goes", "went", "gone"],
-    correctAnswer: "goes",
-    explanation: "Chủ ngữ số ít (he) thì Hiện tại đơn thêm -es.",
-  },
-  {
-    preBlank: "Don't forget ",
-    postBlank: " the lights when you leave.",
-    options: ["turn off", "to turn off", "turning off", "turned off"],
-    correctAnswer: "to turn off",
-    explanation: "'Forget to V' nghĩa là quên làm việc gì.",
-  },
-  {
-    preBlank: "It is too cold ",
-    postBlank: " go outside.",
-    options: ["for", "to", "than", "so"],
-    correctAnswer: "to",
-    explanation: "'Too ... to' diễn tả quá ... để có thể làm gì.",
-  },
-  {
-    preBlank: "I have never been ",
-    postBlank: " the Great Wall.",
-    options: ["at", "in", "to", "on"],
-    correctAnswer: "to",
-    explanation: "'Been to' dùng khi nói đã từng đến đâu.",
-  },
-  {
-    preBlank: "He is not old enough ",
-    postBlank: " drive a car.",
-    options: ["for", "to", "than", "so"],
-    correctAnswer: "to",
-    explanation: "'Enough to' diễn tả đủ để làm gì.",
-  },
-  {
-    preBlank: "She hasn't finished her homework ",
-    postBlank: ".",
-    options: ["already", "yet", "still", "just"],
-    correctAnswer: "yet",
-    explanation: "'Yet' thường dùng trong câu phủ định và câu hỏi ở cuối câu.",
-  },
-  {
-    preBlank: "We used ",
-    postBlank: " go fishing every summer.",
-    options: ["to", "for", "at", "in"],
-    correctAnswer: "to",
-    explanation: "'Used to' + V nguyên mẫu diễn tả thói quen trong quá khứ.",
-  },
-  {
-    preBlank: "The cake was made ",
-    postBlank: " my mom.",
-    options: ["by", "from", "of", "with"],
-    correctAnswer: "by",
-    explanation: "Trong câu bị động, 'by' chỉ tác nhân.",
-  },
-  {
-    preBlank: "I’m not good ",
-    postBlank: " remembering names.",
-    options: ["at", "for", "in", "on"],
-    correctAnswer: "at",
-    explanation: "'Be good at' + V-ing/danh từ.",
-  },
-  {
-    preBlank: "They have been married ",
-    postBlank: " 10 years.",
-    options: ["since", "for", "in", "ago"],
-    correctAnswer: "for",
-    explanation: "'For' dùng với khoảng thời gian (10 years).",
-  },
-  {
-    preBlank: "He plays the guitar ",
-    postBlank: " than his brother.",
-    options: ["good", "better", "well", "best"],
-    correctAnswer: "better",
-    explanation: "So sánh hơn của 'well' là 'better'.",
-  },
-  {
-    preBlank: "I was born ",
-    postBlank: " 1995.",
-    options: ["in", "on", "at", "by"],
-    correctAnswer: "in",
-    explanation: "'In' dùng cho năm, tháng, mùa.",
-  },
-  {
-    preBlank: "My birthday is ",
-    postBlank: " May 5th.",
-    options: ["in", "on", "at", "by"],
-    correctAnswer: "on",
-    explanation: "'On' dùng cho ngày cụ thể.",
-  },
-  {
-    preBlank: "She is very good ",
-    postBlank: " cooking.",
-    options: ["in", "at", "on", "for"],
-    correctAnswer: "at",
-    explanation: "'Good at' + V-ing/danh từ.",
-  },
-  {
-    preBlank: "They went to the park ",
-    postBlank: " it was raining.",
-    options: ["although", "because", "but", "so"],
-    correctAnswer: "although",
-    explanation: "'Although' diễn tả sự tương phản.",
-  },
-  {
-    preBlank: "I haven't eaten sushi ",
-    postBlank: " last summer.",
-    options: ["for", "since", "in", "ago"],
-    correctAnswer: "since",
-    explanation: "'Since' + mốc thời gian.",
-  },
-  {
-    preBlank: "We ",
-    postBlank: " to the cinema last night.",
-    options: ["go", "went", "gone", "going"],
-    correctAnswer: "went",
-    explanation: "Quá khứ đơn của 'go' là 'went'.",
-  },
-  {
-    preBlank: "She usually goes to work ",
-    postBlank: " bus.",
-    options: ["by", "with", "in", "on"],
-    correctAnswer: "by",
-    explanation: "'By bus/car/train' là cách diễn tả phương tiện.",
-  },
-  {
-    preBlank: "I am not interested ",
-    postBlank: " politics.",
-    options: ["in", "on", "about", "with"],
-    correctAnswer: "in",
-    explanation: "'Interested in' là cụm cố định.",
-  },
-  {
-    preBlank: "They ",
-    postBlank: " playing football now.",
-    options: ["is", "are", "was", "be"],
-    correctAnswer: "are",
-    explanation: "Hiện tại tiếp diễn với chủ ngữ số nhiều dùng 'are'.",
-  },
-  {
-    preBlank: "I can't find my keys. I must have ",
-    postBlank: " them at home.",
-    options: ["leave", "leaves", "left", "leaving"],
-    correctAnswer: "left",
-    explanation: "'Must have + V3' diễn tả phỏng đoán quá khứ.",
-  },
-  {
-    preBlank: "The movie was so ",
-    postBlank: " that I fell asleep.",
-    options: ["boring", "bored", "bores", "bore"],
-    correctAnswer: "boring",
-    explanation: "'Boring' mô tả tính chất của vật/gì đó.",
-  },
-  {
-    preBlank: "If it rains, we ",
-    postBlank: " at home.",
-    options: ["stay", "will stay", "stayed", "staying"],
-    correctAnswer: "will stay",
-    explanation: "Câu điều kiện loại 1: If + Hiện tại đơn, S + will + V.",
-  },
-  {
-    preBlank: "She is the most intelligent person I have ever ",
-    postBlank: ".",
-    options: ["meet", "meets", "met", "meeting"],
-    correctAnswer: "met",
-    explanation: "Hiện tại hoàn thành: have/has + V3.",
-  },
-  {
-    preBlank: "He hasn't decided what ",
-    postBlank: " yet.",
-    options: ["to do", "do", "doing", "done"],
-    correctAnswer: "to do",
-    explanation: "Cấu trúc 'decide what to do'.",
-  },
-  {
-    preBlank: "I was reading a book when the phone ",
-    postBlank: ".",
-    options: ["ring", "rung", "rang", "rings"],
-    correctAnswer: "rang",
-    explanation: "Quá khứ đơn của 'ring' là 'rang'.",
-  },
-  {
-    preBlank: "We will go hiking if the weather ",
-    postBlank: " fine.",
-    options: ["is", "will be", "was", "being"],
-    correctAnswer: "is",
-    explanation:
-      "Trong mệnh đề điều kiện loại 1, dùng thì hiện tại đơn sau 'if'.",
-  },
-  {
-    preBlank: "The sun ",
-    postBlank: " in the east.",
-    options: ["rise", "rises", "rose", "risen"],
-    correctAnswer: "rises",
-    explanation: "Sự thật hiển nhiên dùng thì hiện tại đơn.",
-  },
-  {
-    preBlank: "The test was easy, so I finished it ",
-    postBlank: ".",
-    options: ["quick", "quickly", "quicker", "quickest"],
-    correctAnswer: "quickly",
-    explanation: "Trạng từ 'quickly' bổ nghĩa cho động từ 'finished'.",
-  },
-  {
-    preBlank: "This is the first time I ",
-    postBlank: " sushi.",
-    options: ["eat", "ate", "eaten", "have eaten"],
-    correctAnswer: "have eaten",
-    explanation: "Hiện tại hoàn thành với 'This is the first time...'.",
-  },
-  {
-    preBlank: "The book is not as interesting ",
-    postBlank: " the movie.",
-    options: ["than", "like", "as", "so"],
-    correctAnswer: "as",
-    explanation: "So sánh ngang bằng: as + adj + as.",
-  },
-  {
-    preBlank: "I have to finish this work ",
-    postBlank: " tomorrow.",
-    options: ["by", "until", "at", "for"],
-    correctAnswer: "by",
-    explanation: "'By' + thời điểm tương lai để chỉ hạn chót.",
-  },
-  {
-    preBlank: "He has worked here ",
-    postBlank: " 5 years.",
-    options: ["since", "for", "in", "during"],
-    correctAnswer: "for",
-    explanation: "'For' + khoảng thời gian.",
-  },
-  {
-    preBlank: "I don't have enough money ",
-    postBlank: " buy that car.",
-    options: ["for", "to", "so", "than"],
-    correctAnswer: "to",
-    explanation: "'Enough to' + V.",
-  },
-  {
-    preBlank: "We went out ",
-    postBlank: " the rain.",
-    options: ["although", "in spite of", "because", "so"],
-    correctAnswer: "in spite of",
-    explanation: "'In spite of' + danh từ/cụm danh từ.",
-  },
-  {
-    preBlank: "The teacher told us ",
-    postBlank: " quiet.",
-    options: ["be", "to be", "being", "been"],
-    correctAnswer: "to be",
-    explanation: "'Tell someone to do something'.",
-  },
-  {
-    preBlank: "I was tired ",
-    postBlank: " I went to bed early.",
-    options: ["so", "because", "but", "although"],
-    correctAnswer: "so",
-    explanation: "'So' để chỉ kết quả.",
-  },
-  {
-    preBlank: "I usually go swimming ",
-    postBlank: " Sunday mornings.",
-    options: ["in", "on", "at", "by"],
-    correctAnswer: "on",
-    explanation: "'On' + ngày trong tuần.",
-  },
-  {
-    preBlank: "He ",
-    postBlank: " in London when he was a child.",
-    options: ["lives", "lived", "has lived", "living"],
-    correctAnswer: "lived",
-    explanation: "Quá khứ đơn diễn tả hành động đã kết thúc.",
-  },
-  {
-    preBlank: "This exercise is too difficult ",
-    postBlank: " me to do.",
-    options: ["for", "to", "that", "so"],
-    correctAnswer: "for",
-    explanation: "'Too... for someone to do something'.",
-  },
-  {
-    preBlank: "I haven't had lunch ",
-    postBlank: " yesterday.",
-    options: ["for", "since", "in", "ago"],
-    correctAnswer: "since",
-    explanation: "'Since' + mốc thời gian.",
-  },
-  {
-    preBlank: "If I ",
-    postBlank: " rich, I would travel the world.",
-    options: ["am", "were", "was", "be"],
-    correctAnswer: "were",
-    explanation: "Điều kiện loại 2 dùng 'were' cho mọi ngôi.",
-  },
-  {
-    preBlank: "He ",
-    postBlank: " to bed before 10 PM every night.",
-    options: ["go", "goes", "going", "gone"],
-    correctAnswer: "goes",
-    explanation: "Chủ ngữ số ít + hiện tại đơn thêm -es.",
-  },
-  {
-    preBlank: "She has just ",
-    postBlank: " her homework.",
-    options: ["finish", "finishes", "finished", "finishing"],
-    correctAnswer: "finished",
-    explanation: "'Has/have just + V3' diễn tả hành động vừa mới xảy ra.",
-  },
-  {
-    preBlank: "He was reading a book while she ",
-    postBlank: " dinner.",
-    options: ["cook", "cooks", "was cooking", "cooked"],
-    correctAnswer: "was cooking",
-    explanation: "Quá khứ tiếp diễn diễn tả hai hành động xảy ra song song.",
-  },
-  {
-    preBlank: "We ",
-    postBlank: " seen that movie before.",
-    options: ["has", "have", "had", "having"],
-    correctAnswer: "have",
-    explanation: "Hiện tại hoàn thành với chủ ngữ số nhiều.",
-  },
-  {
-    preBlank: "I will call you as soon as I ",
-    postBlank: " home.",
-    options: ["get", "gets", "got", "will get"],
-    correctAnswer: "get",
-    explanation:
-      "Trong mệnh đề thời gian, dùng hiện tại đơn thay cho tương lai.",
-  },
-  {
-    preBlank: "The cake smells ",
-    postBlank: ".",
-    options: ["delicious", "deliciously", "delight", "delighted"],
-    correctAnswer: "delicious",
-    explanation: "Động từ chỉ giác quan dùng tính từ để bổ nghĩa.",
-  },
-  {
-    preBlank: "He is taller ",
-    postBlank: " his brother.",
-    options: ["than", "as", "like", "to"],
-    correctAnswer: "than",
-    explanation: "So sánh hơn: adj + 'than'.",
-  },
-  {
-    preBlank: "I haven't decided where ",
-    postBlank: " for my holiday.",
-    options: ["go", "to go", "going", "went"],
-    correctAnswer: "to go",
-    explanation: "Cấu trúc 'decide where to go'.",
-  },
-  {
-    preBlank: "We ",
-    postBlank: " to the beach every summer.",
-    options: ["go", "goes", "went", "gone"],
-    correctAnswer: "go",
-    explanation: "Thói quen hiện tại dùng hiện tại đơn.",
-  },
-  {
-    preBlank: "She ",
-    postBlank: " breakfast before leaving for school.",
-    options: ["have", "has", "having", "had"],
-    correctAnswer: "has",
-    explanation: "Chủ ngữ số ít (she) + has.",
-  },
-  {
-    preBlank: "He ",
-    postBlank: " his leg while playing football.",
-    options: ["break", "broke", "broken", "breaks"],
-    correctAnswer: "broke",
-    explanation: "Quá khứ đơn của 'break' là 'broke'.",
-  },
-  {
-    preBlank: "This road is much ",
-    postBlank: " than that one.",
-    options: ["narrow", "narrower", "narrowest", "more narrow"],
-    correctAnswer: "narrower",
-    explanation: "So sánh hơn của tính từ ngắn: adj + er.",
-  },
-  {
-    preBlank: "I ",
-    postBlank: " never been to New York.",
-    options: ["have", "has", "had", "having"],
-    correctAnswer: "have",
-    explanation: "Hiện tại hoàn thành với chủ ngữ số nhiều hoặc I/we/you/they.",
-  },
-  {
-    preBlank: "Please turn ",
-    postBlank: " the TV. I’m trying to study.",
-    options: ["off", "on", "up", "down"],
-    correctAnswer: "off",
-    explanation: "'Turn off' nghĩa là tắt.",
+export const grammarTopics = [
+  {
+    topic: "Tenses (Thì)",
+    slug: "tenses",
+    icon: "🕒",
+    questions: [
+      {
+        preBlank: "The cat is ",
+        postBlank: " on the mat.",
+        options: ["sit", "sits", "sitting", "sat"],
+        correctAnswer: "sitting",
+        explanation:
+          "Sử dụng thì Hiện tại Tiếp diễn (is + V-ing) để diễn tả hành động đang xảy ra.",
+      },
+      {
+        preBlank: "The train ",
+        postBlank: " at 8 AM tomorrow.",
+        options: ["leave", "is leaving", "left", "has left"],
+        correctAnswer: "is leaving",
+        explanation:
+          "Sử dụng thì Hiện tại Tiếp diễn để nói về một lịch trình hoặc kế hoạch chắc chắn trong tương lai gần.",
+      },
+      {
+        preBlank: "They ",
+        postBlank: " playing football now.",
+        options: ["is", "are", "was", "be"],
+        correctAnswer: "are",
+        explanation: "Hiện tại tiếp diễn với chủ ngữ số nhiều dùng 'are'.",
+      },
+      {
+        preBlank: "He ",
+        postBlank: " to the gym every day.",
+        options: ["go", "goes", "went", "gone"],
+        correctAnswer: "goes",
+        explanation:
+          "Chủ ngữ số ít (he) và thói quen hàng ngày (every day) dùng thì Hiện tại đơn thêm -es.",
+      },
+      {
+        preBlank: "The sun ",
+        postBlank: " in the east.",
+        options: ["rise", "rises", "rose", "risen"],
+        correctAnswer: "rises",
+        explanation: "Sự thật hiển nhiên dùng thì hiện tại đơn.",
+      },
+      {
+        preBlank: "We ",
+        postBlank: " to the cinema last night.",
+        options: ["go", "went", "gone", "going"],
+        correctAnswer: "went",
+        explanation:
+          "Thì Quá khứ đơn dùng cho hành động đã kết thúc trong quá khứ (last night).",
+      },
+      {
+        preBlank: "He ",
+        postBlank: " his leg while playing football.",
+        options: ["break", "broke", "broken", "breaks"],
+        correctAnswer: "broke",
+        explanation:
+          "Hành động xảy ra và kết thúc trong quá khứ dùng thì Quá khứ đơn. 'broke' là V2 của 'break'.",
+      },
+      {
+        preBlank: "He ",
+        postBlank: " in London when he was a child.",
+        options: ["lives", "lived", "has lived", "living"],
+        correctAnswer: "lived",
+        explanation:
+          "Quá khứ đơn diễn tả một hành động hoặc tình trạng đã kết thúc trong quá khứ.",
+      },
+      {
+        preBlank: "He was reading a book while she ",
+        postBlank: " dinner.",
+        options: ["cook", "cooks", "was cooking", "cooked"],
+        correctAnswer: "was cooking",
+        explanation:
+          "Thì Quá khứ tiếp diễn diễn tả hai hành động xảy ra song song trong quá khứ.",
+      },
+      {
+        preBlank: "I was reading a book when the phone ",
+        postBlank: ".",
+        options: ["ring", "rung", "rang", "rings"],
+        correctAnswer: "rang",
+        explanation:
+          "Một hành động đang diễn ra (was reading) thì một hành động khác xen vào (rang - Quá khứ đơn).",
+      },
+      {
+        preBlank: "I haven't seen him ",
+        postBlank: " last year.",
+        options: ["for", "since", "ago", "in"],
+        correctAnswer: "since",
+        explanation:
+          "Thì Hiện tại hoàn thành dùng 'since' với một mốc thời gian cụ thể (last year).",
+      },
+      {
+        preBlank: "We haven't seen each other ",
+        postBlank: " a long time.",
+        options: ["for", "since", "in", "during"],
+        correctAnswer: "for",
+        explanation:
+          "Thì Hiện tại hoàn thành dùng 'for' với một khoảng thời gian (a long time).",
+      },
+      {
+        preBlank: "She hasn't finished her homework ",
+        postBlank: ".",
+        options: ["already", "yet", "still", "just"],
+        correctAnswer: "yet",
+        explanation:
+          "'Yet' thường đứng cuối câu trong câu phủ định của thì Hiện tại Hoàn thành.",
+      },
+      {
+        preBlank: "She is the most intelligent person I have ever ",
+        postBlank: ".",
+        options: ["meet", "meets", "met", "meeting"],
+        correctAnswer: "met",
+        explanation:
+          "Thì Hiện tại hoàn thành (have + V3) dùng trong cấu trúc so sánh nhất để nói về trải nghiệm.",
+      },
+      {
+        preBlank: "I can't find my keys. I must have ",
+        postBlank: " them at home.",
+        options: ["leave", "leaves", "left", "leaving"],
+        correctAnswer: "left",
+        explanation:
+          "'Must have + V3' diễn tả một phỏng đoán chắc chắn về một sự việc trong quá khứ.",
+      },
+    ],
+  },
+  {
+    topic: "Prepositions (Giới từ)",
+    slug: "prepositions",
+    icon: "📍",
+    questions: [
+      {
+        preBlank: "My keys are ",
+        postBlank: " the table.",
+        options: ["in", "at", "on", "under"],
+        correctAnswer: "on",
+        explanation: "Sử dụng giới từ 'on' để chỉ vị trí trên một bề mặt.",
+      },
+      {
+        preBlank: "We usually have lunch ",
+        postBlank: " noon.",
+        options: ["at", "in", "on", "by"],
+        correctAnswer: "at",
+        explanation:
+          "'At' dùng cho các thời điểm cụ thể trong ngày (at noon, at midnight).",
+      },
+      {
+        preBlank: "She is interested ",
+        postBlank: " learning English.",
+        options: ["in", "on", "at", "about"],
+        correctAnswer: "in",
+        explanation:
+          "Cụm từ cố định (collocation) là 'interested in' + N/V-ing.",
+      },
+      {
+        preBlank: "My brother is better ",
+        postBlank: " maths than me.",
+        options: ["at", "in", "on", "with"],
+        correctAnswer: "at",
+        explanation:
+          "Cụm từ cố định là 'good at' / 'better at' để diễn tả giỏi về lĩnh vực nào đó.",
+      },
+      {
+        preBlank: "The Eiffel Tower is ",
+        postBlank: " Paris.",
+        options: ["at", "in", "on", "to"],
+        correctAnswer: "in",
+        explanation:
+          "Giới từ 'in' dùng cho các địa điểm lớn như thành phố, quốc gia.",
+      },
+      {
+        preBlank: "I was born ",
+        postBlank: " 1995.",
+        options: ["in", "on", "at", "by"],
+        correctAnswer: "in",
+        explanation: "Giới từ 'in' dùng trước năm, tháng, mùa.",
+      },
+      {
+        preBlank: "My birthday is ",
+        postBlank: " May 5th.",
+        options: ["in", "on", "at", "by"],
+        correctAnswer: "on",
+        explanation:
+          "Giới từ 'on' dùng trước ngày cụ thể (ngày trong tháng, ngày trong tuần).",
+      },
+    ],
+  },
+  {
+    topic: "Articles (Mạo từ)",
+    slug: "articles",
+    icon: "🅰️",
+    questions: [
+      {
+        preBlank: "He bought ",
+        postBlank: " new car yesterday.",
+        options: ["a", "an", "the", "(no article)"],
+        correctAnswer: "a",
+        explanation:
+          "Sử dụng mạo từ 'a' trước một danh từ đếm được số ít (car) được nhắc đến lần đầu tiên.",
+      },
+    ],
+  },
+  {
+    topic: "Comparatives (So sánh)",
+    slug: "comparatives",
+    icon: "📊",
+    questions: [
+      {
+        preBlank: "She is the ",
+        postBlank: " student in the class.",
+        options: ["tall", "taller", "tallest", "more tall"],
+        correctAnswer: "tallest",
+        explanation:
+          "Dùng dạng so sánh nhất (the + adj-est) để chỉ người/vật cao nhất trong một nhóm.",
+      },
+      {
+        preBlank: "She speaks more fluently ",
+        postBlank: " before.",
+        options: ["than", "as", "like", "to"],
+        correctAnswer: "than",
+        explanation: "So sánh hơn của trạng từ dài dùng 'more + adv + than'.",
+      },
+      {
+        preBlank: "The book is not as interesting ",
+        postBlank: " the movie.",
+        options: ["than", "like", "as", "so"],
+        correctAnswer: "as",
+        explanation: "So sánh ngang bằng (phủ định): not as + adj + as.",
+      },
+    ],
+  },
+  {
+    topic: "Conditionals & Wishes (Câu điều kiện & Câu ước)",
+    slug: "conditionals-wishes",
+    icon: "❓",
+    questions: [
+      {
+        preBlank: "If I were you, I ",
+        postBlank: " study harder.",
+        options: ["will", "would", "can", "should have"],
+        correctAnswer: "would",
+        explanation:
+          "Đây là câu điều kiện loại 2 (If + S + V2/Ved, S + would + V), diễn tả một giả định không có thật ở hiện tại.",
+      },
+      {
+        preBlank: "I wish I ",
+        postBlank: " taller.",
+        options: ["am", "was", "were", "be"],
+        correctAnswer: "were",
+        explanation:
+          "Câu ước ở hiện tại (wish + S + V2/Ved) dùng 'were' cho tất cả các ngôi.",
+      },
+      {
+        preBlank: "If it rains, we ",
+        postBlank: " at home.",
+        options: ["stay", "will stay", "stayed", "staying"],
+        correctAnswer: "will stay",
+        explanation:
+          "Câu điều kiện loại 1 (If + Hiện tại đơn, Tương lai đơn) diễn tả một khả năng có thể xảy ra.",
+      },
+    ],
+  },
+  {
+    topic: "Quantifiers (Từ chỉ số lượng)",
+    slug: "quantifiers",
+    icon: "#️⃣",
+    questions: [
+      {
+        preBlank: "There isn't ",
+        postBlank: " milk left in the fridge.",
+        options: ["some", "any", "many", "a lot"],
+        correctAnswer: "any",
+        explanation: "'Any' thường được dùng trong câu phủ định và câu hỏi.",
+      },
+    ],
+  },
+  {
+    topic: "Adverbs & Adjectives (Trạng từ & Tính từ)",
+    slug: "adverbs-adjectives",
+    icon: "📝",
+    questions: [
+      {
+        preBlank: "You speak English very ",
+        postBlank: ".",
+        options: ["good", "well", "best", "better"],
+        correctAnswer: "well",
+        explanation:
+          "Dùng trạng từ 'well' để bổ nghĩa cho động từ 'speak'. 'Good' là một tính từ.",
+      },
+      {
+        preBlank: "The movie was so ",
+        postBlank: " that I fell asleep.",
+        options: ["boring", "bored", "bores", "bore"],
+        correctAnswer: "boring",
+        explanation:
+          "Tính từ đuôi '-ing' (boring) dùng để mô tả tính chất của sự vật, sự việc.",
+      },
+      {
+        preBlank: "The test was easy, so I finished it ",
+        postBlank: ".",
+        options: ["quick", "quickly", "quicker", "quickest"],
+        correctAnswer: "quickly",
+        explanation: "Trạng từ 'quickly' bổ nghĩa cho động từ 'finished'.",
+      },
+      {
+        preBlank: "The cake smells ",
+        postBlank: ".",
+        options: ["delicious", "deliciously", "delight", "delighted"],
+        correctAnswer: "delicious",
+        explanation:
+          "Sau các động từ chỉ giác quan (linking verbs) như 'smell', 'taste', 'feel', ta dùng tính từ.",
+      },
+    ],
+  },
+  {
+    topic: "Passive Voice (Câu bị động)",
+    slug: "passive-voice",
+    icon: "🗣️",
+    questions: [
+      {
+        preBlank: "This book was written ",
+        postBlank: " a famous author.",
+        options: ["by", "with", "from", "for"],
+        correctAnswer: "by",
+        explanation:
+          "Trong câu bị động, 'by' được dùng để chỉ tác nhân thực hiện hành động.",
+      },
+      {
+        preBlank: "The cake was made ",
+        postBlank: " my mom.",
+        options: ["by", "from", "of", "with"],
+        correctAnswer: "by",
+        explanation:
+          "Trong câu bị động, 'by' được dùng để chỉ người hoặc vật thực hiện hành động.",
+      },
+    ],
+  },
+  {
+    topic: "Conjunctions (Liên từ)",
+    slug: "conjunctions",
+    icon: "🔗",
+    questions: [
+      {
+        preBlank: "They went to the park ",
+        postBlank: " it was raining.",
+        options: ["although", "because", "but", "so"],
+        correctAnswer: "although",
+        explanation:
+          "'Although' (mặc dù) dùng để nối hai mệnh đề có ý nghĩa tương phản.",
+      },
+      {
+        preBlank: "We went out ",
+        postBlank: " the rain.",
+        options: ["although", "in spite of", "because", "so"],
+        correctAnswer: "in spite of",
+        explanation:
+          "'In spite of' (mặc dù) + cụm danh từ. 'Although' + mệnh đề.",
+      },
+      {
+        preBlank: "I was tired ",
+        postBlank: " I went to bed early.",
+        options: ["so", "because", "but", "although"],
+        correctAnswer: "so",
+        explanation:
+          "'So' (vì vậy) dùng để chỉ kết quả của một hành động hoặc tình huống.",
+      },
+    ],
+  },
+  {
+    topic: "Gerunds & Infinitives (Danh động từ & Động từ nguyên mẫu)",
+    slug: "gerunds-infinitives",
+    icon: "🏃‍♂️",
+    questions: [
+      {
+        preBlank: "Don't forget ",
+        postBlank: " the lights when you leave.",
+        options: ["turn off", "to turn off", "turning off", "turned off"],
+        correctAnswer: "to turn off",
+        explanation:
+          "'Forget to do something' nghĩa là quên phải làm một việc gì đó.",
+      },
+      {
+        preBlank: "He hasn't decided what ",
+        postBlank: " yet.",
+        options: ["to do", "do", "doing", "done"],
+        correctAnswer: "to do",
+        explanation:
+          "Sau các từ để hỏi như 'what', 'where', 'when' trong mệnh đề phụ, ta dùng 'to-infinitive'.",
+      },
+      {
+        preBlank: "The teacher told us ",
+        postBlank: " quiet.",
+        options: ["be", "to be", "being", "been"],
+        correctAnswer: "to be",
+        explanation: "Cấu trúc 'tell someone to do something' (bảo ai làm gì).",
+      },
+    ],
+  },
+  {
+    topic: "Phrasal Verbs (Cụm động từ)",
+    slug: "phrasal-verbs",
+    icon: "🚀",
+    questions: [
+      {
+        preBlank: "Please turn ",
+        postBlank: " the TV. I’m trying to study.",
+        options: ["off", "on", "up", "down"],
+        correctAnswer: "off",
+        explanation: "'Turn off' là một cụm động từ có nghĩa là 'tắt'.",
+      },
+    ],
+  },
+  {
+    topic: "Common Structures (Các cấu trúc thông dụng)",
+    slug: "common-structures",
+    icon: "🏛️",
+    questions: [
+      {
+        preBlank: "I prefer tea ",
+        postBlank: " coffee.",
+        options: ["to", "than", "over", "for"],
+        correctAnswer: "to",
+        explanation:
+          "Cấu trúc 'prefer something to something else' (thích cái gì hơn cái gì).",
+      },
+      {
+        preBlank: "It is too cold ",
+        postBlank: " go outside.",
+        options: ["for", "to", "than", "so"],
+        correctAnswer: "to",
+        explanation:
+          "Cấu trúc 'too + adj + to do something' (quá... để làm gì).",
+      },
+      {
+        preBlank: "He is not old enough ",
+        postBlank: " drive a car.",
+        options: ["for", "to", "than", "so"],
+        correctAnswer: "to",
+        explanation:
+          "Cấu trúc 'adj + enough + to do something' (đủ... để làm gì).",
+      },
+    ],
   },
 ];
-export default grammarQuestions;

@@ -21,6 +21,7 @@ export const fetchUser = createAsyncThunk(
       const response = await axios.get(`${API_URL}/me`, getAuthHeaders(token));
       return response.data;
     } catch (error) {
+      console.error("Fetch user error:", error);
       return rejectWithValue(
         error?.response?.data || "Lỗi khi lấy thông tin người dùng."
       );
@@ -107,6 +108,7 @@ export const enrollCourse = createAsyncThunk(
 );
 
 // 📦 Slice
+
 const userSlice = createSlice({
   name: "user",
   initialState: {

@@ -23,16 +23,24 @@ const Header = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
-  const { isAuthen } = useSelector((state) => state.auth);
+  const { isAuthen, token } = useSelector((state) => state.auth); // Gộp token vào đây cho gọn
   const { user } = useSelector((state) => state.user);
-  const token = useSelector((state) => state.auth.token);
 
   // Lấy thông tin người dùng
   useEffect(() => {
     if (token && !user) {
-      dispatch(fetchUser(token));
+      // THAY ĐỔI Ở ĐÂY
+      dispatch(fetchUser(token))
+        .unwrap() // "Mở" kết quả của thunk
+        .catch(() => {
+          // Nếu thunk bị rejected (ví dụ: token hết hạn/không hợp lệ)
+          console.error("Invalid or expired token. Logging out...");
+          dispatch(logout());
+          dispatch(logoutUser());
+        });
     }
-  }, [dispatch, token, user]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, token]); // Chỉ cần phụ thuộc vào dispatch và token
 
   // Các mục menu với icon
   const items = [
