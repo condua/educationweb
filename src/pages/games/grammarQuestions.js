@@ -442,6 +442,57 @@ export const grammarTopics = [
         explanation:
           "Cấu trúc 'adj + enough + to do something' (đủ... để làm gì).",
       },
+      {
+        preBlank: "Not only ",
+        postBlank: " late, but he also forgot his wallet.",
+        options: [
+          "he arrived",
+          "did he arrive",
+          "he had arrived",
+          "had he arrived",
+        ],
+        correctAnswer: "did he arrive",
+        explanation:
+          "Cấu trúc đảo ngữ với 'Not only... but also...': Not only + trợ động từ + S + V.",
+      },
+      {
+        preBlank: "It is vital that every student ",
+        postBlank: " aware of the rules.",
+        options: ["is", "are", "be", "was"],
+        correctAnswer: "be",
+        explanation:
+          "Cấu trúc giả định (subjunctive mood) sau 'It is vital that...': S + V(nguyên thể).",
+      },
+      {
+        preBlank: "If he had listened to me, he ",
+        postBlank: " in trouble now.",
+        options: [
+          "would not have been",
+          "would not be",
+          "will not be",
+          "is not",
+        ],
+        correctAnswer: "would not be",
+        explanation:
+          "Câu điều kiện hỗn hợp loại 3-2: giả thiết trái với quá khứ (mệnh đề If) dẫn đến kết quả trái với hiện tại (mệnh đề chính).",
+      },
+      {
+        preBlank: "",
+        postBlank:
+          " warned about the severe weather, they decided to cancel the trip.",
+        options: ["Having been", "Having", "Been", "To be"],
+        correctAnswer: "Having been",
+        explanation:
+          "Mệnh đề phân từ hoàn thành ở dạng bị động (Perfect Participle in passive voice) dùng để chỉ hành động xảy ra trước hành động ở mệnh đề chính.",
+      },
+      {
+        preBlank: "It's high time you ",
+        postBlank: " focusing on your future career.",
+        options: ["start", "to start", "started", "should start"],
+        correctAnswer: "started",
+        explanation:
+          "Cấu trúc 'It's high time + S + V(quá khứ đơn)' có nghĩa là đã đến lúc ai đó nên làm gì.",
+      },
     ],
   },
 ];
