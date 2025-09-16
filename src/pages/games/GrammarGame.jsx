@@ -270,7 +270,10 @@ export default function GrammarGame() {
         <header className="mb-6 flex justify-between items-start sm:items-center gap-3 text-lg">
           <div>
             <button
-              onClick={() => setGameState("topic_selection")}
+              onClick={() => {
+                setGameState("topic_selection");
+                safePlay(sounds.next, 0.3);
+              }}
               className="text-xs px-2 py-1 rounded-full bg-white/10 text-slate-200 hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               aria-label="Back to topics"
             >
@@ -335,33 +338,45 @@ export default function GrammarGame() {
                 aria-label="Answer choices"
                 className="grid grid-cols-1 sm:grid-cols-2 gap-4"
               >
-                {currentQuestion?.options?.map((option) => {
+                {currentQuestion?.options?.map((option, idx) => {
                   const isTheCorrectAnswer =
                     option === currentQuestion.correctAnswer;
                   const isTheSelectedAnswer = option === selectedAnswer;
+                  const letter = String.fromCharCode(65 + idx); // A, B, C, D, ...
+
                   let buttonClass =
                     "bg-slate-700/80 hover:bg-slate-600/80 text-white";
                   if (isAnswered) {
-                    if (isTheCorrectAnswer)
+                    if (isTheCorrectAnswer) {
                       buttonClass =
                         "bg-green-500 text-white ring-2 ring-white/80";
-                    else if (isTheSelectedAnswer)
+                    } else if (isTheSelectedAnswer) {
                       buttonClass = "bg-red-500 text-white";
-                    else
+                    } else {
                       buttonClass = "bg-slate-700/50 text-slate-400 opacity-60";
+                    }
                   }
+
                   return (
                     <motion.button
-                      key={option}
+                      key={`${idx}-${option}`}
                       role="radio"
                       aria-checked={isTheSelectedAnswer}
+                      aria-label={`${letter}. ${option}`}
                       whileHover={isAnswered ? undefined : { scale: 1.03 }}
                       whileTap={isAnswered ? undefined : { scale: 0.97 }}
                       onClick={() => handleAnswerClick(option)}
                       disabled={isAnswered}
                       className={`rounded-lg p-4 text-xl font-medium shadow-sm transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${buttonClass}`}
                     >
-                      {option}
+                      <div className="flex items-center gap-3 text-left">
+                        <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/30 ring-1 ring-white/15 font-bold">
+                          {letter}
+                        </span>
+                        <span className="whitespace-normal break-words">
+                          {option}
+                        </span>
+                      </div>
                     </motion.button>
                   );
                 })}
