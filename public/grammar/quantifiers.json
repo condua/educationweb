@@ -1,0 +1,14 @@
+{
+  "topic": "Quantifiers (Từ chỉ số lượng)",
+  "slug": "quantifiers",
+  "icon": "#️⃣",
+  "questions": [
+    {
+      "preBlank": "There isn't ",
+      "postBlank": " milk left in the fridge.",
+      "options": ["some", "any", "many", "a lot"],
+      "correctAnswer": "any",
+      "explanation": "'Any' thường được dùng trong câu phủ định và câu hỏi."
+    }
+  ]
+}

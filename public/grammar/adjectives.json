@@ -1,0 +1,21 @@
+{
+  "topic": "Adjectives (Tính từ)",
+  "slug": "adjectives",
+  "icon": "📝",
+  "questions": [
+    {
+      "preBlank": "The movie was so ",
+      "postBlank": " that I fell asleep.",
+      "options": ["boring", "bored", "bores", "bore"],
+      "correctAnswer": "boring",
+      "explanation": "Tính từ đuôi '-ing' (boring) dùng để mô tả tính chất của sự vật, sự việc."
+    },
+    {
+      "preBlank": "The cake smells ",
+      "postBlank": ".",
+      "options": ["delicious", "deliciously", "delight", "delighted"],
+      "correctAnswer": "delicious",
+      "explanation": "Sau các động từ chỉ giác quan (linking verbs) như 'smell', 'taste', 'feel', ta dùng tính từ."
+    }
+  ]
+}

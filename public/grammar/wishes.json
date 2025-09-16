@@ -1,0 +1,14 @@
+{
+  "topic": "Wishes (Câu ước)",
+  "slug": "wishes",
+  "icon": "🙏",
+  "questions": [
+    {
+      "preBlank": "I wish I ",
+      "postBlank": " taller.",
+      "options": ["am", "was", "were", "be"],
+      "correctAnswer": "were",
+      "explanation": "Câu ước ở hiện tại (wish + S + V2/Ved) dùng 'were' cho tất cả các ngôi."
+    }
+  ]
+}

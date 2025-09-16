@@ -1,0 +1,14 @@
+{
+  "topic": "Articles (Mạo từ)",
+  "slug": "articles",
+  "icon": "🅰️",
+  "questions": [
+    {
+      "preBlank": "He bought ",
+      "postBlank": " new car yesterday.",
+      "options": ["a", "an", "the", "(no article)"],
+      "correctAnswer": "a",
+      "explanation": "Sử dụng mạo từ 'a' trước một danh từ đếm được số ít (car) được nhắc đến lần đầu tiên."
+    }
+  ]
+}

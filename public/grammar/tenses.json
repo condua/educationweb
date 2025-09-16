@@ -1,0 +1,21 @@
+{
+  "topic": "Tenses (Thì)",
+  "slug": "tenses",
+  "icon": "🕒",
+  "questions": [
+    {
+      "preBlank": "The cat is ",
+      "postBlank": " on the mat.",
+      "options": ["sit", "sits", "sitting", "sat"],
+      "correctAnswer": "sitting",
+      "explanation": "Sử dụng thì Hiện tại Tiếp diễn (is + V-ing) để diễn tả hành động đang xảy ra."
+    },
+    {
+      "preBlank": "The train ",
+      "postBlank": " at 8 AM tomorrow.",
+      "options": ["leave", "is leaving", "left", "has left"],
+      "correctAnswer": "is leaving",
+      "explanation": "Sử dụng thì Hiện tại Tiếp diễn để nói về một lịch trình hoặc kế hoạch chắc chắn trong tương lai gần."
+    }
+  ]
+}

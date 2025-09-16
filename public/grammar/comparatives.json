@@ -1,0 +1,14 @@
+{
+  "topic": "Comparatives (So sánh)",
+  "slug": "comparatives",
+  "icon": "📊",
+  "questions": [
+    {
+      "preBlank": "She is the ",
+      "postBlank": " student in the class.",
+      "options": ["tall", "taller", "tallest", "more tall"],
+      "correctAnswer": "tallest",
+      "explanation": "Dùng dạng so sánh nhất (the + adj-est) để chỉ người/vật cao nhất trong một nhóm."
+    }
+  ]
+}

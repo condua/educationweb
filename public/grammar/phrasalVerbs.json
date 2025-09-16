@@ -1,0 +1,14 @@
+{
+  "topic": "Phrasal Verbs (Cụm động từ)",
+  "slug": "phrasal-verbs",
+  "icon": "🚀",
+  "questions": [
+    {
+      "preBlank": "Please turn ",
+      "postBlank": " the TV. I’m trying to study.",
+      "options": ["off", "on", "up", "down"],
+      "correctAnswer": "off",
+      "explanation": "'Turn off' là một cụm động từ có nghĩa là 'tắt'."
+    }
+  ]
+}

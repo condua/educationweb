@@ -1,0 +1,42 @@
+{
+  "topic": "Reported Speech (Câu tường thuật)",
+  "slug": "reported-speech",
+  "icon": "💬",
+  "questions": [
+    {
+      "preBlank": "He said, \"I am tired.\" → He said that he ",
+      "postBlank": " tired.",
+      "options": ["is", "was", "were", "has been"],
+      "correctAnswer": "was",
+      "explanation": "Trong câu tường thuật, thì hiện tại đơn ('am') lùi về quá khứ đơn → 'was'."
+    },
+    {
+      "preBlank": "She said, \"I will call you tomorrow.\" → She said that she ",
+      "postBlank": " call me the next day.",
+      "options": ["will", "would", "can", "could"],
+      "correctAnswer": "would",
+      "explanation": "Trong câu tường thuật, 'will' lùi về 'would'. 'Tomorrow' đổi thành 'the next day'."
+    },
+    {
+      "preBlank": "He asked me, \"Do you like coffee?\" → He asked me if I ",
+      "postBlank": " coffee.",
+      "options": ["like", "liked", "likes", "would like"],
+      "correctAnswer": "liked",
+      "explanation": "Câu hỏi Yes/No chuyển thành 'if/whether'. Thì hiện tại đơn ('like') lùi về quá khứ đơn → 'liked'."
+    },
+    {
+      "preBlank": "She said, \"I have finished my homework.\" → She said that she ",
+      "postBlank": " finished her homework.",
+      "options": ["has", "had", "have", "having"],
+      "correctAnswer": "had",
+      "explanation": "Trong câu tường thuật, hiện tại hoàn thành ('have finished') lùi về quá khứ hoàn thành ('had finished')."
+    },
+    {
+      "preBlank": "He said, \"I can swim.\" → He said that he ",
+      "postBlank": " swim.",
+      "options": ["can", "could", "will", "would"],
+      "correctAnswer": "could",
+      "explanation": "Trong câu tường thuật, 'can' lùi về 'could'."
+    }
+  ]
+}

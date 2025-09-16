@@ -1,0 +1,21 @@
+{
+  "topic": "Passive Voice (Câu bị động)",
+  "slug": "passive-voice",
+  "icon": "🗣️",
+  "questions": [
+    {
+      "preBlank": "This book was written ",
+      "postBlank": " a famous author.",
+      "options": ["by", "with", "from", "for"],
+      "correctAnswer": "by",
+      "explanation": "Trong câu bị động, 'by' được dùng để chỉ tác nhân thực hiện hành động."
+    },
+    {
+      "preBlank": "The cake was made ",
+      "postBlank": " my mom.",
+      "options": ["by", "from", "of", "with"],
+      "correctAnswer": "by",
+      "explanation": "Trong câu bị động, 'by' được dùng để chỉ người hoặc vật thực hiện hành động."
+    }
+  ]
+}

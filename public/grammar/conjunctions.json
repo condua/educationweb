@@ -1,0 +1,28 @@
+{
+  "topic": "Conjunctions (Liên từ)",
+  "slug": "conjunctions",
+  "icon": "🔗",
+  "questions": [
+    {
+      "preBlank": "They went to the park ",
+      "postBlank": " it was raining.",
+      "options": ["although", "because", "but", "so"],
+      "correctAnswer": "although",
+      "explanation": "'Although' (mặc dù) dùng để nối hai mệnh đề có ý nghĩa tương phản."
+    },
+    {
+      "preBlank": "We went out ",
+      "postBlank": " the rain.",
+      "options": ["although", "in spite of", "because", "so"],
+      "correctAnswer": "in spite of",
+      "explanation": "'In spite of' (mặc dù) + cụm danh từ. 'Although' + mệnh đề."
+    },
+    {
+      "preBlank": "I was tired ",
+      "postBlank": " I went to bed early.",
+      "options": ["so", "because", "but", "although"],
+      "correctAnswer": "so",
+      "explanation": "'So' (vì vậy) dùng để chỉ kết quả của một hành động hoặc tình huống."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "topic": "Gerunds (Danh động từ)",
+  "slug": "gerunds",
+  "icon": "📝",
+  "questions": [
+    {
+      "preBlank": "She enjoys ",
+      "postBlank": " to music in her free time.",
+      "options": ["listen", "listening", "to listen", "listened"],
+      "correctAnswer": "listening",
+      "explanation": "Sau các động từ chỉ sở thích như 'enjoy', ta dùng danh động từ (V-ing)."
+    },
+    {
+      "preBlank": "I don’t mind ",
+      "postBlank": " up early on weekends.",
+      "options": ["get", "getting", "to get", "got"],
+      "correctAnswer": "getting",
+      "explanation": "Sau 'mind' phải dùng gerund (V-ing)."
+    },
+    {
+      "preBlank": "He is good at ",
+      "postBlank": " foreign languages.",
+      "options": ["learn", "learning", "to learn", "learned"],
+      "correctAnswer": "learning",
+      "explanation": "Sau cụm giới từ (at, in, on...) luôn dùng gerund (V-ing)."
+    },
+    {
+      "preBlank": "They talked about ",
+      "postBlank": " abroad next year.",
+      "options": ["study", "studying", "to study", "studied"],
+      "correctAnswer": "studying",
+      "explanation": "Sau giới từ 'about', ta dùng danh động từ (V-ing)."
+    },
+    {
+      "preBlank": "Reading books helps ",
+      "postBlank": " improve vocabulary.",
+      "options": ["me", "I", "mine", "my"],
+      "correctAnswer": "me",
+      "explanation": "Danh động từ 'Reading books' làm chủ ngữ. Trong mệnh đề tiếp theo phải dùng tân ngữ 'me'."
+    }
+  ]
+}

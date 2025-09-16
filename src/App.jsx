@@ -59,6 +59,7 @@ import MillionaireGame from "./pages/games/MillionaireGame .jsx";
 import VocabularyGame from "./pages/games/VocabularyGame.jsx";
 import ListeningGame from "./pages/games/ListeningGame.jsx";
 import SentenceScrambleGame from "./pages/games/SentenceScrambleGame.jsx";
+import GrammarTopic from "./pages/games/GrammarTopic.jsx";
 
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
@@ -144,6 +145,7 @@ function App() {
         <Route path="/listening-game" element={<ListeningGame />} />
         <Route path="/typing-game" element={<TypingGame />} />
         <Route path="/grammar-game" element={<GrammarGame />} />
+        <Route path="/grammar-game/:slug" element={<GrammarTopic />} />
         <Route path="/matching-game" element={<MatchingGame />} />
         <Route path="/wordfall-game" element={<WordfallGame />} />
         <Route path="/galaxy-grammar-game" element={<GalaxyGrammarGame />} />

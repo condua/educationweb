@@ -1,0 +1,570 @@
+[
+  {
+    "topic": "Adjectives (Tính từ)",
+    "slug": "adjectives",
+    "icon": "📝",
+    "questions": [
+      {
+        "preBlank": "The movie was so ",
+        "postBlank": " that I fell asleep.",
+        "options": [
+          "boring",
+          "bored",
+          "bores",
+          "bore"
+        ],
+        "correctAnswer": "boring",
+        "explanation": "Tính từ đuôi '-ing' (boring) dùng để mô tả tính chất của sự vật, sự việc."
+      },
+      {
+        "preBlank": "The cake smells ",
+        "postBlank": ".",
+        "options": [
+          "delicious",
+          "deliciously",
+          "delight",
+          "delighted"
+        ],
+        "correctAnswer": "delicious",
+        "explanation": "Sau các động từ chỉ giác quan (linking verbs) như 'smell', 'taste', 'feel', ta dùng tính từ."
+      }
+    ]
+  },
+  {
+    "topic": "Adverbs (Trạng từ)",
+    "slug": "adverbs",
+    "icon": "📝",
+    "questions": [
+      {
+        "preBlank": "You speak English very ",
+        "postBlank": ".",
+        "options": [
+          "good",
+          "well",
+          "best",
+          "better"
+        ],
+        "correctAnswer": "well",
+        "explanation": "Dùng trạng từ 'well' để bổ nghĩa cho động từ 'speak'. 'Good' là một tính từ."
+      },
+      {
+        "preBlank": "The test was easy, so I finished it ",
+        "postBlank": ".",
+        "options": [
+          "quick",
+          "quickly",
+          "quicker",
+          "quickest"
+        ],
+        "correctAnswer": "quickly",
+        "explanation": "Trạng từ 'quickly' bổ nghĩa cho động từ 'finished'."
+      }
+    ]
+  },
+  {
+    "topic": "Articles (Mạo từ)",
+    "slug": "articles",
+    "icon": "🅰️",
+    "questions": [
+      {
+        "preBlank": "He bought ",
+        "postBlank": " new car yesterday.",
+        "options": [
+          "a",
+          "an",
+          "the",
+          "(no article)"
+        ],
+        "correctAnswer": "a",
+        "explanation": "Sử dụng mạo từ 'a' trước một danh từ đếm được số ít (car) được nhắc đến lần đầu tiên."
+      }
+    ]
+  },
+  {
+    "topic": "Comparatives (So sánh)",
+    "slug": "comparatives",
+    "icon": "📊",
+    "questions": [
+      {
+        "preBlank": "She is the ",
+        "postBlank": " student in the class.",
+        "options": [
+          "tall",
+          "taller",
+          "tallest",
+          "more tall"
+        ],
+        "correctAnswer": "tallest",
+        "explanation": "Dùng dạng so sánh nhất (the + adj-est) để chỉ người/vật cao nhất trong một nhóm."
+      }
+    ]
+  },
+  {
+    "topic": "Conditionals (Câu điều kiện)",
+    "slug": "conditionals",
+    "icon": "❓",
+    "questions": [
+      {
+        "preBlank": "If I were you, I ",
+        "postBlank": " study harder.",
+        "options": [
+          "will",
+          "would",
+          "can",
+          "should have"
+        ],
+        "correctAnswer": "would",
+        "explanation": "Đây là câu điều kiện loại 2 (If + S + V2/Ved, S + would + V), diễn tả một giả định không có thật ở hiện tại."
+      },
+      {
+        "preBlank": "If it rains, we ",
+        "postBlank": " at home.",
+        "options": [
+          "stay",
+          "will stay",
+          "stayed",
+          "staying"
+        ],
+        "correctAnswer": "will stay",
+        "explanation": "Câu điều kiện loại 1 (If + Hiện tại đơn, Tương lai đơn) diễn tả một khả năng có thể xảy ra."
+      }
+    ]
+  },
+  {
+    "topic": "Conjunctions (Liên từ)",
+    "slug": "conjunctions",
+    "icon": "🔗",
+    "questions": [
+      {
+        "preBlank": "They went to the park ",
+        "postBlank": " it was raining.",
+        "options": [
+          "although",
+          "because",
+          "but",
+          "so"
+        ],
+        "correctAnswer": "although",
+        "explanation": "'Although' (mặc dù) dùng để nối hai mệnh đề có ý nghĩa tương phản."
+      },
+      {
+        "preBlank": "We went out ",
+        "postBlank": " the rain.",
+        "options": [
+          "although",
+          "in spite of",
+          "because",
+          "so"
+        ],
+        "correctAnswer": "in spite of",
+        "explanation": "'In spite of' (mặc dù) + cụm danh từ. 'Although' + mệnh đề."
+      },
+      {
+        "preBlank": "I was tired ",
+        "postBlank": " I went to bed early.",
+        "options": [
+          "so",
+          "because",
+          "but",
+          "although"
+        ],
+        "correctAnswer": "so",
+        "explanation": "'So' (vì vậy) dùng để chỉ kết quả của một hành động hoặc tình huống."
+      }
+    ]
+  },
+  {
+    "topic": "Determiners (Từ hạn định)",
+    "slug": "determiners",
+    "icon": "📘",
+    "questions": [
+      {
+        "preBlank": "I don’t have ",
+        "postBlank": " money left in my wallet.",
+        "options": [
+          "any",
+          "some",
+          "much",
+          "many"
+        ],
+        "correctAnswer": "any",
+        "explanation": "Trong câu phủ định, 'any' được dùng với danh từ không đếm được hoặc số nhiều. 'money' là danh từ không đếm được nên chọn 'any'."
+      },
+      {
+        "preBlank": "There are ",
+        "postBlank": " students waiting outside the classroom.",
+        "options": [
+          "much",
+          "many",
+          "little",
+          "few"
+        ],
+        "correctAnswer": "many",
+        "explanation": "'Students' là danh từ số nhiều → dùng 'many' để chỉ số lượng."
+      },
+      {
+        "preBlank": "She has ",
+        "postBlank": " friends in the city, so she never feels lonely.",
+        "options": [
+          "a few",
+          "few",
+          "little",
+          "much"
+        ],
+        "correctAnswer": "a few",
+        "explanation": "'A few' mang nghĩa tích cực (một vài và đủ), dùng với danh từ số nhiều đếm được → 'friends'."
+      },
+      {
+        "preBlank": "He spends too ",
+        "postBlank": " time playing video games.",
+        "options": [
+          "many",
+          "much",
+          "few",
+          "a few"
+        ],
+        "correctAnswer": "much",
+        "explanation": "'Time' là danh từ không đếm được → dùng 'much'."
+      },
+      {
+        "preBlank": "Almost ",
+        "postBlank": " people in the village joined the festival last weekend.",
+        "options": [
+          "every",
+          "all",
+          "each",
+          "much"
+        ],
+        "correctAnswer": "all",
+        "explanation": "'All people' diễn đạt ý 'tất cả mọi người'. 'Every' đi với danh từ số ít, nên không phù hợp."
+      }
+    ]
+  },
+  {
+    "topic": "Gerunds (Danh động từ)",
+    "slug": "gerunds",
+    "icon": "📝",
+    "questions": [
+      {
+        "preBlank": "She enjoys ",
+        "postBlank": " to music in her free time.",
+        "options": [
+          "listen",
+          "listening",
+          "to listen",
+          "listened"
+        ],
+        "correctAnswer": "listening",
+        "explanation": "Sau các động từ chỉ sở thích như 'enjoy', ta dùng danh động từ (V-ing)."
+      },
+      {
+        "preBlank": "I don’t mind ",
+        "postBlank": " up early on weekends.",
+        "options": [
+          "get",
+          "getting",
+          "to get",
+          "got"
+        ],
+        "correctAnswer": "getting",
+        "explanation": "Sau 'mind' phải dùng gerund (V-ing)."
+      },
+      {
+        "preBlank": "He is good at ",
+        "postBlank": " foreign languages.",
+        "options": [
+          "learn",
+          "learning",
+          "to learn",
+          "learned"
+        ],
+        "correctAnswer": "learning",
+        "explanation": "Sau cụm giới từ (at, in, on...) luôn dùng gerund (V-ing)."
+      },
+      {
+        "preBlank": "They talked about ",
+        "postBlank": " abroad next year.",
+        "options": [
+          "study",
+          "studying",
+          "to study",
+          "studied"
+        ],
+        "correctAnswer": "studying",
+        "explanation": "Sau giới từ 'about', ta dùng danh động từ (V-ing)."
+      },
+      {
+        "preBlank": "Reading books helps ",
+        "postBlank": " improve vocabulary.",
+        "options": [
+          "me",
+          "I",
+          "mine",
+          "my"
+        ],
+        "correctAnswer": "me",
+        "explanation": "Danh động từ 'Reading books' làm chủ ngữ. Trong mệnh đề tiếp theo phải dùng tân ngữ 'me'."
+      }
+    ]
+  },
+  {
+    "topic": "Infinitives (Động từ nguyên mẫu)",
+    "slug": "infinitives",
+    "icon": "🏃‍♂️",
+    "questions": [
+      {
+        "preBlank": "Don't forget ",
+        "postBlank": " the lights when you leave.",
+        "options": [
+          "turn off",
+          "to turn off",
+          "turning off",
+          "turned off"
+        ],
+        "correctAnswer": "to turn off",
+        "explanation": "'Forget to do something' nghĩa là quên phải làm một việc gì đó."
+      },
+      {
+        "preBlank": "He hasn't decided what ",
+        "postBlank": " yet.",
+        "options": [
+          "to do",
+          "do",
+          "doing",
+          "done"
+        ],
+        "correctAnswer": "to do",
+        "explanation": "Sau các từ để hỏi như 'what', 'where', 'when' trong mệnh đề phụ, ta dùng 'to-infinitive'."
+      },
+      {
+        "preBlank": "The teacher told us ",
+        "postBlank": " quiet.",
+        "options": [
+          "be",
+          "to be",
+          "being",
+          "been"
+        ],
+        "correctAnswer": "to be",
+        "explanation": "Cấu trúc 'tell someone to do something' (bảo ai làm gì)."
+      }
+    ]
+  },
+  {
+    "topic": "Passive Voice (Câu bị động)",
+    "slug": "passive-voice",
+    "icon": "🗣️",
+    "questions": [
+      {
+        "preBlank": "This book was written ",
+        "postBlank": " a famous author.",
+        "options": [
+          "by",
+          "with",
+          "from",
+          "for"
+        ],
+        "correctAnswer": "by",
+        "explanation": "Trong câu bị động, 'by' được dùng để chỉ tác nhân thực hiện hành động."
+      },
+      {
+        "preBlank": "The cake was made ",
+        "postBlank": " my mom.",
+        "options": [
+          "by",
+          "from",
+          "of",
+          "with"
+        ],
+        "correctAnswer": "by",
+        "explanation": "Trong câu bị động, 'by' được dùng để chỉ người hoặc vật thực hiện hành động."
+      }
+    ]
+  },
+  {
+    "topic": "Phrasal Verbs (Cụm động từ)",
+    "slug": "phrasal-verbs",
+    "icon": "🚀",
+    "questions": [
+      {
+        "preBlank": "Please turn ",
+        "postBlank": " the TV. I’m trying to study.",
+        "options": [
+          "off",
+          "on",
+          "up",
+          "down"
+        ],
+        "correctAnswer": "off",
+        "explanation": "'Turn off' là một cụm động từ có nghĩa là 'tắt'."
+      }
+    ]
+  },
+  {
+    "topic": "Prepositions (Giới từ)",
+    "slug": "prepositions",
+    "icon": "📍",
+    "questions": [
+      {
+        "preBlank": "My keys are ",
+        "postBlank": " the table.",
+        "options": [
+          "in",
+          "at",
+          "on",
+          "under"
+        ],
+        "correctAnswer": "on",
+        "explanation": "Sử dụng giới từ 'on' để chỉ vị trí trên một bề mặt."
+      },
+      {
+        "preBlank": "We usually have lunch ",
+        "postBlank": " noon.",
+        "options": [
+          "at",
+          "in",
+          "on",
+          "by"
+        ],
+        "correctAnswer": "at",
+        "explanation": "'At' dùng cho các thời điểm cụ thể trong ngày (at noon, at midnight)."
+      }
+    ]
+  },
+  {
+    "topic": "Quantifiers (Từ chỉ số lượng)",
+    "slug": "quantifiers",
+    "icon": "#️⃣",
+    "questions": [
+      {
+        "preBlank": "There isn't ",
+        "postBlank": " milk left in the fridge.",
+        "options": [
+          "some",
+          "any",
+          "many",
+          "a lot"
+        ],
+        "correctAnswer": "any",
+        "explanation": "'Any' thường được dùng trong câu phủ định và câu hỏi."
+      }
+    ]
+  },
+  {
+    "topic": "Reported Speech (Câu tường thuật)",
+    "slug": "reported-speech",
+    "icon": "💬",
+    "questions": [
+      {
+        "preBlank": "He said, \"I am tired.\" → He said that he ",
+        "postBlank": " tired.",
+        "options": [
+          "is",
+          "was",
+          "were",
+          "has been"
+        ],
+        "correctAnswer": "was",
+        "explanation": "Trong câu tường thuật, thì hiện tại đơn ('am') lùi về quá khứ đơn → 'was'."
+      },
+      {
+        "preBlank": "She said, \"I will call you tomorrow.\" → She said that she ",
+        "postBlank": " call me the next day.",
+        "options": [
+          "will",
+          "would",
+          "can",
+          "could"
+        ],
+        "correctAnswer": "would",
+        "explanation": "Trong câu tường thuật, 'will' lùi về 'would'. 'Tomorrow' đổi thành 'the next day'."
+      },
+      {
+        "preBlank": "He asked me, \"Do you like coffee?\" → He asked me if I ",
+        "postBlank": " coffee.",
+        "options": [
+          "like",
+          "liked",
+          "likes",
+          "would like"
+        ],
+        "correctAnswer": "liked",
+        "explanation": "Câu hỏi Yes/No chuyển thành 'if/whether'. Thì hiện tại đơn ('like') lùi về quá khứ đơn → 'liked'."
+      },
+      {
+        "preBlank": "She said, \"I have finished my homework.\" → She said that she ",
+        "postBlank": " finished her homework.",
+        "options": [
+          "has",
+          "had",
+          "have",
+          "having"
+        ],
+        "correctAnswer": "had",
+        "explanation": "Trong câu tường thuật, hiện tại hoàn thành ('have finished') lùi về quá khứ hoàn thành ('had finished')."
+      },
+      {
+        "preBlank": "He said, \"I can swim.\" → He said that he ",
+        "postBlank": " swim.",
+        "options": [
+          "can",
+          "could",
+          "will",
+          "would"
+        ],
+        "correctAnswer": "could",
+        "explanation": "Trong câu tường thuật, 'can' lùi về 'could'."
+      }
+    ]
+  },
+  {
+    "topic": "Tenses (Thì)",
+    "slug": "tenses",
+    "icon": "🕒",
+    "questions": [
+      {
+        "preBlank": "The cat is ",
+        "postBlank": " on the mat.",
+        "options": [
+          "sit",
+          "sits",
+          "sitting",
+          "sat"
+        ],
+        "correctAnswer": "sitting",
+        "explanation": "Sử dụng thì Hiện tại Tiếp diễn (is + V-ing) để diễn tả hành động đang xảy ra."
+      },
+      {
+        "preBlank": "The train ",
+        "postBlank": " at 8 AM tomorrow.",
+        "options": [
+          "leave",
+          "is leaving",
+          "left",
+          "has left"
+        ],
+        "correctAnswer": "is leaving",
+        "explanation": "Sử dụng thì Hiện tại Tiếp diễn để nói về một lịch trình hoặc kế hoạch chắc chắn trong tương lai gần."
+      }
+    ]
+  },
+  {
+    "topic": "Wishes (Câu ước)",
+    "slug": "wishes",
+    "icon": "🙏",
+    "questions": [
+      {
+        "preBlank": "I wish I ",
+        "postBlank": " taller.",
+        "options": [
+          "am",
+          "was",
+          "were",
+          "be"
+        ],
+        "correctAnswer": "were",
+        "explanation": "Câu ước ở hiện tại (wish + S + V2/Ved) dùng 'were' cho tất cả các ngôi."
+      }
+    ]
+  }
+]

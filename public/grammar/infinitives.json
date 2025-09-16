@@ -1,0 +1,28 @@
+{
+  "topic": "Infinitives (Động từ nguyên mẫu)",
+  "slug": "infinitives",
+  "icon": "🏃‍♂️",
+  "questions": [
+    {
+      "preBlank": "Don't forget ",
+      "postBlank": " the lights when you leave.",
+      "options": ["turn off", "to turn off", "turning off", "turned off"],
+      "correctAnswer": "to turn off",
+      "explanation": "'Forget to do something' nghĩa là quên phải làm một việc gì đó."
+    },
+    {
+      "preBlank": "He hasn't decided what ",
+      "postBlank": " yet.",
+      "options": ["to do", "do", "doing", "done"],
+      "correctAnswer": "to do",
+      "explanation": "Sau các từ để hỏi như 'what', 'where', 'when' trong mệnh đề phụ, ta dùng 'to-infinitive'."
+    },
+    {
+      "preBlank": "The teacher told us ",
+      "postBlank": " quiet.",
+      "options": ["be", "to be", "being", "been"],
+      "correctAnswer": "to be",
+      "explanation": "Cấu trúc 'tell someone to do something' (bảo ai làm gì)."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "topic": "Determiners (Từ hạn định)",
+  "slug": "determiners",
+  "icon": "📘",
+  "questions": [
+    {
+      "preBlank": "I don’t have ",
+      "postBlank": " money left in my wallet.",
+      "options": ["any", "some", "much", "many"],
+      "correctAnswer": "any",
+      "explanation": "Trong câu phủ định, 'any' được dùng với danh từ không đếm được hoặc số nhiều. 'money' là danh từ không đếm được nên chọn 'any'."
+    },
+    {
+      "preBlank": "There are ",
+      "postBlank": " students waiting outside the classroom.",
+      "options": ["much", "many", "little", "few"],
+      "correctAnswer": "many",
+      "explanation": "'Students' là danh từ số nhiều → dùng 'many' để chỉ số lượng."
+    },
+    {
+      "preBlank": "She has ",
+      "postBlank": " friends in the city, so she never feels lonely.",
+      "options": ["a few", "few", "little", "much"],
+      "correctAnswer": "a few",
+      "explanation": "'A few' mang nghĩa tích cực (một vài và đủ), dùng với danh từ số nhiều đếm được → 'friends'."
+    },
+    {
+      "preBlank": "He spends too ",
+      "postBlank": " time playing video games.",
+      "options": ["many", "much", "few", "a few"],
+      "correctAnswer": "much",
+      "explanation": "'Time' là danh từ không đếm được → dùng 'much'."
+    },
+    {
+      "preBlank": "Almost ",
+      "postBlank": " people in the village joined the festival last weekend.",
+      "options": ["every", "all", "each", "much"],
+      "correctAnswer": "all",
+      "explanation": "'All people' diễn đạt ý 'tất cả mọi người'. 'Every' đi với danh từ số ít, nên không phù hợp."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "topic": "Prepositions (Giới từ)",
+  "slug": "prepositions",
+  "icon": "📍",
+  "questions": [
+    {
+      "preBlank": "My keys are ",
+      "postBlank": " the table.",
+      "options": ["in", "at", "on", "under"],
+      "correctAnswer": "on",
+      "explanation": "Sử dụng giới từ 'on' để chỉ vị trí trên một bề mặt."
+    },
+    {
+      "preBlank": "We usually have lunch ",
+      "postBlank": " noon.",
+      "options": ["at", "in", "on", "by"],
+      "correctAnswer": "at",
+      "explanation": "'At' dùng cho các thời điểm cụ thể trong ngày (at noon, at midnight)."
+    }
+  ]
+}

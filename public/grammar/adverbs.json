@@ -1,0 +1,21 @@
+{
+  "topic": "Adverbs (Trạng từ)",
+  "slug": "adverbs",
+  "icon": "📝",
+  "questions": [
+    {
+      "preBlank": "You speak English very ",
+      "postBlank": ".",
+      "options": ["good", "well", "best", "better"],
+      "correctAnswer": "well",
+      "explanation": "Dùng trạng từ 'well' để bổ nghĩa cho động từ 'speak'. 'Good' là một tính từ."
+    },
+    {
+      "preBlank": "The test was easy, so I finished it ",
+      "postBlank": ".",
+      "options": ["quick", "quickly", "quicker", "quickest"],
+      "correctAnswer": "quickly",
+      "explanation": "Trạng từ 'quickly' bổ nghĩa cho động từ 'finished'."
+    }
+  ]
+}

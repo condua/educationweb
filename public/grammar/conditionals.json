@@ -1,0 +1,21 @@
+{
+  "topic": "Conditionals (Câu điều kiện)",
+  "slug": "conditionals",
+  "icon": "❓",
+  "questions": [
+    {
+      "preBlank": "If I were you, I ",
+      "postBlank": " study harder.",
+      "options": ["will", "would", "can", "should have"],
+      "correctAnswer": "would",
+      "explanation": "Đây là câu điều kiện loại 2 (If + S + V2/Ved, S + would + V), diễn tả một giả định không có thật ở hiện tại."
+    },
+    {
+      "preBlank": "If it rains, we ",
+      "postBlank": " at home.",
+      "options": ["stay", "will stay", "stayed", "staying"],
+      "correctAnswer": "will stay",
+      "explanation": "Câu điều kiện loại 1 (If + Hiện tại đơn, Tương lai đơn) diễn tả một khả năng có thể xảy ra."
+    }
+  ]
+}
