@@ -41,7 +41,7 @@ const shuffleArray = (array) => {
   return a;
 };
 
-// --- Component Progress Bar ------
+// --- Component Progress Bar ---____---
 const ProgressBar = ({ current, total }) => {
   const percentage = total ? (current / total) * 100 : 0;
   return (
