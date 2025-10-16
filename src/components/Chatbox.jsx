@@ -76,7 +76,7 @@ export default function Chatbot() {
         },
 
         body: JSON.stringify({
-          model: "deepseek/deepseek-r1:free",
+          model: "tngtech/deepseek-r1t2-chimera:free",
           stream: false, // <-- Thêm dòng này vào đây
 
           messages: [
@@ -107,7 +107,7 @@ export default function Chatbot() {
                       Khoa học tự nhiên: Các nguyên lý cơ bản, phương pháp khoa học và khả năng phân tích các vấn đề liên quan đến vật lý, hóa học hoặc sinh học, tuỳ thuộc vào hướng đào tạo của thí sinh.
                     - MLPA đem lại các giải pháp về công nghệ như: Tư vấn xây dựng và thiết kế website, hỗ trợ marketing, quảng bá sản phẩm, hỗ trợ website SEO, tối ưu tên miền...
                     - Trụ sở tại Ấp Long Thái, xã Long Khánh B, huyện Hồng Ngự, tỉnh Đồng Tháp
-                    - Đăng ký học qua website https://mlpa.site hoặc hotline 0399915548
+                    - Đăng ký học qua website https://mlpa.edu.vn hoặc hotline 0399915548
                     - Có khóa học online và nền tảng học trực tuyến.
                     - Luôn tìm kiếm nhân sự tâm huyết, CV gửi qua phanhoangphuc0311@gmail.com
                     - Fanpage của MLPA: https://www.facebook.com/profile.php?id=61574532009854
