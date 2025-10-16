@@ -40,11 +40,14 @@ const CourseCard = ({ courseId }) => {
       className="bg-white px-4 pt-4 pb-28 rounded-2xl shadow-md relative transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer"
       onClick={handleNavigate}
     >
-      <img
-        src={course.thumbnail}
-        alt={course.title}
-        className="rounded-lg mb-2 w-full h-40 object-cover"
-      />
+      <div className="w-full h-40 rounded-lg overflow-hidden mb-2">
+        <img
+          src={course.thumbnail}
+          alt={course.title || "Khóa học"}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
       <p className="text-sm text-gray-500 my-1">
         {course?.category || "N/A"} • {course?.chapters?.length || 0} chương
       </p>

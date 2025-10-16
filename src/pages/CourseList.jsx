@@ -59,7 +59,7 @@ const CourseList = () => {
         Chọn khóa học yêu thích của bạn
       </h2>
       <div className="w-full flex justify-center items-center relative">
-        <div className="relative w-11/12">
+        <div className="relative w-full">
           {/* Input field */}
           <input
             className="w-full sm:py-4 sm:px-6 py-2 px-3 bg-gray-200 rounded-full outline-0 text-lg sm:text-xl pr-14"
@@ -75,7 +75,7 @@ const CourseList = () => {
       </div>
 
       <CategorySection setSelectedCategory={setSelectedCategory} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6 w-11/12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6 w-full">
         {currentCourses.length > 0 ? (
           currentCourses.map((course) => (
             <CourseCard key={course._id} course={course} />

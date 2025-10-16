@@ -60,22 +60,24 @@ const CourseCard = ({ course }) => {
   return (
     <div
       className="flex flex-col justify-between w-full bg-white 
-      rounded-2xl shadow-md  p-4 sm:w-80 hover:shadow-lg transition relative cursor-pointer
+      rounded-2xl shadow-md  p-4 hover:shadow-lg transition relative cursor-pointer
       hover:scale-105 transform duration-300 ease-in-out
       "
       // onClick={handleNavigate}
     >
-      {course?.thumbnail ? (
-        <img
-          src={course.thumbnail}
-          alt={course.title || "Khóa học"}
-          className="rounded-lg w-full h-40 object-cover mb-4 cursor-pointer"
-        />
-      ) : (
-        <div className="w-full h-40 bg-gray-200 rounded-lg flex items-center justify-center">
-          <span className="text-gray-500">No Image</span>
-        </div>
-      )}
+      <div className="w-full h-40 rounded-lg overflow-hidden mb-4 cursor-pointer">
+        {course?.thumbnail ? (
+          <img
+            src={course.thumbnail}
+            alt={course.title || "Khóa học"}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+            <span className="text-gray-500">No Image</span>
+          </div>
+        )}
+      </div>
 
       <div className="mt-4">
         <span className="text-sm text-gray-500">
