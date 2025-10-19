@@ -12,7 +12,9 @@ const Home = () => {
     <>
       <Hero />
       <Features />
-      <CourseList />
+      <div className="my-20 bg-blue-50 px-6 rounded-lg shadow-lg">
+        <CourseList />
+      </div>
       <Testimonials />
       {/* <Pricing /> */}
     </>
