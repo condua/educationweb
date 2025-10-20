@@ -222,16 +222,16 @@ const QuestionNavigation = ({
               </span>{" "}
               Đã đánh dấu
             </div>
+            <div className="p-4  lg:pb-20 border-t border-gray-200 flex-shrink-0">
+              <button
+                onClick={onSubmit}
+                disabled={isSubmitting}
+                className="w-full px-6 py-3 font-bold text-sm sm:text-lg text-white bg-green-600 rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "Đang nộp bài..." : "Nộp bài"}
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="p-4 border-t border-gray-200 flex-shrink-0">
-          <button
-            onClick={onSubmit}
-            disabled={isSubmitting}
-            className="w-full px-6 py-3 font-semibold text-white bg-green-600 rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? "Đang nộp bài..." : "Nộp bài"}
-          </button>
         </div>
       </div>
     </div>
@@ -402,7 +402,6 @@ const TestTaking = () => {
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
-  
   return (
     // THAY ĐỔI: Thêm modal vào cuối JSX
     <>
