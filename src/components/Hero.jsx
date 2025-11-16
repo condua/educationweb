@@ -84,7 +84,7 @@ const Hero = () => {
                 >
                   ×
                 </button>
-                <div className="rounded-lg sm:w-3/4 w-5/6 sm:h-3/4 box-shadow-lg bg-white sm:p-4 p-2">
+                <div className="rounded-lg sm:w-3/4 w-5/6 sm:h-3/4 h-2/4  box-shadow-lg bg-white sm:p-4 p-2">
                   <div className="relative w-full h-full">
                     <iframe
                       className="absolute top-0 left-0 w-full h-full rounded-lg"
