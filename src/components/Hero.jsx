@@ -71,7 +71,7 @@ const Hero = () => {
               <AiOutlinePlayCircle className="text-2xl mr-2" />
               Xem hướng dẫn
             </button>
-            {/* Modal hiển thị video */}
+            {/* Modal hiển thị videos */}
             {isModalOpen && (
               <div
                 id="modal-overlay"
