@@ -128,9 +128,19 @@ function App() {
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="/createblog" element={<CreateBlog />} />
         <Route path="/login" element={<AuthRoute element={<Login />} />} />
-        <Route path="/forget-password" element={<ForgetPassword />} />
-        <Route path="/verify-code" element={<VerifyCode />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route
+          path="/forget-password"
+          element={<AuthRoute element={<ForgetPassword />} />}
+        />
+        <Route
+          path="/verify-code"
+          element={<AuthRoute element={<VerifyCode />} />}
+        />
+
+        <Route
+          path="/reset-password"
+          element={<AuthRoute element={<ResetPassword />} />}
+        />
         <Route
           path="/register"
           element={<AuthRoute element={<Register />} />}

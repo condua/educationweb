@@ -125,7 +125,7 @@ const Login = () => {
             <label className="flex items-center">
               <input type="checkbox" className="mr-1" /> Nhớ tài khoản
             </label>
-            <a href="#" className="text-teal-500">
+            <a href="/forget-password" className="text-teal-500">
               Quên mật khẩu ?
             </a>
           </div>
