@@ -187,7 +187,7 @@ const authSlice = createSlice({
         state.error = action.payload;
       })
 
-      // 🟢 --- Xử lý Reset Password ---
+      // 🟢 --- Xử lý Reset Password ----
       .addCase(resetPassword.pending, (state) => {
         state.status = "loading";
         state.error = null;
