@@ -435,15 +435,16 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
 
                       {/* Question Body */}
                       <div className="p-3 sm:p-5">
+                        {/* THAY ĐỔI: Thêm break-words và overflow-x-auto để văn bản dài tự xuống dòng hoặc cuộn */}
                         <div
-                          className={`text-sm sm:text-base leading-relaxed font-medium ${darkMode ? "text-gray-200" : "text-gray-800"}`}
+                          className={`text-sm sm:text-base leading-relaxed font-medium break-words overflow-x-auto ${darkMode ? "text-gray-200" : "text-gray-800"}`}
                         >
                           <MathRenderer content={q.text} />
                         </div>
                         {image}
                         {q.mathText && (
                           <div
-                            className={`my-4 p-3 sm:p-4 rounded-lg text-center overflow-x-auto ${darkMode ? "bg-slate-900/50" : "bg-gray-50"}`}
+                            className={`my-4 p-3 sm:p-4 rounded-lg text-center overflow-x-auto max-w-full ${darkMode ? "bg-slate-900/50" : "bg-gray-50"}`}
                           >
                             <MathRenderer
                               content={`$$${q.mathText}$$`}
@@ -495,7 +496,7 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
                                     : "";
                                   return (
                                     <tr key={st.id} className={rowClass}>
-                                      <td className="p-3 align-middle">
+                                      <td className="p-3 align-middle break-words whitespace-normal min-w-[200px]">
                                         <span
                                           className={`font-bold mr-2 ${darkMode ? "text-indigo-400" : "text-indigo-600"}`}
                                         >
@@ -563,14 +564,14 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
                                   onClick={() =>
                                     handleAnswerChange(q.id, 0, opt)
                                   }
-                                  className={`p-3 sm:p-4 text-left rounded-lg border transition-all flex items-center gap-3 sm:gap-4 ${bgClass} cursor-pointer`}
+                                  className={`p-3 sm:p-4 text-left rounded-lg border transition-all flex items-start gap-3 sm:gap-4 ${bgClass} cursor-pointer`}
                                 >
                                   <div
                                     className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex flex-shrink-0 items-center justify-center text-xs sm:text-sm font-bold ${isSelected || (submitted && isCorrect) ? "border-current" : "border-gray-300 text-gray-400"}`}
                                   >
                                     {String.fromCharCode(65 + idx)}
                                   </div>
-                                  <div className="flex-1 text-sm sm:text-base">
+                                  <div className="flex-1 text-sm sm:text-base break-words overflow-x-auto min-w-0">
                                     <MathRenderer content={opt} />
                                   </div>
                                 </button>
@@ -590,14 +591,15 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
                                   key={idx}
                                   className={`flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 p-3 rounded-lg border shadow-sm ${darkMode ? "bg-slate-800 border-slate-700" : "bg-white border-gray-200"}`}
                                 >
-                                  <div className="flex-1 flex gap-3">
+                                  <div className="flex-1 flex gap-3 min-w-0">
                                     <span
-                                      className={`font-bold ${darkMode ? "text-gray-400" : "text-gray-500"}`}
+                                      className={`font-bold flex-shrink-0 ${darkMode ? "text-gray-400" : "text-gray-500"}`}
                                     >
                                       {idx + 1}.
                                     </span>
+                                    {/* THAY ĐỔI: Thêm break-words và overflow-x-auto */}
                                     <div
-                                      className={`${darkMode ? "text-gray-200" : "text-gray-800"}`}
+                                      className={`break-words overflow-x-auto ${darkMode ? "text-gray-200" : "text-gray-800"}`}
                                     >
                                       <MathRenderer content={item} />
                                     </div>
@@ -631,7 +633,11 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
                               </p>
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
                                 {q.options.map((opt, i) => (
-                                  <div key={i} className="flex gap-2">
+                                  /* THAY ĐỔI: Thêm break-words và overflow-x-auto */
+                                  <div
+                                    key={i}
+                                    className="flex gap-2 break-words overflow-x-auto"
+                                  >
                                     <MathRenderer content={opt} />
                                   </div>
                                 ))}
