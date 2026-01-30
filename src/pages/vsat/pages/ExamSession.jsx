@@ -437,7 +437,7 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
                       <div className="p-3 sm:p-5">
                         {/* THAY ĐỔI: Thêm break-words và overflow-x-auto để văn bản dài tự xuống dòng hoặc cuộn */}
                         <div
-                          className={`text-sm sm:text-base leading-relaxed font-medium break-words overflow-x-auto ${darkMode ? "text-gray-200" : "text-gray-800"}`}
+                          className={`text-sm py-2 sm:text-base leading-relaxed font-medium break-words overflow-x-auto ${darkMode ? "text-gray-200" : "text-gray-800"}`}
                         >
                           <MathRenderer content={q.text} />
                         </div>
@@ -599,7 +599,7 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
                                     </span>
                                     {/* THAY ĐỔI: Thêm break-words và overflow-x-auto */}
                                     <div
-                                      className={`break-words overflow-x-auto ${darkMode ? "text-gray-200" : "text-gray-800"}`}
+                                      className={`w-full break-words overflow-x-auto ${darkMode ? "text-gray-200" : "text-gray-800"}`}
                                     >
                                       <MathRenderer content={item} />
                                     </div>
