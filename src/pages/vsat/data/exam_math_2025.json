@@ -282,7 +282,7 @@
         {
           "id": "q25",
           "text": "Tính thể tích khối đa diện $|x|+|y| \\leq 2$ và $0 \\leq z \\leq 4 - |x| - |y|$.",
-          "answer": "64/3"
+          "answer": "21,33"
         }
       ]
     }
