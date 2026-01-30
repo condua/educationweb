@@ -266,7 +266,7 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
   // --- 5. RENDER UI ---
   return (
     <div
-      className={`min-h-screen pb-20 transition-colors duration-300 font-sans ${darkMode ? "bg-slate-900 text-slate-100" : "bg-indigo-50 text-slate-800"}`}
+      className={`min-h-screen pb-20 transition-colors duration-300 ${darkMode ? "bg-slate-900 text-slate-100" : "bg-indigo-50 text-slate-800"}`}
     >
       {/* HEADER */}
       <header
@@ -564,7 +564,7 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
                                   onClick={() =>
                                     handleAnswerChange(q.id, 0, opt)
                                   }
-                                  className={`p-3 sm:p-4 text-left rounded-lg border transition-all flex items-start gap-3 sm:gap-4 ${bgClass} cursor-pointer`}
+                                  className={`p-3 sm:p-4 text-left rounded-lg border transition-all flex items-center gap-3 sm:gap-4 ${bgClass} cursor-pointer`}
                                 >
                                   <div
                                     className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex flex-shrink-0 items-center justify-center text-xs sm:text-sm font-bold ${isSelected || (submitted && isCorrect) ? "border-current" : "border-gray-300 text-gray-400"}`}
@@ -667,7 +667,7 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
                                   handleAnswerChange(q.id, 0, e.target.value)
                                 }
                                 placeholder="Nhập kết quả"
-                                className={`w-full h-full p-3 border-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 transition-all font-mono text-base sm:text-lg ${darkMode ? "bg-slate-800 placeholder-slate-600" : "bg-white placeholder-gray-400"}`}
+                                className={`w-full h-full p-3 border-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 transition-all text-base sm:text-lg ${darkMode ? "bg-slate-800 placeholder-slate-600" : "bg-white placeholder-gray-400"}`}
                               />
                               {submitted && (
                                 <div

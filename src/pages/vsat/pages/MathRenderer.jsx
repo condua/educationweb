@@ -7,6 +7,7 @@ const MathRenderer = ({ content, className = "", block = false }) => {
     const el = containerRef.current;
     if (!el || !content) return;
 
+    // Chuyển đổi cú pháp cho MathJax
     const processedContent = content
       .replace(/\$\$([^$]+)\$\$/g, "\\[$1\\]")
       .replace(/\$([^$]+)\$/g, "\\($1\\)");
@@ -39,10 +40,15 @@ const MathRenderer = ({ content, className = "", block = false }) => {
   }, [content]);
 
   const Tag = block ? "div" : "span";
+
   return (
     <Tag
       ref={containerRef}
-      className={`math-content ${className} ${block ? "text-center my-3 block overflow-x-auto max-w-full no-scrollbar" : "inline-block break-words"}`}
+      className={`math-content ${className} ${
+        block
+          ? "text-center my-3 block overflow-x-auto max-w-full no-scrollbar"
+          : "inline" // Đã sửa: dùng 'inline' thay vì 'inline-block'
+      }`}
     />
   );
 };

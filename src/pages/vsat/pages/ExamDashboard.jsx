@@ -16,7 +16,7 @@ const ExamDashboard = ({ darkMode, toggleTheme }) => {
 
   return (
     <div
-      className={`min-h-screen font-sans transition-colors duration-300 ${darkMode ? "bg-slate-900 text-slate-100" : "bg-slate-50 text-slate-800"}`}
+      className={`min-h-screen transition-colors duration-300 ${darkMode ? "bg-slate-900 text-slate-100" : "bg-slate-50 text-slate-800"}`}
     >
       <header
         className={`sticky top-0 z-0 shadow-sm backdrop-blur-md ${darkMode ? "bg-slate-900/80 border-b border-slate-700" : "bg-white/80 border-b border-gray-200"}`}
