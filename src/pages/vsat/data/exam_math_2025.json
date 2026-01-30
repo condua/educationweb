@@ -41,17 +41,17 @@
         },
         {
           "id": "q4",
-          "text": "Thống kê kết quả xét nghiệm (100 người): 35 người mắc bệnh/Dương tính, 5 người mắc bệnh/Âm tính, 10 người không mắc bệnh/Dương tính, 50 người không mắc bệnh/Âm tính.",
+          "text": "Bảng thống kê kết quả xét nghiệm 100 người: Mắc bệnh (Dương tính: 35, Âm tính: 5); Không mắc bệnh (Dương tính: 10, Âm tính: 50).",
           "statements": [
             { "id": "1", "text": "Xác suất chọn ngẫu nhiên một người có kết quả Dương tính là $0,45$.", "answer": "T" },
             { "id": "2", "text": "Xác suất chọn ngẫu nhiên một người mắc bệnh và có kết quả Âm tính là $0,05$.", "answer": "T" },
-            { "id": "3", "text": "Xác suất người có kết quả Dương tính thực sự mắc bệnh xấp xỉ $77,8\\%$.", "answer": "T" },
+            { "id": "3", "text": "Trong số người Dương tính, xác suất người đó thực sự mắc bệnh xấp xỉ $77,8\\%$.", "answer": "T" },
             { "id": "4", "text": "Tỉ lệ âm tính giả cao hơn tỉ lệ dương tính giả.", "answer": "F" }
           ]
         },
         {
           "id": "q5",
-          "text": "Xét các mệnh đề về nguyên hàm:",
+          "text": "Cho các mệnh đề sau về nguyên hàm:",
           "statements": [
             { "id": "1", "text": "$\\int e^{2x} dx = 2e^{2x} + C$.", "answer": "F" },
             { "id": "2", "text": "$\\int \\frac{1}{x+1} dx = \\ln|x+1| + C$.", "answer": "T" },
@@ -65,7 +65,7 @@
           "statements": [
             { "id": "1", "text": "Tâm của mặt cầu là $I(1; -2; 0)$ và bán kính $R=3$.", "answer": "T" },
             { "id": "2", "text": "Điểm $O(0;0;0)$ nằm bên trong mặt cầu $(S)$.", "answer": "T" },
-            { "id": "3", "text": "Mặt cầu tâm M tiếp xúc ngoài (S) có phương trình: $(x-1)^2 + (y-1)^2 + (z-4)^2 = 4$.", "answer": "T" },
+            { "id": "3", "text": "Phương trình mặt cầu tâm M tiếp xúc ngoài (S) là: $(x-1)^2 + (y-1)^2 + (z-4)^2 = 4$.", "answer": "T" },
             { "id": "4", "text": "Mặt phẳng $(P): z - 3 = 0$ tiếp xúc với mặt cầu $(S)$.", "answer": "T" }
           ]
         },
@@ -81,7 +81,7 @@
         },
         {
           "id": "q8",
-          "text": "Lăng trụ tam giác đều $ABC.A'B'C'$ có cạnh đáy $a$, cạnh bên $2a$.",
+          "text": "Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có cạnh đáy bằng $a$, cạnh bên bằng $2a$.",
           "statements": [
             { "id": "1", "text": "Thể tích khối lăng trụ bằng $\\frac{a^3\\sqrt{3}}{2}$.", "answer": "T" },
             { "id": "2", "text": "Góc giữa đường thẳng $A'B$ và mặt phẳng đáy bằng $45^\\circ$.", "answer": "F" },
@@ -91,11 +91,11 @@
         },
         {
           "id": "q9",
-          "text": "Dây chuyền I (60% SP, lỗi 2%), Dây chuyền II (40% SP, lỗi 3%).",
+          "text": "Dây chuyền I sản xuất 60% SP (lỗi 2%), Dây chuyền II sản xuất 40% SP (lỗi 3%).",
           "statements": [
             { "id": "1", "text": "Xác suất lấy ngẫu nhiên một sản phẩm là phế phẩm bằng $2,5\\%$.", "answer": "F" },
             { "id": "2", "text": "Tỉ lệ sản phẩm tốt của toàn nhà máy là $97,6\\%$.", "answer": "T" },
-            { "id": "3", "text": "Nếu SP lỗi, xác suất do dây chuyền I sản xuất là $50\\%$.", "answer": "T" },
+            { "id": "3", "text": "Nếu lấy được một sản phẩm lỗi, xác suất sản phẩm đó do dây chuyền I là $50\\%$.", "answer": "T" },
             { "id": "4", "text": "Xác suất lấy được một sản phẩm tốt do dây chuyền II sản xuất là $38,8\\%$.", "answer": "T" }
           ]
         }
@@ -104,43 +104,48 @@
     {
       "part": 2,
       "title": "PHẦN II. TRẮC NGHIỆM NHIỀU LỰA CHỌN",
-      "description": "Từ câu hỏi 10 đến 15, thí sinh chọn phương án đúng.",
+      "description": "Từ câu hỏi 10 đến 15, thí sinh chọn phương án đúng trong 4 phương án A, B, C, D.",
       "type": "multiple-choice",
       "questions": [
         {
           "id": "q10",
-          "text": "Gia tốc của vật $v(t) = 3t^2 - 12t + 9$ tại thời điểm $t=3s$ là:",
+          "text": "Một vật chuyển động với $v(t) = 3t^2 - 12t + 9$. Gia tốc của vật tại thời điểm $t=3s$ là:",
           "options": ["6", "0", "18", "-6"],
           "answer": "6"
         },
         {
           "id": "q11",
-          "text": "Vật $v(t) = 3t^2 - 12t + 9$ chuyển động ngược chiều dương trong khoảng:",
+          "text": "Trong khoảng $t \\in (0; 4)$, vật $v(t) = 3t^2 - 12t + 9$ chuyển động ngược chiều dương trong khoảng:",
           "options": ["(0; 1)", "(1; 3)", "(3; 4)", "(0; 3)"],
           "answer": "(1; 3)"
         },
         {
           "id": "q12",
-          "text": "Tổng quãng đường vật đi được trong 4 giây đầu tiên ($v(t) = 3t^2 - 12t + 9$):",
+          "text": "Tính tổng quãng đường vật đi được trong 4 giây đầu tiên với $v(t) = 3t^2 - 12t + 9$.",
           "options": ["16 m", "20 m", "12 m", "24 m"],
           "answer": "12 m"
         },
         {
           "id": "q13",
-          "text": "Trung vị của mẫu số liệu điểm kiểm tra (Tổng 40 HS, nhóm [7; 8) có 12 HS):",
+          "text": "Tính trung vị của mẫu số liệu ghép nhóm điểm kiểm tra (Tổng 40 HS, nhóm [7;8) có 12 HS).",
           "options": ["7,6", "7,5", "8,5", "6,5"],
           "answer": "7,5"
         },
         {
           "id": "q14",
-          "text": "Xác suất học sinh có điểm từ 8 trở lên (14/40 HS):",
+          "text": "Xác suất để một học sinh được chọn ngẫu nhiên có điểm từ 8 trở lên là:",
           "options": ["0,20", "0,35", "0,40", "0,15"],
           "answer": "0,35"
         },
         {
           "id": "q15",
-          "text": "Nếu điều chỉnh tất cả mốc điểm tăng thêm 1, mối liên hệ giữa tứ phân vị cũ ($Q_{1-1}$) và mới ($Q_{1-2}$):",
-          "options": ["$Q_{1-1}=Q_{1-2}$", "$Q_{1-1}>Q_{1-2}$", "$Q_{1-1}=Q_{1-2}+1$", "$Q_{1-1}=Q_{1-2}-1$"],
+          "text": "Nếu các mốc điểm tăng thêm 1, mối liên hệ giữa tứ phân vị thứ nhất cũ ($Q_{1-1}$) và mới ($Q_{1-2}$):",
+          "options": [
+            "$Q_{1-1}=Q_{1-2}$",
+            "$Q_{1-1}>Q_{1-2}$",
+            "$Q_{1-1}=Q_{1-2}+1$",
+            "$Q_{1-1}=Q_{1-2}-1$"
+          ],
           "answer": "$Q_{1-1}=Q_{1-2}-1$"
         }
       ]
@@ -148,42 +153,102 @@
     {
       "part": 3,
       "title": "PHẦN III. TRẮC NGHIỆM GHÉP NỐI",
-      "description": "Ghép nội dung cột trái với nội dung cột phải.",
+      "description": "Từ câu hỏi 16 đến 20, thí sinh ghép mỗi nội dung ở cột bên trái với một nội dung ở cột bên phải.",
       "type": "matching",
       "questions": [
         {
           "id": "q16",
-          "text": "Ghép cực trị hàm số $f(x) = x^3 - 3x^2 + 2$.",
-          "items": ["Hàm số đạt cực đại tại điểm", "Hàm số đạt cực tiểu tại điểm", "Giá trị cực đại của hàm số là", "Giá trị cực tiểu của hàm số là"],
-          "options": ["A. $y = -2$", "B. $x = 0$", "C. $x = 2$", "D. $y = 2$"],
+          "text": "Cho hàm số $f(x) = x^3 - 3x^2 + 2$. Ghép cực trị với giá trị tương ứng.",
+          "items": [
+            "Hàm số đạt cực đại tại điểm",
+            "Hàm số đạt cực tiểu tại điểm",
+            "Giá trị cực đại của hàm số là",
+            "Giá trị cực tiểu của hàm số là"
+          ],
+          "options": [
+            "A. $y = -2$",
+            "B. $x = 0$",
+            "C. $x = 2$",
+            "D. $y = 2$",
+            "E. $x = -1$",
+            "F. $y = 0$"
+          ],
           "answer": { "0": "B", "1": "C", "2": "D", "3": "A" }
         },
         {
           "id": "q17",
-          "text": "Hình chóp tứ giác đều cạnh $a$.",
-          "items": ["Chiều cao khối chóp", "Góc cạnh bên và đáy", "Khoảng cách tâm đáy đến mặt bên", "Góc giữa (SAB) và (SCD)"],
-          "options": ["A. $45^\\circ$", "B. $a\\sqrt{2}/2$", "C. $90^\\circ$", "D. $a\\sqrt{6}/6$", "E. $\\arccos(1/3)$", "F. $a/\\sqrt{2}$"],
+          "text": "Cho hình chóp tứ giác đều $S.ABCD$ có tất cả các cạnh bằng $a$.",
+          "items": [
+            "Chiều cao của khối chóp bằng",
+            "Góc giữa cạnh bên và mặt đáy bằng",
+            "Khoảng cách từ tâm đáy đến mặt bên bằng",
+            "Góc giữa hai mặt phẳng (SAB) và (SCD) bằng"
+          ],
+          "options": [
+            "A. $45^\\circ$",
+            "B. $a\\sqrt{2}/2$",
+            "C. $90^\\circ$",
+            "D. $a\\sqrt{6}/6$",
+            "E. $\\arccos(1/3)$",
+            "F. $a/\\sqrt{2}$"
+          ],
           "answer": { "0": "F", "1": "A", "2": "D", "3": "E" }
         },
         {
           "id": "q18",
-          "text": "Trong không gian $Oxyz$, ghép phương trình mặt phẳng.",
-          "items": ["Qua A(2;1;3) vuông góc d", "Qua B(1;0;1) vuông góc AC", "Qua ba điểm A, B, C", "Qua A, B song song d"],
-          "options": ["A. $x-y+2z-7=0$", "B. $x-2y+z-2=0$", "C. $5x+y-3z-2=0$", "D. $2x-z-1=0$"],
+          "text": "Trong $Oxyz$, cho $d$ qua $t$ và $A(2;1;3), B(1;0;1), C(3;-1;4)$.",
+          "items": [
+            "Mặt phẳng qua A và vuông góc d",
+            "Mặt phẳng qua B và vuông góc AC",
+            "Mặt phẳng qua ba điểm A, B, C",
+            "Mặt phẳng qua A, B và song song d"
+          ],
+          "options": [
+            "A. $x - y + 2z - 7 = 0$",
+            "B. $x - 2y + z - 2 = 0$",
+            "C. $5x + y - 3z - 2 = 0$",
+            "D. $2x - z - 1 = 0$",
+            "E. $x + y + z - 6 = 0$",
+            "F. $2x + y - z - 2 = 0$"
+          ],
           "answer": { "0": "A", "1": "B", "2": "C", "3": "D" }
         },
         {
           "id": "q19",
-          "text": "Vị trí tương đối của đường thẳng $d$.",
-          "items": ["Với mp (P): x+y+3z-5=0", "Với mp (Q): x-2z+1=0", "Với d': x/1 = (y-1)/2 = z/1", "Với Delta: (x-3)/2 = (y-1)/1 = (z+2)/-1"],
-          "options": ["A. Cắt nhau không vuông góc", "B. Song song", "C. Chéo nhau", "D. Trùng nhau"],
+          "text": "Vị trí tương đối của đường thẳng $d$ và các đối tượng khác.",
+          "items": [
+            "Mặt phẳng $(P): x+y+3z-5=0$",
+            "Mặt phẳng $(Q): x-2z+1=0$",
+            "Đường thẳng $d': x/1 = (y-1)/2 = z/1$",
+            "Đường thẳng $\\Delta: (x-3)/2 = (y-1)/1 = (z+2)/-1$"
+          ],
+          "options": [
+            "A. Cắt nhau không vuông góc",
+            "B. Song song",
+            "C. Chéo nhau",
+            "D. Trùng nhau",
+            "E. Vuông góc",
+            "F. Nằm trong"
+          ],
           "answer": { "0": "B", "1": "A", "2": "C", "3": "D" }
         },
         {
           "id": "q20",
-          "text": "Cực trị hàm số $g(x) = f(|x|+m)$ với $f(x)=x^4-8x^2+3$.",
-          "items": ["Có 3 điểm cực trị", "Có 5 điểm cực trị", "Khi m=1, g(0) bằng", "Số cực trị tối đa"],
-          "options": ["A. $0 \\leq m < 2$", "B. $-2 \\leq m < 0$", "C. $f(1)$", "D. 7"],
+          "text": "Cho $f(x) = x^4 - 8x^2 + 3$. Xét $g(x) = f(|x| + m)$.",
+          "items": [
+            "Để hàm số $g(x)$ có 3 điểm cực trị thì",
+            "Để hàm số $g(x)$ có 5 điểm cực trị thì",
+            "Khi $m=1$ giá trị của $g(0)$ bằng",
+            "Số điểm cực trị tối đa của hàm số $g(x)$ là"
+          ],
+          "options": [
+            "A. $0 \\leq m < 2$",
+            "B. $-2 \\leq m < 0$",
+            "C. $f(1)$",
+            "D. 7",
+            "E. 1",
+            "F. $m \\geq 2$"
+          ],
           "answer": { "0": "A", "1": "B", "2": "C", "3": "D" }
         }
       ]
@@ -191,14 +256,34 @@
     {
       "part": 4,
       "title": "PHẦN IV. CÂU HỎI MỞ TRẢ LỜI NGẮN",
-      "description": "Ghi đáp án vào ô tương ứng.",
+      "description": "Từ Câu 21 đến Câu 25, thí sinh ghi câu trả lời tương ứng.",
       "type": "short-answer",
       "questions": [
-        { "id": "q21", "text": "Tính $I = \\int_1^2 g(x)dx$ biết $\\int_1^2 f=3, \\int_1^2 (3f-g)=10$.", "answer": "-1" },
-        { "id": "q22", "text": "Tính $P = \\log_2 (a^2 b^3)$ biết $\\log_2 a = 3, \\log_2 b = 4$.", "answer": "18" },
-        { "id": "q23", "text": "Chi phí kéo dây thấp nhất (triệu đồng):", "answer": "430" },
-        { "id": "q24", "text": "Xác suất xạ thủ trúng lần 3 (làm tròn hàng phần trăm):", "answer": "0,85" },
-        { "id": "q25", "text": "Thể tích khối đa diện $|x|+|y|\\leq 2$ và $0\\leq z\\leq 4-|x|-|y|$:", "answer": "64/3" }
+        {
+          "id": "q21",
+          "text": "Cho $\\int_1^2 f=3$ và $\\int_1^2 (3f-g)=10$. Tính $I = \\int_1^2 g(x)dx$.",
+          "answer": "-1"
+        },
+        {
+          "id": "q22",
+          "text": "Biết $\\log_2 a = 3$ và $\\log_2 b = 4$. Tính $P = \\log_2 (a^2 b^3)$.",
+          "answer": "18"
+        },
+        {
+          "id": "q23",
+          "text": "Tính chi phí kéo dây cáp thấp nhất từ trạm A đến đảo C (triệu đồng).",
+          "answer": "430"
+        },
+        {
+          "id": "q24",
+          "text": "Tính xác suất để xạ thủ bắn trúng ở lần bắn thứ 3 (làm tròn đến 0,01).",
+          "answer": "0,85"
+        },
+        {
+          "id": "q25",
+          "text": "Tính thể tích khối đa diện $|x|+|y| \\leq 2$ và $0 \\leq z \\leq 4 - |x| - |y|$.",
+          "answer": "64/3"
+        }
       ]
     }
   ]
