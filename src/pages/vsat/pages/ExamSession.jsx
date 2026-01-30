@@ -59,20 +59,16 @@ const randomizeExamData = (originalData) => {
 
         // Phần 3: Ghép nối -> Xáo trộn cột trái (items) & cột phải (options)
         if (part.type === "matching" && q.items) {
-          // A. Xáo trộn menu thả xuống (Cột phải)
-          q.options = shuffleArray(q.options);
+          // A. GIỮ NGUYÊN MENU SELECT (Không xáo trộn q.options nữa)
+          // q.options = shuffleArray(q.options);  <-- Đã bỏ dòng này để giữ thứ tự A, B, C, D...
 
-          // B. Xáo trộn danh sách câu hỏi ghép (Cột trái) và cập nhật đáp án tương ứng
-          // Tạo mảng chỉ mục gốc [0, 1, 2, 3...]
+          // B. Xáo trộn danh sách câu hỏi ghép (Cột trái)
           const originalIndices = q.items.map((_, i) => i);
-          // Xáo trộn chỉ mục: vd [2, 0, 3, 1]
           const shuffledIndices = shuffleArray(originalIndices);
 
-          // Tạo mảng items mới dựa trên chỉ mục đã xáo
           const newItems = shuffledIndices.map((oldIndex) => q.items[oldIndex]);
 
-          // Map lại đáp án đúng sang vị trí mới
-          // Ví dụ: Câu cũ ở index 0 (đáp án A) giờ chuyển sang index 1 -> Answer[1] phải là A
+          // Map lại đáp án đúng
           const newAnswerKey = {};
           shuffledIndices.forEach((oldIndex, newIndex) => {
             newAnswerKey[newIndex] = q.answer[oldIndex];
