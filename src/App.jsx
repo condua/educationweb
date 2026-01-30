@@ -60,7 +60,8 @@ import VocabularyGame from "./pages/games/VocabularyGame.jsx";
 import ListeningGame from "./pages/games/ListeningGame.jsx";
 import SentenceScrambleGame from "./pages/games/SentenceScrambleGame.jsx";
 import GrammarTopic from "./pages/games/GrammarTopic.jsx";
-
+import ExamDashboard from "./pages/vsat/pages/ExamDashboard.jsx";
+import ExamSession from "./pages/vsat/pages/ExamSession.jsx";
 const PrivateRoute = ({ element }) => {
   const isAuthen = useSelector((state) => state.auth.isAuthen);
   const location = useLocation();
@@ -101,6 +102,7 @@ function App() {
   const dispatch = useDispatch();
   const { user, status } = useSelector((state) => state.user);
   const [isLoading, setIsLoading] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const loadUser = async () => {
@@ -110,7 +112,31 @@ function App() {
 
     loadUser();
   }, [dispatch]);
+  // Load MathJax Script Global
+  useEffect(() => {
+    if (!document.getElementById("mathjax-script")) {
+      const script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js";
+      script.async = true;
+      script.id = "mathjax-script";
+      document.head.appendChild(script);
 
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+        },
+        svg: { fontCache: "global" },
+        startup: { typeset: false },
+      };
+    }
+  }, []);
   if (isLoading || status === "loading") {
     return (
       <div className="fixed inset-0 bg-black/10 flex items-center justify-center z-50">
@@ -118,6 +144,7 @@ function App() {
       </div>
     );
   }
+  const toggleTheme = () => setDarkMode(!darkMode);
 
   return (
     <BrowserRouter>
@@ -230,6 +257,18 @@ function App() {
           element={<AdminRoute element={<TestPreviewPage />} />}
         />
         <Route path="*" element={<Navigate to="/" />} />
+        <Route
+          path="/vsat-home"
+          element={
+            <ExamDashboard darkMode={darkMode} toggleTheme={toggleTheme} />
+          }
+        />
+        <Route
+          path="/exam/:id"
+          element={
+            <ExamSession darkMode={darkMode} toggleTheme={toggleTheme} />
+          }
+        />
       </Routes>
       <Chatbot />
       <Footer />

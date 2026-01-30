@@ -11,6 +11,7 @@ import {
   Rss,
   Gamepad2,
   MessageSquare,
+  FileSpreadsheet,
 } from "lucide-react";
 import { logout } from "../redux/authSlice";
 import { logoutUser } from "../redux/userSlice";
@@ -47,6 +48,11 @@ const Header = () => {
     { title: "Trang chủ", path: "/", icon: <Home size={20} /> },
     { title: "Khóa học", path: "/courses", icon: <BookOpen size={20} /> },
     { title: "Đề thi", path: "/exams", icon: <FileText size={20} /> },
+    {
+      title: "Đề thi VSAT",
+      path: "/vsat-home",
+      icon: <FileSpreadsheet size={20} />,
+    },
     { title: "Dự án", path: "/services", icon: <Briefcase size={20} /> },
     { title: "Blog", path: "/blog", icon: <Rss size={20} /> },
     { title: "Trò chơi", path: "/games", icon: <Gamepad2 size={20} /> },
