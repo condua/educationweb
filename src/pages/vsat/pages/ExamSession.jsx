@@ -153,12 +153,27 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
 
   // --- 3. EFFECTS (Logic Timer, Save, Score) ---
 
+  // --- TÍNH TỔNG ĐIỂM TỐI ĐA CỦA ĐỀ (DỰA TRÊN LUẬT CHẤM MỚI) ---
   useEffect(() => {
-    let total = 0;
+    let totalMax = 0;
     if (examData.parts) {
-      examData.parts.forEach((part) => part.questions.forEach(() => total++));
+      examData.parts.forEach((part) => {
+        part.questions.forEach((q) => {
+          if (part.type === "true-false") {
+            // Đúng/Sai: Đúng cả 4 ý được 6 điểm
+            totalMax += 6;
+          } else if (part.type === "matching") {
+            // Ghép nối: 1.5 điểm mỗi ý. Thường có 4 ý => 4 * 1.5 = 6 điểm
+            // Tính động dựa trên số lượng items thực tế
+            totalMax += (q.items ? q.items.length : 4) * 1.5;
+          } else {
+            // Trắc nghiệm (MCQs) & Trả lời ngắn: 6 điểm mỗi câu
+            totalMax += 6;
+          }
+        });
+      });
     }
-    setTotalPossibleScore(total);
+    setTotalPossibleScore(totalMax);
   }, [examData]);
 
   useEffect(() => {
@@ -205,36 +220,83 @@ const ExamSession = ({ darkMode, toggleTheme }) => {
 
   const handleSubmit = () => {
     if (submitted) return;
+
     let currentScore = 0;
+
     examData.parts.forEach((part) => {
       part.questions.forEach((q) => {
-        // Logic chấm điểm đơn giản: Matching cần đúng hết các cặp
-        if (part.type === "matching") {
-          let isCorrect = true;
-          // Kiểm tra xem người dùng đã chọn đủ và đúng chưa
-          if (
-            Object.keys(answers[q.id] || {}).length !==
-            Object.keys(q.answer).length
-          )
-            isCorrect = false;
-          else {
-            Object.keys(q.answer).forEach((key) => {
-              if (answers[q.id]?.[key] !== q.answer[key]) isCorrect = false;
+        const userAnswer = answers[q.id] || {};
+
+        // --- LOGIC 1: ĐÚNG / SAI (True/False) ---
+        // Quy tắc: 1 ý đúng = 1đ, 2 ý = 2đ, 3 ý = 3đ, 4 ý = 6đ
+        if (part.type === "true-false") {
+          let correctCount = 0;
+          if (q.statements) {
+            q.statements.forEach((st) => {
+              // So sánh đáp án người dùng chọn với đáp án đúng (T hoặc F)
+              if (userAnswer[st.id] === st.answer) {
+                correctCount++;
+              }
             });
           }
-          if (isCorrect) currentScore++;
-        } else {
-          // Các phần khác (P1, P2, P4): Có trả lời là tính (Cần sửa logic check đáp án thật ở đây)
-          if (answers[q.id]) currentScore += 1;
+
+          switch (correctCount) {
+            case 1:
+              currentScore += 1;
+              break;
+            case 2:
+              currentScore += 2;
+              break;
+            case 3:
+              currentScore += 3;
+              break;
+            case 4:
+              currentScore += 6;
+              break;
+            default:
+              currentScore += 0;
+          }
+        }
+
+        // --- LOGIC 2: GHÉP HỢP (Matching) ---
+        // Quy tắc: Mỗi ý ghép đúng được 1.5 điểm
+        else if (part.type === "matching") {
+          if (q.items) {
+            q.items.forEach((_, idx) => {
+              // q.answer là object {0: "A", 1: "C"...} sau khi shuffle
+              // userAnswer là object {0: "A", 1: "B"...}
+              if (userAnswer[idx] === q.answer[idx]) {
+                currentScore += 1.5;
+              }
+            });
+          }
+        }
+
+        // --- LOGIC 3: TRẮC NGHIỆM & TRẢ LỜI NGẮN ---
+        // Quy tắc: Đúng được 6 điểm
+        else {
+          // Lấy giá trị trả lời (lưu ở key 0)
+          const userVal = userAnswer[0];
+
+          if (userVal) {
+            // Chuẩn hóa về string để so sánh (đề phòng số vs chuỗi)
+            // Trim khoảng trắng cho câu trả lời ngắn
+            const cleanUserVal = String(userVal).trim().toLowerCase();
+            const cleanCorrectVal = String(q.answer).trim().toLowerCase();
+
+            if (cleanUserVal === cleanCorrectVal) {
+              currentScore += 6;
+            }
+          }
         }
       });
     });
+
     setScore(currentScore);
     setSubmitted(true);
     clearInterval(timerRef.current);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
   const handleReset = () => {
     if (
       window.confirm(
