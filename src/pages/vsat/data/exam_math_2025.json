@@ -13,90 +13,234 @@
           "id": "q1",
           "text": "Cho dãy số $(u_n)$ biết $u_n = \\frac{n+1}{n}, \\forall n \\in \\mathbb{N}^*$.",
           "statements": [
-            { "id": "1", "text": "Dãy số $(u_n)$ là cấp số nhân.", "answer": "F" },
-            { "id": "2", "text": "Dãy số $(u_n)$ là dãy số giảm.", "answer": "T" },
-            { "id": "3", "text": "Dãy số $(u_n)$ bị chặn trên bởi 2.", "answer": "T" },
-            { "id": "4", "text": "Có vô số số hạng của dãy số lớn hơn 1.", "answer": "T" }
+            {
+              "id": "1",
+              "text": "Dãy số $(u_n)$ là cấp số nhân.",
+              "answer": "F"
+            },
+            {
+              "id": "2",
+              "text": "Dãy số $(u_n)$ là dãy số giảm.",
+              "answer": "T"
+            },
+            {
+              "id": "3",
+              "text": "Dãy số $(u_n)$ bị chặn trên bởi 2.",
+              "answer": "T"
+            },
+            {
+              "id": "4",
+              "text": "Có vô số số hạng của dãy số lớn hơn 1.",
+              "answer": "T"
+            }
           ]
         },
         {
           "id": "q2",
           "text": "Cho hàm số $y = \\frac{x-2}{x+1}$ có đồ thị là $(C)$.",
           "statements": [
-            { "id": "1", "text": "Đường thẳng $x=-1$ là tiệm cận đứng của $(C)$.", "answer": "T" },
-            { "id": "2", "text": "Đồ thị hàm số đi qua điểm $M(0; -2)$.", "answer": "T" },
-            { "id": "3", "text": "Giao điểm của hai đường tiệm cận là $I(-1; 1)$.", "answer": "T" },
-            { "id": "4", "text": "Hàm số đồng biến trên khoảng $(-\\infty; -1)$.", "answer": "T" }
+            {
+              "id": "1",
+              "text": "Đường thẳng $x=-1$ là tiệm cận đứng của $(C)$.",
+              "answer": "T"
+            },
+            {
+              "id": "2",
+              "text": "Đồ thị hàm số đi qua điểm $M(0; -2)$.",
+              "answer": "T"
+            },
+            {
+              "id": "3",
+              "text": "Giao điểm của hai đường tiệm cận là $I(-1; 1)$.",
+              "answer": "T"
+            },
+            {
+              "id": "4",
+              "text": "Hàm số đồng biến trên khoảng $(-\\infty; -1)$.",
+              "answer": "T"
+            }
           ]
         },
         {
           "id": "q3",
           "text": "Trong không gian $Oxyz$, cho đường thẳng $(d): \\frac{x-1}{2} = \\frac{y+2}{-1} = \\frac{z}{1}$.",
           "statements": [
-            { "id": "1", "text": "Vectơ chỉ phương của $(d)$ là $\\vec{u}=(2; -1; 0)$.", "answer": "F" },
-            { "id": "2", "text": "Đường thẳng $(d)$ đi qua điểm $A(1; -2; 0)$.", "answer": "T" },
-            { "id": "3", "text": "Đường thẳng $(d)$ song song với mặt phẳng $(P): x + 2y - z + 5 = 0$.", "answer": "F" },
-            { "id": "4", "text": "Góc giữa đường thẳng $(d)$ và trục $Ox$ bằng $60^\\circ$.", "answer": "F" }
+            {
+              "id": "1",
+              "text": "Vectơ chỉ phương của $(d)$ là $\\vec{u}=(2; -1; 0)$.",
+              "answer": "F"
+            },
+            {
+              "id": "2",
+              "text": "Đường thẳng $(d)$ đi qua điểm $A(1; -2; 0)$.",
+              "answer": "T"
+            },
+            {
+              "id": "3",
+              "text": "Đường thẳng $(d)$ song song với mặt phẳng $(P): x + 2y - z + 5 = 0$.",
+              "answer": "F"
+            },
+            {
+              "id": "4",
+              "text": "Góc giữa đường thẳng $(d)$ và trục $Ox$ bằng $60^\\circ$.",
+              "answer": "F"
+            }
           ]
         },
         {
           "id": "q4",
           "text": "Bảng thống kê kết quả xét nghiệm 100 người: Mắc bệnh (Dương tính: 35, Âm tính: 5); Không mắc bệnh (Dương tính: 10, Âm tính: 50).",
           "statements": [
-            { "id": "1", "text": "Xác suất chọn ngẫu nhiên một người có kết quả Dương tính là $0,45$.", "answer": "T" },
-            { "id": "2", "text": "Xác suất chọn ngẫu nhiên một người mắc bệnh và có kết quả Âm tính là $0,05$.", "answer": "T" },
-            { "id": "3", "text": "Trong số người Dương tính, xác suất người đó thực sự mắc bệnh xấp xỉ $77,8\\%$.", "answer": "T" },
-            { "id": "4", "text": "Tỉ lệ âm tính giả cao hơn tỉ lệ dương tính giả.", "answer": "F" }
+            {
+              "id": "1",
+              "text": "Xác suất chọn ngẫu nhiên một người có kết quả Dương tính là $0,45$.",
+              "answer": "T"
+            },
+            {
+              "id": "2",
+              "text": "Xác suất chọn ngẫu nhiên một người mắc bệnh và có kết quả Âm tính là $0,05$.",
+              "answer": "T"
+            },
+            {
+              "id": "3",
+              "text": "Trong số những người có kết quả Dương tính, xác suất người đó thực sự mắc bệnh xấp xỉ $77,8\\%$.",
+              "answer": "T"
+            },
+            {
+              "id": "4",
+              "text": "Tỉ lệ âm tính giả (người mắc bệnh nhưng xét nghiệm âm tính) cao hơn tỉ lệ dương tính giả.",
+              "answer": "F"
+            }
           ]
         },
         {
           "id": "q5",
           "text": "Cho các mệnh đề sau về nguyên hàm:",
           "statements": [
-            { "id": "1", "text": "$\\int e^{2x} dx = 2e^{2x} + C$.", "answer": "F" },
-            { "id": "2", "text": "$\\int \\frac{1}{x+1} dx = \\ln|x+1| + C$.", "answer": "T" },
-            { "id": "3", "text": "$\\int \\sin(2x) dx = -\\frac{1}{2}\\cos(2x) + C$.", "answer": "T" },
-            { "id": "4", "text": "$\\int 3^x dx = \\frac{3^x}{\\ln 3} + C$.", "answer": "T" }
+            {
+              "id": "1",
+              "text": "$\\int e^{2x} \\mathrm{d}x = 2e^{2x} + C$.",
+              "answer": "F"
+            },
+            {
+              "id": "2",
+              "text": "$\\int \\frac{1}{x+1} \\mathrm{d}x = \\ln|x+1| + C$.",
+              "answer": "T"
+            },
+            {
+              "id": "3",
+              "text": "$\\int \\sin(2x) \\mathrm{d}x = -\\frac{1}{2}\\cos(2x) + C$.",
+              "answer": "T"
+            },
+            {
+              "id": "4",
+              "text": "$\\int 3^x \\mathrm{d}x = \\frac{3^x}{\\ln 3} + C$.",
+              "answer": "T"
+            }
           ]
         },
         {
           "id": "q6",
           "text": "Trong không gian $Oxyz$, cho mặt cầu $(S): (x-1)^2 + (y+2)^2 + z^2 = 9$ và điểm $M(1; 1; 4)$.",
           "statements": [
-            { "id": "1", "text": "Tâm của mặt cầu là $I(1; -2; 0)$ và bán kính $R=3$.", "answer": "T" },
-            { "id": "2", "text": "Điểm $O(0;0;0)$ nằm bên trong mặt cầu $(S)$.", "answer": "T" },
-            { "id": "3", "text": "Phương trình mặt cầu tâm M tiếp xúc ngoài (S) là: $(x-1)^2 + (y-1)^2 + (z-4)^2 = 4$.", "answer": "T" },
-            { "id": "4", "text": "Mặt phẳng $(P): z - 3 = 0$ tiếp xúc với mặt cầu $(S)$.", "answer": "T" }
+            {
+              "id": "1",
+              "text": "Tâm của mặt cầu là $I(1; -2; 0)$ và bán kính $R=3$.",
+              "answer": "T"
+            },
+            {
+              "id": "2",
+              "text": "Điểm $O(0;0;0)$ nằm bên trong mặt cầu $(S)$.",
+              "answer": "T"
+            },
+            {
+              "id": "3",
+              "text": "Phương trình mặt cầu tâm M tiếp xúc ngoài mặt cầu (S) là: $(x-1)^2 + (y-1)^2 + (z-4)^2 = 4$.",
+              "answer": "T"
+            },
+            {
+              "id": "4",
+              "text": "Mặt phẳng $(P): z - 3 = 0$ tiếp xúc với mặt cầu $(S)$.",
+              "answer": "T"
+            }
           ]
         },
         {
           "id": "q7",
           "text": "Số lượng vi khuẩn $N(t) = N_0 \\cdot e^{rt}$. Ban đầu có 100 con, sau 2 giờ có 400 con.",
           "statements": [
-            { "id": "1", "text": "$N_0 = 100$.", "answer": "T" },
-            { "id": "2", "text": "Tốc độ tăng trưởng $r = \\ln 2$.", "answer": "T" },
-            { "id": "3", "text": "Sau 4 giờ, số lượng vi khuẩn là 1600 con.", "answer": "T" },
-            { "id": "4", "text": "Cần ít nhất 6 giờ để số lượng vi khuẩn vượt qua 10.000 con.", "answer": "F" }
+            {
+              "id": "1",
+              "text": "$N_0 = 100$.",
+              "answer": "T"
+            },
+            {
+              "id": "2",
+              "text": "Tốc độ tăng trưởng $r = \\ln 2$.",
+              "answer": "T"
+            },
+            {
+              "id": "3",
+              "text": "Sau 4 giờ, số lượng vi khuẩn là 1600 con.",
+              "answer": "T"
+            },
+            {
+              "id": "4",
+              "text": "Cần ít nhất 6 giờ để số lượng vi khuẩn vượt qua 10.000 con.",
+              "answer": "F"
+            }
           ]
         },
         {
           "id": "q8",
           "text": "Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có cạnh đáy bằng $a$, cạnh bên bằng $2a$.",
           "statements": [
-            { "id": "1", "text": "Thể tích khối lăng trụ bằng $\\frac{a^3\\sqrt{3}}{2}$.", "answer": "T" },
-            { "id": "2", "text": "Góc giữa đường thẳng $A'B$ và mặt phẳng đáy bằng $45^\\circ$.", "answer": "F" },
-            { "id": "3", "text": "Khoảng cách từ $A'$ đến mặt phẳng $(BCC'B')$ bằng $\\frac{a\\sqrt{3}}{2}$.", "answer": "T" },
-            { "id": "4", "text": "Mặt phẳng $(AB'C')$ vuông góc với mặt phẳng $(A'B'C')$.", "answer": "F" }
+            {
+              "id": "1",
+              "text": "Thể tích khối lăng trụ bằng $\\frac{a^3\\sqrt{3}}{2}$.",
+              "answer": "T"
+            },
+            {
+              "id": "2",
+              "text": "Góc giữa đường thẳng $A'B$ và mặt phẳng đáy bằng $45^\\circ$.",
+              "answer": "F"
+            },
+            {
+              "id": "3",
+              "text": "Khoảng cách từ $A'$ đến mặt phẳng $(BCC'B')$ bằng $\\frac{a\\sqrt{3}}{2}$.",
+              "answer": "T"
+            },
+            {
+              "id": "4",
+              "text": "Mặt phẳng $(AB'C')$ vuông góc với mặt phẳng $(A'B'C')$.",
+              "answer": "F"
+            }
           ]
         },
         {
           "id": "q9",
           "text": "Dây chuyền I sản xuất 60% SP (lỗi 2%), Dây chuyền II sản xuất 40% SP (lỗi 3%).",
           "statements": [
-            { "id": "1", "text": "Xác suất lấy ngẫu nhiên một sản phẩm là phế phẩm bằng $2,5\\%$.", "answer": "F" },
-            { "id": "2", "text": "Tỉ lệ sản phẩm tốt của toàn nhà máy là $97,6\\%$.", "answer": "T" },
-            { "id": "3", "text": "Nếu lấy được một sản phẩm lỗi, xác suất sản phẩm đó do dây chuyền I là $50\\%$.", "answer": "T" },
-            { "id": "4", "text": "Xác suất lấy được một sản phẩm tốt do dây chuyền II sản xuất là $38,8\\%$.", "answer": "T" }
+            {
+              "id": "1",
+              "text": "Xác suất lấy ngẫu nhiên một sản phẩm là phế phẩm bằng $2,5\\%$.",
+              "answer": "F"
+            },
+            {
+              "id": "2",
+              "text": "Tỉ lệ sản phẩm tốt của toàn nhà máy là $97,6\\%$.",
+              "answer": "T"
+            },
+            {
+              "id": "3",
+              "text": "Nếu lấy được một sản phẩm lỗi, xác suất sản phẩm đó do dây chuyền I sản xuất là $50\\%$.",
+              "answer": "T"
+            },
+            {
+              "id": "4",
+              "text": "Xác suất lấy được một sản phẩm tốt do dây chuyền II sản xuất là $38,8\\%$.",
+              "answer": "T"
+            }
           ]
         }
       ]
@@ -108,57 +252,96 @@
       "type": "multiple-choice",
       "questions": [
         {
-          "id": "q10",
-          "text": "Một vật chuyển động với $v(t) = 3t^2 - 12t + 9$. Gia tốc của vật tại thời điểm $t=3s$ là:",
-          "options": ["6", "0", "18", "-6"],
-          "answer": "6"
+          "groupId": "g10-12",
+          "range": "10-12",
+          "content": "Một vật chuyển động thẳng với vận tốc $v(t) = 3t^2 - 12t + 9$ (m/s), trong đó $t$ là thời gian tính bằng giây ($s$) từ lúc bắt đầu chuyển động.",
+          "items": [
+            {
+              "id": "q10",
+              "text": "Gia tốc của vật tại thời điểm $t=3s$ là bao nhiêu ($m/s^2$)?",
+              "options": [
+                "6",
+                "0",
+                "18",
+                "-6"
+              ],
+              "answer": "6"
+            },
+            {
+              "id": "q11",
+              "text": "Trong khoảng thời gian từ $t=0$ đến $t=4$, vật chuyển động ngược chiều dương trong khoảng nào?",
+              "options": [
+                "(0; 1)",
+                "(1; 3)",
+                "(3; 4)",
+                "(0; 3)"
+              ],
+              "answer": "(1; 3)"
+            },
+            {
+              "id": "q12",
+              "text": "Tính tổng quãng đường vật đi được trong 4 giây đầu tiên.",
+              "options": [
+                "16 m",
+                "20 m",
+                "12 m",
+                "24 m"
+              ],
+              "answer": "12 m"
+            }
+          ]
         },
         {
-          "id": "q11",
-          "text": "Trong khoảng $t \\in (0; 4)$, vật $v(t) = 3t^2 - 12t + 9$ chuyển động ngược chiều dương trong khoảng:",
-          "options": ["(0; 1)", "(1; 3)", "(3; 4)", "(0; 3)"],
-          "answer": "(1; 3)"
-        },
-        {
-          "id": "q12",
-          "text": "Tính tổng quãng đường vật đi được trong 4 giây đầu tiên với $v(t) = 3t^2 - 12t + 9$.",
-          "options": ["16 m", "20 m", "12 m", "24 m"],
-          "answer": "12 m"
-        },
-        {
-          "id": "q13",
-          "text": "Tính trung vị của mẫu số liệu ghép nhóm điểm kiểm tra (Tổng 40 HS, nhóm [7;8) có 12 HS).",
-          "options": ["7,6", "7,5", "8,5", "6,5"],
-          "answer": "7,5"
-        },
-        {
-          "id": "q14",
-          "text": "Xác suất để một học sinh được chọn ngẫu nhiên có điểm từ 8 trở lên là:",
-          "options": ["0,20", "0,35", "0,40", "0,15"],
-          "answer": "0,35"
-        },
-        {
-          "id": "q15",
-          "text": "Nếu các mốc điểm tăng thêm 1, mối liên hệ giữa tứ phân vị thứ nhất cũ ($Q_{1-1}$) và mới ($Q_{1-2}$):",
-          "options": [
-            "$Q_{1-1}=Q_{1-2}$",
-            "$Q_{1-1}>Q_{1-2}$",
-            "$Q_{1-1}=Q_{1-2}+1$",
-            "$Q_{1-1}=Q_{1-2}-1$"
-          ],
-          "answer": "$Q_{1-1}=Q_{1-2}-1$"
+          "groupId": "g13-15",
+          "range": "13-15",
+          "content": "Điểm kiểm tra Toán của một lớp học: [4;6): 4 HS, [6;7): 10 HS, [7;8): 12 HS, [8;9): 8 HS, [9;10]: 6 HS.",
+          "items": [
+            {
+              "id": "q13",
+              "text": "Tính trung vị của mẫu số liệu ghép nhóm trên (làm tròn kết quả đến hàng phần chục).",
+              "options": [
+                "7,6",
+                "7,5",
+                "8,5",
+                "6,5"
+              ],
+              "answer": "7,5"
+            },
+            {
+              "id": "q14",
+              "text": "Xác suất để học sinh được chọn ngẫu nhiên có điểm từ 8 trở lên là bao nhiêu?",
+              "options": [
+                "0,20",
+                "0,35",
+                "0,40",
+                "0,15"
+              ],
+              "answer": "0,35"
+            },
+            {
+              "id": "q15",
+              "text": "Nếu các mốc điểm tăng thêm 1 (số liệu cũ nhỏ hơn thực tế 1 điểm), mối liên hệ giữa tứ phân vị thứ nhất cũ ($Q_{1-1}$) và mới ($Q_{1-2}$):",
+              "options": [
+                "$Q_{1-1}=Q_{1-2}$",
+                "$Q_{1-1}>Q_{1-2}$",
+                "$Q_{1-1}=Q_{1-2}+1$",
+                "$Q_{1-1}=Q_{1-2}-1$"
+              ],
+              "answer": "$Q_{1-1}=Q_{1-2}-1$"
+            }
+          ]
         }
       ]
     },
     {
       "part": 3,
       "title": "PHẦN III. TRẮC NGHIỆM GHÉP NỐI",
-      "description": "Từ câu hỏi 16 đến 20, thí sinh ghép mỗi nội dung ở cột bên trái với một nội dung ở cột bên phải.",
+      "description": "Từ câu hỏi 16 đến 20, thí sinh ghép mỗi nội dung ở cột bên trái với một nội dung ở cột bên phải thành nội dung đúng.",
       "type": "matching",
       "questions": [
         {
           "id": "q16",
-          "text": "Cho hàm số $f(x) = x^3 - 3x^2 + 2$. Ghép cực trị với giá trị tương ứng.",
+          "text": "Cho hàm số $f(x) = x^3 - 3x^2 + 2$.",
           "items": [
             "Hàm số đạt cực đại tại điểm",
             "Hàm số đạt cực tiểu tại điểm",
@@ -173,35 +356,45 @@
             "E. $x = -1$",
             "F. $y = 0$"
           ],
-          "answer": { "0": "B", "1": "C", "2": "D", "3": "A" }
+          "answer": {
+            "0": "B",
+            "1": "C",
+            "2": "D",
+            "3": "A"
+          }
         },
         {
           "id": "q17",
-          "text": "Cho hình chóp tứ giác đều $S.ABCD$ có tất cả các cạnh bằng $a$.",
+          "text": "Cho hình chóp tứ giác đều $S.ABCD$ có tất cả các cạnh đều bằng $a$.",
           "items": [
             "Chiều cao của khối chóp bằng",
             "Góc giữa cạnh bên và mặt đáy bằng",
             "Khoảng cách từ tâm đáy đến mặt bên bằng",
-            "Góc giữa hai mặt phẳng (SAB) và (SCD) bằng"
+            "Góc giữa hai mặt phẳng $(SAB)$ và $(SCD)$ bằng"
           ],
           "options": [
             "A. $45^\\circ$",
-            "B. $a\\sqrt{2}/2$",
+            "B. $\\frac{a\\sqrt{2}}{2}$",
             "C. $90^\\circ$",
-            "D. $a\\sqrt{6}/6$",
-            "E. $\\arccos(1/3)$",
-            "F. $a/\\sqrt{2}$"
+            "D. $\\frac{a\\sqrt{6}}{6}$",
+            "E. $\\arccos\\frac{1}{3}$",
+            "F. $\\frac{a}{\\sqrt{2}}$"
           ],
-          "answer": { "0": "F", "1": "A", "2": "D", "3": "E" }
+          "answer": {
+            "0": "F",
+            "1": "A",
+            "2": "D",
+            "3": "E"
+          }
         },
         {
           "id": "q18",
-          "text": "Trong $Oxyz$, cho $d$ qua $t$ và $A(2;1;3), B(1;0;1), C(3;-1;4)$.",
+          "text": "Trong không gian $Oxyz$, cho đường thẳng $(d): \\begin{cases} x=1+t \\\\ y=2-t \\\\ z=1+2t \\end{cases}$ và ba điểm $A(2; 1; 3), B(1; 0; 1), C(3; -1; 4)$.",
           "items": [
-            "Mặt phẳng qua A và vuông góc d",
-            "Mặt phẳng qua B và vuông góc AC",
-            "Mặt phẳng qua ba điểm A, B, C",
-            "Mặt phẳng qua A, B và song song d"
+            "Phương trình mặt phẳng qua $A$ và vuông góc với $d$ là",
+            "Phương trình mặt phẳng qua $B$ và vuông góc với đường thẳng $AC$ là",
+            "Phương trình mặt phẳng qua ba điểm $A,B,C$ là",
+            "Phương trình mặt phẳng qua $A,B$ và song song với $d$ là"
           ],
           "options": [
             "A. $x - y + 2z - 7 = 0$",
@@ -211,16 +404,21 @@
             "E. $x + y + z - 6 = 0$",
             "F. $2x + y - z - 2 = 0$"
           ],
-          "answer": { "0": "A", "1": "B", "2": "C", "3": "D" }
+          "answer": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "D"
+          }
         },
         {
           "id": "q19",
-          "text": "Vị trí tương đối của đường thẳng $d$ và các đối tượng khác.",
+          "text": "Xét vị trí tương đối của đường thẳng $d: \\frac{x-1}{2}=\\frac{y}{1}=\\frac{z+1}{-1}$ và các đối tượng sau:",
           "items": [
             "Mặt phẳng $(P): x+y+3z-5=0$",
             "Mặt phẳng $(Q): x-2z+1=0$",
-            "Đường thẳng $d': x/1 = (y-1)/2 = z/1$",
-            "Đường thẳng $\\Delta: (x-3)/2 = (y-1)/1 = (z+2)/-1$"
+            "Đường thẳng $d': \\frac{x}{1}=\\frac{y-1}{2}=\\frac{z}{1}$",
+            "Đường thẳng $\\Delta: \\frac{x-3}{2}=\\frac{y-1}{1}=\\frac{z+2}{-1}$"
           ],
           "options": [
             "A. Cắt nhau không vuông góc",
@@ -230,11 +428,16 @@
             "E. Vuông góc",
             "F. Nằm trong"
           ],
-          "answer": { "0": "B", "1": "A", "2": "C", "3": "D" }
+          "answer": {
+            "0": "B",
+            "1": "A",
+            "2": "C",
+            "3": "D"
+          }
         },
         {
           "id": "q20",
-          "text": "Cho $f(x) = x^4 - 8x^2 + 3$. Xét $g(x) = f(|x| + m)$.",
+          "text": "Cho hàm số $f(x) = x^4 - 8x^2 + 3$. Xét hàm số $g(x) = f(|x| + m)$.",
           "items": [
             "Để hàm số $g(x)$ có 3 điểm cực trị thì",
             "Để hàm số $g(x)$ có 5 điểm cực trị thì",
@@ -249,40 +452,45 @@
             "E. 1",
             "F. $m \\geq 2$"
           ],
-          "answer": { "0": "A", "1": "B", "2": "C", "3": "D" }
+          "answer": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "D"
+          }
         }
       ]
     },
     {
       "part": 4,
       "title": "PHẦN IV. CÂU HỎI MỞ TRẢ LỜI NGẮN",
-      "description": "Từ Câu 21 đến Câu 25, thí sinh ghi câu trả lời tương ứng.",
+      "description": "Từ câu hỏi 21 đến 25, thí sinh ghi câu trả lời vào ô vuông tương ứng.",
       "type": "short-answer",
       "questions": [
         {
           "id": "q21",
-          "text": "Cho $\\int_1^2 f=3$ và $\\int_1^2 (3f-g)=10$. Tính $I = \\int_1^2 g(x)dx$.",
+          "text": "Cho $\\int_1^2 f(x)\\mathrm{d}x = 3$ và $\\int_1^2 [3f(x) - g(x)]\\mathrm{d}x = 10$. Tính $I = \\int_1^2 g(x)\\mathrm{d}x$.",
           "answer": "-1"
         },
         {
           "id": "q22",
-          "text": "Biết $\\log_2 a = 3$ và $\\log_2 b = 4$. Tính $P = \\log_2 (a^2 b^3)$.",
+          "text": "Biết $\\log_2 a = 3$ và $\\log_2 b = 4$. Tính giá trị của biểu thức $P = \\log_2 (a^2 b^3)$.",
           "answer": "18"
         },
         {
           "id": "q23",
-          "text": "Tính chi phí kéo dây cáp thấp nhất từ trạm A đến đảo C (triệu đồng).",
+          "text": "Tính chi phí kéo dây thấp nhất (triệu đồng) từ trạm A đến đảo C biết: CH=4km, AH=9km. Chi phí bờ 30tr/km, nước 50tr/km.",
           "answer": "430"
         },
         {
           "id": "q24",
-          "text": "Tính xác suất để xạ thủ bắn trúng ở lần bắn thứ 3 (làm tròn đến 0,01).",
+          "text": "Tính xác suất để xạ thủ bắn trúng ở lần bắn thứ 3 (làm tròn đến hàng phần trăm). Biết P(đầu)=0.8, sau trúng=0.9, sau trượt=0.6.",
           "answer": "0,85"
         },
         {
           "id": "q25",
-          "text": "Tính thể tích khối đa diện $|x|+|y| \\leq 2$ và $0 \\leq z \\leq 4 - |x| - |y|$.",
-          "answer": "21,33"
+          "text": "Tính thể tích khối đa diện chứa các điểm $M(x;y;z)$ thỏa mãn đồng thời: $|x| + |y| \\leq 2$ và $0 \\leq z \\leq 4 - |x| - |y|$.",
+          "answer": "64/3"
         }
       ]
     }
