@@ -239,7 +239,9 @@ const QuestionNavigation = ({
 };
 
 const TestTaking = () => {
-  const { testId } = useParams();
+  const { testId, courseId } = useParams();
+  const storageKey = `test_${testId}_progress`;
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -253,7 +255,7 @@ const TestTaking = () => {
     error: testError,
   } = useSelector((state) => state.tests);
   const { status: attemptStatus, currentAttemptResult } = useSelector(
-    (state) => state.testAttempts
+    (state) => state.testAttempts,
   );
 
   const [answers, setAnswers] = useState({});
@@ -263,15 +265,15 @@ const TestTaking = () => {
   // THAY ĐỔI: Thêm state để quản lý modal cảnh báo
   const [showIncompleteWarning, setShowIncompleteWarning] = useState(false);
 
-  const courseId = useParams().courseId; // Lấy courseId từ params
   // ✅ **THÊM MỚI: Tự động cuộn lên đầu trang khi vào**
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []); // Mảng rỗng đảm bảo nó chỉ chạy một lần khi component được mount
+  }, []);
+
   useEffect(() => {
     if (!startedAt) {
       alert(
-        "Vui lòng bắt đầu bài kiểm tra từ trang tổng quan để tính thời gian chính xác."
+        "Vui lòng bắt đầu bài kiểm tra từ trang tổng quan để tính thời gian chính xác.",
       );
       navigate(`/course/${courseId}/test/${testId}`);
     }
@@ -292,6 +294,48 @@ const TestTaking = () => {
     }
   }, [test, timeLeft]);
 
+  useEffect(() => {
+    if (!testId) return;
+    const savedData = localStorage.getItem(storageKey);
+    if (savedData) {
+      try {
+        const parsed = JSON.parse(savedData);
+        if (parsed.answers) setAnswers(parsed.answers);
+        if (parsed.flaggedQuestions)
+          setFlaggedQuestions(parsed.flaggedQuestions);
+        if (parsed.timeLeft) setTimeLeft(parsed.timeLeft);
+      } catch (err) {
+        console.error("Lỗi parse localStorage:", err);
+      }
+    }
+  }, [testId, storageKey]);
+
+  useEffect(() => {
+    if (!testId || timeLeft === null) return;
+    const dataToSave = {
+      answers,
+      flaggedQuestions,
+      timeLeft,
+    };
+    localStorage.setItem(storageKey, JSON.stringify(dataToSave));
+  }, [answers, flaggedQuestions, timeLeft, testId, storageKey]);
+
+  useEffect(() => {
+    if (attemptStatus === "succeeded" && currentAttemptResult?._id) {
+      localStorage.removeItem(storageKey);
+      navigate(
+        `/course/${courseId}/test/${testId}/results/${currentAttemptResult._id}`,
+      );
+    }
+  }, [
+    attemptStatus,
+    currentAttemptResult,
+    courseId,
+    navigate,
+    testId,
+    storageKey,
+  ]);
+
   // Chuẩn hóa danh sách câu hỏi (giữ nguyên)
   const flatQuestions = useMemo(() => {
     if (!test?.questionGroups) return [];
@@ -305,7 +349,7 @@ const TestTaking = () => {
           title: group.title,
           passage: group.passage,
         },
-      }))
+      })),
     );
   }, [test]);
 
@@ -329,7 +373,7 @@ const TestTaking = () => {
         testId,
         userAnswers: formattedAnswers,
         startedAt: startedAt,
-      })
+      }),
     );
   }, [dispatch, testId, answers, attemptStatus, startedAt, flatQuestions]); // THAY ĐỔI: Thêm flatQuestions vào dependencies
 
@@ -356,10 +400,10 @@ const TestTaking = () => {
           }
         });
       },
-      { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
     );
     Object.values(questionRefs.current).forEach(
-      (ref) => ref && observer.observe(ref)
+      (ref) => ref && observer.observe(ref),
     );
     return () => observer.disconnect();
   }, [flatQuestions]);
@@ -367,7 +411,7 @@ const TestTaking = () => {
   useEffect(() => {
     if (attemptStatus === "succeeded" && currentAttemptResult?._id) {
       navigate(
-        `/course/${courseId}/test/${testId}/results/${currentAttemptResult._id}`
+        `/course/${courseId}/test/${testId}/results/${currentAttemptResult._id}`,
       );
     }
   }, [attemptStatus, currentAttemptResult, courseId, navigate, testId]);
@@ -462,7 +506,7 @@ const TestTaking = () => {
                 <div className="divide-y">
                   {group.group_questions.map((question) => {
                     const questionIndex = flatQuestions.findIndex(
-                      (q) => q.id === question.id
+                      (q) => q.id === question.id,
                     );
                     return (
                       <div
