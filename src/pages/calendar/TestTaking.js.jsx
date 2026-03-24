@@ -358,7 +358,7 @@ const TestTaking = () => {
     // THAY ĐỔI: Kiểm tra trước khi nộp bài
     if (Object.keys(answers).length < flatQuestions.length) {
       setShowIncompleteWarning(true); // Hiển thị modal cảnh báo
-      return; // Dừng hàm tại đây
+      return; // Dừng hàm tại đây---
     }
 
     if (attemptStatus === "submitting" || !startedAt) return;
