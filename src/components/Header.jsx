@@ -18,7 +18,7 @@ import { logout } from "../redux/authSlice";
 import { logoutUser } from "../redux/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUser } from "../redux/userSlice";
-import logo from "../assets/logo.png"; // Giả sử bạn có một logo
+import logo from "../assets/logo.png"; // Giả sử bạn có một logo ---
 
 const Header = () => {
   const dispatch = useDispatch();
