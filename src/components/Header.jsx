@@ -203,7 +203,7 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Phần Thông tin User-- */}
+        {/* Phần Thông tin User--------- */}
         {isAuthen && user && (
           <div className="p-4 border-b cursor-pointer" onClick={goToProfile}>
             <div className="flex items-center space-x-3">
