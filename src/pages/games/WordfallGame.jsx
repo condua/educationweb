@@ -5,13 +5,13 @@ import { Maximize, Minimize } from "lucide-react";
 // --- Âm thanh ---
 const sounds = {
   correct: new Audio(
-    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1755585617/Sound%20effects/correctSound_exwgii.mp3"
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1755585617/Sound%20effects/correctSound_exwgii.mp3",
   ), // Laser sound
   explosion: new Audio(
-    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1755585615/Sound%20effects/explosionEffect_ipffs7.mp3"
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1755585615/Sound%20effects/explosionEffect_ipffs7.mp3",
   ),
   start: new Audio(
-    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1755585616/Sound%20effects/startSound_pl6okv.mp3"
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1755585616/Sound%20effects/startSound_pl6okv.mp3",
   ),
 };
 Object.values(sounds).forEach((s) => {
@@ -94,7 +94,7 @@ export default function WordfallGame() {
     if (!document.fullscreenElement) {
       gameAreaRef.current.requestFullscreen().catch((err) => {
         alert(
-          `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
+          `Error attempting to enable full-screen mode: ${err.message} (${err.name})`,
         );
       });
     } else {
@@ -153,22 +153,25 @@ export default function WordfallGame() {
     return () => cancelAnimationFrame(gameLoopRef.current);
   }, [gameState]);
 
-  // --- Logic tạo từ mới ---
+  // --- Logic tạo từ mới -----
   useEffect(() => {
     let spawner;
     if (gameState === "playing") {
-      spawner = setInterval(() => {
-        const randomWord =
-          wordList[Math.floor(Math.random() * wordList.length)];
-        const newWord = {
-          id: Date.now(),
-          text: randomWord,
-          y: -10,
-          x: Math.random() * (dimensions.width > 120 ? 90 : 80),
-          speed: WORD_SPEED_START + Math.random() * 0.1 + game.score / 150,
-        };
-        setGame((g) => ({ ...g, words: [...g.words, newWord] }));
-      }, Math.max(400, WORD_SPAWN_INTERVAL_START - game.score * 25));
+      spawner = setInterval(
+        () => {
+          const randomWord =
+            wordList[Math.floor(Math.random() * wordList.length)];
+          const newWord = {
+            id: Date.now(),
+            text: randomWord,
+            y: -10,
+            x: Math.random() * (dimensions.width > 120 ? 90 : 80),
+            speed: WORD_SPEED_START + Math.random() * 0.1 + game.score / 150,
+          };
+          setGame((g) => ({ ...g, words: [...g.words, newWord] }));
+        },
+        Math.max(400, WORD_SPAWN_INTERVAL_START - game.score * 25),
+      );
     }
     return () => clearInterval(spawner);
   }, [gameState, game.score, dimensions.width]);
