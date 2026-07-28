@@ -6,10 +6,13 @@ import {
   FaMinus,
   FaUser,
   FaEyeSlash,
+  FaTrash,
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
-// --- Helper Functions giữ nguyên ---
+const API_URL = `${import.meta.env.VITE_API_URL}/api/chatgpt`;
+
+// --- Helper Functions ---
 function getGreetingByVietnamTime() {
   const now = new Date();
   const vietnamTime = new Date(
@@ -42,8 +45,6 @@ const formatBotMessage = (text) => {
 
 export default function Chatbot() {
   // --- STATE QUẢN LÝ HIỂN THỊ ---
-
-  // 1. Kiểm tra localStorage xem người dùng đã ẩn vĩnh viễn chưa
   const [isVisible, setIsVisible] = useState(() => {
     const savedState = localStorage.getItem("mlpa_chatbot_hidden");
     return savedState !== "true";
@@ -51,20 +52,41 @@ export default function Chatbot() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimizing, setIsMinimizing] = useState(false);
-
-  // --- STATE DỮ LIỆU ---
-  const [inputValue, setInputValue] = useState("");
-  const [messages, setMessages] = useState([
-    {
-      sender: "bot",
-      text: `${getGreetingByVietnamTime()} Mình là trợ lý ảo MLPA. Bạn cần hỗ trợ thông tin gì về khóa học hay công ty không?`,
-    },
-  ]);
   const [isLoading, setIsLoading] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
+  // Lấy thông tin user từ Redux
+  const { user } = useSelector((state) => state.user);
+
+  // --- STATE DỮ LIỆU CÓ LƯU LOCALSTORAGE ---
+  const [messages, setMessages] = useState(() => {
+    // Thử lấy lịch sử từ localStorage
+    const savedMessages = localStorage.getItem("mlpa_chat_history");
+    if (savedMessages) {
+      try {
+        return JSON.parse(savedMessages);
+      } catch (error) {
+        console.error("Lỗi khi đọc lịch sử chat:", error);
+      }
+    }
+    // Nếu không có thì dùng mặc định
+    return [
+      {
+        sender: "bot",
+        text: `${getGreetingByVietnamTime()} Mình là trợ lý ảo MLPA. Bạn cần hỗ trợ thông tin gì về khóa học hay công ty không?`,
+      },
+    ];
+  });
 
   const chatContentRef = useRef(null);
   const { courses } = useSelector((state) => state.courses);
 
+  // Lưu lịch sử vào localStorage mỗi khi messages thay đổi
+  useEffect(() => {
+    localStorage.setItem("mlpa_chat_history", JSON.stringify(messages));
+  }, [messages]);
+
+  // Cuộn xuống tin nhắn cuối
   useEffect(() => {
     if (chatContentRef.current) {
       chatContentRef.current.scrollTo({
@@ -87,9 +109,27 @@ export default function Chatbot() {
     }
   };
 
-  // Hàm ẨN VĨNH VIỄN (Tính năng mới)
+  // Hàm xóa lịch sử chat
+  const handleClearHistory = (e) => {
+    e.stopPropagation();
+    const confirmClear = window.confirm(
+      "Bạn có chắc muốn xóa toàn bộ lịch sử trò chuyện?",
+    );
+    if (confirmClear) {
+      const defaultMessage = [
+        {
+          sender: "bot",
+          text: `${getGreetingByVietnamTime()} Mình là trợ lý ảo MLPA. Bạn cần hỗ trợ thông tin gì về khóa học hay công ty không?`,
+        },
+      ];
+      setMessages(defaultMessage);
+      localStorage.setItem("mlpa_chat_history", JSON.stringify(defaultMessage));
+    }
+  };
+
+  // Hàm ẨN VĨNH VIỄN
   const handleHideForever = (e) => {
-    e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+    e.stopPropagation();
     const confirmHide = window.confirm(
       "Bạn có chắc muốn ẩn Chatbot? Bạn sẽ không thấy nó lại cho đến khi xóa dữ liệu duyệt web.",
     );
@@ -100,7 +140,7 @@ export default function Chatbot() {
     }
   };
 
-  // Hàm khôi phục (nếu cần test) - Reset localStorage
+  // Hàm khôi phục
   const handleRestore = () => {
     setIsVisible(true);
     localStorage.removeItem("mlpa_chatbot_hidden");
@@ -120,78 +160,67 @@ export default function Chatbot() {
         timeZone: "Asia/Ho_Chi_Minh",
       });
 
-      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      const coursesInfo = courses
+        .map(
+          (item) =>
+            `Tên khóa học: ${item.title}, Mô tả: ${item.description}, Giá: ${item.price}, Phân loại: ${item.category}, Giảng viên: ${item?.mentor?.name || "Đang cập nhật"}, Link đăng ký: https://mlpa.edu.vn/course/${item._id}`,
+        )
+        .join("\n");
+
+      const systemPrompt = `Bạn là một trợ lý ảo của công ty Giáo dục và Công nghệ MLPA. Dưới đây là một số thông tin bạn cần nhớ để trả lời người dùng:
+- MLPA được thành lập vào tháng 3 năm 2025 bởi Phan Hoàng Phúc, cựu sinh viên trường Đại học Bách Khoa Thành phố Hồ Chí Minh
+- MLPA là nền tảng giáo dục kết hợp công nghệ AI, cung cấp khóa học kỹ năng, đánh giá năng lực vào các trường đại học hàng đầu Việt Nam.
+- MLPA giảng dạy đánh giá năng lực ĐHQG TP.HCM với các nội dung: Toán học (logic, đại số, hình học, xác suất thống kê), Ngôn ngữ và kỹ năng đọc hiểu, Kiến thức xã hội – nhân văn và khoa học tự nhiên.
+- MLPA đem lại các giải pháp về công nghệ như: Tư vấn xây dựng và thiết kế website, hỗ trợ marketing, quảng bá sản phẩm, hỗ trợ website SEO, tối ưu tên miền...
+- Trụ sở tại Ấp Long Thái, xã Long Khánh B, huyện Hồng Ngự, tỉnh Đồng Tháp
+- Đăng ký học qua website https://mlpa.edu.vn hoặc hotline 0399915548
+- Có khóa học online và nền tảng học trực tuyến.
+- Luôn tìm kiếm nhân sự tâm huyết, CV gửi qua phanhoangphuc0311@gmail.com
+- Fanpage MLPA: https://www.facebook.com/profile.php?id=61574532009854
+- Fanpage cá nhân: https://www.facebook.com/phuc.phanhoang.1694
+
+Khi người dùng hỏi những gì liên quan tới MLPA, hãy ưu tiên trả lời dựa trên những thông tin trên.
+
+Thông tin các khóa học của MLPA:
+${coursesInfo}
+
+Hôm nay là ${vietnamTimeStr}`;
+
+      const chatHistory = messages.map((m) => ({
+        role: m.sender === "bot" ? "assistant" : "user",
+        content: m.text,
+      }));
+
+      const res = await fetch(API_URL, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "https://mlpa.edu.vn",
-          "X-Title": "MLPA Chatbot",
         },
         body: JSON.stringify({
-          model: "tngtech/deepseek-r1t2-chimera:free",
-          stream: false,
-          messages: [
-            {
-              role: "system",
-              content: `Bạn là một trợ lý ảo của công ty Giáo dục và Công nghệ MLPA. Dưới đây là một số thông tin bạn cần nhớ để trả lời người dùng:
-                    - MLPA được thành lập vào tháng 3 năm 2025 bởi Phan Hoàng Phúc, cựu sinh viên trường Đại học Bách Khoa Thành phố Hồ Chí Minh
-                    - MLPA là nền tảng giáo dục kết hợp công nghệ AI, cung cấp khóa học kỹ năng, đánh giá năng lực vào các trường đại học hàng đầu Việt Nam như Đại học Bách Khoa Thành phố Hồ Chí Minh, 
-                    Đại học Khoa học tự nhiên, Đại học Công nghệ thông tin, Đại học Khoa học xã hội và nhân văn, ngoại ngữ, marketing, tư duy và lập trình. 
-                    - MLPA giảng dạy đánh giá năng lực Đại học Quốc gia thành phố Hồ Chí Minh với các nội dung sau:
-                    Toán học:
-
-                      Các dạng bài tập về logic, đại số, hình học và xác suất thống kê để kiểm tra tư duy logic và khả năng giải quyết vấn đề.
-
-                      Bài tập có thể không chỉ tập trung vào các công thức quen thuộc mà còn yêu cầu thí sinh vận dụng toán học vào việc phân tích các tình huống thực tế.
-
-                      Ngôn ngữ và kỹ năng đọc hiểu (thường là Tiếng Việt hoặc Tiếng Anh):
-
-                      Phân tích, đánh giá và trích dẫn thông tin từ các văn bản, bài báo, tài liệu học thuật.
-
-                      Kiểm tra khả năng biểu đạt ý tưởng một cách mạch lạc, nhất quán và thuyết phục thông qua các bài viết tự luận.
-
-                      Kiến thức xã hội – nhân văn và khoa học tự nhiên:
-
-                      Xã hội – nhân văn: Kiến thức nền tảng về lịch sử, văn hoá, triết học và các hiện tượng xã hội, nhằm đánh giá khả năng liên hệ giữa lý thuyết và thực tiễn.
-
-                      Khoa học tự nhiên: Các nguyên lý cơ bản, phương pháp khoa học và khả năng phân tích các vấn đề liên quan đến vật lý, hóa học hoặc sinh học, tuỳ thuộc vào hướng đào tạo của thí sinh.
-                    - MLPA đem lại các giải pháp về công nghệ như: Tư vấn xây dựng và thiết kế website, hỗ trợ marketing, quảng bá sản phẩm, hỗ trợ website SEO, tối ưu tên miền...
-                    - Trụ sở tại Ấp Long Thái, xã Long Khánh B, huyện Hồng Ngự, tỉnh Đồng Tháp
-                    - Đăng ký học qua website https://mlpa.edu.vn hoặc hotline 0399915548
-                    - Có khóa học online và nền tảng học trực tuyến.
-                    - Luôn tìm kiếm nhân sự tâm huyết, CV gửi qua phanhoangphuc0311@gmail.com
-                    - Fanpage của MLPA: https://www.facebook.com/profile.php?id=61574532009854
-                    - Fanpage Facebook cá nhân: https://www.facebook.com/phuc.phanhoang.1694
-                    
-                    Khi người dùng hỏi những gì liên quan tới MLPA, hãy ưu tiên trả lời dựa trên những thông tin trên.
-                
-                    Đối với các câu hỏi khác không thuộc phạm vi MLPA, hãy tự động tìm kiếm và tổng hợp thông tin mới nhất từ search engine để trả lời chính xác và cập nhật cho người dùng.
-                    
-                    Thông tin các khóa học của MLPA: ${courses.map((item) => {
-                      return `Tên khóa học: ${item.title}, Mô tả: ${item.description}, Giá: ${item.price}, Phân loại khóa học: ${item.category}, Giảng viên: ${item?.mentor?.name}, Link đăng ký: https://mlpa.site/course/${item._id}`;
-                    })}
-
-                    Hôm nay là ${vietnamTimeStr}
-                    `,
-            },
-            ...messages.map((m) => ({
-              role: m.sender === "bot" ? "assistant" : "user",
-              content: m.text,
-            })),
-            { role: "user", content: userText },
-          ],
+          message: userText,
+          systemPrompt,
+          history: chatHistory,
         }),
       });
 
       if (!res.ok) throw new Error("API call failed");
       const data = await res.json();
+
       const reply =
+        data.reply ||
+        data.message ||
         data.choices?.[0]?.message?.content ||
-        "Xin lỗi, mình đang gặp chút trục trặc.";
+        "Xin lỗi, mình đang gặp chút trục trặc trong việc phản hồi.";
+
       setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
     } catch (err) {
-      setMessages((prev) => [...prev, { sender: "bot", text: "Lỗi kết nối." }]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "bot",
+          text: "Lỗi kết nối tới máy chủ. Vui lòng thử lại sau!",
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -201,7 +230,6 @@ export default function Chatbot() {
     if (e.key === "Enter") handleSend();
   };
 
-  // Nếu người dùng đã ẩn vĩnh viễn, render ra một nút nhỏ xíu hoặc null
   if (!isVisible) {
     return (
       <div
@@ -240,7 +268,13 @@ export default function Chatbot() {
 
           {/* Cụm nút điều khiển Header */}
           <div className="flex items-center gap-3 text-white/80">
-            {/* Nút Ẩn vĩnh viễn */}
+            <button
+              onClick={handleClearHistory}
+              className="hover:text-amber-300 transition group relative"
+              title="Xóa cuộc trò chuyện"
+            >
+              <FaTrash size={12} />
+            </button>
             <button
               onClick={handleHideForever}
               className="hover:text-red-300 transition group relative"
@@ -248,8 +282,6 @@ export default function Chatbot() {
             >
               <FaEyeSlash size={14} />
             </button>
-
-            {/* Nút Thu nhỏ */}
             <button
               onClick={handleToggle}
               className="hover:text-white transition"
@@ -260,7 +292,7 @@ export default function Chatbot() {
           </div>
         </div>
 
-        {/* Nội dung chat (Giữ nguyên) */}
+        {/* Nội dung chat */}
         <div
           ref={chatContentRef}
           className="flex-1 p-4 overflow-y-auto bg-neutral-800/50 space-y-4 scroll-smooth scrollbar-thin scrollbar-thumb-neutral-600 scrollbar-track-transparent"
@@ -276,10 +308,16 @@ export default function Chatbot() {
                   className={`flex max-w-[85%] gap-2 ${isBot ? "flex-row" : "flex-row-reverse"}`}
                 >
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${isBot ? "bg-sky-600" : "bg-neutral-600"}`}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${isBot ? "bg-sky-600" : user?.avatar ? "bg-transparent" : "bg-neutral-600"}`}
                   >
                     {isBot ? (
                       <FaRobot className="text-white text-xs" />
+                    ) : user?.avatar ? (
+                      <img
+                        src={user.avatar.url || user.avatar}
+                        alt="User"
+                        className="w-full h-full object-cover rounded-full"
+                      />
                     ) : (
                       <FaUser className="text-white text-xs" />
                     )}
@@ -317,7 +355,7 @@ export default function Chatbot() {
           )}
         </div>
 
-        {/* Input Area (Giữ nguyên) */}
+        {/* Input Area */}
         <div className="p-3 bg-neutral-900 border-t border-neutral-700 shrink-0">
           <div className="relative flex items-center">
             <input
@@ -340,9 +378,8 @@ export default function Chatbot() {
         </div>
       </div>
 
-      {/* --- NÚT BẬT/TẮT (Floating Action Button) --- */}
+      {/* --- NÚT BẬT/TẮT --- */}
       <div className="relative group">
-        {/* Nút X nhỏ bên ngoài để tắt nhanh mà không cần mở chat */}
         {!isOpen && (
           <button
             onClick={handleHideForever}
