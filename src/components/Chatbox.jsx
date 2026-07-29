@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import {
   FaPaperPlane,
-  FaRobot,
+  FaRobot, // Giữ lại nếu bạn vẫn muốn dùng ở đâu đó, hoặc có thể xóa nếu thay bằng hình hết
   FaTimes,
   FaMinus,
   FaUser,
@@ -9,6 +9,8 @@ import {
   FaTrash,
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
+// SỬA LẠI CÚ PHÁP IMPORT ẢNH CHO CHUẨN VITE
+import chatBotAvatar from "../assets/chatbot.png";
 
 const API_URL = `${import.meta.env.VITE_API_URL}/api/chatgpt`;
 
@@ -73,7 +75,7 @@ export default function Chatbot() {
     return [
       {
         sender: "bot",
-        text: `${getGreetingByVietnamTime()} Mình là trợ lý ảo MLPA. Bạn cần hỗ trợ thông tin gì về khóa học hay công ty không?`,
+        text: `${getGreetingByVietnamTime()} Mình tên là Mia. Mình là trợ lý ảo MLPA. Rất vui được làm quen với bạn. Bạn cần hỗ trợ thông tin gì về khóa học hay công ty không?`,
       },
     ];
   });
@@ -254,11 +256,16 @@ Hôm nay là ${vietnamTimeStr}`;
         {/* Header */}
         <div className="bg-gradient-to-r from-sky-600 to-blue-700 p-4 flex justify-between items-center shadow-md shrink-0">
           <div className="flex items-center gap-2 text-white">
-            <div className="bg-white/20 p-1.5 rounded-full">
-              <FaRobot className="text-xl" />
+            {/* THAY ĐỔI: Avatar Bot trên Header */}
+            <div className="bg-white/20 rounded-full w-9 h-9 flex items-center justify-center overflow-hidden border border-white/30">
+              <img
+                src={chatBotAvatar}
+                alt="Mia Avatar"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
-              <h3 className="font-bold text-sm">MLPA Support</h3>
+              <h3 className="font-bold text-sm">Mia</h3>
               <div className="flex items-center gap-1">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                 <span className="text-[10px] opacity-90">Trực tuyến</span>
@@ -307,21 +314,33 @@ Hôm nay là ${vietnamTimeStr}`;
                 <div
                   className={`flex max-w-[85%] gap-2 ${isBot ? "flex-row" : "flex-row-reverse"}`}
                 >
+                  {/* THAY ĐỔI: Avatar trong từng tin nhắn */}
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${isBot ? "bg-sky-600" : user?.avatar ? "bg-transparent" : "bg-neutral-600"}`}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 overflow-hidden ${
+                      isBot
+                        ? "bg-white border border-neutral-600"
+                        : user?.avatar
+                          ? "bg-transparent"
+                          : "bg-neutral-600"
+                    }`}
                   >
                     {isBot ? (
-                      <FaRobot className="text-white text-xs" />
+                      <img
+                        src={chatBotAvatar}
+                        alt="Mia"
+                        className="w-full h-full object-cover"
+                      />
                     ) : user?.avatar ? (
                       <img
                         src={user.avatar.url || user.avatar}
                         alt="User"
-                        className="w-full h-full object-cover rounded-full"
+                        className="w-full h-full object-cover"
                       />
                     ) : (
                       <FaUser className="text-white text-xs" />
                     )}
                   </div>
+
                   <div
                     className={`p-3 text-sm leading-relaxed shadow-sm break-words ${isBot ? "bg-neutral-700 text-gray-100 rounded-2xl rounded-tl-none" : "bg-sky-600 text-white rounded-2xl rounded-tr-none"}`}
                   >
@@ -339,11 +358,17 @@ Hôm nay là ${vietnamTimeStr}`;
               </div>
             );
           })}
+
           {isLoading && (
             <div className="flex w-full justify-start">
               <div className="flex max-w-[85%] gap-2">
-                <div className="w-8 h-8 rounded-full bg-sky-600 flex items-center justify-center shrink-0">
-                  <FaRobot className="text-white text-xs" />
+                {/* THAY ĐỔI: Avatar hiển thị lúc Loading */}
+                <div className="w-8 h-8 rounded-full bg-white border border-neutral-600 flex items-center justify-center shrink-0 overflow-hidden">
+                  <img
+                    src={chatBotAvatar}
+                    alt="Mia"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="bg-neutral-700 p-4 rounded-2xl rounded-tl-none flex gap-1 items-center h-10">
                   <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
@@ -393,11 +418,20 @@ Hôm nay là ${vietnamTimeStr}`;
         <button
           onClick={handleToggle}
           className={`
-            w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white text-2xl transition-all duration-300 transform hover:scale-110
+            w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white text-2xl transition-all duration-300 transform hover:scale-110 overflow-hidden border-2 border-transparent
             ${isOpen ? "bg-red-500 rotate-90" : "bg-gradient-to-r from-sky-500 to-blue-600"}
             `}
         >
-          {isOpen ? <FaTimes /> : <FaRobot />}
+          {/* THAY ĐỔI: Dùng avatar cho cả nút FAB nếu đang đóng */}
+          {isOpen ? (
+            <FaTimes />
+          ) : (
+            <img
+              src={chatBotAvatar}
+              alt="Chat with Mia"
+              className="w-full h-full object-cover bg-white"
+            />
+          )}
         </button>
       </div>
     </div>
