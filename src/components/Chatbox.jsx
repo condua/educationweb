@@ -142,7 +142,7 @@ export default function Chatbot() {
     }
   };
 
-  // Hàm khôi phục
+  // Hàm khôi phục---------
   const handleRestore = () => {
     setIsVisible(true);
     localStorage.removeItem("mlpa_chatbot_hidden");
