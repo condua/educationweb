@@ -84,8 +84,31 @@ export default function Chatbot() {
   const { courses } = useSelector((state) => state.courses);
 
   // Lưu lịch sử vào localStorage mỗi khi messages thay đổi
+
   useEffect(() => {
-    localStorage.setItem("mlpa_chat_history", JSON.stringify(messages));
+    try {
+      // TỐI ƯU 1: Chỉ lưu tối đa 50 tin nhắn gần nhất để tránh phình to bộ nhớ
+      const MAX_MESSAGES_TO_SAVE = 20;
+      const messagesToSave =
+        messages.length > MAX_MESSAGES_TO_SAVE
+          ? messages.slice(messages.length - MAX_MESSAGES_TO_SAVE)
+          : messages;
+
+      localStorage.setItem("mlpa_chat_history", JSON.stringify(messagesToSave));
+    } catch (error) {
+      console.warn("Không thể lưu lịch sử chat:", error);
+
+      // TỐI ƯU 2: Nếu localStorage thực sự đã đầy (QuotaExceededError),
+      // tiến hành xóa lịch sử cũ đi để app không bị treo.
+      if (
+        error.name === "QuotaExceededError" ||
+        error.name === "NS_ERROR_DOM_QUOTA_REACHED"
+      ) {
+        console.warn("LocalStorage đã đầy. Tiến hành dọn dẹp...");
+        localStorage.removeItem("mlpa_chat_history");
+        // Tùy chọn: Bạn có thể clear thêm các cache khác nếu cần
+      }
+    }
   }, [messages]);
 
   // Cuộn xuống tin nhắn cuối
