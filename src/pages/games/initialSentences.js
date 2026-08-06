@@ -583,4 +583,109 @@ export const initialSentences = [
     meaning: "Cảm ơn bạn đã giúp tôi với dự án của mình.",
     grammarPoint: "Danh động từ (Gerund): 'helping' theo sau giới từ 'for'.",
   },
+  {
+    sentence: "Reading books helps me improve my English.",
+    meaning: "Đọc sách giúp tôi cải thiện tiếng Anh.",
+    grammarPoint:
+      "Danh động từ (Gerund): 'Reading' đóng vai trò làm chủ ngữ trong câu.",
+  },
+  {
+    sentence: "We plan to visit our grandparents this weekend.",
+    meaning: "Chúng tôi dự định thăm ông bà vào cuối tuần này.",
+    grammarPoint:
+      "Động từ nguyên mẫu có 'to' (To-infinitive): Theo sau động từ 'plan'.",
+  },
+  {
+    sentence: "My sister is interested in learning French.",
+    meaning: "Chị gái tôi hứng thú với việc học tiếng Pháp.",
+    grammarPoint: "Danh động từ (Gerund): 'learning' theo sau giới từ 'in'.",
+  },
+  {
+    sentence: "He went to the library to borrow some books.",
+    meaning: "Anh ấy đến thư viện để mượn một vài cuốn sách.",
+    grammarPoint: "To-infinitive: Dùng để chỉ mục đích ('để làm gì').",
+  },
+  {
+    sentence: "They enjoy watching movies together.",
+    meaning: "Họ thích xem phim cùng nhau.",
+    grammarPoint: "Danh động từ (Gerund): 'watching' theo sau động từ 'enjoy'.",
+  },
+  {
+    sentence: "There are many beautiful parks in my city.",
+    meaning: "Có nhiều công viên đẹp trong thành phố của tôi.",
+    grammarPoint: "Cấu trúc 'There is/are': Dùng để chỉ sự tồn tại.",
+  },
+  {
+    sentence: "Don't forget to bring your homework tomorrow.",
+    meaning: "Đừng quên mang bài tập về nhà vào ngày mai.",
+    grammarPoint:
+      "To-infinitive: Theo sau động từ 'forget' để chỉ việc cần làm.",
+  },
+  {
+    sentence: "She is worried about taking the final exam.",
+    meaning: "Cô ấy lo lắng về việc làm bài thi cuối kỳ.",
+    grammarPoint: "Danh động từ (Gerund): 'taking' theo sau giới từ 'about'.",
+  },
+  {
+    sentence: "It is easy to make new friends at school.",
+    meaning: "Việc kết bạn mới ở trường thật dễ dàng.",
+    grammarPoint: "Cấu trúc 'It is + adj + to-infinitive'.",
+  },
+  {
+    sentence: "Thank you for inviting us to your party.",
+    meaning: "Cảm ơn bạn đã mời chúng tôi đến bữa tiệc của bạn.",
+    grammarPoint: "Danh động từ (Gerund): 'inviting' theo sau giới từ 'for'.",
+  },
+  {
+    sentence: "Cooking at home can save a lot of money.",
+    meaning: "Nấu ăn ở nhà có thể tiết kiệm rất nhiều tiền.",
+    grammarPoint: "Danh động từ (Gerund): 'Cooking' làm chủ ngữ của câu.",
+  },
+  {
+    sentence: "I hope to travel around the world one day.",
+    meaning: "Tôi hy vọng sẽ đi du lịch vòng quanh thế giới một ngày nào đó.",
+    grammarPoint:
+      "Động từ nguyên mẫu có 'to' (To-infinitive): Theo sau động từ 'hope'.",
+  },
+  {
+    sentence: "He apologized for being late.",
+    meaning: "Anh ấy xin lỗi vì đã đến muộn.",
+    grammarPoint: "Danh động từ (Gerund): 'being' theo sau giới từ 'for'.",
+  },
+  {
+    sentence: "She woke up early to catch the first bus.",
+    meaning: "Cô ấy thức dậy sớm để bắt chuyến xe buýt đầu tiên.",
+    grammarPoint: "To-infinitive: Chỉ mục đích.",
+  },
+  {
+    sentence: "My father enjoys gardening on weekends.",
+    meaning: "Bố tôi thích làm vườn vào cuối tuần.",
+    grammarPoint:
+      "Danh động từ (Gerund): 'gardening' theo sau động từ 'enjoy'.",
+  },
+  {
+    sentence: "There is a supermarket near my house.",
+    meaning: "Có một siêu thị gần nhà tôi.",
+    grammarPoint: "Cấu trúc 'There is/are': Chỉ sự tồn tại.",
+  },
+  {
+    sentence: "Please remember to turn off the lights.",
+    meaning: "Làm ơn nhớ tắt đèn.",
+    grammarPoint: "To-infinitive: Theo sau động từ 'remember'.",
+  },
+  {
+    sentence: "They are excited about meeting their new teacher.",
+    meaning: "Họ háo hức được gặp giáo viên mới.",
+    grammarPoint: "Danh động từ (Gerund): 'meeting' theo sau giới từ 'about'.",
+  },
+  {
+    sentence: "It is necessary to wear a helmet when riding a bike.",
+    meaning: "Việc đội mũ bảo hiểm khi đi xe đạp là cần thiết.",
+    grammarPoint: "Cấu trúc 'It is + adj + to-infinitive'.",
+  },
+  {
+    sentence: "Thanks for sharing your ideas with us.",
+    meaning: "Cảm ơn bạn đã chia sẻ ý tưởng với chúng tôi.",
+    grammarPoint: "Danh động từ (Gerund): 'sharing' theo sau giới từ 'for'.",
+  },
 ];
