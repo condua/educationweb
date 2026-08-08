@@ -28,7 +28,7 @@ const Header = () => {
   const { isAuthen, token } = useSelector((state) => state.auth); // Gộp token vào đây cho gọn
   const { user } = useSelector((state) => state.user);
 
-  // Lấy thông tin người dùng
+  // Lấy thông tin người dùng ------
   useEffect(() => {
     if (token && !user) {
       // THAY ĐỔI Ở ĐÂY

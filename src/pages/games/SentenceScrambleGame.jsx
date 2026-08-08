@@ -5,16 +5,16 @@ import { initialSentences } from "./initialSentences"; // Import dữ liệu m�
 // --- Âm thanh ---
 const sounds = {
   select: new Audio(
-    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754667282/computer-mouse-click-351398_wrnaek.mp3"
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754667282/computer-mouse-click-351398_wrnaek.mp3",
   ),
   correct: new Audio(
-    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581169/answer-correct_izdhpx.mp3"
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581169/answer-correct_izdhpx.mp3",
   ),
   incorrect: new Audio(
-    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581291/answer-wrong_vjm3vq.mp3"
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581291/answer-wrong_vjm3vq.mp3",
   ),
   win: new Audio(
-    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754926334/winning_ywueii.mp3"
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754926334/winning_ywueii.mp3",
   ),
 };
 Object.values(sounds).forEach((s) => (s.volume = 0.5));
@@ -42,7 +42,7 @@ export default function SentenceScrambleGame() {
         sound.play();
       }
     },
-    [isSoundOn]
+    [isSoundOn],
   );
 
   useEffect(() => {
@@ -96,7 +96,7 @@ export default function SentenceScrambleGame() {
     // ✅ SỬA LỖI: Truy cập vào thuộc tính .sentence để so sánh
     const correctSentence = sentences[currentSentenceIndex].sentence.replace(
       /[.,!?]/g,
-      ""
+      "",
     );
 
     if (builtSentence === correctSentence) {
