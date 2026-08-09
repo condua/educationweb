@@ -5,130 +5,28 @@ import {
   CheckCircle2,
   XCircle,
   ArrowRight,
-  RefreshCw,
   AlertCircle,
   Music,
   Sparkles,
   Heart,
+  Home,
+  BookOpen,
+  Zap,
+  Flame,
 } from "lucide-react";
 
-// Cập nhật Database: Thêm trường fullSentence để đọc đầy đủ, displaySentence để hiển thị
-const SENTENCE_DB = [
-  {
-    id: 1,
-    displaySentence: "The quick brown fox jumps over the lazy ___.",
-    fullSentence: "The quick brown fox jumps over the lazy dog.",
-    answer: "dog",
-    options: ["cat", "dog", "mouse", "cow"],
-    translation: "Con cáo nâu nhanh nhẹn nhảy qua con chó lười biếng.",
-    ipa: "/ðə kwɪk braʊn fɒks dʒʌmps ˈəʊvə ðə ˈleɪzi dɒg/",
-    hint: "Man's best friend. 🐶",
-  },
-  {
-    id: 2,
-    displaySentence: "I would like a cup of ___ with milk, please.",
-    fullSentence: "I would like a cup of coffee with milk, please.",
-    answer: "coffee",
-    options: ["tea", "water", "coffee", "juice"],
-    translation: "Làm ơn cho tôi một tách cà phê với sữa.",
-    ipa: "/aɪ wʊd laɪk ə kʌp əv ˈkɒfi wɪð mɪlk, pliːz/",
-    hint: "A popular caffeinated morning drink. ☕",
-  },
-  {
-    id: 3,
-    displaySentence: "She is wearing a beautiful red ___ to the party.",
-    fullSentence: "She is wearing a beautiful red dress to the party.",
-    answer: "dress",
-    options: ["shirt", "pants", "hat", "dress"],
-    translation: "Cô ấy đang mặc một chiếc váy đỏ tuyệt đẹp đến bữa tiệc.",
-    ipa: "/ʃi ɪz ˈweərɪŋ ə ˈbjuːtɪfʊl rɛd drɛs tuː ðə ˈpɑːti/",
-    hint: "A one-piece garment for women. 👗",
-  },
-  {
-    id: 4,
-    displaySentence: "Could you tell me the ___ to the nearest train station?",
-    fullSentence: "Could you tell me the way to the nearest train station?",
-    answer: "way",
-    options: ["way", "time", "price", "reason"],
-    translation: "Bạn có thể chỉ cho tôi đường đến ga tàu gần nhất không?",
-    ipa: "/kʊd juː tɛl miː ðə weɪ tuː ðə ˈnɪərɪst treɪn ˈsteɪʃən/",
-    hint: "Direction or path. 🗺️",
-  },
-  {
-    id: 5,
-    displaySentence: "He plays the ___ very well in the school band.",
-    fullSentence: "He plays the guitar very well in the school band.",
-    answer: "guitar",
-    options: ["guitar", "football", "computer", "kitchen"],
-    translation: "Anh ấy chơi guitar rất giỏi trong ban nhạc của trường.",
-    ipa: "/hi pleɪz ðə gɪˈtɑː ˈvɛri wɛl ɪn ðə skuːl bænd/",
-    hint: "A stringed musical instrument. 🎸",
-  },
-  {
-    id: 6,
-    displaySentence:
-      "We need to buy some fresh ___ and vegetables for the salad.",
-    fullSentence:
-      "We need to buy some fresh fruits and vegetables for the salad.",
-    answer: "fruits",
-    options: ["fruits", "meat", "bread", "candy"],
-    translation:
-      "Chúng ta cần mua một ít trái cây và rau quả tươi cho món salad.",
-    ipa: "/wi niːd tuː baɪ sʌm frɛʃ fruːts ænd ˈvɛʤɪtəb(ə)lz fɔː ðə ˈsæləd/",
-    hint: "Apples, bananas, oranges... 🍎",
-  },
-  {
-    id: 7,
-    displaySentence: "The ___ is shining brightly in the clear blue sky.",
-    fullSentence: "The sun is shining brightly in the clear blue sky.",
-    answer: "sun",
-    options: ["moon", "star", "sun", "cloud"],
-    translation: "Mặt trời đang chiếu sáng rực rỡ trên bầu trời xanh trong.",
-    ipa: "/ðə sʌn ɪz ˈʃaɪnɪŋ ˈbraɪtli ɪn ðə klɪə bluː skaɪ/",
-    hint: "The star around which the earth orbits. ☀️",
-  },
-  {
-    id: 8,
-    displaySentence:
-      "Please remember to lock the ___ before you leave the house.",
-    fullSentence:
-      "Please remember to lock the door before you leave the house.",
-    answer: "door",
-    options: ["window", "door", "car", "safe"],
-    translation: "Vui lòng nhớ khóa cửa trước khi bạn rời khỏi nhà.",
-    ipa: "/pliːz rɪˈmɛmbə tuː lɒk ðə dɔː bɪˈfɔː juː liːv ðə haʊs/",
-    hint: "The main entrance to a room or building. 🚪",
-  },
-  {
-    id: 9,
-    displaySentence: "I enjoy reading a good ___ before going to sleep.",
-    fullSentence: "I enjoy reading a good book before going to sleep.",
-    answer: "book",
-    options: ["movie", "book", "song", "game"],
-    translation: "Tôi thích đọc một cuốn sách hay trước khi đi ngủ.",
-    ipa: "/aɪ ɪnˈʤɔɪ ˈriːdɪŋ ə gʊd bʊk bɪˈfɔː ˈgəʊɪŋ tuː sliːp/",
-    hint: "Contains pages with text. 📖",
-  },
-  {
-    id: 10,
-    displaySentence: "They are traveling to Paris by ___ tomorrow morning.",
-    fullSentence: "They are traveling to Paris by plane tomorrow morning.",
-    answer: "plane",
-    options: ["bus", "train", "plane", "bicycle"],
-    translation: "Họ sẽ đi du lịch đến Paris bằng máy bay vào sáng ngày mai.",
-    ipa: "/ðeɪ ɑː ˈtrævlɪŋ tuː ˈpærɪs baɪ pleɪn təˈmɒrəʊ ˈmɔːnɪŋ/",
-    hint: "It flies in the sky. ✈️",
-  },
-];
+import { SENTENCE_DB } from "./listenAndFillInTheBlankData.js";
 
 export default function ListenAndFillInTheBlank() {
+  // Trạng thái màn hình: 'menu' | 'playing' | 'result'
+  const [appState, setAppState] = useState("menu");
+
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
   const [shuffledSentences, setShuffledSentences] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [showHint, setShowHint] = useState(false);
   const [score, setScore] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
 
   // Audio settings
   const [selectedVoice, setSelectedVoice] = useState(null);
@@ -137,7 +35,6 @@ export default function ListenAndFillInTheBlank() {
   const [systemVoices, setSystemVoices] = useState([]);
 
   useEffect(() => {
-    startNewGame();
     initSpeechSynthesis();
   }, []);
 
@@ -149,6 +46,7 @@ export default function ListenAndFillInTheBlank() {
           const enVoices = voices.filter((voice) =>
             voice.lang.startsWith("en"),
           );
+          // Ưu tiên giọng Google
           enVoices.sort((a, b) => {
             const aIsGoogle = a.name.includes("Google");
             const bIsGoogle = b.name.includes("Google");
@@ -156,12 +54,14 @@ export default function ListenAndFillInTheBlank() {
             if (!aIsGoogle && bIsGoogle) return 1;
             return 0;
           });
+
           setSystemVoices(enVoices.length > 0 ? enVoices : voices);
           if (!selectedVoice && enVoices.length > 0) {
             setSelectedVoice(enVoices[0]);
           }
         }
       };
+
       loadVoices();
       if (window.speechSynthesis.onvoiceschanged !== undefined) {
         window.speechSynthesis.onvoiceschanged = loadVoices;
@@ -171,13 +71,27 @@ export default function ListenAndFillInTheBlank() {
     }
   };
 
-  const startNewGame = () => {
-    const shuffled = [...SENTENCE_DB].sort(() => 0.5 - Math.random());
-    setShuffledSentences(shuffled);
+  const startGameWithData = (data) => {
+    setShuffledSentences(data);
     setCurrentSentenceIndex(0);
     setScore(0);
-    setGameOver(false);
     resetTurn();
+    setAppState("playing");
+  };
+
+  // Chơi câu hỏi Local (Hệ thống) với số lượng tuỳ chọn
+  const handlePlayLocal = (count) => {
+    // Lấy ngẫu nhiên dữ liệu và giới hạn số lượng (nếu DB ít hơn count thì lấy hết)
+    const maxCount = Math.min(count, SENTENCE_DB.length);
+    const shuffled = [...SENTENCE_DB]
+      .sort(() => 0.5 - Math.random())
+      .slice(0, maxCount);
+
+    startGameWithData(shuffled);
+  };
+
+  const returnToMenu = () => {
+    setAppState("menu");
   };
 
   const resetTurn = () => {
@@ -201,7 +115,7 @@ export default function ListenAndFillInTheBlank() {
       setCurrentSentenceIndex((prev) => prev + 1);
       resetTurn();
     } else {
-      setGameOver(true);
+      setAppState("result");
     }
   };
 
@@ -210,11 +124,8 @@ export default function ListenAndFillInTheBlank() {
     window.speechSynthesis.cancel();
 
     const currentData = shuffledSentences[currentSentenceIndex];
+    const utterance = new SpeechSynthesisUtterance(currentData.fullSentence);
 
-    // YÊU CẦU MỚI: Luôn đọc fullSentence (câu hoàn chỉnh)
-    const textToSpeak = currentData.fullSentence;
-
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
     if (selectedVoice) utterance.voice = selectedVoice;
     utterance.rate = 0.85;
 
@@ -249,40 +160,30 @@ export default function ListenAndFillInTheBlank() {
     );
   };
 
-  if (shuffledSentences.length === 0) {
-    return (
-      <div className="flex justify-center items-center h-screen bg-pink-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-pink-400"></div>
-      </div>
-    );
-  }
+  // --- RENDER CSS CHUNG ---
+  const sharedCSS = (
+    <style>{`
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(5deg); }
+      }
+      @keyframes float-delayed {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-12px) rotate(-5deg); }
+      }
+      .animate-float { animation: float 5s ease-in-out infinite; }
+      .animate-float-delayed { animation: float-delayed 6s ease-in-out infinite; animation-delay: 1.5s; }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 2px solid rgba(255, 255, 255, 1);
+      }
+    `}</style>
+  );
 
-  const currentData = shuffledSentences[currentSentenceIndex];
-  const isAnswered = selectedAnswer !== null;
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-200 via-purple-100 to-blue-100 font-sans text-slate-800 p-4 md:p-8 flex flex-col items-center relative overflow-hidden">
-      {/* CSS Animations cho phong cách Anime */}
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(5deg); }
-        }
-        @keyframes float-delayed {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-12px) rotate(-5deg); }
-        }
-        .animate-float { animation: float 5s ease-in-out infinite; }
-        .animate-float-delayed { animation: float-delayed 6s ease-in-out infinite; animation-delay: 1.5s; }
-        .glass-panel {
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 2px solid rgba(255, 255, 255, 1);
-        }
-      `}</style>
-
-      {/* Decorative Anime Elements */}
+  const decorativeElements = (
+    <>
       <div className="absolute top-[10%] left-[5%] text-4xl animate-float opacity-70 pointer-events-none select-none">
         🌸
       </div>
@@ -295,61 +196,150 @@ export default function ListenAndFillInTheBlank() {
       <div className="absolute bottom-[20%] right-[8%] text-4xl animate-float opacity-70 pointer-events-none select-none">
         🎀
       </div>
+    </>
+  );
 
-      {/* Header */}
-      <div className="w-full max-w-3xl flex flex-col sm:flex-row justify-between items-center mb-8 glass-panel p-4 px-6 rounded-full shadow-[0_8px_32px_rgba(255,182,193,0.3)] z-10">
-        <h1 className="text-2xl font-black bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent flex items-center gap-2 mb-3 sm:mb-0">
-          <Music className="text-pink-500" size={28} />
-          Listen & Learn! ✧
-        </h1>
-        <div className="flex items-center gap-4">
-          <div className="text-pink-600 font-bold bg-pink-100 px-4 py-1.5 rounded-full text-sm border border-pink-200 shadow-sm flex items-center gap-1">
-            <Heart size={14} className="fill-pink-500" /> Score:{" "}
-            <span className="text-purple-600 text-lg ml-1">{score}</span>
+  // --- RENDER MÀN HÌNH MENU CHÍNH ---
+  if (appState === "menu") {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-pink-200 via-purple-100 to-blue-100 flex flex-col items-center justify-center p-4 relative overflow-hidden">
+        {sharedCSS}
+        {decorativeElements}
+
+        <div className="w-full max-w-xl glass-panel rounded-[2.5rem] shadow-[0_12px_40px_rgba(200,150,220,0.3)] p-10 z-10 text-center">
+          <div className="bg-white p-4 rounded-full inline-block mb-6 shadow-md shadow-pink-200/50">
+            <Music className="text-pink-500 w-12 h-12" />
           </div>
-          <div className="text-slate-500 font-bold bg-white/50 px-3 py-1.5 rounded-full text-sm">
-            {currentSentenceIndex + 1} / {shuffledSentences.length}
+          <h1 className="text-4xl font-black bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent mb-4">
+            Listen & Fill! ✧
+          </h1>
+          <p className="text-slate-600 mb-8 font-medium">
+            Kiểm tra kỹ năng nghe của bạn. Hãy chọn số lượng câu hỏi nhé!
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Nút 10 Câu */}
+            <button
+              onClick={() => handlePlayLocal(10)}
+              className="flex flex-col items-center justify-center gap-2 p-4 bg-gradient-to-br from-pink-400 to-purple-500 hover:from-pink-500 hover:to-purple-600 text-white font-bold rounded-2xl transition-all shadow-md hover:shadow-lg group active:scale-95"
+            >
+              <BookOpen
+                className="text-white mb-1 group-hover:scale-110 transition-transform"
+                size={28}
+              />
+              <span className="text-xl">10 Câu</span>
+            </button>
+
+            {/* Nút 20 Câu */}
+            <button
+              onClick={() => handlePlayLocal(20)}
+              className="flex flex-col items-center justify-center gap-2 p-4 bg-gradient-to-br from-blue-400 to-indigo-500 hover:from-blue-500 hover:to-indigo-600 text-white font-bold rounded-2xl transition-all shadow-md hover:shadow-lg group active:scale-95"
+            >
+              <Zap
+                className="text-white mb-1 group-hover:scale-110 transition-transform"
+                size={28}
+              />
+              <span className="text-xl">20 Câu</span>
+            </button>
+
+            {/* Nút 50 Câu */}
+            <button
+              onClick={() => handlePlayLocal(50)}
+              className="flex flex-col items-center justify-center gap-2 p-4 bg-gradient-to-br from-orange-400 to-rose-500 hover:from-orange-500 hover:to-rose-600 text-white font-bold rounded-2xl transition-all shadow-md hover:shadow-lg group active:scale-95"
+            >
+              <Flame
+                className="text-white mb-1 group-hover:scale-110 transition-transform"
+                size={28}
+              />
+              <span className="text-xl">50 Câu</span>
+            </button>
+          </div>
+
+          <div className="mt-6 text-sm font-medium text-slate-500">
+            Tổng số câu trong dữ liệu hiện tại:{" "}
+            <span className="text-purple-500 font-bold">
+              {SENTENCE_DB.length}
+            </span>
           </div>
         </div>
       </div>
+    );
+  }
 
-      {gameOver ? (
+  const currentData = shuffledSentences[currentSentenceIndex];
+  const isAnswered = selectedAnswer !== null;
+
+  // --- RENDER GAME / KẾT QUẢ ---
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-pink-200 via-purple-100 to-blue-100 font-sans text-slate-800 p-4 md:p-8 flex flex-col items-center relative overflow-hidden">
+      {sharedCSS}
+      {decorativeElements}
+
+      {/* Header during gameplay */}
+      <div className="w-full max-w-3xl flex flex-col sm:flex-row justify-between items-center mb-8 glass-panel p-4 px-6 rounded-full shadow-[0_8px_32px_rgba(255,182,193,0.3)] z-10">
+        <div className="flex items-center gap-3 mb-3 sm:mb-0">
+          <button
+            onClick={returnToMenu}
+            className="p-2 hover:bg-pink-100 rounded-full text-pink-500 transition-colors"
+            title="Trở về trang chủ"
+          >
+            <Home size={24} />
+          </button>
+          <h1 className="text-2xl font-black bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+            Listen & Learn! ✧
+          </h1>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="text-pink-600 font-bold bg-pink-100 px-4 py-1.5 rounded-full text-sm border border-pink-200 shadow-sm flex items-center gap-1">
+            <Heart size={14} className="fill-pink-500" /> Điểm số:{" "}
+            <span className="text-purple-600 text-lg ml-1">{score}</span>
+          </div>
+          {appState === "playing" && (
+            <div className="text-slate-500 font-bold bg-white/50 px-3 py-1.5 rounded-full text-sm">
+              {currentSentenceIndex + 1} / {shuffledSentences.length}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {appState === "result" ? (
         <div className="w-full max-w-2xl glass-panel rounded-[2rem] shadow-[0_8px_40px_rgba(255,182,193,0.4)] p-10 text-center z-10 relative">
           <div className="absolute -top-12 left-1/2 -translate-x-1/2 text-6xl animate-bounce">
             🎉
           </div>
           <h2 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 mb-4 mt-4">
-            Sugoi! (Great Job!)
+            Tuyệt vời!
           </h2>
           <div className="text-7xl font-black text-pink-500 mb-6 drop-shadow-md">
             {Math.round((score / shuffledSentences.length) * 100)}%
           </div>
           <p className="text-lg text-slate-600 mb-8 font-medium">
-            You got{" "}
-            <span className="font-bold text-pink-500 text-xl">{score}</span> out
-            of{" "}
+            Bạn đã trả lời đúng{" "}
+            <span className="font-bold text-pink-500 text-xl">{score}</span>{" "}
+            trên tổng số{" "}
             <span className="font-bold text-xl">
               {shuffledSentences.length}
             </span>{" "}
-            correct.
+            câu hỏi.
           </p>
-          <button
-            onClick={startNewGame}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 text-white font-bold rounded-full transition-all shadow-[0_4px_15px_rgba(236,72,153,0.4)] hover:shadow-[0_6px_20px_rgba(236,72,153,0.6)] hover:-translate-y-1 active:scale-95 text-lg"
-          >
-            <RefreshCw size={22} />
-            Play Again
-          </button>
+          <div className="flex justify-center gap-4">
+            <button
+              onClick={returnToMenu}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-pink-500 border-2 border-pink-200 hover:bg-pink-50 hover:border-pink-300 font-bold rounded-full transition-all text-lg active:scale-95"
+            >
+              <Home size={22} />
+              Về Menu Chính
+            </button>
+          </div>
         </div>
       ) : (
         <div className="w-full max-w-3xl flex flex-col gap-6 z-10">
-          {/* Main Card */}
           <div className="glass-panel rounded-[2.5rem] shadow-[0_12px_40px_rgba(200,150,220,0.3)] overflow-hidden">
-            {/* Top Section - Audio Controls */}
+            {/* Audio Controls */}
             <div className="bg-white/40 border-b border-white/50 p-4 px-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div className="flex items-center gap-3 w-full sm:w-auto">
                 <span className="text-sm font-bold text-purple-400 uppercase tracking-wider">
-                  Voice
+                  Giọng đọc
                 </span>
                 <select
                   value={selectedVoice ? selectedVoice.name : ""}
@@ -363,7 +353,7 @@ export default function ListenAndFillInTheBlank() {
                   disabled={systemVoices.length === 0}
                 >
                   {systemVoices.length === 0 ? (
-                    <option>Loading voices...</option>
+                    <option>Đang tải giọng đọc...</option>
                   ) : (
                     systemVoices.map((voice, idx) => (
                       <option key={`${voice.name}-${idx}`} value={voice.name}>
@@ -374,22 +364,19 @@ export default function ListenAndFillInTheBlank() {
                   )}
                 </select>
               </div>
-
               {!speechSupported && (
                 <div className="flex items-center gap-1 text-red-500 font-medium text-sm bg-red-50 px-3 py-1.5 rounded-full border border-red-100">
-                  <AlertCircle size={16} /> Text-to-speech not supported
+                  <AlertCircle size={16} /> Trình duyệt không hỗ trợ đọc văn bản
                 </div>
               )}
             </div>
 
-            {/* Sentence & Play Button Area */}
+            {/* Content Area */}
             <div className="p-8 md:p-12 flex flex-col items-center relative">
-              {/* Play Button - Anime Style */}
               <button
                 onClick={playAudio}
                 disabled={!speechSupported}
                 className="group relative mb-10"
-                aria-label="Play audio"
               >
                 <div
                   className={`absolute inset-0 bg-pink-400 rounded-full blur-md transition-opacity duration-300 ${speaking ? "opacity-80 animate-pulse" : "opacity-40 group-hover:opacity-70"}`}
@@ -412,12 +399,11 @@ export default function ListenAndFillInTheBlank() {
                 {renderSentenceWithBlank(currentData.displaySentence)}
               </div>
 
-              {/* Options Grid */}
+              {/* Options */}
               <div className="grid grid-cols-2 gap-4 w-full max-w-xl">
                 {currentData.options.map((option, index) => {
                   let buttonClass =
                     "px-6 py-5 rounded-2xl font-bold text-lg border-2 transition-all duration-200 ";
-
                   if (!isAnswered) {
                     buttonClass +=
                       "bg-white/80 border-pink-100 text-slate-600 hover:border-pink-400 hover:bg-pink-50 hover:shadow-[0_4px_15px_rgba(244,114,182,0.3)] hover:-translate-y-1 active:bg-pink-100 cursor-pointer";
@@ -462,7 +448,6 @@ export default function ListenAndFillInTheBlank() {
                 })}
               </div>
 
-              {/* Hint System */}
               {!isAnswered && (
                 <div className="mt-8 w-full max-w-lg text-center">
                   {showHint ? (
@@ -470,7 +455,7 @@ export default function ListenAndFillInTheBlank() {
                       <Sparkles size={18} className="text-yellow-500" />
                       <span>
                         <strong className="font-black text-yellow-600">
-                          Hint:
+                          Gợi ý:
                         </strong>{" "}
                         {currentData.hint}
                       </span>
@@ -480,21 +465,17 @@ export default function ListenAndFillInTheBlank() {
                       onClick={() => setShowHint(true)}
                       className="text-pink-400 hover:text-pink-600 flex items-center gap-2 mx-auto text-sm font-bold transition-colors bg-white/50 px-4 py-2 rounded-full hover:bg-white"
                     >
-                      <Lightbulb size={18} /> Show Hint ✨
+                      <Lightbulb size={18} /> Xem gợi ý ✨
                     </button>
                   )}
                 </div>
               )}
             </div>
 
-            {/* Post-Answer Result Area */}
+            {/* Result Review Section */}
             {isAnswered && (
               <div
-                className={`p-6 border-t-2 animate-slide-up ${
-                  isCorrect
-                    ? "bg-green-50/90 border-green-100"
-                    : "bg-red-50/90 border-red-100"
-                }`}
+                className={`p-6 border-t-2 animate-slide-up ${isCorrect ? "bg-green-50/90 border-green-100" : "bg-red-50/90 border-red-100"}`}
               >
                 <div className="max-w-2xl mx-auto">
                   <div className="flex items-start gap-4">
@@ -515,25 +496,23 @@ export default function ListenAndFillInTheBlank() {
                         className={`font-black text-xl mb-3 flex items-center gap-2 ${isCorrect ? "text-green-700" : "text-red-700"}`}
                       >
                         {isCorrect
-                          ? "Yatta! Correct! 🎉"
-                          : "Oh no! Try again! 🌸"}
+                          ? "Chính xác! 🎉"
+                          : "Tiếc quá, thử lại nhé! 🌸"}
                       </h3>
 
-                      {/* Learning Content */}
                       <div className="bg-white/90 backdrop-blur-sm p-5 rounded-2xl shadow-sm border border-white/50 space-y-4">
                         <div>
                           <div className="text-xs font-black text-purple-400 uppercase tracking-widest mb-1.5 flex items-center gap-1">
-                            <Sparkles size={12} /> Full Sentence
+                            <Sparkles size={12} /> Câu hoàn chỉnh
                           </div>
                           <p className="text-slate-800 font-bold text-lg">
                             {currentData.fullSentence}
                           </p>
                         </div>
-
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t-2 border-slate-50">
                           <div>
                             <div className="text-xs font-black text-pink-400 uppercase tracking-widest mb-1.5">
-                              Pronunciation
+                              Phiên âm IPA
                             </div>
                             <p className="text-purple-700 font-mono text-sm bg-purple-50 px-3 py-1.5 rounded-lg inline-block border border-purple-100 font-semibold">
                               {currentData.ipa}
@@ -541,7 +520,7 @@ export default function ListenAndFillInTheBlank() {
                           </div>
                           <div>
                             <div className="text-xs font-black text-blue-400 uppercase tracking-widest mb-1.5">
-                              Vietnamese
+                              Dịch nghĩa
                             </div>
                             <p className="text-slate-600 text-sm font-medium bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
                               "{currentData.translation}"
@@ -558,8 +537,8 @@ export default function ListenAndFillInTheBlank() {
                       className="flex items-center gap-2 bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white px-8 py-4 rounded-full font-bold transition-all shadow-[0_4px_15px_rgba(0,0,0,0.2)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:-translate-y-1 active:scale-95"
                     >
                       {currentSentenceIndex < shuffledSentences.length - 1
-                        ? "Next Question"
-                        : "See Results"}
+                        ? "Câu tiếp theo"
+                        : "Xem kết quả"}
                       <ArrowRight size={20} />
                     </button>
                   </div>
