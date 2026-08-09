@@ -14,6 +14,7 @@ import {
   Shuffle,
   Search,
   Trophy,
+  AudioLines,
 } from "lucide-react";
 
 // --- Dữ liệu trò chơi đã được đa ngôn ngữ hóa ---
@@ -27,6 +28,16 @@ const GAMES = [
     },
     Icon: Trophy,
     tags: ["Quiz", "General"],
+  },
+  {
+    title: { en: "Listening Challenge", vi: "Nghe và điền từ" },
+    path: "/listen-and-fill-in-the-blank",
+    description: {
+      en: "Listen to the audio and fill in the blanks.",
+      vi: "Nghe đoạn âm thanh và điền vào chỗ trống.",
+    },
+    Icon: AudioLines,
+    tags: ["Listening"],
   },
   {
     title: { en: "Listening Challenge", vi: "Thử Thách Nghe" },

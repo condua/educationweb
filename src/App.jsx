@@ -58,6 +58,7 @@ import EnglishWordSprint from "./pages/games/EnglishWordSprint.jsx";
 import MillionaireGame from "./pages/games/MillionaireGame .jsx";
 import VocabularyGame from "./pages/games/VocabularyGame.jsx";
 import ListeningGame from "./pages/games/ListeningGame.jsx";
+import ListenAndFillInTheBlank from "./pages/games/ListenAndFillInTheBlank.jsx";
 import SentenceScrambleGame from "./pages/games/SentenceScrambleGame.jsx";
 import GrammarTopic from "./pages/games/GrammarTopic.jsx";
 import ExamDashboard from "./pages/vsat/pages/ExamDashboard.jsx";
@@ -189,6 +190,10 @@ function App() {
         <Route path="/detective-game" element={<DetectiveGame />} />
         <Route path="/english-word-sprint" element={<EnglishWordSprint />} />
         <Route path="/millionaire-game" element={<MillionaireGame />} />
+        <Route
+          path="/listen-and-fill-in-the-blank"
+          element={<ListenAndFillInTheBlank />}
+        />
         {/* Thêm route cho GamesHome */}
         <Route
           path="/profile"
