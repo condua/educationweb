@@ -17,7 +17,6 @@ import {
 
 import { SENTENCE_DB } from "./listenAndFillInTheBlankData.js";
 
-// Đổi object thành chứa URL để dễ dàng khởi tạo Audio động
 const sounds = {
   incorrect:
     "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581291/answer-wrong_vjm3vq.mp3",
@@ -33,7 +32,6 @@ const sounds = {
 };
 
 export default function ListenAndFillInTheBlank() {
-  // Trạng thái màn hình: 'menu' | 'playing' | 'result'
   const [appState, setAppState] = useState("menu");
 
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
@@ -43,17 +41,16 @@ export default function ListenAndFillInTheBlank() {
   const [showHint, setShowHint] = useState(false);
   const [score, setScore] = useState(0);
 
-  // Audio settings
-  const [selectedVoice, setSelectedVoice] = useState(null);
+  // Audio settings - SỬA LỖI: Lưu Tên (String) thay vì lưu Object
+  const [selectedVoiceName, setSelectedVoiceName] = useState("");
   const [speaking, setSpeaking] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(true);
   const [systemVoices, setSystemVoices] = useState([]);
 
-  // Hàm phát hiệu ứng âm thanh
   const playSound = (type) => {
     if (sounds[type]) {
       const audio = new Audio(sounds[type]);
-      audio.play().catch((err) => console.log("Audio play blocked by browser:", err));
+      audio.play().catch((err) => console.log("Audio play blocked:", err));
     }
   };
 
@@ -69,7 +66,7 @@ export default function ListenAndFillInTheBlank() {
           const enVoices = voices.filter((voice) =>
             voice.lang.startsWith("en"),
           );
-          // Ưu tiên giọng Google
+
           enVoices.sort((a, b) => {
             const aIsGoogle = a.name.includes("Google");
             const bIsGoogle = b.name.includes("Google");
@@ -78,10 +75,14 @@ export default function ListenAndFillInTheBlank() {
             return 0;
           });
 
-          setSystemVoices(enVoices.length > 0 ? enVoices : voices);
-          if (!selectedVoice && enVoices.length > 0) {
-            setSelectedVoice(enVoices[0]);
-          }
+          const availableVoices = enVoices.length > 0 ? enVoices : voices;
+          setSystemVoices(availableVoices);
+
+          // Dùng function update để tránh lỗi ghi đè state cũ (stale closure)
+          setSelectedVoiceName((prevName) => {
+            if (prevName) return prevName; // Nếu user đã chọn thì giữ nguyên
+            return availableVoices.length > 0 ? availableVoices[0].name : "";
+          });
         }
       };
 
@@ -100,12 +101,10 @@ export default function ListenAndFillInTheBlank() {
     setScore(0);
     resetTurn();
     setAppState("playing");
-    playSound("start"); // Thêm âm thanh khi bắt đầu game
+    playSound("start");
   };
 
-  // Chơi câu hỏi Local (Hệ thống) với số lượng tuỳ chọn
   const handlePlayLocal = (count) => {
-    // Lấy ngẫu nhiên dữ liệu và giới hạn số lượng (nếu DB ít hơn count thì lấy hết)
     const maxCount = Math.min(count, SENTENCE_DB.length);
     const shuffled = [...SENTENCE_DB]
       .sort(() => 0.5 - Math.random())
@@ -115,7 +114,7 @@ export default function ListenAndFillInTheBlank() {
   };
 
   const returnToMenu = () => {
-    playSound("select"); // Thêm âm thanh khi click nút về Menu
+    playSound("select");
     setAppState("menu");
   };
 
@@ -132,8 +131,7 @@ export default function ListenAndFillInTheBlank() {
 
     setSelectedAnswer(option);
     setIsCorrect(correct);
-    
-    // Phát âm thanh tương ứng với đáp án Đúng/Sai
+
     if (correct) {
       playSound("correct");
       setScore((prev) => prev + 1);
@@ -144,28 +142,32 @@ export default function ListenAndFillInTheBlank() {
 
   const nextSentence = () => {
     if (currentSentenceIndex < shuffledSentences.length - 1) {
-      playSound("select"); // Thêm âm thanh khi qua câu mới
+      playSound("select");
       setCurrentSentenceIndex((prev) => prev + 1);
       resetTurn();
     } else {
-      playSound("win"); // Thêm âm thanh khi hoàn thành bài thi
+      playSound("win");
       setAppState("result");
     }
   };
 
   const handleShowHint = () => {
-    playSound("select"); // Thêm âm thanh click khi mở gợi ý
+    playSound("select");
     setShowHint(true);
   };
 
   const playAudio = () => {
     if (!speechSupported || shuffledSentences.length === 0) return;
-    window.speechSynthesis.cancel();
+    window.speechSynthesis.cancel(); // Ngắt âm thanh đang đọc (nếu có)
 
     const currentData = shuffledSentences[currentSentenceIndex];
     const utterance = new SpeechSynthesisUtterance(currentData.fullSentence);
 
-    if (selectedVoice) utterance.voice = selectedVoice;
+    // SỬA LỖI: Lấy object voice TƯƠI MỚI NHẤT từ trình duyệt dựa trên tên đã lưu
+    const freshVoices = window.speechSynthesis.getVoices();
+    const voiceToUse = freshVoices.find((v) => v.name === selectedVoiceName);
+
+    if (voiceToUse) utterance.voice = voiceToUse;
     utterance.rate = 0.85;
 
     utterance.onstart = () => setSpeaking(true);
@@ -257,7 +259,6 @@ export default function ListenAndFillInTheBlank() {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {/* Nút 10 Câu */}
             <button
               onClick={() => handlePlayLocal(10)}
               className="flex flex-col items-center justify-center gap-2 p-4 bg-gradient-to-br from-pink-400 to-purple-500 hover:from-pink-500 hover:to-purple-600 text-white font-bold rounded-2xl transition-all shadow-md hover:shadow-lg group active:scale-95"
@@ -269,7 +270,6 @@ export default function ListenAndFillInTheBlank() {
               <span className="text-xl">10 Câu</span>
             </button>
 
-            {/* Nút 20 Câu */}
             <button
               onClick={() => handlePlayLocal(20)}
               className="flex flex-col items-center justify-center gap-2 p-4 bg-gradient-to-br from-blue-400 to-indigo-500 hover:from-blue-500 hover:to-indigo-600 text-white font-bold rounded-2xl transition-all shadow-md hover:shadow-lg group active:scale-95"
@@ -281,7 +281,6 @@ export default function ListenAndFillInTheBlank() {
               <span className="text-xl">20 Câu</span>
             </button>
 
-            {/* Nút 50 Câu */}
             <button
               onClick={() => handlePlayLocal(50)}
               className="flex flex-col items-center justify-center gap-2 p-4 bg-gradient-to-br from-orange-400 to-rose-500 hover:from-orange-500 hover:to-rose-600 text-white font-bold rounded-2xl transition-all shadow-md hover:shadow-lg group active:scale-95"
@@ -366,8 +365,7 @@ export default function ListenAndFillInTheBlank() {
               onClick={returnToMenu}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-pink-500 border-2 border-pink-200 hover:bg-pink-50 hover:border-pink-300 font-bold rounded-full transition-all text-lg active:scale-95"
             >
-              <Home size={22} />
-              Về Menu Chính
+              <Home size={22} /> Về Menu Chính
             </button>
           </div>
         </div>
@@ -380,14 +378,11 @@ export default function ListenAndFillInTheBlank() {
                 <span className="text-sm font-bold text-purple-400 uppercase tracking-wider">
                   Giọng đọc
                 </span>
+
+                {/* SỬA LỖI: select bây giờ map qua selectedVoiceName */}
                 <select
-                  value={selectedVoice ? selectedVoice.name : ""}
-                  onChange={(e) => {
-                    const voice = systemVoices.find(
-                      (v) => v.name === e.target.value,
-                    );
-                    if (voice) setSelectedVoice(voice);
-                  }}
+                  value={selectedVoiceName}
+                  onChange={(e) => setSelectedVoiceName(e.target.value)}
                   className="bg-white/80 border-2 border-pink-100 text-slate-700 text-sm font-medium rounded-xl focus:ring-pink-400 focus:border-pink-400 block p-2 outline-none w-full sm:max-w-xs cursor-pointer truncate shadow-sm hover:border-pink-300 transition-colors"
                   disabled={systemVoices.length === 0}
                 >
@@ -421,11 +416,7 @@ export default function ListenAndFillInTheBlank() {
                   className={`absolute inset-0 bg-pink-400 rounded-full blur-md transition-opacity duration-300 ${speaking ? "opacity-80 animate-pulse" : "opacity-40 group-hover:opacity-70"}`}
                 ></div>
                 <div
-                  className={`relative h-24 w-24 flex items-center justify-center rounded-full transition-all transform group-hover:scale-105 active:scale-95 border-4 border-white ${
-                    speaking
-                      ? "bg-gradient-to-tr from-purple-400 to-pink-400 text-white shadow-inner"
-                      : "bg-gradient-to-tr from-pink-400 to-purple-400 text-white shadow-xl"
-                  }`}
+                  className={`relative h-24 w-24 flex items-center justify-center rounded-full transition-all transform group-hover:scale-105 active:scale-95 border-4 border-white ${speaking ? "bg-gradient-to-tr from-purple-400 to-pink-400 text-white shadow-inner" : "bg-gradient-to-tr from-pink-400 to-purple-400 text-white shadow-xl"}`}
                 >
                   <PlayCircle
                     size={56}
@@ -516,6 +507,17 @@ export default function ListenAndFillInTheBlank() {
               <div
                 className={`p-6 border-t-2 animate-slide-up ${isCorrect ? "bg-green-50/90 border-green-100" : "bg-red-50/90 border-red-100"}`}
               >
+                <div className="mt-2 flex justify-end">
+                  <button
+                    onClick={nextSentence}
+                    className="flex items-center gap-2 bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white px-8 py-4 rounded-full font-bold transition-all shadow-[0_4px_15px_rgba(0,0,0,0.2)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:-translate-y-1 active:scale-95"
+                  >
+                    {currentSentenceIndex < shuffledSentences.length - 1
+                      ? "Câu tiếp theo"
+                      : "Xem kết quả"}
+                    <ArrowRight size={20} />
+                  </button>
+                </div>
                 <div className="max-w-2xl mx-auto">
                   <div className="flex items-start gap-4">
                     <div className="mt-1">
@@ -568,18 +570,6 @@ export default function ListenAndFillInTheBlank() {
                         </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="mt-8 flex justify-end">
-                    <button
-                      onClick={nextSentence}
-                      className="flex items-center gap-2 bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white px-8 py-4 rounded-full font-bold transition-all shadow-[0_4px_15px_rgba(0,0,0,0.2)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:-translate-y-1 active:scale-95"
-                    >
-                      {currentSentenceIndex < shuffledSentences.length - 1
-                        ? "Câu tiếp theo"
-                        : "Xem kết quả"}
-                      <ArrowRight size={20} />
-                    </button>
                   </div>
                 </div>
               </div>
