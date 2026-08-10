@@ -17,6 +17,7 @@ import {
 
 import { SENTENCE_DB } from "./listenAndFillInTheBlankData.js";
 
+// Đổi object thành chứa URL để dễ dàng khởi tạo Audio động
 const sounds = {
   incorrect:
     "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581291/answer-wrong_vjm3vq.mp3",
@@ -27,9 +28,8 @@ const sounds = {
   start:
     "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754664206/gamestart-272829_ccnfqa.mp3",
   win: "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754926334/winning_ywueii.mp3",
-  select: new Audio(
+  select:
     "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754667282/computer-mouse-click-351398_wrnaek.mp3",
-  ),
 };
 
 export default function ListenAndFillInTheBlank() {
@@ -48,6 +48,14 @@ export default function ListenAndFillInTheBlank() {
   const [speaking, setSpeaking] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(true);
   const [systemVoices, setSystemVoices] = useState([]);
+
+  // Hàm phát hiệu ứng âm thanh
+  const playSound = (type) => {
+    if (sounds[type]) {
+      const audio = new Audio(sounds[type]);
+      audio.play().catch((err) => console.log("Audio play blocked by browser:", err));
+    }
+  };
 
   useEffect(() => {
     initSpeechSynthesis();
@@ -92,6 +100,7 @@ export default function ListenAndFillInTheBlank() {
     setScore(0);
     resetTurn();
     setAppState("playing");
+    playSound("start"); // Thêm âm thanh khi bắt đầu game
   };
 
   // Chơi câu hỏi Local (Hệ thống) với số lượng tuỳ chọn
@@ -106,6 +115,7 @@ export default function ListenAndFillInTheBlank() {
   };
 
   const returnToMenu = () => {
+    playSound("select"); // Thêm âm thanh khi click nút về Menu
     setAppState("menu");
   };
 
@@ -122,16 +132,30 @@ export default function ListenAndFillInTheBlank() {
 
     setSelectedAnswer(option);
     setIsCorrect(correct);
-    if (correct) setScore((prev) => prev + 1);
+    
+    // Phát âm thanh tương ứng với đáp án Đúng/Sai
+    if (correct) {
+      playSound("correct");
+      setScore((prev) => prev + 1);
+    } else {
+      playSound("incorrect");
+    }
   };
 
   const nextSentence = () => {
     if (currentSentenceIndex < shuffledSentences.length - 1) {
+      playSound("select"); // Thêm âm thanh khi qua câu mới
       setCurrentSentenceIndex((prev) => prev + 1);
       resetTurn();
     } else {
+      playSound("win"); // Thêm âm thanh khi hoàn thành bài thi
       setAppState("result");
     }
+  };
+
+  const handleShowHint = () => {
+    playSound("select"); // Thêm âm thanh click khi mở gợi ý
+    setShowHint(true);
   };
 
   const playAudio = () => {
@@ -477,7 +501,7 @@ export default function ListenAndFillInTheBlank() {
                     </div>
                   ) : (
                     <button
-                      onClick={() => setShowHint(true)}
+                      onClick={handleShowHint}
                       className="text-pink-400 hover:text-pink-600 flex items-center gap-2 mx-auto text-sm font-bold transition-colors bg-white/50 px-4 py-2 rounded-full hover:bg-white"
                     >
                       <Lightbulb size={18} /> Xem gợi ý ✨
