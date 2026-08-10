@@ -17,6 +17,21 @@ import {
 
 import { SENTENCE_DB } from "./listenAndFillInTheBlankData.js";
 
+const sounds = {
+  incorrect:
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581291/answer-wrong_vjm3vq.mp3",
+  correct:
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754581169/answer-correct_izdhpx.mp3",
+  suspense:
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754664209/the-suspenseful-braam-334309_ggotug.mp3",
+  start:
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754664206/gamestart-272829_ccnfqa.mp3",
+  win: "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754926334/winning_ywueii.mp3",
+  select: new Audio(
+    "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754667282/computer-mouse-click-351398_wrnaek.mp3",
+  ),
+};
+
 export default function ListenAndFillInTheBlank() {
   // Trạng thái màn hình: 'menu' | 'playing' | 'result'
   const [appState, setAppState] = useState("menu");
