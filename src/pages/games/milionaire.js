@@ -4505,5 +4505,1897 @@ const allQuestions = [
     options: ["Stephen Cook", "Alan Turing", "Donald Knuth", "Edgar F. Codd"],
     answer: "Stephen Cook",
   },
+  {
+    id: 491,
+    level: "Dễ",
+    question: "Con vật nào được gọi là 'cậu ông Trời' trong dân gian Việt Nam?",
+    options: ["Con cóc", "Con ếch", "Con thằn lằn", "Con nhện"],
+    answer: "Con cóc",
+  },
+  {
+    id: 492,
+    level: "Dễ",
+    question: "Để đo thời gian, người ta thường dùng dụng cụ gì?",
+    options: ["Thước kẻ", "Nhiệt kế", "Đồng hồ", "Cân"],
+    answer: "Đồng hồ",
+  },
+  {
+    id: 493,
+    level: "Dễ",
+    question:
+      "Môn thể thao nào mà người chơi dùng tay nhồi bóng và ném vào rổ?",
+    options: ["Bóng chuyền", "Bóng đá", "Bóng rổ", "Quần vợt"],
+    answer: "Bóng rổ",
+  },
+  {
+    id: 494,
+    level: "Dễ",
+    question: "Màu nào kết hợp với màu xanh dương sẽ tạo ra màu xanh lá cây?",
+    options: ["Màu đỏ", "Màu vàng", "Màu trắng", "Màu đen"],
+    answer: "Màu vàng",
+  },
+  {
+    id: 495,
+    level: "Dễ",
+    question: "Tết Nguyên Đán là dịp lễ quan trọng nhất của nước nào?",
+    options: ["Anh", "Mỹ", "Pháp", "Việt Nam"],
+    answer: "Việt Nam",
+  },
+  {
+    id: 496,
+    level: "Dễ",
+    question: "Phương tiện nào sau đây hoạt động dưới mặt nước?",
+    options: ["Tàu ngầm", "Tàu hỏa", "Máy bay", "Xe tăng"],
+    answer: "Tàu ngầm",
+  },
+  {
+    id: 497,
+    level: "Dễ",
+    question: "Quả gì có 5 múi, hình giống ngôi sao khi cắt ngang?",
+    options: ["Quả khế", "Quả chanh", "Quả cam", "Quả ổi"],
+    answer: "Quả khế",
+  },
+  {
+    id: 498,
+    level: "Dễ",
+    question: "Câu tục ngữ 'Uống nước nhớ...' chữ tiếp theo là gì?",
+    options: ["Rừng", "Núi", "Nguồn", "Biển"],
+    answer: "Nguồn",
+  },
+  {
+    id: 499,
+    level: "Dễ",
+    question:
+      "Trong truyện 'Sơn Tinh, Thủy Tinh', sính lễ Vua Hùng đòi hỏi có gà mấy cựa?",
+    options: ["7 cựa", "8 cựa", "9 cựa", "10 cựa"],
+    answer: "9 cựa",
+  },
+  {
+    id: 500,
+    level: "Dễ",
+    question: "Loại cây nào là biểu tượng của làng quê Việt Nam?",
+    options: ["Cây tre", "Cây bàng", "Cây phượng", "Cây đa"],
+    answer: "Cây tre",
+  },
+  {
+    id: 501,
+    level: "Dễ",
+    question: "Con vật nào bay đi tìm mật hoa về làm mật?",
+    options: ["Con muỗi", "Con ong", "Con kiến", "Con ruồi"],
+    answer: "Con ong",
+  },
+  {
+    id: 502,
+    level: "Dễ",
+    question:
+      "Người ta thường dùng phương tiện gì để bay lên không gian vũ trụ?",
+    options: ["Tàu vũ trụ", "Trực thăng", "Khinh khí cầu", "Tàu lượn"],
+    answer: "Tàu vũ trụ",
+  },
+  {
+    id: 503,
+    level: "Dễ",
+    question: "Tháng nào trong năm luôn có ít ngày nhất?",
+    options: ["Tháng 2", "Tháng 4", "Tháng 9", "Tháng 11"],
+    answer: "Tháng 2",
+  },
+  {
+    id: 504,
+    level: "Dễ",
+    question: "Con vật nào có chiếc mai cứng trên lưng để tự vệ?",
+    options: ["Con cua", "Con rùa", "Con ốc", "Cả 3 con vật trên"],
+    answer: "Cả 3 con vật trên",
+  },
+  {
+    id: 505,
+    level: "Dễ",
+    question: "Đâu là tên một loại hình thời tiết?",
+    options: ["Mưa", "Sách", "Bàn", "Ghế"],
+    answer: "Mưa",
+  },
+  {
+    id: 506,
+    level: "Dễ",
+    question:
+      "Loại trái cây nào có vỏ màu vàng, thường được bóc vỏ trước khi ăn và khỉ rất thích?",
+    options: ["Quả lê", "Quả chuối", "Quả dưa", "Quả táo"],
+    answer: "Quả chuối",
+  },
+  {
+    id: 507,
+    level: "Dễ",
+    question: "Kỳ quan Vịnh Hạ Long thuộc tỉnh nào của Việt Nam?",
+    options: ["Ninh Bình", "Hải Phòng", "Quảng Ninh", "Thái Bình"],
+    answer: "Quảng Ninh",
+  },
+  {
+    id: 508,
+    level: "Dễ",
+    question: "Trong câu chuyện Thạch Sanh, Thạch Sanh làm nghề gì?",
+    options: ["Kiếm củi", "Đánh cá", "Chăn bò", "Trồng lúa"],
+    answer: "Kiếm củi",
+  },
+  {
+    id: 509,
+    level: "Dễ",
+    question: "Nước ta có hình chữ gì?",
+    options: ["Chữ C", "Chữ S", "Chữ V", "Chữ L"],
+    answer: "Chữ S",
+  },
+  {
+    id: 510,
+    level: "Dễ",
+    question: "Đơn vị đo khối lượng phổ biến ở Việt Nam là gì?",
+    options: ["Lít", "Mét", "Kilôgam", "Độ C"],
+    answer: "Kilôgam",
+  },
+  {
+    id: 511,
+    level: "Dễ",
+    question: "Chữ cái đầu tiên trong bảng chữ cái tiếng Anh là gì?",
+    options: ["B", "C", "Z", "A"],
+    answer: "A",
+  },
+  {
+    id: 512,
+    level: "Dễ",
+    question: "Con giáp nào đại diện cho năm 2024?",
+    options: ["Thìn (Rồng)", "Mão (Mèo)", "Tỵ (Rắn)", "Ngọ (Ngựa)"],
+    answer: "Thìn (Rồng)",
+  },
+  {
+    id: 513,
+    level: "Dễ",
+    question: "Ngôi sao nào ban ngày chúng ta có thể nhìn thấy?",
+    options: ["Sao Hỏa", "Sao Kim", "Mặt Trời", "Mặt Trăng"],
+    answer: "Mặt Trời",
+  },
+  {
+    id: 514,
+    level: "Dễ",
+    question: "Trái Đất có mấy cực chính?",
+    options: ["1", "2", "3", "4"],
+    answer: "2",
+  },
+  {
+    id: 515,
+    level: "Dễ",
+    question: "Con mắt dùng để làm gì?",
+    options: ["Ngửi", "Nếm", "Nghe", "Nhìn"],
+    answer: "Nhìn",
+  },
+  {
+    id: 516,
+    level: "Dễ",
+    question:
+      "Trong truyện 'Aladdin và cây đèn thần', vị thần xuất hiện từ đâu?",
+    options: ["Cuốn sách thần", "Cây đèn", "Chai nước", "Chiếc nhẫn"],
+    answer: "Cây đèn",
+  },
+  {
+    id: 517,
+    level: "Dễ",
+    question:
+      "Ngày Quốc khánh của nước Cộng hòa Xã hội Chủ nghĩa Việt Nam là ngày nào?",
+    options: ["30/4", "1/5", "2/9", "22/12"],
+    answer: "2/9",
+  },
+  {
+    id: 518,
+    level: "Dễ",
+    question: "Mũ bảo hiểm dùng để bảo vệ bộ phận nào trên cơ thể?",
+    options: ["Bàn tay", "Đầu", "Bàn chân", "Đầu gối"],
+    answer: "Đầu",
+  },
+  {
+    id: 519,
+    level: "Dễ",
+    question:
+      "Món ăn nào được xem là quốc hồn quốc túy của Việt Nam, thường ăn với bánh phở?",
+    options: ["Bún bò", "Hủ tiếu", "Phở", "Bánh mì"],
+    answer: "Phở",
+  },
+  {
+    id: 520,
+    level: "Dễ",
+    question: "Một tá bằng bao nhiêu cái?",
+    options: ["10", "12", "15", "20"],
+    answer: "12",
+  },
+  {
+    id: 521,
+    level: "Dễ",
+    question: "Loài chim nào thường thức về đêm và có đôi mắt rất to?",
+    options: ["Chim sẻ", "Chim cú", "Đại bàng", "Gõ kiến"],
+    answer: "Chim cú",
+  },
+  {
+    id: 522,
+    level: "Dễ",
+    question: "Loại nhạc cụ nào sử dụng phím đen và trắng?",
+    options: ["Đàn Guitar", "Đàn Piano", "Trống", "Sáo"],
+    answer: "Đàn Piano",
+  },
+  {
+    id: 523,
+    level: "Dễ",
+    question:
+      "Ai là người dũng cảm lấy thân mình lấp lỗ châu mai trong chiến dịch Điện Biên Phủ?",
+    options: ["Bế Văn Đàn", "Tô Vĩnh Diện", "Phan Đình Giót", "La Văn Cầu"],
+    answer: "Phan Đình Giót",
+  },
+  {
+    id: 524,
+    level: "Dễ",
+    question: "Bình thường, con người có bao nhiêu ngón tay?",
+    options: ["8", "10", "12", "14"],
+    answer: "10",
+  },
+  {
+    id: 525,
+    level: "Dễ",
+    question: "Loài vật nào được dùng để kéo xe tuyết ở vùng Bắc Cực?",
+    options: ["Ngựa", "Chó Husky/Malamute", "Bò", "Lạc đà"],
+    answer: "Chó Husky/Malamute",
+  },
+  {
+    id: 526,
+    level: "Dễ",
+    question: "Hồ Gươm (Hồ Hoàn Kiếm) nằm ở thành phố nào?",
+    options: ["Huế", "Đà Nẵng", "Hà Nội", "Hải Phòng"],
+    answer: "Hà Nội",
+  },
+  {
+    id: 527,
+    level: "Dễ",
+    question:
+      "Biển báo giao thông hình tròn, viền đỏ, nền trắng thường mang ý nghĩa gì?",
+    options: ["Chỉ dẫn", "Biển báo cấm", "Cảnh báo nguy hiểm", "Hiệu lệnh"],
+    answer: "Biển báo cấm",
+  },
+  {
+    id: 528,
+    level: "Dễ",
+    question: "Quả địa cầu có hình gì?",
+    options: ["Hình vuông", "Hình cầu", "Hình tam giác", "Hình trụ"],
+    answer: "Hình cầu",
+  },
+  {
+    id: 529,
+    level: "Dễ",
+    question: "Nước đóng băng sẽ chuyển thành thể gì?",
+    options: ["Thể khí", "Thể lỏng", "Thể rắn", "Thể plasma"],
+    answer: "Thể rắn",
+  },
+  {
+    id: 530,
+    level: "Dễ",
+    question:
+      "Loài cây nào thường được trang trí bằng đèn nháy, quả châu vào dịp Giáng sinh?",
+    options: ["Cây mai", "Cây thông", "Cây quất", "Cây tre"],
+    answer: "Cây thông",
+  },
+  {
+    id: 531,
+    level: "Dễ",
+    question:
+      "Trong bóng đá, người duy nhất được dùng tay chơi bóng trong vòng cấm là ai?",
+    options: ["Tiền đạo", "Hậu vệ", "Thủ môn", "Trọng tài"],
+    answer: "Thủ môn",
+  },
+  {
+    id: 532,
+    level: "Dễ",
+    question: "Đu đủ khi chín thường có ruột màu gì?",
+    options: ["Màu trắng", "Màu xanh", "Màu vàng hoặc cam", "Màu tím"],
+    answer: "Màu vàng hoặc cam",
+  },
+  {
+    id: 533,
+    level: "Dễ",
+    question:
+      "Trong bài hát 'Cháu lên ba', cháu đi mẫu giáo cô thương cháu vì sao?",
+    options: [
+      "Vì cháu múa đẹp",
+      "Vì cháu hát hay",
+      "Vì cháu không khóc nhè",
+      "Vì cháu ăn ngoan",
+    ],
+    answer: "Vì cháu không khóc nhè",
+  },
+  {
+    id: 534,
+    level: "Dễ",
+    question: "Nghề nào thường sử dụng ống nghe để khám bệnh?",
+    options: ["Nghề giáo viên", "Nghề kĩ sư", "Nghề bác sĩ", "Nghề ca sĩ"],
+    answer: "Nghề bác sĩ",
+  },
+  {
+    id: 535,
+    level: "Dễ",
+    question:
+      "Tên một loại phương tiện công cộng chở được nhiều người trên đường phố?",
+    options: ["Xe đạp", "Xe máy", "Xe buýt", "Xe tải"],
+    answer: "Xe buýt",
+  },
+  {
+    id: 536,
+    level: "Dễ",
+    question: "Phép tính 5 cộng 5 bằng bao nhiêu?",
+    options: ["5", "10", "15", "20"],
+    answer: "10",
+  },
+  {
+    id: 537,
+    level: "Dễ",
+    question: "Khi nào chúng ta cần sử dụng ô (dù)?",
+    options: [
+      "Khi trời mưa",
+      "Khi trời nắng",
+      "Cả khi mưa và nắng",
+      "Khi đi ngủ",
+    ],
+    answer: "Cả khi mưa và nắng",
+  },
+  {
+    id: 538,
+    level: "Dễ",
+    question: "Nhân vật chuột Mickey có đôi tai hình gì?",
+    options: ["Hình vuông", "Hình tam giác", "Hình tròn", "Hình thoi"],
+    answer: "Hình tròn",
+  },
+  {
+    id: 539,
+    level: "Dễ",
+    question: "Chiếc nón lá truyền thống của Việt Nam được đan từ lá gì?",
+    options: ["Lá cọ (hoặc nón)", "Lá chuối", "Lá dừa", "Lá sen"],
+    answer: "Lá cọ (hoặc nón)",
+  },
+  {
+    id: 540,
+    level: "Dễ",
+    question: "Loài hoa nào luôn hướng về phía Mặt Trời?",
+    options: ["Hoa hồng", "Hoa cúc", "Hoa hướng dương", "Hoa lan"],
+    answer: "Hoa hướng dương",
+  },
+  {
+    id: 541,
+    level: "Dễ",
+    question: "Thủ đô của nước Mỹ là thành phố nào?",
+    options: ["New York", "Los Angeles", "Washington D.C.", "Chicago"],
+    answer: "Washington D.C.",
+  },
+  {
+    id: 542,
+    level: "Dễ",
+    question: "Châu Á là châu lục lớn thứ mấy trên thế giới?",
+    options: ["Thứ nhất", "Thứ hai", "Thứ ba", "Thứ tư"],
+    answer: "Thứ nhất",
+  },
+  {
+    id: 543,
+    level: "Dễ",
+    question: "Đường bộ dùng cho phương tiện gì đi lại?",
+    options: ["Máy bay", "Tàu hỏa", "Xe ô tô, xe máy", "Tàu thủy"],
+    answer: "Xe ô tô, xe máy",
+  },
+
+  // ==============================================
+  // --- CẤP ĐỘ TRUNG BÌNH (53 câu: ID 544 - 596) ---
+  // ==============================================
+  {
+    id: 544,
+    level: "Trung bình",
+    question: "Ai là tác giả của tiểu thuyết 'Tắt đèn'?",
+    options: ["Ngô Tất Tố", "Nam Cao", "Nguyên Hồng", "Vũ Trọng Phụng"],
+    answer: "Ngô Tất Tố",
+  },
+  {
+    id: 545,
+    level: "Trung bình",
+    question: "Đại dương nào ngăn cách châu Mỹ và châu Âu?",
+    options: [
+      "Thái Bình Dương",
+      "Ấn Độ Dương",
+      "Đại Tây Dương",
+      "Bắc Băng Dương",
+    ],
+    answer: "Đại Tây Dương",
+  },
+  {
+    id: 546,
+    level: "Trung bình",
+    question: "Vị vua nào của Việt Nam có tên thật là Lê Tư Thành?",
+    options: ["Lê Lợi", "Lê Thánh Tông", "Lê Nhân Tông", "Lê Hoàn"],
+    answer: "Lê Thánh Tông",
+  },
+  {
+    id: 547,
+    level: "Trung bình",
+    question: "Theo quy ước, đường xích đạo có vĩ độ bằng bao nhiêu?",
+    options: ["0 độ", "90 độ", "180 độ", "360 độ"],
+    answer: "0 độ",
+  },
+  {
+    id: 548,
+    level: "Trung bình",
+    question: "Quốc gia nào sở hữu kênh đào Suez?",
+    options: ["Panama", "Ai Cập", "Thổ Nhĩ Kỳ", "Hy Lạp"],
+    answer: "Ai Cập",
+  },
+  {
+    id: 549,
+    level: "Trung bình",
+    question:
+      "Bộ phận nào trong cơ thể người sản xuất ra mật để tiêu hóa chất béo?",
+    options: ["Tụy", "Gan", "Dạ dày", "Thận"],
+    answer: "Gan",
+  },
+  {
+    id: 550,
+    level: "Trung bình",
+    question: "Thành phố nào là thủ đô của Canada?",
+    options: ["Toronto", "Vancouver", "Ottawa", "Montreal"],
+    answer: "Ottawa",
+  },
+  {
+    id: 551,
+    level: "Trung bình",
+    question:
+      "Cuộc kháng chiến chống Mỹ cứu nước của dân tộc ta kết thúc vào năm nào?",
+    options: ["1945", "1954", "1975", "1986"],
+    answer: "1975",
+  },
+  {
+    id: 552,
+    level: "Trung bình",
+    question: "Lễ trao giải Oscar là giải thưởng uy tín trong lĩnh vực nào?",
+    options: ["Âm nhạc", "Văn học", "Điện ảnh", "Khoa học"],
+    answer: "Điện ảnh",
+  },
+  {
+    id: 553,
+    level: "Trung bình",
+    question: "Ký hiệu hóa học của nguyên tố Oxi là gì?",
+    options: ["O", "Ox", "O2", "H"],
+    answer: "O",
+  },
+  {
+    id: 554,
+    level: "Trung bình",
+    question:
+      "Đảo quốc lớn nhất thế giới, Greenland, là một lãnh thổ tự trị thuộc quốc gia nào?",
+    options: ["Canada", "Anh", "Đan Mạch", "Na Uy"],
+    answer: "Đan Mạch",
+  },
+  {
+    id: 555,
+    level: "Trung bình",
+    question:
+      "Trong truyện Kiều, Kim Trọng và Thúy Kiều đã trao kỷ vật gì cho nhau?",
+    options: [
+      "Chiếc trâm cài",
+      "Khúc đàn nguyệt",
+      "Chiếc quạt lụa và cành kim thoa",
+      "Khăn tay",
+    ],
+    answer: "Chiếc quạt lụa và cành kim thoa",
+  },
+  {
+    id: 556,
+    level: "Trung bình",
+    question:
+      "Bức tranh nổi tiếng 'Tiếng Thét' (The Scream) là của danh họa nào?",
+    options: [
+      "Vincent van Gogh",
+      "Edvard Munch",
+      "Claude Monet",
+      "Salvador Dalí",
+    ],
+    answer: "Edvard Munch",
+  },
+  {
+    id: 557,
+    level: "Trung bình",
+    question: "Đơn vị đo lực trong hệ đo lường quốc tế là gì?",
+    options: ["Joule (J)", "Newton (N)", "Watt (W)", "Pascal (Pa)"],
+    answer: "Newton (N)",
+  },
+  {
+    id: 558,
+    level: "Trung bình",
+    question: "Cố đô Hoa Lư thuộc tỉnh nào hiện nay?",
+    options: ["Ninh Bình", "Thanh Hóa", "Thái Bình", "Nam Định"],
+    answer: "Ninh Bình",
+  },
+  {
+    id: 559,
+    level: "Trung bình",
+    question: "Tiền tệ chính thức của Nhật Bản là gì?",
+    options: ["Yuan", "Won", "Yen", "Rupee"],
+    answer: "Yen",
+  },
+  {
+    id: 560,
+    level: "Trung bình",
+    question: "Số Pi (π) xấp xỉ bằng bao nhiêu?",
+    options: ["2.14", "3.14", "4.14", "3.41"],
+    answer: "3.14",
+  },
+  {
+    id: 561,
+    level: "Trung bình",
+    question: "Tác giả của bộ truyện tranh 'Thám tử lừng danh Conan' là ai?",
+    options: [
+      "Fujiko F. Fujio",
+      "Gosho Aoyama",
+      "Eiichiro Oda",
+      "Akira Toriyama",
+    ],
+    answer: "Gosho Aoyama",
+  },
+  {
+    id: 562,
+    level: "Trung bình",
+    question: "Phần mềm Microsoft Word thuộc loại phần mềm nào?",
+    options: [
+      "Hệ điều hành",
+      "Phần mềm trình chiếu",
+      "Phần mềm soạn thảo văn bản",
+      "Phần mềm diệt virus",
+    ],
+    answer: "Phần mềm soạn thảo văn bản",
+  },
+  {
+    id: 563,
+    level: "Trung bình",
+    question: "Sông Mekong chảy qua bao nhiêu quốc gia?",
+    options: ["4", "5", "6", "7"],
+    answer: "6",
+  },
+  {
+    id: 564,
+    level: "Trung bình",
+    question: "Côn Đảo thuộc tỉnh nào của nước ta?",
+    options: ["Bà Rịa - Vũng Tàu", "Kiên Giang", "Cà Mau", "Sóc Trăng"],
+    answer: "Bà Rịa - Vũng Tàu",
+  },
+  {
+    id: 565,
+    level: "Trung bình",
+    question: "Con vật nào có khả năng ngủ đứng?",
+    options: ["Ngựa", "Chó", "Mèo", "Lợn"],
+    answer: "Ngựa",
+  },
+  {
+    id: 566,
+    level: "Trung bình",
+    question: "Di tích lịch sử Dinh Độc Lập còn có tên gọi khác là gì?",
+    options: [
+      "Dinh Gia Long",
+      "Hội trường Thống Nhất",
+      "Bến Nhà Rồng",
+      "Bảo tàng Chứng tích chiến tranh",
+    ],
+    answer: "Hội trường Thống Nhất",
+  },
+  {
+    id: 567,
+    level: "Trung bình",
+    question: "Hoạt chất chính trong cà phê giúp giữ tỉnh táo là gì?",
+    options: ["Nicotine", "Caffeine", "Taurine", "Melatonin"],
+    answer: "Caffeine",
+  },
+  {
+    id: 568,
+    level: "Trung bình",
+    question: "Người Ai Cập cổ đại đã ướp xác để tạo ra cái gì?",
+    options: ["Tượng đá", "Xác ướp (Mummy)", "Bia mộ", "Kim tự tháp"],
+    answer: "Xác ướp (Mummy)",
+  },
+  {
+    id: 569,
+    level: "Trung bình",
+    question: "Bức tượng Chúa Cứu Thế (Cristo Redentor) nằm ở quốc gia nào?",
+    options: ["Tây Ban Nha", "Argentina", "Bồ Đào Nha", "Brazil"],
+    answer: "Brazil",
+  },
+  {
+    id: 570,
+    level: "Trung bình",
+    question:
+      "Nhóm máu nào được gọi là nhóm máu 'chuyên cho' (có thể truyền cho mọi nhóm máu khác)?",
+    options: ["A", "B", "AB", "O"],
+    answer: "O",
+  },
+  {
+    id: 571,
+    level: "Trung bình",
+    question:
+      "Liên minh Châu Âu (EU) hiện nay có trụ sở chính tại thành phố nào?",
+    options: ["Paris", "Berlin", "Brussels", "Geneva"],
+    answer: "Brussels",
+  },
+  {
+    id: 572,
+    level: "Trung bình",
+    question:
+      "Theo lịch Âm, năm có nhuận sẽ có thêm 1 tháng, vậy năm Âm lịch nhuận có bao nhiêu tháng?",
+    options: ["11", "12", "13", "14"],
+    answer: "13",
+  },
+  {
+    id: 573,
+    level: "Trung bình",
+    question: "Đường kính của hình tròn gấp mấy lần bán kính của nó?",
+    options: ["2 lần", "3 lần", "4 lần", "Bằng nhau"],
+    answer: "2 lần",
+  },
+  {
+    id: 574,
+    level: "Trung bình",
+    question: "Vị thần Mặt Trời trong thần thoại Hy Lạp tên là gì?",
+    options: ["Apollo", "Ares", "Hermes", "Hephaestus"],
+    answer: "Apollo",
+  },
+  {
+    id: 575,
+    level: "Trung bình",
+    question: "Thiết bị nào chuyển đổi cơ năng thành điện năng?",
+    options: ["Động cơ điện", "Máy phát điện", "Biến áp", "Pin"],
+    answer: "Máy phát điện",
+  },
+  {
+    id: 576,
+    level: "Trung bình",
+    question: "Kỳ World Cup bóng đá nữ 2023 được tổ chức tại hai quốc gia nào?",
+    options: [
+      "Mỹ và Canada",
+      "Úc và New Zealand",
+      "Pháp và Đức",
+      "Nhật Bản và Hàn Quốc",
+    ],
+    answer: "Úc và New Zealand",
+  },
+  {
+    id: 577,
+    level: "Trung bình",
+    question:
+      "Trong truyện Harry Potter, tên ngôi trường phù thủy mà Harry theo học là gì?",
+    options: ["Durmstrang", "Beauxbatons", "Hogwarts", "Ilvermorny"],
+    answer: "Hogwarts",
+  },
+  {
+    id: 578,
+    level: "Trung bình",
+    question:
+      "Quốc gia nào có dân số đông thứ 2 thế giới (theo thống kê năm 2023, sau Ấn Độ)?",
+    options: ["Mỹ", "Trung Quốc", "Indonesia", "Pakistan"],
+    answer: "Trung Quốc",
+  },
+  {
+    id: 579,
+    level: "Trung bình",
+    question: "Đại thi hào Nguyễn Du sống vào thời kỳ triều đại nào?",
+    options: [
+      "Triều Lê - Trịnh",
+      "Triều Tây Sơn và đầu triều Nguyễn",
+      "Triều Lý",
+      "Triều Trần",
+    ],
+    answer: "Triều Tây Sơn và đầu triều Nguyễn",
+  },
+  {
+    id: 580,
+    level: "Trung bình",
+    question:
+      "Hành tinh nào có số lượng vành đai rõ nét và đẹp nhất Hệ Mặt Trời?",
+    options: ["Sao Mộc", "Sao Thổ", "Sao Thiên Vương", "Sao Hải Vương"],
+    answer: "Sao Thổ",
+  },
+  {
+    id: 581,
+    level: "Trung bình",
+    question: "Thành phố cảng lớn nhất nước Đức là thành phố nào?",
+    options: ["Munich", "Frankfurt", "Berlin", "Hamburg"],
+    answer: "Hamburg",
+  },
+  {
+    id: 582,
+    level: "Trung bình",
+    question: "Vitamin K có chức năng chính là gì trong cơ thể?",
+    options: [
+      "Giúp sáng mắt",
+      "Hỗ trợ đông máu",
+      "Chống còi xương",
+      "Tăng cường trí nhớ",
+    ],
+    answer: "Hỗ trợ đông máu",
+  },
+  {
+    id: 583,
+    level: "Trung bình",
+    question: "Di sản văn hóa thế giới Mỹ Sơn thuộc tỉnh nào của Việt Nam?",
+    options: ["Quảng Bình", "Thừa Thiên Huế", "Quảng Nam", "Quảng Ngãi"],
+    answer: "Quảng Nam",
+  },
+  {
+    id: 584,
+    level: "Trung bình",
+    question: "Châu Phi giáp với châu Âu qua biển nào?",
+    options: ["Biển Đỏ", "Biển Đen", "Biển Địa Trung Hải", "Biển Caspi"],
+    answer: "Biển Địa Trung Hải",
+  },
+  {
+    id: 585,
+    level: "Trung bình",
+    question: "Vận tốc ánh sáng trong chân không xấp xỉ bằng bao nhiêu km/s?",
+    options: ["30.000", "150.000", "300.000", "1.000.000"],
+    answer: "300.000",
+  },
+  {
+    id: 586,
+    level: "Trung bình",
+    question: "Triết gia Khổng Tử là người nước nào thời Xuân Thu Chiến Quốc?",
+    options: ["Nước Tề", "Nước Lỗ", "Nước Tần", "Nước Sở"],
+    answer: "Nước Lỗ",
+  },
+  {
+    id: 587,
+    level: "Trung bình",
+    question: "Ai là tác giả của bài hát 'Như có Bác trong ngày đại thắng'?",
+    options: ["Phạm Tuyên", "Trịnh Công Sơn", "Trần Hoàn", "Văn Cao"],
+    answer: "Phạm Tuyên",
+  },
+  {
+    id: 588,
+    level: "Trung bình",
+    question: "Đơn vị tiền tệ chính thức của Thái Lan là gì?",
+    options: ["Baht", "Rupiah", "Peso", "Ringgit"],
+    answer: "Baht",
+  },
+  {
+    id: 589,
+    level: "Trung bình",
+    question: "Trong thần thoại La Mã, nữ thần tình yêu và sắc đẹp tên là gì?",
+    options: ["Athena", "Diana", "Venus", "Juno"],
+    answer: "Venus",
+  },
+  {
+    id: 590,
+    level: "Trung bình",
+    question: "Cây cao su được trồng nhiều nhất ở vùng nào của nước ta?",
+    options: [
+      "Tây Bắc",
+      "Đông Nam Bộ",
+      "Đồng bằng sông Cửu Long",
+      "Bắc Trung Bộ",
+    ],
+    answer: "Đông Nam Bộ",
+  },
+  {
+    id: 591,
+    level: "Trung bình",
+    question: "Nước Nga trải dài trên hai châu lục nào?",
+    options: [
+      "Châu Âu và Châu Á",
+      "Châu Á và Châu Phi",
+      "Châu Âu và Châu Phi",
+      "Châu Mỹ và Châu Âu",
+    ],
+    answer: "Châu Âu và Châu Á",
+  },
+  {
+    id: 592,
+    level: "Trung bình",
+    question: "Lễ hội Halloween được tổ chức vào ngày nào hàng năm?",
+    options: ["31 tháng 9", "31 tháng 10", "30 tháng 11", "31 tháng 12"],
+    answer: "31 tháng 10",
+  },
+  {
+    id: 593,
+    level: "Trung bình",
+    question:
+      "Chất khí nào chiếm tỷ lệ cao thứ 2 trong bầu khí quyển Trái Đất?",
+    options: ["Khí Nitơ", "Khí Carbonic", "Khí Oxy", "Khí Argon"],
+    answer: "Khí Oxy",
+  },
+  {
+    id: 594,
+    level: "Trung bình",
+    question: "Mã quốc gia tên miền Internet của Việt Nam là gì?",
+    options: [".com", ".vn", ".vi", ".vnm"],
+    answer: ".vn",
+  },
+  {
+    id: 595,
+    level: "Trung bình",
+    question: "Thành phố Đà Lạt nằm trên cao nguyên nào?",
+    options: [
+      "Cao nguyên Lâm Viên",
+      "Cao nguyên Di Linh",
+      "Cao nguyên Pleiku",
+      "Cao nguyên Mộc Châu",
+    ],
+    answer: "Cao nguyên Lâm Viên",
+  },
+  {
+    id: 596,
+    level: "Trung bình",
+    question:
+      "Ai là đạo diễn của bộ phim Việt Nam đoạt giải Phim hay nhất tại nhiều Liên hoan phim quốc tế 'Mùi đu đủ xanh'?",
+    options: ["Trần Anh Hùng", "Victor Vũ", "Charlie Nguyễn", "Lê Hoàng"],
+    answer: "Trần Anh Hùng",
+  },
+
+  // =======================================
+  // --- CẤP ĐỘ KHÓ (52 câu: ID 597 - 648) ---
+  // =======================================
+  {
+    id: 597,
+    level: "Khó",
+    question: "Giải Nobel Hòa bình được trao tại thành phố nào?",
+    options: [
+      "Stockholm (Thụy Điển)",
+      "Oslo (Na Uy)",
+      "Geneva (Thụy Sĩ)",
+      "London (Anh)",
+    ],
+    answer: "Oslo (Na Uy)",
+  },
+  {
+    id: 598,
+    level: "Khó",
+    question:
+      "Tên của đại dương nào có nghĩa là 'Thái Bình' trong tiếng Bồ Đào Nha do nhà thám hiểm Magellan đặt?",
+    options: [
+      "Ấn Độ Dương",
+      "Thái Bình Dương",
+      "Đại Tây Dương",
+      "Nam Đại Dương",
+    ],
+    answer: "Thái Bình Dương",
+  },
+  {
+    id: 599,
+    level: "Khó",
+    question:
+      "Nhà khoa học nào đã đề xuất Mô hình Nhật tâm (Mặt Trời ở trung tâm vũ trụ) vào thế kỷ 16?",
+    options: [
+      "Galileo Galilei",
+      "Nicolaus Copernicus",
+      "Johannes Kepler",
+      "Isaac Newton",
+    ],
+    answer: "Nicolaus Copernicus",
+  },
+  {
+    id: 600,
+    level: "Khó",
+    question:
+      "Trong lịch sử nước Mỹ, ai là tổng thống duy nhất phục vụ hơn 2 nhiệm kỳ?",
+    options: [
+      "George Washington",
+      "Abraham Lincoln",
+      "Franklin D. Roosevelt",
+      "Theodore Roosevelt",
+    ],
+    answer: "Franklin D. Roosevelt",
+  },
+  {
+    id: 601,
+    level: "Khó",
+    question:
+      "Thành phố nào của Nhật Bản từng là thủ đô trong hơn 1000 năm trước khi chuyển về Tokyo?",
+    options: ["Osaka", "Kyoto", "Nara", "Sapporo"],
+    answer: "Kyoto",
+  },
+  {
+    id: 602,
+    level: "Khó",
+    question:
+      "Tác phẩm điêu khắc nổi tiếng 'Người suy tưởng' (The Thinker) là của nhà điêu khắc nào?",
+    options: [
+      "Michelangelo",
+      "Auguste Rodin",
+      "Donatello",
+      "Gian Lorenzo Bernini",
+    ],
+    answer: "Auguste Rodin",
+  },
+  {
+    id: 603,
+    level: "Khó",
+    question: "Tôn giáo nào có cuốn kinh thánh thiêng liêng là kinh Torah?",
+    options: ["Cơ Đốc giáo", "Hồi giáo", "Do Thái giáo", "Ấn Độ giáo"],
+    answer: "Do Thái giáo",
+  },
+  {
+    id: 604,
+    level: "Khó",
+    question:
+      "Kỳ quan đền Taj Mahal của Ấn Độ được xây dựng dưới triều đại nào?",
+    options: [
+      "Triều đại Maurya",
+      "Triều đại Gupta",
+      "Đế quốc Mughal",
+      "Đế chế Maratha",
+    ],
+    answer: "Đế quốc Mughal",
+  },
+  {
+    id: 605,
+    level: "Khó",
+    question:
+      "Trong hóa sinh, ATP là phân tử mang năng lượng. Chữ 'A' trong ATP là viết tắt của từ gì?",
+    options: ["Adenine", "Adenosine", "Amino", "Ammonia"],
+    answer: "Adenosine",
+  },
+  {
+    id: 606,
+    level: "Khó",
+    question: "Họa sĩ vẽ bức tranh 'Mona Lisa' thuộc thời kỳ nghệ thuật nào?",
+    options: ["Gothic", "Phục hưng", "Baroque", "Ấn tượng"],
+    answer: "Phục hưng",
+  },
+  {
+    id: 607,
+    level: "Khó",
+    question:
+      "Sông nào dài thứ hai trên thế giới (sau sông Nile hoặc Amazon tùy định nghĩa, nhưng luôn đứng trong top 2)?",
+    options: [
+      "Sông Mississippi",
+      "Sông Dương Tử",
+      "Sông Amazon",
+      "Sông Hoàng Hà",
+    ],
+    answer: "Sông Amazon",
+  },
+  {
+    id: 608,
+    level: "Khó",
+    question:
+      "Trong ngôn ngữ học, ngôn ngữ nào thuộc nhóm ngôn ngữ Rôman (Romanic languages)?",
+    options: ["Tiếng Anh", "Tiếng Đức", "Tiếng Pháp", "Tiếng Nga"],
+    answer: "Tiếng Pháp",
+  },
+  {
+    id: 609,
+    level: "Khó",
+    question: "Ai là vị Pharaoh cuối cùng của Ai Cập cổ đại?",
+    options: ["Ramesses II", "Tutankhamun", "Cleopatra VII", "Hatshepsut"],
+    answer: "Cleopatra VII",
+  },
+  {
+    id: 610,
+    level: "Khó",
+    question: "Tên thật của nhà văn nổi tiếng Nam Cao là gì?",
+    options: ["Trần Hữu Tri", "Nguyễn Sen", "Ngô Khắc Tài", "Nguyễn Tuân"],
+    answer: "Trần Hữu Tri",
+  },
+  {
+    id: 611,
+    level: "Khó",
+    question: "Quốc gia nào ở Nam Mỹ có hai thủ đô (La Paz và Sucre)?",
+    options: ["Peru", "Bolivia", "Chile", "Colombia"],
+    answer: "Bolivia",
+  },
+  {
+    id: 612,
+    level: "Khó",
+    question:
+      "Giải quần vợt nào trong hệ thống Grand Slam là giải đấu duy nhất thi đấu trên mặt sân đất nện?",
+    options: [
+      "Australian Open",
+      "Wimbledon",
+      "US Open",
+      "Roland Garros (French Open)",
+    ],
+    answer: "Roland Garros (French Open)",
+  },
+  {
+    id: 613,
+    level: "Khó",
+    question: "Tác phẩm 'Tắt đèn' của Ngô Tất Tố xuất bản lần đầu năm nào?",
+    options: ["1936", "1939", "1941", "1945"],
+    answer: "1939",
+  },
+  {
+    id: 614,
+    level: "Khó",
+    question:
+      "Khối Rubik tiêu chuẩn (3x3x3) được phát minh bởi Ernő Rubik vào năm nào?",
+    options: ["1964", "1974", "1984", "1994"],
+    answer: "1974",
+  },
+  {
+    id: 615,
+    level: "Khó",
+    question:
+      "Người máy đầu tiên được cấp quyền công dân (ở Ả Rập Xê Út) có tên là gì?",
+    options: ["Sophia", "Alexa", "Siri", "Cortana"],
+    answer: "Sophia",
+  },
+  {
+    id: 616,
+    level: "Khó",
+    question:
+      "Ai là tác giả của cuốn sách vật lý nổi tiếng 'Lược sử thời gian' (A Brief History of Time)?",
+    options: [
+      "Albert Einstein",
+      "Richard Feynman",
+      "Stephen Hawking",
+      "Carl Sagan",
+    ],
+    answer: "Stephen Hawking",
+  },
+  {
+    id: 617,
+    level: "Khó",
+    question:
+      "Cuộc chiến tranh Lạnh (Cold War) chủ yếu xoay quanh sự đối đầu giữa hai khối do hai nước nào đứng đầu?",
+    options: ["Mỹ - Trung Quốc", "Mỹ - Liên Xô", "Anh - Liên Xô", "Pháp - Đức"],
+    answer: "Mỹ - Liên Xô",
+  },
+  {
+    id: 618,
+    level: "Khó",
+    question:
+      "Tiểu thuyết 'Trăm năm cô đơn' (One Hundred Years of Solitude) lấy bối cảnh tại ngôi làng hư cấu nào?",
+    options: ["Macondo", "Comala", "Yoknapatawpha", "Maycomb"],
+    answer: "Macondo",
+  },
+  {
+    id: 619,
+    level: "Khó",
+    question:
+      "Cấu trúc hóa học của phân tử Ozon (Ozone) gồm bao nhiêu nguyên tử Oxi?",
+    options: ["2", "3", "4", "5"],
+    answer: "3",
+  },
+  {
+    id: 620,
+    level: "Khó",
+    question:
+      "Trong lịch sử Trung Quốc, triều đại nào tồn tại ngắn nhất nhưng có công thống nhất chữ viết, cân đo đong đếm?",
+    options: ["Nhà Tần", "Nhà Tùy", "Nhà Nguyên", "Nhà Minh"],
+    answer: "Nhà Tần",
+  },
+  {
+    id: 621,
+    level: "Khó",
+    question:
+      "Loại nhạc cụ nào được nghệ sĩ Niccolò Paganini chơi xuất chúng đến mức người ta đồn ông đã bán linh hồn cho quỷ?",
+    options: ["Piano", "Cello", "Violin", "Flute"],
+    answer: "Violin",
+  },
+  {
+    id: 622,
+    level: "Khó",
+    question: "Từ 'Democracy' (Dân chủ) bắt nguồn từ ngôn ngữ cổ nào?",
+    options: ["Tiếng Latin", "Tiếng Hy Lạp cổ", "Tiếng Phạn", "Tiếng Ả Rập"],
+    answer: "Tiếng Hy Lạp cổ",
+  },
+  {
+    id: 623,
+    level: "Khó",
+    question:
+      "Mô hình ADN chuỗi xoắn kép do James Watson và Francis Crick tìm ra năm nào?",
+    options: ["1943", "1953", "1963", "1973"],
+    answer: "1953",
+  },
+  {
+    id: 624,
+    level: "Khó",
+    question:
+      "Thành phố Constantinopolis (hiện là Istanbul) đã rơi vào tay Đế quốc Ottoman năm nào?",
+    options: ["1204", "1389", "1453", "1526"],
+    answer: "1453",
+  },
+  {
+    id: 625,
+    level: "Khó",
+    question:
+      "Trạng nguyên Lê Văn Thịnh, trạng nguyên đầu tiên của Đại Việt, đỗ đạt dưới triều vua nào?",
+    options: ["Lý Thái Tổ", "Lý Thái Tông", "Lý Thánh Tông", "Lý Nhân Tông"],
+    answer: "Lý Nhân Tông",
+  },
+  {
+    id: 626,
+    level: "Khó",
+    question:
+      "Quốc gia nào có nhiều múi giờ nhất thế giới (kể cả các vùng lãnh thổ hải ngoại)?",
+    options: ["Nga", "Mỹ", "Pháp", "Anh"],
+    answer: "Pháp",
+  },
+  {
+    id: 627,
+    level: "Khó",
+    question:
+      "Sự kiện lịch sử 'Bữa tiệc trà Boston' (Boston Tea Party) năm 1773 là ngòi nổ cho cuộc cách mạng nào?",
+    options: [
+      "Cách mạng Pháp",
+      "Cách mạng công nghiệp",
+      "Cách mạng Mỹ",
+      "Cách mạng tháng Mười Nga",
+    ],
+    answer: "Cách mạng Mỹ",
+  },
+  {
+    id: 628,
+    level: "Khó",
+    question:
+      "Tên thủ đô của Úc (Canberra) có nghĩa là gì trong ngôn ngữ bản địa Ngunnawal?",
+    options: [
+      "Vùng đất xanh",
+      "Nơi gặp gỡ",
+      "Bến cảng an toàn",
+      "Thành phố ánh sáng",
+    ],
+    answer: "Nơi gặp gỡ",
+  },
+  {
+    id: 629,
+    level: "Khó",
+    question:
+      "Cuốn sách 'Hoàng tử bé' (Le Petit Prince) được viết bởi tác giả cũng làm nghề gì?",
+    options: ["Phi công", "Bác sĩ", "Thủy thủ", "Họa sĩ"],
+    answer: "Phi công",
+  },
+  {
+    id: 630,
+    level: "Khó",
+    question: "Kim loại nào ở thể lỏng ở nhiệt độ phòng?",
+    options: ["Chì", "Nhôm", "Thủy ngân", "Kẽm"],
+    answer: "Thủy ngân",
+  },
+  {
+    id: 631,
+    level: "Khó",
+    question: "Ngôn ngữ chính thức của Đế chế Inca ở Nam Mỹ là gì?",
+    options: ["Nahuatl", "Quechua", "Maya", "Aymara"],
+    answer: "Quechua",
+  },
+  {
+    id: 632,
+    level: "Khó",
+    question: "Ai là hoàng đế đầu tiên của Đế quốc La Mã?",
+    options: ["Julius Caesar", "Augustus (Octavian)", "Nero", "Trajan"],
+    answer: "Augustus (Octavian)",
+  },
+  {
+    id: 633,
+    level: "Khó",
+    question: "Tác phẩm văn học 'Odyssey' được quy cho nhà thơ Hy Lạp mù nào?",
+    options: ["Homer", "Virgil", "Sophocles", "Hesiod"],
+    answer: "Homer",
+  },
+  {
+    id: 634,
+    level: "Khó",
+    question:
+      "Nước nào nằm ở cả hai châu lục Âu - Á và thủ đô cũng nằm trên cả hai lục địa?",
+    options: ["Nga", "Thổ Nhĩ Kỳ", "Georgia", "Ai Cập (Âu-Phi)"],
+    answer: "Thổ Nhĩ Kỳ",
+  },
+  {
+    id: 635,
+    level: "Khó",
+    question:
+      "Bộ phim nào đã mở đầu cho Vũ trụ Điện ảnh Marvel (MCU) vào năm 2008?",
+    options: ["Captain America", "Iron Man", "Thor", "The Incredible Hulk"],
+    answer: "Iron Man",
+  },
+  {
+    id: 636,
+    level: "Khó",
+    question:
+      "Bức tranh nổi tiếng 'Guernica' của Picasso mô tả sự tàn phá của cuộc nội chiến ở quốc gia nào?",
+    options: ["Pháp", "Tây Ban Nha", "Ý", "Đức"],
+    answer: "Tây Ban Nha",
+  },
+  {
+    id: 637,
+    level: "Khó",
+    question:
+      "Ở cấp độ sinh học, kháng sinh Penicillin hoạt động bằng cách nào để tiêu diệt vi khuẩn?",
+    options: [
+      "Phá vỡ màng tế bào",
+      "Ức chế tổng hợp vách tế bào",
+      "Phá hủy ADN",
+      "Chặn sự hô hấp",
+    ],
+    answer: "Ức chế tổng hợp vách tế bào",
+  },
+  {
+    id: 638,
+    level: "Khó",
+    question:
+      "Hoàng đế Napoleon Bonaparte bị lưu đày ở hòn đảo nào cuối cùng trước khi qua đời?",
+    options: ["Elba", "Corsica", "Saint Helena", "Sardinia"],
+    answer: "Saint Helena",
+  },
+  {
+    id: 639,
+    level: "Khó",
+    question:
+      "Người đầu tiên bay vòng quanh Trái Đất trên vũ trụ là Yuri Gagarin, chuyến bay đó kéo dài bao lâu?",
+    options: ["89 phút", "108 phút", "150 phút", "24 giờ"],
+    answer: "108 phút",
+  },
+  {
+    id: 640,
+    level: "Khó",
+    question: "Nguyên tố phổ biến nhất trong lớp vỏ Trái Đất là gì?",
+    options: ["Oxi", "Silic", "Nhôm", "Sắt"],
+    answer: "Oxi",
+  },
+  {
+    id: 641,
+    level: "Khó",
+    question: "Ngày thành lập Đảng Cộng sản Việt Nam là ngày nào?",
+    options: ["3/2/1930", "2/9/1930", "19/8/1945", "22/12/1944"],
+    answer: "3/2/1930",
+  },
+  {
+    id: 642,
+    level: "Khó",
+    question:
+      "Khái niệm 'Bàn tay vô hình' trong kinh tế học được đưa ra bởi triết gia, nhà kinh tế nào?",
+    options: [
+      "Karl Marx",
+      "John Maynard Keynes",
+      "Adam Smith",
+      "David Ricardo",
+    ],
+    answer: "Adam Smith",
+  },
+  {
+    id: 643,
+    level: "Khó",
+    question:
+      "Triều đại nhà Thanh (Trung Quốc) kết thúc vào năm nào, đánh dấu sự sụp đổ của chế độ phong kiến tại đây?",
+    options: ["1901", "1911", "1912", "1949"],
+    answer: "1912",
+  },
+  {
+    id: 644,
+    level: "Khó",
+    question:
+      "Tên thật của nữ hoàng Cleopatra VII (Ai Cập cổ đại) chỉ ra bà có nguồn gốc từ dân tộc nào?",
+    options: ["Ai Cập bản địa", "Ba Tư", "La Mã", "Macedonia (Hy Lạp)"],
+    answer: "Macedonia (Hy Lạp)",
+  },
+  {
+    id: 645,
+    level: "Khó",
+    question:
+      "Tác phẩm 'Gatsby vĩ đại' (The Great Gatsby) của F. Scott Fitzgerald phản ánh bối cảnh thời kỳ nào ở nước Mỹ?",
+    options: [
+      "Kỷ nguyên vàng (Gilded Age)",
+      "Thời đại Jazz (Roaring Twenties)",
+      "Đại suy thoái (Great Depression)",
+      "Thời kỳ Tái thiết",
+    ],
+    answer: "Thời đại Jazz (Roaring Twenties)",
+  },
+  {
+    id: 646,
+    level: "Khó",
+    question: "Khoảng cách từ Trái Đất đến Mặt Trăng xấp xỉ bao nhiêu kilomet?",
+    options: ["150.000 km", "384.400 km", "500.000 km", "1.000.000 km"],
+    answer: "384.400 km",
+  },
+  {
+    id: 647,
+    level: "Khó",
+    question: "Thủ đô của quốc gia Brazil là thành phố nào?",
+    options: ["Rio de Janeiro", "São Paulo", "Brasília", "Salvador"],
+    answer: "Brasília",
+  },
+  {
+    id: 648,
+    level: "Khó",
+    question:
+      "Bộ phận nào của não bộ chịu trách nhiệm chính về điều hòa thăng bằng và vận động phối hợp?",
+    options: ["Đại não", "Tiểu não", "Thân não", "Hành tủy"],
+    answer: "Tiểu não",
+  },
+
+  // ============================================
+  // --- CẤP ĐỘ RẤT KHÓ (52 câu: ID 649 - 700) ---
+  // ============================================
+  {
+    id: 649,
+    level: "Rất khó",
+    question:
+      "Nguyên lý loại trừ Pauli trong cơ học lượng tử khẳng định điều gì về các fermion (ví dụ electron)?",
+    options: [
+      "Chúng không thể cùng có một tập hợp các số lượng tử giống hệt nhau",
+      "Chúng không thể vượt qua rào cản thế năng",
+      "Khối lượng của chúng luôn không đổi",
+      "Chúng có thể tồn tại ở nhiều vị trí cùng lúc",
+    ],
+    answer:
+      "Chúng không thể cùng có một tập hợp các số lượng tử giống hệt nhau",
+  },
+  {
+    id: 650,
+    level: "Rất khó",
+    question:
+      "Hiệp ước Tilsit năm 1807 được ký kết giữa Napoleon Bonaparte và quốc vương nào?",
+    options: [
+      "Hoàng đế Áo Francis II",
+      "Nga hoàng Alexander I",
+      "Vua Phổ Frederick William III",
+      "Vua Anh George III",
+    ],
+    answer: "Nga hoàng Alexander I",
+  },
+  {
+    id: 651,
+    level: "Rất khó",
+    question:
+      "Nhà toán học Georg Cantor nổi tiếng vì việc phát triển lý thuyết nào đã tạo ra cuộc khủng hoảng trong nền tảng toán học thế kỷ 19?",
+    options: [
+      "Lý thuyết xác suất",
+      "Lý thuyết tập hợp (đặc biệt về vô hạn)",
+      "Hình học phi Euclid",
+      "Giải tích phức",
+    ],
+    answer: "Lý thuyết tập hợp (đặc biệt về vô hạn)",
+  },
+  {
+    id: 652,
+    level: "Rất khó",
+    question:
+      "Cuốn sách 'Bình Ngô đại cáo' được Nguyễn Trãi viết theo thể văn nào?",
+    options: ["Thơ Đường luật", "Phú", "Cáo (Văn biền ngẫu)", "Chiếu"],
+    answer: "Cáo (Văn biền ngẫu)",
+  },
+  {
+    id: 653,
+    level: "Rất khó",
+    question:
+      "Sự kiện được gọi là 'Vụ Nổ Lớn' (Big Bang) được ước tính xảy ra cách đây khoảng bao nhiêu năm?",
+    options: ["4.5 tỷ năm", "10.2 tỷ năm", "13.8 tỷ năm", "15.5 tỷ năm"],
+    answer: "13.8 tỷ năm",
+  },
+  {
+    id: 654,
+    level: "Rất khó",
+    question:
+      "Bệnh Huntington, một chứng rối loạn thoái hóa thần kinh di truyền, là do đột biến dạng lặp lại của chuỗi nucleotit nào trên gen HTT?",
+    options: ["CGG", "CAG", "GAA", "CTG"],
+    answer: "CAG",
+  },
+  {
+    id: 655,
+    level: "Rất khó",
+    question:
+      "Nhà triết học người Hà Lan gốc Do Thái Baruch Spinoza đã bị rút phép thông công khỏi cộng đồng vì quan điểm triết học của ông đồng nhất Thượng Đế với cái gì?",
+    options: [
+      "Tình yêu",
+      "Nhân loại",
+      "Tự nhiên (Pantheism)",
+      "Lý trí tuyệt đối",
+    ],
+    answer: "Tự nhiên (Pantheism)",
+  },
+  {
+    id: 656,
+    level: "Rất khó",
+    question:
+      "Hành tinh nào trong Hệ Mặt Trời có một khối đốm đen lớn được gọi là 'Vết Tối Lớn' (Great Dark Spot) được tàu Voyager 2 chụp lại năm 1989?",
+    options: ["Sao Mộc", "Sao Thổ", "Sao Thiên Vương", "Sao Hải Vương"],
+    answer: "Sao Hải Vương",
+  },
+  {
+    id: 657,
+    level: "Rất khó",
+    question:
+      "Bức tranh 'Les Demoiselles d'Avignon' (Những cô gái ở Avignon) của Picasso đánh dấu sự khởi đầu của trường phái hội họa nào?",
+    options: [
+      "Dã thú (Fauvism)",
+      "Lập thể (Cubism)",
+      "Siêu thực (Surrealism)",
+      "Trừu tượng (Abstract)",
+    ],
+    answer: "Lập thể (Cubism)",
+  },
+  {
+    id: 658,
+    level: "Rất khó",
+    question:
+      "Trong Lịch sử Nhật Bản, thời kỳ nào theo sau thời kỳ Sengoku (Chiến Quốc) và kéo dài hơn 250 năm hòa bình?",
+    options: [
+      "Thời kỳ Heian",
+      "Thời kỳ Kamakura",
+      "Thời kỳ Edo (Tokugawa)",
+      "Thời kỳ Meiji (Minh Trị)",
+    ],
+    answer: "Thời kỳ Edo (Tokugawa)",
+  },
+  {
+    id: 659,
+    level: "Rất khó",
+    question:
+      "Định lý Gödel đầu tiên về tính bất toàn chứng minh rằng mọi hệ tiên đề hình thức đủ mạnh để chứa số học Peano đều có tính chất gì?",
+    options: [
+      "Hoàn toàn nhất quán",
+      "Sẽ luôn dẫn đến nghịch lý",
+      "Có những mệnh đề đúng nhưng không thể chứng minh được trong hệ đó",
+      "Sẽ luôn có thể dùng để chứng minh mọi thứ",
+    ],
+    answer: "Có những mệnh đề đúng nhưng không thể chứng minh được trong hệ đó",
+  },
+  {
+    id: 660,
+    level: "Rất khó",
+    question:
+      "Công trình 'Nguồn gốc của các loài' của Charles Darwin không nhắc tới thuật ngữ 'Tiến hóa' (Evolution) cho đến lần xuất bản thứ mấy?",
+    options: ["Lần 1", "Lần 2", "Lần 6", "Không bao giờ dùng"],
+    answer: "Lần 6",
+  },
+  {
+    id: 661,
+    level: "Rất khó",
+    question:
+      "Khái niệm 'Gia tốc Coriolis' là một lực biểu kiến xuất hiện khi quan sát một vật chuyển động trong hệ quy chiếu như thế nào?",
+    options: [
+      "Chuyển động thẳng đều",
+      "Chuyển động quay",
+      "Gia tốc thẳng",
+      "Rơi tự do",
+    ],
+    answer: "Chuyển động quay",
+  },
+  {
+    id: 662,
+    level: "Rất khó",
+    question:
+      "Tác phẩm văn học 'Thần khúc' (Divine Comedy) của Dante Alighieri được chia làm 3 phần là Địa ngục (Inferno), Luyện ngục (Purgatorio) và phần cuối là gì?",
+    options: [
+      "Thiên đường (Paradiso)",
+      "Phán xét (Giudizio)",
+      "Chúa Trời (Dio)",
+      "Cõi trần (Mondo)",
+    ],
+    answer: "Thiên đường (Paradiso)",
+  },
+  {
+    id: 663,
+    level: "Rất khó",
+    question:
+      "Loại hạt cơ bản nào có khối lượng vô cùng nhỏ, không có điện tích, và hiếm khi tương tác với vật chất thông thường (chỉ qua lực hạt nhân yếu và lực hấp dẫn)?",
+    options: ["Photon", "Neutrino", "Quark", "Gluon"],
+    answer: "Neutrino",
+  },
+  {
+    id: 664,
+    level: "Rất khó",
+    question:
+      "Vị vua nước Phổ (Prussia) nào được mệnh danh là 'Đại đế', nổi tiếng với nghệ thuật quân sự và triết học khai sáng?",
+    options: [
+      "Frederick William I",
+      "Frederick II",
+      "William I",
+      "Otto von Bismarck",
+    ],
+    answer: "Frederick II",
+  },
+  {
+    id: 665,
+    level: "Rất khó",
+    question:
+      "Đồng vị Carbon-14 được sử dụng để định tuổi bằng phương pháp phóng xạ có chu kỳ bán rã khoảng bao nhiêu năm?",
+    options: ["573 năm", "5.730 năm", "57.300 năm", "573.000 năm"],
+    answer: "5.730 năm",
+  },
+  {
+    id: 666,
+    level: "Rất khó",
+    question:
+      "Ngôn ngữ lập trình 'C' được tạo ra chủ yếu để lập trình lại hệ điều hành nào?",
+    options: ["MS-DOS", "Windows", "Unix", "Multics"],
+    answer: "Unix",
+  },
+  {
+    id: 667,
+    level: "Rất khó",
+    question:
+      "Cuộc chiến tranh Peloponnesos kéo dài 27 năm thời cổ đại là cuộc xung đột giữa hai thế lực chính nào của Hy Lạp?",
+    options: [
+      "Athens và Sparta",
+      "Macedonia và Ba Tư",
+      "Troy và Mycenae",
+      "Thebes và Corinth",
+    ],
+    answer: "Athens và Sparta",
+  },
+  {
+    id: 668,
+    level: "Rất khó",
+    question:
+      "Trong nghệ thuật Phục hưng, kỹ thuật 'Chiaroscuro' mang ý nghĩa là gì?",
+    options: [
+      "Vẽ trực tiếp lên tường thạch cao ướt",
+      "Sử dụng độ tương phản mạnh giữa sáng và tối",
+      "Làm nhòe đường nét tạo hiệu ứng khói",
+      "Kỹ thuật phối cảnh điểm tụ",
+    ],
+    answer: "Sử dụng độ tương phản mạnh giữa sáng và tối",
+  },
+  {
+    id: 669,
+    level: "Rất khó",
+    question:
+      "Lý thuyết 'Đường hầm lượng tử' (Quantum tunneling) giải thích cơ chế vật lý quan trọng nào xảy ra bên trong Mặt Trời?",
+    options: [
+      "Hiện tượng nhật thực",
+      "Gió mặt trời",
+      "Phản ứng nhiệt hạch (fusion)",
+      "Vết đen mặt trời",
+    ],
+    answer: "Phản ứng nhiệt hạch (fusion)",
+  },
+  {
+    id: 670,
+    level: "Rất khó",
+    question:
+      "Trong sử thi Mahabharata của Ấn Độ giáo, phần được coi là triết lý quan trọng nhất, nơi Krishna giảng dạy cho Arjuna, có tên là gì?",
+    options: ["Ramayana", "Bhagavad Gita", "Upanishad", "Veda"],
+    answer: "Bhagavad Gita",
+  },
+  {
+    id: 671,
+    level: "Rất khó",
+    question:
+      "Cơn đại dịch 'Cái chết đen' (Black Death) quét qua châu Âu vào giữa thế kỷ 14 do vi khuẩn nào gây ra?",
+    options: [
+      "Vibrio cholerae",
+      "Yersinia pestis",
+      "Mycobacterium tuberculosis",
+      "Salmonella typhi",
+    ],
+    answer: "Yersinia pestis",
+  },
+  {
+    id: 672,
+    level: "Rất khó",
+    question:
+      "Phương trình Navier-Stokes là hệ phương trình vi phân cốt lõi dùng để mô tả lĩnh vực nào trong vật lý?",
+    options: [
+      "Cơ học lượng tử",
+      "Điện từ học",
+      "Cơ học chất lưu (Dòng chảy của chất lỏng/khí)",
+      "Động lực học thiên thể",
+    ],
+    answer: "Cơ học chất lưu (Dòng chảy của chất lỏng/khí)",
+  },
+  {
+    id: 673,
+    level: "Rất khó",
+    question:
+      "Nhà kinh tế học nào đã đưa ra khái niệm 'Phá hủy mang tính sáng tạo' (Creative Destruction)?",
+    options: [
+      "John Maynard Keynes",
+      "Milton Friedman",
+      "Joseph Schumpeter",
+      "Friedrich Hayek",
+    ],
+    answer: "Joseph Schumpeter",
+  },
+  {
+    id: 674,
+    level: "Rất khó",
+    question:
+      "Enzyme nào làm nhiệm vụ nối các đoạn DNA (đoạn Okazaki) lại với nhau trong quá trình sao chép DNA?",
+    options: ["DNA Polymerase", "Helicase", "DNA Ligase", "Primase"],
+    answer: "DNA Ligase",
+  },
+  {
+    id: 675,
+    level: "Rất khó",
+    question:
+      "Trong lịch sử triết học, câu nói 'Con người là thước đo của vạn vật' được cho là của triết gia phái ngụy biện nào?",
+    options: ["Socrates", "Thales", "Protagoras", "Heraclitus"],
+    answer: "Protagoras",
+  },
+  {
+    id: 676,
+    level: "Rất khó",
+    question:
+      "Nhà thực vật học người Tiệp Khắc Gregor Mendel, cha đẻ của di truyền học, đã tiến hành các thí nghiệm nền tảng của mình trên loại cây nào?",
+    options: ["Cây bắp", "Cây đậu Hà Lan", "Cây lúa", "Cây hướng dương"],
+    answer: "Cây đậu Hà Lan",
+  },
+  {
+    id: 677,
+    level: "Rất khó",
+    question:
+      "Thủ đô của Đế quốc Aztec cổ đại, nay nằm ngay dưới thành phố Mexico, có tên là gì?",
+    options: ["Teotihuacan", "Chichen Itza", "Machu Picchu", "Tenochtitlan"],
+    answer: "Tenochtitlan",
+  },
+  {
+    id: 678,
+    level: "Rất khó",
+    question:
+      "Tác phẩm 'Đi tìm thời gian đã mất' (À la recherche du temps perdu) - tiểu thuyết được sách Guinness ghi nhận là dài nhất thế giới - do ai viết?",
+    options: [
+      "Victor Hugo",
+      "Marcel Proust",
+      "Leo Tolstoy",
+      "Fjodor Dostoevsky",
+    ],
+    answer: "Marcel Proust",
+  },
+  {
+    id: 679,
+    level: "Rất khó",
+    question: "Nguyên tố nào có ký hiệu hóa học là 'W'?",
+    options: [
+      "Wolfram (Tungsten)",
+      "Wasserstoff (Hydrogen)",
+      "Wismuth (Bismuth)",
+      "Wadar (không có thật)",
+    ],
+    answer: "Wolfram (Tungsten)",
+  },
+  {
+    id: 680,
+    level: "Rất khó",
+    question:
+      "Sự kiện được gọi là 'Vụ tàn sát Đêm Thánh Bartholomew' năm 1572 ở Pháp là sự sát hại đẫm máu nhắm vào nhóm người nào?",
+    options: [
+      "Những người Do Thái",
+      "Những tín đồ Tin Lành Huguenot",
+      "Giới quý tộc Bourbon",
+      "Nông dân khởi nghĩa",
+    ],
+    answer: "Những tín đồ Tin Lành Huguenot",
+  },
+  {
+    id: 681,
+    level: "Rất khó",
+    question:
+      "Hằng số Avogadro (khoảng 6.022 × 10²³) định nghĩa số lượng hạt (nguyên tử/phân tử) có trong bao nhiêu gram của đồng vị Carbon-12?",
+    options: ["1 gram", "10 gram", "12 gram", "100 gram"],
+    answer: "12 gram",
+  },
+  {
+    id: 682,
+    level: "Rất khó",
+    question:
+      "Đạo luật Magna Carta (Đại Hiến Chương), một trong những văn bản pháp lý quan trọng nhất lịch sử, được Vua John của Anh ký vào năm nào?",
+    options: ["1066", "1189", "1215", "1348"],
+    answer: "1215",
+  },
+  {
+    id: 683,
+    level: "Rất khó",
+    question:
+      "Vệ tinh tự nhiên duy nhất của Hệ Mặt trời được biết đến là có một bầu khí quyển đặc (chủ yếu là khí nitơ) tên là gì?",
+    options: ["Ganymede", "Io", "Titan", "Triton"],
+    answer: "Titan",
+  },
+  {
+    id: 684,
+    level: "Rất khó",
+    question:
+      "Ai là tác giả của vở kịch 'Faust', một kiệt tác của văn học Đức?",
+    options: [
+      "Friedrich Schiller",
+      "Johann Wolfgang von Goethe",
+      "Heinrich Heine",
+      "Thomas Mann",
+    ],
+    answer: "Johann Wolfgang von Goethe",
+  },
+  {
+    id: 685,
+    level: "Rất khó",
+    question:
+      "Trong hình học topo, vật thể có một mặt và một biên duy nhất được gọi là gì?",
+    options: ["Mặt cầu", "Khối lập phương", "Dải Möbius", "Chai Klein"],
+    answer: "Dải Möbius",
+  },
+  {
+    id: 686,
+    level: "Rất khó",
+    question: "Tên của hòn đảo nơi Napoleon Bonaparte sinh ra là gì?",
+    options: ["Elba", "Sicily", "Sardinia", "Corsica"],
+    answer: "Corsica",
+  },
+  {
+    id: 687,
+    level: "Rất khó",
+    question:
+      "Phản ứng hạt nhân trong đó một hạt nhân nặng vỡ thành hai hoặc nhiều hạt nhân nhẹ hơn kèm theo giải phóng năng lượng lớn được gọi là gì?",
+    options: [
+      "Nhiệt hạch (Fusion)",
+      "Phân hạch (Fission)",
+      "Phóng xạ Alpha",
+      "Gia tốc hạt",
+    ],
+    answer: "Phân hạch (Fission)",
+  },
+  {
+    id: 688,
+    level: "Rất khó",
+    question:
+      "Tác giả của cuốn sách 'Bạo chúa' (The Prince - Il Principe), một cẩm nang về nghệ thuật chính trị thực dụng, là ai?",
+    options: [
+      "Thomas Hobbes",
+      "Jean-Jacques Rousseau",
+      "Niccolò Machiavelli",
+      "John Locke",
+    ],
+    answer: "Niccolò Machiavelli",
+  },
+  {
+    id: 689,
+    level: "Rất khó",
+    question:
+      "Bức màn phân chia biên giới giữa Pakistan và Ấn Độ được gọi là gì (được đặt theo tên luật sư Anh chịu trách nhiệm vẽ nó vào năm 1947)?",
+    options: [
+      "Đường McMahon",
+      "Đường Radcliffe",
+      "Đường Durand",
+      "Đường Curzon",
+    ],
+    answer: "Đường Radcliffe",
+  },
+  {
+    id: 690,
+    level: "Rất khó",
+    question:
+      "Chu kỳ 11 năm của Mặt Trời chủ yếu liên quan đến sự thay đổi của hiện tượng gì trên bề mặt của nó?",
+    options: [
+      "Cường độ sáng",
+      "Kích thước bán kính",
+      "Số lượng vết đen Mặt Trời (Sunspots)",
+      "Vận tốc tự quay",
+    ],
+    answer: "Số lượng vết đen Mặt Trời (Sunspots)",
+  },
+  {
+    id: 691,
+    level: "Rất khó",
+    question:
+      "Hội chứng Klinefelter là một bất thường nhiễm sắc thể ở nam giới, trong đó bệnh nhân có công thức nhiễm sắc thể giới tính là gì?",
+    options: ["X0", "XYY", "XXY", "XXX"],
+    answer: "XXY",
+  },
+  {
+    id: 692,
+    level: "Rất khó",
+    question:
+      "Triết học của Immanuel Kant đã cố gắng tổng hợp và dung hòa hai trường phái triết học lớn nào của thế kỷ 17 và 18?",
+    options: [
+      "Duy tâm và Chủ nghĩa khắc kỷ",
+      "Kinh nghiệm chủ nghĩa (Empiricism) và Duy lý chủ nghĩa (Rationalism)",
+      "Hiện sinh chủ nghĩa và Hư vô chủ nghĩa",
+      "Thần học và Khoa học",
+    ],
+    answer:
+      "Kinh nghiệm chủ nghĩa (Empiricism) và Duy lý chủ nghĩa (Rationalism)",
+  },
+  {
+    id: 693,
+    level: "Rất khó",
+    question:
+      "Tác phẩm nào sau đây được coi là cuốn tiểu thuyết tâm lý đầu tiên trong văn học thế giới, ra đời ở Nhật Bản vào đầu thế kỷ 11?",
+    options: [
+      "Kojiki (Cổ Sự Ký)",
+      "Chuyện kể Genji (Genji Monogatari)",
+      "Heike Monogatari",
+      "Gối thảo (Makura no Sōshi)",
+    ],
+    answer: "Chuyện kể Genji (Genji Monogatari)",
+  },
+  {
+    id: 694,
+    level: "Rất khó",
+    question:
+      "Nhà thực vật học người Mỹ Norman Borlaug, cha đẻ của 'Cách mạng Xanh', đã nhận giải Nobel Hòa bình vì phát triển loại cây trồng nào chịu bệnh tốt và cho năng suất cao?",
+    options: ["Lúa nước", "Ngô (Bắp)", "Lúa mì", "Đậu tương"],
+    answer: "Lúa mì",
+  },
+  {
+    id: 695,
+    level: "Rất khó",
+    question:
+      "Trong Thần thoại Bắc Âu, sinh vật thần thoại nào gặm nhấm rễ của Cây Thế Giới Yggdrasil?",
+    options: [
+      "Sói Fenrir",
+      "Rồng Níðhöggr",
+      "Mãng xà Jörmungandr",
+      "Lợn lòi Sæhrímnir",
+    ],
+    answer: "Rồng Níðhöggr",
+  },
+  {
+    id: 696,
+    level: "Rất khó",
+    question:
+      "Trong nghệ thuật, 'Tenebrism' (phong cách bóng tối) là kỹ thuật được đưa lên đỉnh cao bởi họa sĩ Baroque người Ý nào?",
+    options: ["Artemisia Gentileschi", "Titian", "Caravaggio", "Bernini"],
+    answer: "Caravaggio",
+  },
+  {
+    id: 697,
+    level: "Rất khó",
+    question:
+      "Ngôn ngữ Basque (Euskara), được nói ở miền Bắc Tây Ban Nha và Nam Pháp, nổi bật ở điểm nào về mặt ngôn ngữ học?",
+    options: [
+      "Chỉ có thể viết bằng chữ tượng hình",
+      "Không có thanh điệu",
+      "Là một ngôn ngữ biệt lập (isolate), không liên quan đến ngữ hệ Ấn-Âu",
+      "Có hệ thống ngữ pháp đơn giản nhất thế giới",
+    ],
+    answer:
+      "Là một ngôn ngữ biệt lập (isolate), không liên quan đến ngữ hệ Ấn-Âu",
+  },
+  {
+    id: 698,
+    level: "Rất khó",
+    question:
+      "Định lý Gauss-Bonnet liên hệ hình học của một bề mặt với đặc tính topo nào của nó?",
+    options: [
+      "Độ cong Euler",
+      "Đặc trưng Euler",
+      "Bán kính hội tụ",
+      "Chỉ số Betti",
+    ],
+    answer: "Đặc trưng Euler",
+  },
+  {
+    id: 699,
+    level: "Rất khó",
+    question:
+      "Sự kiện lịch sử nào vào thế kỷ thứ 4 SCN đánh dấu bước ngoặt khi Cơ Đốc giáo được hợp pháp hóa trong Đế quốc La Mã?",
+    options: [
+      "Công đồng Nicaea",
+      "Sắc lệnh Milan (Edict of Milan)",
+      "Sự sụp đổ của Tây La Mã",
+      "Trận cầu Milvian",
+    ],
+    answer: "Sắc lệnh Milan (Edict of Milan)",
+  },
+  {
+    id: 700,
+    level: "Rất khó",
+    question:
+      "Dự án Manhattan do Mỹ dẫn đầu để chế tạo bom nguyên tử được đặt dưới sự lãnh đạo khoa học của ai?",
+    options: [
+      "Enrico Fermi",
+      "Niels Bohr",
+      "Albert Einstein",
+      "J. Robert Oppenheimer",
+    ],
+    answer: "J. Robert Oppenheimer",
+  },
 ];
 export default allQuestions;
