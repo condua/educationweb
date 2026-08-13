@@ -6,7 +6,7 @@ import React, {
   useRef,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Maximize, Minimize } from "lucide-react"; // ✨ THÊM MỚI: Import icon
+import { Maximize, Minimize } from "lucide-react";
 
 // --- Âm thanh ---
 const playSound = (src, volume = 0.5) => {
@@ -47,9 +47,11 @@ const prizeLevels = [
   "150.000.000",
 ].reverse();
 
-const easyQuestions = allQuestions.slice(0, 40);
-const mediumQuestions = allQuestions.slice(40, 70);
-const hardQuestions = allQuestions.slice(70, 200);
+// ✨ SỬA MỚI: Phân loại câu hỏi dựa vào trường 'level' thay vì cắt mảng cố định
+const easyQuestions = allQuestions.filter((q) => q.level === "Dễ");
+const mediumQuestions = allQuestions.filter((q) => q.level === "Trung bình");
+const hardQuestions = allQuestions.filter((q) => q.level === "Khó");
+const veryHardQuestions = allQuestions.filter((q) => q.level === "Rất khó");
 
 // Hàm xáo trộn mảng (Fisher-Yates shuffle)
 const shuffleArray = (array) => {
@@ -73,77 +75,75 @@ export default function MillionaireGame() {
   const [disabledOptions, setDisabledOptions] = useState([]);
   const [audiencePoll, setAudiencePoll] = useState(null);
   const [gameQuestions, setGameQuestions] = useState([]);
-  // ✨ THÊM MỚI: State và Ref cho chế độ toàn màn hình
+
   const [isFullscreen, setIsFullscreen] = useState(false);
   const gameContainerRef = useRef(null);
-  // Dùng useRef để lưu trữ kho câu hỏi và không bị reset giữa các lần render
+
   const availableQuestionsRef = useRef(null);
   const SAFE_LEVELS = [4, 9]; // làm đậm ở UI: [4,9,14] – 14 là câu cuối
 
   const getPayout = (gameState, level) => {
-    // Đã thắng toàn bộ
     if (gameState === "won") return prizeLevels[0]; // 150.000.000
-
-    // Thua ở level hiện tại -> nhận theo câu đã vượt qua gần nhất
     if (level === 0) return "0";
 
-    const lastCleared = level - 1; // câu gần nhất đã đúng
-    // Nếu muốn mốc an toàn:
+    const lastCleared = level - 1;
     const lastSafe = SAFE_LEVELS.filter((i) => i <= lastCleared).pop();
     const paidIndex = lastSafe !== undefined ? lastSafe : lastCleared;
 
-    // prizeLevels đang theo thứ tự: cao -> thấp, nên phải quy đổi chỉ số
     return prizeLevels[prizeLevels.length - 1 - paidIndex];
   };
-  // Hàm khởi tạo hoặc reset lại kho câu hỏi
+
+  // ✨ SỬA MỚI: Cập nhật hàm reset thêm cấp độ "veryHard"
   const resetQuestionPools = () => {
     availableQuestionsRef.current = {
       easy: shuffleArray(easyQuestions),
       medium: shuffleArray(mediumQuestions),
       hard: shuffleArray(hardQuestions),
+      veryHard: shuffleArray(veryHardQuestions),
     };
   };
 
-  // Khởi tạo kho câu hỏi lần đầu tiên
   if (availableQuestionsRef.current === null) {
     resetQuestionPools();
   }
-  // Hàm tạo bộ câu hỏi ngẫu nhiên cho mỗi lượt chơi
+
+  // ✨ SỬA MỚI: Rút ra đủ 15 câu theo cấu trúc 5 Dễ - 5 Trung Bình - 3 Khó - 2 Rất Khó
   const generateAndSetQuestions = useCallback(() => {
     const pools = availableQuestionsRef.current;
 
-    // Kiểm tra nếu không đủ câu hỏi, thì reset lại kho và thông báo
+    // Kiểm tra nếu không đủ câu hỏi ở bất kỳ kho nào thì reset lại tất cả
     if (
       pools.easy.length < 5 ||
       pools.medium.length < 5 ||
-      pools.hard.length < 5
+      pools.hard.length < 3 ||
+      pools.veryHard.length < 2
     ) {
-      // alert(
-      //   "Bạn đã chơi hết tất cả câu hỏi! Vòng chơi mới sẽ sử dụng lại bộ câu hỏi từ đầu."
-      // );
       resetQuestionPools();
     }
 
     const currentPools = availableQuestionsRef.current;
 
-    // Dùng splice để LẤY và XÓA câu hỏi khỏi kho
     const easyBatch = currentPools.easy.splice(0, 5);
     const mediumBatch = currentPools.medium.splice(0, 5);
-    const hardBatch = currentPools.hard.splice(0, 5);
+    const hardBatch = currentPools.hard.splice(0, 3);
+    const veryHardBatch = currentPools.veryHard.splice(0, 2);
 
-    const questionsForGame = [...easyBatch, ...mediumBatch, ...hardBatch];
+    const questionsForGame = [
+      ...easyBatch,
+      ...mediumBatch,
+      ...hardBatch,
+      ...veryHardBatch,
+    ];
 
-    // Đảm bảo luôn có 15 câu hỏi
     if (questionsForGame.length < 15) {
       console.error("Không thể tạo đủ 15 câu hỏi, đang reset lại...");
-      resetGame(); // Gọi lại hàm reset game nếu có lỗi
+      resetGame();
       return;
     }
 
     setGameQuestions(questionsForGame);
   }, []);
 
-  // Tạo bộ câu hỏi khi game được tải lần đầu
   useEffect(() => {
     generateAndSetQuestions();
   }, [generateAndSetQuestions]);
@@ -175,36 +175,30 @@ export default function MillionaireGame() {
     setLockedAnswer(selectedAnswer);
     playSound(sounds.suspense, 0.3);
 
-    // Tạo một timeout để mô phỏng sự hồi hộp
     setTimeout(() => {
       const isCorrect = selectedAnswer === currentQuestion.answer;
 
       if (isCorrect) {
-        // Xử lý khi trả lời đúng
         playSound(sounds.correct);
 
-        // Kiểm tra xem đây có phải là câu hỏi cuối cùng không
         if (level === 14) {
-          // Nếu đúng, chờ một chút rồi chuyển sang trạng thái thắng cuộc
           setTimeout(() => {
             playSound(sounds.win, 0.5);
             setGameState("won");
           }, 1500);
         } else {
-          // Nếu không phải câu cuối, chờ một chút rồi tăng level
           setTimeout(() => {
             setLevel((prevLevel) => prevLevel + 1);
             resetForNextLevel();
           }, 1500);
         }
       } else {
-        // Xử lý khi trả lời sai
         playSound(sounds.incorrect);
         setTimeout(() => {
           setGameState("gameOver");
         }, 1500);
       }
-    }, 3500); // Thời gian hồi hộp trước khi tiết lộ kết quả
+    }, 3500);
   }, [selectedAnswer, currentQuestion, level, resetForNextLevel]);
 
   const useLifeline = useCallback(
@@ -251,7 +245,7 @@ export default function MillionaireGame() {
     },
     [lifelines, currentQuestion, disabledOptions],
   );
-  // ✨ THÊM MỚI: Logic xử lý toàn màn hình
+
   const toggleFullscreen = useCallback(() => {
     const elem = gameContainerRef.current;
     if (!elem) return;
@@ -269,9 +263,10 @@ export default function MillionaireGame() {
     return () =>
       document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, []);
+
   const resetGame = useCallback(() => {
     playSound(sounds.start);
-    generateAndSetQuestions(); // Tạo bộ câu hỏi mới khi chơi lại
+    generateAndSetQuestions();
     setGameState("playing");
     setLevel(0);
     resetForNextLevel();
@@ -290,7 +285,6 @@ export default function MillionaireGame() {
     return "bg-blue-800 hover:bg-blue-700";
   };
 
-  // Màn hình chờ nếu câu hỏi chưa sẵn sàng
   if (!currentQuestion) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-slate-900 text-white font-sans">
@@ -299,7 +293,6 @@ export default function MillionaireGame() {
     );
   }
 
-  // --- Màn hình Bắt đầu / Kết thúc ---
   if (gameState !== "playing") {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-slate-900 text-white font-sans">
@@ -333,23 +326,19 @@ export default function MillionaireGame() {
     );
   }
 
-  // --- Giao diện chơi game chính ---
   return (
     <div
       ref={gameContainerRef}
       className="flex h-screen w-full flex-col lg:flex-row bg-slate-900 text-white font-sans p-2 sm:p-4 gap-4"
     >
-      {/* Thang điểm được đưa lên đầu trên mobile, và là sidebar trên desktop */}
       <div className="w-full lg:order-last lg:w-72 lg:flex-shrink-0 lg:hidden">
         <div className="bg-slate-800/60 lg:h-full lg:p-4 rounded-b-lg lg:rounded-lg">
-          {/* SỬA 2: Cho phép cuộn ngang trên mobile, và là danh sách dọc trên desktop */}
           <ul className="flex flex-row-reverse gap-x-2 p-2 overflow-x-auto lg:flex-col lg:gap-y-1 lg:overflow-x-hidden lg:p-0">
             {prizeLevels.map((prize, i) => {
               const prizeIndex = prizeLevels.length - 1 - i;
               return (
                 <li
                   key={prize}
-                  // SỬA 3: Thêm flex-shrink-0 trên mobile để các item không bị co lại
                   className={`flex-shrink-0 p-2 rounded-md text-sm sm:text-base text-right transition-colors duration-300 w-36 lg:w-full
                         ${
                           level === prizeIndex
@@ -373,7 +362,6 @@ export default function MillionaireGame() {
           </ul>
         </div>
       </div>
-      {/* Cột chính (Câu hỏi & Trả lời) */}
       <div className="flex flex-col flex-grow justify-between">
         <div className="flex justify-around mb-4">
           {Object.entries(lifelines).map(([key, isAvailable]) => (
@@ -385,8 +373,7 @@ export default function MillionaireGame() {
             >
               {key === "fiftyFifty" ? "50:50" : "📊"}
             </button>
-          ))}{" "}
-          {/* ✨ THÊM MỚI: Nút toàn màn hình */}
+          ))}
           <button
             onClick={toggleFullscreen}
             className="p-3 text-2xl bg-purple-700 rounded-full transition-transform hover:scale-110"
@@ -467,7 +454,6 @@ export default function MillionaireGame() {
         </button>
       </div>
 
-      {/* Cột phụ (Thang tiền thưởng) */}
       <div className="flex-shrink-0 w-full lg:w-72 bg-slate-800/60 p-4 rounded-lg mt-4 lg:mt-0 hidden lg:block">
         <ul className="flex flex-row-reverse flex-wrap justify-center lg:flex-col gap-1">
           {prizeLevels.map((prize, i) => (
