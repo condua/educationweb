@@ -4868,8 +4868,8 @@ const allQuestions = [
     id: 539,
     level: "Dễ",
     question: "Chiếc nón lá truyền thống của Việt Nam được đan từ lá gì?",
-    options: ["Lá cọ (hoặc nón)", "Lá chuối", "Lá dừa", "Lá sen"],
-    answer: "Lá cọ (hoặc nón)",
+    options: ["Lá cọ", "Lá chuối", "Lá dừa", "Lá sen"],
+    answer: "Lá cọ",
   },
   {
     id: 540,
