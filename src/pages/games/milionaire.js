@@ -1022,5 +1022,478 @@ const allQuestions = [
     ],
     answer: "Leo Tolstoy",
   },
+  [
+    {
+      question:
+        "Nguyên lý bất định Heisenberg trong cơ học lượng tử khẳng định điều gì?",
+      options: [
+        "Vận tốc ánh sáng là giới hạn tuyệt đối",
+        "Không thể xác định đồng thời chính xác cả vị trí và động lượng của một hạt",
+        "Năng lượng và khối lượng có thể chuyển hóa lẫn nhau",
+        "Mọi hạt đều có phản hạt tương ứng",
+      ],
+      answer:
+        "Không thể xác định đồng thời chính xác cả vị trí và động lượng của một hạt",
+    },
+    {
+      question:
+        "Nhà toán học nào đã chứng minh thành công Định lý lớn Fermat vào năm 1994?",
+      options: [
+        "Andrew Wiles",
+        "Grigori Perelman",
+        "Terence Tao",
+        "Leonhard Euler",
+      ],
+      answer: "Andrew Wiles",
+    },
+    {
+      question:
+        "Ai là người phát hiện ra Penicillin, loại kháng sinh đầu tiên trên thế giới?",
+      options: [
+        "Louis Pasteur",
+        "Robert Koch",
+        "Alexander Fleming",
+        "Joseph Lister",
+      ],
+      answer: "Alexander Fleming",
+    },
+    {
+      question:
+        "Trong kinh tế học, khái niệm 'Bàn tay vô hình' (Invisible hand) được đưa ra bởi ai?",
+      options: [
+        "John Maynard Keynes",
+        "Karl Marx",
+        "David Ricardo",
+        "Adam Smith",
+      ],
+      answer: "Adam Smith",
+    },
+    {
+      question:
+        "Ai được lịch sử công nhận là lập trình viên máy tính đầu tiên trên thế giới?",
+      options: [
+        "Alan Turing",
+        "Ada Lovelace",
+        "Charles Babbage",
+        "Grace Hopper",
+      ],
+      answer: "Ada Lovelace",
+    },
+    {
+      question:
+        "Trường phái phân tâm học (Psychoanalysis) trong tâm lý học do ai sáng lập?",
+      options: ["Carl Jung", "B.F. Skinner", "Sigmund Freud", "Ivan Pavlov"],
+      answer: "Sigmund Freud",
+    },
+    {
+      question:
+        "Tác phẩm 'Don Quixote' (Đôn Ki-hô-tê), một trong những tiểu thuyết vĩ đại nhất của văn học phương Tây, là của tác giả nào?",
+      options: [
+        "Gabriel García Márquez",
+        "Miguel de Cervantes",
+        "Jorge Luis Borges",
+        "Pablo Neruda",
+      ],
+      answer: "Miguel de Cervantes",
+    },
+    {
+      question:
+        "Bức tranh 'Guernica', mô tả sự tàn khốc của chiến tranh, là tuyệt tác của họa sĩ nào?",
+      options: [
+        "Salvador Dalí",
+        "Vincent van Gogh",
+        "Pablo Picasso",
+        "Claude Monet",
+      ],
+      answer: "Pablo Picasso",
+    },
+    {
+      question:
+        "Vệ tinh nhân tạo đầu tiên được phóng lên quỹ đạo Trái Đất có tên là gì?",
+      options: ["Sputnik 1", "Explorer 1", "Vostok 1", "Apollo 11"],
+      answer: "Sputnik 1",
+    },
+    {
+      question:
+        "Ngọn núi lửa cao nhất trong Hệ Mặt Trời (Olympus Mons) nằm trên hành tinh nào?",
+      options: ["Sao Kim", "Sao Mộc", "Sao Hỏa", "Sao Thổ"],
+      answer: "Sao Hỏa",
+    },
+    {
+      question:
+        "Ai được coi là cha đẻ của hóa học hiện đại và đã phát biểu định luật bảo toàn khối lượng?",
+      options: [
+        "Robert Boyle",
+        "Antoine Lavoisier",
+        "Dmitri Mendeleev",
+        "John Dalton",
+      ],
+      answer: "Antoine Lavoisier",
+    },
+    {
+      question:
+        "Nữ hoàng Cleopatra, vị pharaoh cuối cùng của Ai Cập cổ đại, có nguồn gốc từ dân tộc nào?",
+      options: ["Ai Cập", "La Mã", "Hy Lạp (Ptolemaic)", "Ba Tư"],
+      answer: "Hy Lạp (Ptolemaic)",
+    },
+    {
+      question:
+        "Cho đến nay, ai là vị Tổng thống Hoa Kỳ duy nhất từng từ chức khi đang đương nhiệm?",
+      options: [
+        "Richard Nixon",
+        "Bill Clinton",
+        "Andrew Johnson",
+        "Donald Trump",
+      ],
+      answer: "Richard Nixon",
+    },
+    {
+      question:
+        "Thể loại âm nhạc Jazz có nguồn gốc phát triển từ thành phố nào của nước Mỹ?",
+      options: ["Chicago", "New York", "New Orleans", "Memphis"],
+      answer: "New Orleans",
+    },
+    {
+      question:
+        "'Hội chứng Stockholm' trong tâm lý học dùng để chỉ hiện tượng gì?",
+      options: [
+        "Chứng mất trí nhớ tạm thời sau chấn thương",
+        "Con tin nảy sinh sự đồng cảm hoặc tình cảm với kẻ bắt cóc",
+        "Nỗi sợ hãi những không gian chật hẹp",
+        "Sự ám ảnh cưỡng chế với việc rửa tay",
+      ],
+      answer: "Con tin nảy sinh sự đồng cảm hoặc tình cảm với kẻ bắt cóc",
+    },
+    {
+      question:
+        "Tác giả của tiểu thuyết 'Ông già và biển cả' (The Old Man and the Sea) là ai?",
+      options: [
+        "F. Scott Fitzgerald",
+        "Ernest Hemingway",
+        "John Steinbeck",
+        "Mark Twain",
+      ],
+      answer: "Ernest Hemingway",
+    },
+    {
+      question:
+        "Trong kinh tế học vi mô, 'Chi phí cơ hội' (Opportunity cost) nghĩa là gì?",
+      options: [
+        "Chi phí bằng tiền để mua một món hàng",
+        "Giá trị của lựa chọn tốt nhất bị bỏ lỡ khi đưa ra quyết định",
+        "Chi phí phát sinh thêm khi sản xuất thêm một đơn vị",
+        "Chi phí không thể thu hồi lại được",
+      ],
+      answer: "Giá trị của lựa chọn tốt nhất bị bỏ lỡ khi đưa ra quyết định",
+    },
+    {
+      question:
+        "Nhà thám hiểm nào đã dẫn đầu chuyến đi vòng quanh thế giới đầu tiên trong lịch sử?",
+      options: [
+        "Christopher Columbus",
+        "Vasco da Gama",
+        "Ferdinand Magellan",
+        "James Cook",
+      ],
+      answer: "Ferdinand Magellan",
+    },
+    {
+      question:
+        "Triết gia Jean-Paul Sartre là người đại diện tiêu biểu cho trào lưu triết học nào?",
+      options: [
+        "Chủ nghĩa khắc kỷ",
+        "Chủ nghĩa hiện sinh",
+        "Chủ nghĩa kinh nghiệm",
+        "Chủ nghĩa hư vô",
+      ],
+      answer: "Chủ nghĩa hiện sinh",
+    },
+    {
+      question:
+        "Hiệp ước Versailles (1919) được ký kết nhằm đánh dấu sự kết thúc của sự kiện nào?",
+      options: [
+        "Chiến tranh thế giới thứ nhất",
+        "Chiến tranh thế giới thứ hai",
+        "Chiến tranh lạnh",
+        "Chiến tranh Napoleon",
+      ],
+      answer: "Chiến tranh thế giới thứ nhất",
+    },
+    {
+      question: "Thiên hà chứa Hệ Mặt Trời của chúng ta có tên gọi là gì?",
+      options: ["Andromeda", "Milky Way (Ngân Hà)", "Triangulum", "Sombrero"],
+      answer: "Milky Way (Ngân Hà)",
+    },
+    {
+      question:
+        "Trong sinh học tế bào, chu trình Krebs (chu trình axit citric) diễn ra ở bào quan nào?",
+      options: ["Nhân tế bào", "Lục lạp", "Ti thể", "Bộ máy Golgi"],
+      answer: "Ti thể",
+    },
+    {
+      question:
+        "Nguyên tố kim loại nào tồn tại ở trạng thái lỏng trong điều kiện nhiệt độ và áp suất tiêu chuẩn?",
+      options: ["Gallium", "Francium", "Bromine", "Thủy ngân (Mercury)"],
+      answer: "Thủy ngân (Mercury)",
+    },
+    {
+      question:
+        "Triết gia vĩ đại nào của Hy Lạp cổ đại là người đã dạy dỗ Alexander Đại đế?",
+      options: ["Socrates", "Plato", "Aristotle", "Pythagoras"],
+      answer: "Aristotle",
+    },
+    {
+      question:
+        "Nhà toán học Alan Turing đóng vai trò then chốt trong việc gì vào Thế chiến II?",
+      options: [
+        "Chế tạo bom nguyên tử",
+        "Giải mã cỗ máy Enigma của Đức Quốc xã",
+        "Phát minh ra radar",
+        "Thiết kế máy bay tiêm kích",
+      ],
+      answer: "Giải mã cỗ máy Enigma của Đức Quốc xã",
+    },
+    {
+      question:
+        "Tác phẩm 'Tội ác và hình phạt' (Crime and Punishment) là của nhà văn người Nga nào?",
+      options: [
+        "Anton Chekhov",
+        "Leo Tolstoy",
+        "Ivan Turgenev",
+        "Fyodor Dostoevsky",
+      ],
+      answer: "Fyodor Dostoevsky",
+    },
+    {
+      question:
+        "Nhà toán học người Hy Lạp nào được mệnh danh là 'Cha đẻ của Hình học'?",
+      options: ["Archimedes", "Pythagoras", "Euclid", "Thales"],
+      answer: "Euclid",
+    },
+    {
+      question:
+        "Giải thưởng danh giá nhất trong lĩnh vực Toán học, thường được ví như 'Giải Nobel Toán học', là gì?",
+      options: [
+        "Giải Turing",
+        "Huy chương Fields",
+        "Giải Abel",
+        "Giải Pulitzer",
+      ],
+      answer: "Huy chương Fields",
+    },
+    {
+      question:
+        "Trong hóa học, nguyên tố nào phổ biến nhất trong toàn bộ vũ trụ?",
+      options: ["Oxy (Oxygen)", "Carbon", "Hydro (Hydrogen)", "Heli (Helium)"],
+      answer: "Hydro (Hydrogen)",
+    },
+    {
+      question:
+        "Đơn vị thiên văn (AU) được định nghĩa dựa trên khoảng cách nào?",
+      options: [
+        "Khoảng cách ánh sáng đi được trong 1 năm",
+        "Khoảng cách trung bình từ Trái Đất đến Mặt Trăng",
+        "Khoảng cách trung bình từ Trái Đất đến Mặt Trời",
+        "Đường kính của Hệ Mặt Trời",
+      ],
+      answer: "Khoảng cách trung bình từ Trái Đất đến Mặt Trời",
+    },
+    {
+      question:
+        "Ai là người đã chế tạo ra quả pin điện đầu tiên (Pin Volta) vào năm 1800?",
+      options: [
+        "Thomas Edison",
+        "Nikola Tesla",
+        "Alessandro Volta",
+        "Michael Faraday",
+      ],
+      answer: "Alessandro Volta",
+    },
+    {
+      question:
+        "Cuốn sách 'Nguồn gốc các loài' (On the Origin of Species) là công trình của nhà khoa học nào?",
+      options: [
+        "Gregor Mendel",
+        "Charles Darwin",
+        "Louis Pasteur",
+        "Jean-Baptiste Lamarck",
+      ],
+      answer: "Charles Darwin",
+    },
+    {
+      question:
+        "Hồ nước mặn nào có độ mặn cao đến mức con người có thể nổi tự nhiên trên mặt nước?",
+      options: [
+        "Hồ Baikal",
+        "Biển Caspi",
+        "Biển Chết (Dead Sea)",
+        "Hồ Victoria",
+      ],
+      answer: "Biển Chết (Dead Sea)",
+    },
+    {
+      question:
+        "Trong vật lý nhiệt động lực học, khái niệm 'Entropy' dùng để đo lường điều gì?",
+      options: [
+        "Tổng năng lượng của một hệ",
+        "Mức độ hỗn loạn (trạng thái vi mô) của một hệ",
+        "Khả năng sinh công của một hệ",
+        "Tốc độ truyền nhiệt giữa các vật",
+      ],
+      answer: "Mức độ hỗn loạn (trạng thái vi mô) của một hệ",
+    },
+    {
+      question:
+        "Vương triều nào có thời gian trị vì lâu nhất trong lịch sử phong kiến Trung Quốc?",
+      options: ["Nhà Hán", "Nhà Đường", "Nhà Chu", "Nhà Thanh"],
+      answer: "Nhà Chu",
+    },
+    {
+      question:
+        "Thuyết Tương đối Hẹp (Special Relativity) với phương trình E=mc² được Albert Einstein công bố vào năm nào?",
+      options: ["1895", "1905", "1915", "1925"],
+      answer: "1905",
+    },
+    {
+      question:
+        "Mạng máy tính nào do Bộ Quốc phòng Mỹ tài trợ được coi là tiền thân của Internet hiện đại?",
+      options: ["NSFNET", "ARPANET", "Ethernet", "MILNET"],
+      answer: "ARPANET",
+    },
+    {
+      question:
+        "Trong tế bào nhân thực, bào quan nào đóng vai trò chính trong quá trình tổng hợp protein?",
+      options: ["Ribosome", "Lysosome", "Mạng lưới nội chất trơn", "Ti thể"],
+      answer: "Ribosome",
+    },
+    {
+      question:
+        "Ai là tác giả của kiệt tác văn học Pháp 'Những người khốn khổ' (Les Misérables)?",
+      options: [
+        "Alexandre Dumas",
+        "Albert Camus",
+        "Victor Hugo",
+        "Gustave Flaubert",
+      ],
+      answer: "Victor Hugo",
+    },
+    {
+      question:
+        "Nền văn minh Lưỡng Hà (Mesopotamia) cổ đại phát triển ở vùng đồng bằng giữa hai con sông nào?",
+      options: [
+        "Sông Nile và sông Jordan",
+        "Sông Hằng và sông Ấn",
+        "Sông Tigris và sông Euphrates",
+        "Sông Hoàng Hà và sông Dương Tử",
+      ],
+      answer: "Sông Tigris và sông Euphrates",
+    },
+    {
+      question:
+        "Bảng chữ cái Cyrillic (Kirin) hiện nay được sử dụng làm cơ sở cho ngôn ngữ của quốc gia nào sau đây?",
+      options: ["Đức", "Nga", "Hy Lạp", "Thổ Nhĩ Kỳ"],
+      answer: "Nga",
+    },
+    {
+      question:
+        "Ai là người thiết lập nên hệ thống phân loại tuần hoàn các nguyên tố hóa học (Bảng tuần hoàn)?",
+      options: [
+        "Dmitri Mendeleev",
+        "Niels Bohr",
+        "Marie Curie",
+        "Ernest Rutherford",
+      ],
+      answer: "Dmitri Mendeleev",
+    },
+    {
+      question:
+        "Bức tranh nổi tiếng 'Đêm đầy sao' (The Starry Night) được vẽ bởi danh họa nào?",
+      options: [
+        "Claude Monet",
+        "Edvard Munch",
+        "Vincent van Gogh",
+        "Paul Cézanne",
+      ],
+      answer: "Vincent van Gogh",
+    },
+    {
+      question: "Trong thiên văn học, 'Lỗ đen' (Black hole) là gì?",
+      options: [
+        "Một vùng không gian không có vật chất",
+        "Nơi mà lực hấp dẫn mạnh đến mức ánh sáng cũng không thể thoát ra",
+        "Một ngôi sao đang bốc cháy ở giai đoạn cuối",
+        "Vùng tối trên bề mặt của Mặt Trời",
+      ],
+      answer:
+        "Nơi mà lực hấp dẫn mạnh đến mức ánh sáng cũng không thể thoát ra",
+    },
+    {
+      question:
+        "Tên gọi 'Chiến tranh lạnh' (Cold War) dùng để chỉ cuộc đối đầu địa chính trị chủ yếu giữa hai siêu cường nào?",
+      options: [
+        "Mỹ và Trung Quốc",
+        "Anh và Pháp",
+        "Mỹ và Liên Xô",
+        "Đức và Liên Xô",
+      ],
+      answer: "Mỹ và Liên Xô",
+    },
+    {
+      question:
+        "Cấu trúc chuỗi xoắn kép của phân tử DNA được công bố lần đầu tiên bởi hai nhà khoa học nào?",
+      options: [
+        "Rosalind Franklin & Maurice Wilkins",
+        "James Watson & Francis Crick",
+        "Louis Pasteur & Robert Koch",
+        "Charles Darwin & Gregor Mendel",
+      ],
+      answer: "James Watson & Francis Crick",
+    },
+    {
+      question:
+        "Khái niệm 'Quyền lực mềm' (Soft power) trong quan hệ quốc tế ám chỉ điều gì?",
+      options: [
+        "Sử dụng quân đội để đe dọa",
+        "Áp đặt trừng phạt kinh tế",
+        "Sử dụng sức hấp dẫn về văn hóa, giá trị và chính sách để ảnh hưởng",
+        "Mua chuộc lãnh đạo quốc gia khác",
+      ],
+      answer:
+        "Sử dụng sức hấp dẫn về văn hóa, giá trị và chính sách để ảnh hưởng",
+    },
+    {
+      question: "Trong lịch sử máy tính, định luật Moore dự đoán điều gì?",
+      options: [
+        "Giá của máy tính sẽ giảm một nửa mỗi năm",
+        "Số lượng transistor trên một vi mạch sẽ tăng gấp đôi sau khoảng 18-24 tháng",
+        "Tốc độ mạng internet sẽ tăng gấp đôi mỗi năm",
+        "Năng lượng tiêu thụ của máy tính sẽ tỷ lệ nghịch với tốc độ",
+      ],
+      answer:
+        "Số lượng transistor trên một vi mạch sẽ tăng gấp đôi sau khoảng 18-24 tháng",
+    },
+    {
+      question:
+        "Nhà tâm lý học nào đã đoạt giải Nobel Kinh tế năm 2002 nhờ việc ứng dụng tâm lý học vào nghiên cứu kinh tế (Kinh tế học hành vi)?",
+      options: [
+        "Daniel Kahneman",
+        "Milton Friedman",
+        "Paul Krugman",
+        "John Nash",
+      ],
+      answer: "Daniel Kahneman",
+    },
+    {
+      question:
+        "Dạng hình học kiến trúc nào chịu lực tốt nhất và được ứng dụng rộng rãi để xây dựng các mái vòm cổ đại như đền Pantheon?",
+      options: [
+        "Hình chóp",
+        "Hình lập phương",
+        "Vòm bán cầu (Arch/Dome)",
+        "Hình hộp chữ nhật",
+      ],
+      answer: "Vòm bán cầu (Arch/Dome)",
+    },
+  ],
 ];
 export default allQuestions;

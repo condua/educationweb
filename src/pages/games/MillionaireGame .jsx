@@ -49,7 +49,7 @@ const prizeLevels = [
 
 const easyQuestions = allQuestions.slice(0, 40);
 const mediumQuestions = allQuestions.slice(40, 65);
-const hardQuestions = allQuestions.slice(65, 150);
+const hardQuestions = allQuestions.slice(65, 200);
 
 // Hàm xáo trộn mảng (Fisher-Yates shuffle)
 const shuffleArray = (array) => {
@@ -150,7 +150,7 @@ export default function MillionaireGame() {
 
   const currentQuestion = useMemo(
     () => gameQuestions[level],
-    [gameQuestions, level]
+    [gameQuestions, level],
   );
 
   const resetForNextLevel = useCallback(() => {
@@ -166,7 +166,7 @@ export default function MillionaireGame() {
         setSelectedAnswer(option);
       }
     },
-    [lockedAnswer]
+    [lockedAnswer],
   );
 
   const handleLockAnswer = useCallback(() => {
@@ -211,7 +211,7 @@ export default function MillionaireGame() {
     (type) => {
       if (type === "fiftyFifty" && lifelines.fiftyFifty) {
         const incorrect = currentQuestion.options.filter(
-          (o) => o !== currentQuestion.answer
+          (o) => o !== currentQuestion.answer,
         );
         const toRemove = incorrect.sort(() => 0.5 - Math.random()).slice(0, 2);
         setDisabledOptions(toRemove);
@@ -222,7 +222,7 @@ export default function MillionaireGame() {
         const correctAnswer = currentQuestion.answer;
         let remainingPct = 100;
         const options = currentQuestion.options.filter(
-          (o) => !disabledOptions.includes(o)
+          (o) => !disabledOptions.includes(o),
         );
 
         options.forEach((opt) => {
@@ -239,7 +239,7 @@ export default function MillionaireGame() {
               poll[opt] = remainingPct;
             } else {
               const pct = Math.floor(
-                (Math.random() * remainingPct) / (arr.length - idx)
+                (Math.random() * remainingPct) / (arr.length - idx),
               );
               poll[opt] = pct;
               remainingPct -= pct;
@@ -249,7 +249,7 @@ export default function MillionaireGame() {
         setLifelines((l) => ({ ...l, audience: false }));
       }
     },
-    [lifelines, currentQuestion, disabledOptions]
+    [lifelines, currentQuestion, disabledOptions],
   );
   // ✨ THÊM MỚI: Logic xử lý toàn màn hình
   const toggleFullscreen = useCallback(() => {
@@ -446,7 +446,7 @@ export default function MillionaireGame() {
                 onClick={() => handleAnswerSelect(option)}
                 disabled={lockedAnswer || disabledOptions.includes(option)}
                 className={`p-4 rounded-lg text-lg text-left transition-all duration-300 ${getOptionClass(
-                  option
+                  option,
                 )}`}
               >
                 <span className="font-bold text-orange-400">
