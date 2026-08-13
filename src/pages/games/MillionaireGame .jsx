@@ -48,8 +48,8 @@ const prizeLevels = [
 ].reverse();
 
 const easyQuestions = allQuestions.slice(0, 40);
-const mediumQuestions = allQuestions.slice(40, 65);
-const hardQuestions = allQuestions.slice(65, 200);
+const mediumQuestions = allQuestions.slice(40, 70);
+const hardQuestions = allQuestions.slice(70, 200);
 
 // Hàm xáo trộn mảng (Fisher-Yates shuffle)
 const shuffleArray = (array) => {
