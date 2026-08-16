@@ -30,7 +30,7 @@ const sounds = {
   win: "https://res.cloudinary.com/dy9yts4fa/video/upload/v1754926334/winning_ywueii.mp3",
 };
 
-// --- Dữ liệu Game ---------
+// --- Dữ liệu Game -----------------
 const prizeLevels = [
   "100.000",
   "200.000",
